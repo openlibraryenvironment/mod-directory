@@ -40,6 +40,8 @@ dependencies {
     compile "io.micronaut.configuration:micronaut-multitenancy-gorm"
     compile "io.micronaut.configuration:micronaut-hibernate-validator"
     compile "io.micronaut.configuration:micronaut-hibernate-gorm"
+    compile "io.micronaut.configuration:micronaut-jdbc-dbcp"
+    compile "io.micronaut.configuration:micronaut-hibernate-validator"
     compile "org.grails:grails-datastore-gorm-hibernate5:$gormVersion"
     compile 'com.k_int.mn.okapi:micronaut-okapi:0.1.1'
     compileOnly "io.micronaut:micronaut-inject-java"
