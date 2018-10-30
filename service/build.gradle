@@ -46,6 +46,7 @@ dependencies {
     compile 'com.k_int.mn.okapi:micronaut-okapi:0.1.1'
     compileOnly "io.micronaut:micronaut-inject-java"
     runtime "ch.qos.logback:logback-classic:1.2.3"
+    runtime 'org.postgresql:postgresql:9.4.1212'
     testCompile "junit:junit:4.12"
     testCompile "io.micronaut:micronaut-inject-java"
     testCompile "org.hamcrest:hamcrest-all:1.3"

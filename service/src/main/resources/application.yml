@@ -20,3 +20,24 @@ reactive:
         maxSize: 5
 
 
+datasources.default: {}
+---
+hibernate:
+  hbm2ddl:
+    auto: update
+  cache:
+    queries: false
+    use_second_level_cache: true
+    use_query_cache: false
+    region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+
+dataSource:
+  pooled: true
+  jmxExport: false
+  dbCreate: update
+  username: "${db.username:kint}"
+  password: "${db.password:kint}"
+  driverClassName: org.postgresql.Driver
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+# schemaHandler: com.k_int.okapi.OkapiSchemaHandler
