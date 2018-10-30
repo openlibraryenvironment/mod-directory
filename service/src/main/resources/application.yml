@@ -1,25 +1,13 @@
 micronaut:
     application:
         name: mod-directory
-
-
-grails:
-    gorm:
-        multiTenancy:
-            mode: SCHEMA
-            tenantResolverClass: 'com.k_int.mn.okapi.OkapiTenantResolver'
-
-postgres:
-reactive:
-    client:
-        port: 5432
-        host: the-host
-        database: the-db
-        user: test
-        password: test
-        maxSize: 5
-
-
+---
+# grails:
+#     gorm:
+#         multiTenancy:
+#             mode: SCHEMA
+#             tenantResolverClass: 'com.k_int.mn.okapi.OkapiTenantResolver'
+---
 datasources.default: {}
 ---
 hibernate:
