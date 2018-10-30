@@ -24,7 +24,7 @@ datasources.default: {}
 ---
 hibernate:
   hbm2ddl:
-    auto: update
+    auto: none
   cache:
     queries: false
     use_second_level_cache: true
@@ -34,10 +34,10 @@ hibernate:
 dataSource:
   pooled: true
   jmxExport: false
-  dbCreate: update
-  username: "${db.username:kint}"
-  password: "${db.password:kint}"
+  dbCreate: none
+  username: "${db.username:folio_admin}"
+  password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
   dialect: org.hibernate.dialect.PostgreSQLDialect
-  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+  url: "jdbc:postgresql://localhost:54321/okapi_modules"
 # schemaHandler: com.k_int.okapi.OkapiSchemaHandler
