@@ -36,7 +36,8 @@ public class TenantControllerTest {
 
     @Test
     public void testTenantCreate() throws Exception {
-        HttpRequest request = HttpRequest.POST("/_/tenant", MediaType.APPLICATION_JSON); 
+        HttpRequest request = HttpRequest.POST("/_/tenant", MediaType.APPLICATION_JSON)
+              .header("X-Okapi-Tenant", "diku"); 
         String body = client.toBlocking().retrieve(request);
         assertNotNull(body);
         println(body)
@@ -44,7 +45,8 @@ public class TenantControllerTest {
 
     @Test
     public void testTenantDestroy() throws Exception {
-        HttpRequest request = HttpRequest.DELETE("/_/tenant"); 
+        HttpRequest request = HttpRequest.DELETE("/_/tenant")
+              .header("X-Okapi-Tenant", "diku"); 
         String body = client.toBlocking().retrieve(request);
         assertNotNull(body);
         println(body)
