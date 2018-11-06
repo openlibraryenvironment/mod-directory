@@ -50,11 +50,13 @@ Organisations may be split into many organisational units, arranged hierarchical
 * Should OU entries include all their parent services, or should parent services subsume all the child services??
 * Is the OU construct useful/necessary
 
+# Technical
+
+mod-directory is a grails 3 REST profile application which uses liquibase migrations for tenant schema construction.
 
 
 
-
-# Testing
+## Testing
 
 in the service directory, run
 
