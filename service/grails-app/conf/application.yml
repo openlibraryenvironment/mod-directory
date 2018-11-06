@@ -1,0 +1,161 @@
+---
+grails:
+    profile: rest-api
+    codegen:
+        defaultPackage: org.olf.license
+    gorm:
+        reactor:
+            # Whether to translate GORM events into Reactor events
+            # Disabled by default for performance reasons
+            events: false
+        multiTenancy:
+            mode: SCHEMA
+            tenantResolverClass: com.k_int.okapi.OkapiTenantResolver    # See src/main/groovy
+
+    plugin:
+      springsecurity:
+        providerNames:
+          - 'okapiAuthenticationProvider'
+
+        controllerAnnotations:
+          staticRules:
+            -
+              pattern: '/okapi/**'
+              access:
+                - 'permitAll' # SHould maybe lock this down to the Super tenant once it is properly enforced?
+            -
+              pattern: '/application/**'
+              access:
+                - 'permitAll'
+            -
+              pattern: '/**'
+              access:
+                - 'permitAll'
+        filterChain:
+          chainMap:
+            - 
+              pattern: '/**'
+              filters: 'JOINED_FILTERS,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter,-basicAuthenticationFilter'
+    databinding:
+        dateFormats:
+          - 'yyyy-MM-dd HH:mm:ss.S'
+          - "yyyy-MM-dd'T'hh:mm:ss'Z'"
+          - 'yyyy-mm-dd'
+
+info:
+    app:
+        name: 'mod-directory'
+        version: '@info.app.version@'
+        grailsVersion: '@info.app.grailsVersion@'
+spring:
+    main:
+        banner-mode: "off"
+    groovy:
+        template:
+            check-template-location: false
+
+# Spring Actuator Endpoints are Disabled by Default
+endpoints:
+    enabled: false
+    jmx:
+        enabled: true
+
+---
+grails:
+    mime:
+        disable:
+            accept:
+                header:
+                    userAgents:
+                        - Gecko
+                        - WebKit
+                        - Presto
+                        - Trident
+        types:
+            json:
+              - application/json
+              - text/json   
+            hal:
+              - application/hal+json
+              - application/hal+xml  
+            xml:
+              - text/xml
+              - application/xml                                 
+            atom: application/atom+xml
+            css: text/css
+            csv: text/csv
+            js: text/javascript
+            rss: application/rss+xml
+            text: text/plain
+            all: '*/*'            
+    urlmapping:
+        cache:
+            maxsize: 1000
+    controllers:
+        defaultScope: singleton
+    converters:
+        encoding: UTF-8
+
+---
+hibernate:
+    cache:
+        queries: false
+        use_second_level_cache: false
+        use_query_cache: false
+
+dataSource:
+  pooled: true
+  jmxExport: false
+  dbCreate: none
+  schemaHandler: com.k_int.okapi.OkapiSchemaHandler
+  username: "${db.username:folio_admin}"
+  password: "${db.password:folio_admin}"
+  driverClassName: org.postgresql.Driver
+  dialect: org.hibernate.dialect.PostgreSQL94Dialect
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+
+environments:
+  test:
+    dataSource:
+      url: jdbc:postgresql://localhost:5432/olftest
+
+  dbGen:
+    grails:
+      gorm:
+        multiTenancy:
+          mode: SCHEMA
+          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId 
+      plugin:
+        databasemigration:
+          updateOnStart: true
+          updateOnStartFileName: module-tenant-changelog.groovy
+    gorm:
+      tenantId: public # Used by SystemPropertyTenantResolver
+
+  production:
+    dataSource:
+      url: jdbc:postgresql://localhost:5432/olf
+      properties:
+        initialSize: 5
+        maxActive: 50
+        minIdle: 5
+        maxIdle: 25
+        maxWait: 10000
+        maxAge: 600000
+        timeBetweenEvictionRunsMillis: 5000
+        minEvictableIdleTimeMillis: 60000
+        validationQuery: SELECT 1
+        validationInterval: 30000
+        testOnBorrow: true
+        testWhileIdle: true
+        testOnReturn: false
+        removeAbandoned: true
+        removeAbandonedTimeout: 60
+        abandonWhenPercentageFull: 50
+        jdbcInterceptors: ConnectionState
+        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+---
+okapi:
+  schema:
+    appName: 'mod-directory'
+
