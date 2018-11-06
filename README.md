@@ -8,11 +8,17 @@ of directory service information which underpins inter-library services. This di
 * Organisations and Organisational Units
 * Service Endpoints within organisations
 * Policy and Group Memberships (Consortia)
+* Registries - Organisations who collate and maintain directories - EG OLF may become a focal point for registry activity
 
 Mod-Directory acts as a means for an institution to maintain and publish it's own directory information, and as a repository for this information about remote or external
 organisations, services and policies. Mod-Directory is the definitive local cache of partner institution information. If an application needs to know the preferred 
 protocol for issuing an ILL request to a peer institution with whom we have a reciprocal lending agreement, mod-directory is responsible for answering that question.
 
+### Rationale
+
+A headache in the current arrangement of peer lending within libraries has been the conflation of directory service information with servicies. Vendors exercise a kind of
+"Regulatory Capture" with service directories where the maintenance of a directory becomes a walled garden within which goods and services must be exchanged. mod-directory
+attempts to put control over service arrangements back in the hands of institutions - who can choose from a multitude of consortia and interlending agreements.
 
 ## Resources and Contexts.
 
