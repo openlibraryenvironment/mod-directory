@@ -1,5 +1,9 @@
 # mod-directory
 
+## Preamble
+
+This readme is a work in progress.... Feedback and constructive comment is welcome.
+
 ## Purpose
 
 Mod-Directory is an okapi service for use in resource sharing environments. It's purpose is to provide a bounded context for the storage, retrieval and update
