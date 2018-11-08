@@ -3,7 +3,7 @@
   "name": "${info.app.name}",
   "provides": [
     {
-      "id": "licenses",
+      "id": "directory",
       "version": "${info.app.minorVersion}",
       "handlers" : [
         {
