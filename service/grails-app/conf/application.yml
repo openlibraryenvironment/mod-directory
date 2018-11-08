@@ -111,8 +111,8 @@ dataSource:
   username: "${db.username:folio_admin}"
   password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
-  dialect: org.hibernate.dialect.PostgreSQL94Dialect
-  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+  dialect: com.k_int.hibernate.dialects.postgres.KIPostgres94Dialect
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}"
 
 environments:
   test:

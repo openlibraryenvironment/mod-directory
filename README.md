@@ -63,3 +63,13 @@ in the service directory, run
     ./gradlew test
 
 To run the test suite.
+
+## Regenerating liquibase migrations
+
+The grails application.yml specifies an environment called dbGen which can be used by developers who are
+using an okapi testing image as their baseline system. Use this named configuraiton when trying to regenerate
+the migrations using one of the following commands:
+
+    grails -Dgrails.env=dbGen dbm-gorm-diff description-of-change.groovy --add
+    grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
+
