@@ -1,6 +1,9 @@
 package org.olf.okapi.modules.directory
 
-class DirectoryEntry {
+import grails.gorm.MultiTenant
+
+
+class DirectoryEntry  implements MultiTenant<DirectoryEntry>  {
 
   String id
   String name

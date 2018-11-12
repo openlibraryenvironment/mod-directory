@@ -89,7 +89,9 @@ class DirectoryEntrySpec extends GebSpec {
       }
 
     then: "New directory entry created with the given name"
-      dirent.name == name
+      // dirent.name == name
+      resp.status == CREATED.value()
+
 
     where:
       tenantid | name
