@@ -7,6 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import spock.lang.*
 import geb.spock.*
 import grails.plugins.rest.client.RestBuilder
+import groovy.util.logging.Slf4j
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.k_int.okapi.OkapiHeaders
@@ -15,12 +16,15 @@ import grails.gorm.multitenancy.Tenants
 import org.olf.okapi.modules.directory.DirectoryEntry
 
 
+@Slf4j
 @Integration
 @Stepwise
 class DirectoryEntrySpec extends GebSpec {
 
   @Shared
   private Map test_info = [:]
+
+  def grailsApplication
 
   final Closure authHeaders = {
     header OkapiHeaders.TOKEN, 'dummy'
@@ -49,8 +53,6 @@ class DirectoryEntrySpec extends GebSpec {
 
     then:"The response is correct"
       resp.status == OK.value()
-      // resp.headers[CONTENT_TYPE] == ['application/json;charset=UTF-8']
-      // resp.json.message == 'Welcome to Grails!'
 
     where:
       tenantid | name
@@ -58,14 +60,22 @@ class DirectoryEntrySpec extends GebSpec {
   }
 
   void "test directory entry creation"(tenantid, name) {
-    when:
+
+    logger.debug("Sleep 2s to see that schema creation went OK - running test for ${tenantid} ${name}");
+
+    // Switching context, just want to make sure that the schema had time to finish initialising.
+    Thread.sleep(2000)
+
+    when: "We create a new directory entry"
       def dirent = null;
       Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-        dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
+        DirectoryEntry.withTransaction {
+          dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
+        }
       }
 
 
-    then:
+    then: "New directory entry created with the given name"
       dirent.name == name
 
     where:

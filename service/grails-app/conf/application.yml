@@ -107,12 +107,12 @@ dataSource:
   pooled: true
   jmxExport: false
   dbCreate: none
-  schemaHandler: com.k_int.okapi.OkapiSchemaHandler
   username: "${db.username:folio_admin}"
   password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
   dialect: com.k_int.hibernate.dialects.postgres.KIPostgres94Dialect
   url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}"
+  schemaHandler: com.k_int.okapi.OkapiSchemaHandler
 
 environments:
   test:
@@ -134,7 +134,6 @@ environments:
 
   production:
     dataSource:
-      url: jdbc:postgresql://localhost:5432/olf
       properties:
         initialSize: 5
         maxActive: 50
