@@ -66,14 +66,27 @@ class DirectoryEntrySpec extends GebSpec {
     // Switching context, just want to make sure that the schema had time to finish initialising.
     Thread.sleep(2000)
 
+    Map new_entry = [
+          name:'hello',
+          slug:'hello',
+          description:'hello',
+        ]
+
+
     when: "We create a new directory entry"
       def dirent = null;
-      Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-        DirectoryEntry.withTransaction {
-          dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
-        }
+      // Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      //   DirectoryEntry.withTransaction {
+      //     dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
+      //   }
+      // }
+      def resp = restBuilder().post("$baseUrl/directory/entry") {
+        header 'X-Okapi-Tenant', tenantid
+        authHeaders.rehydrate(delegate, owner, thisObject)()
+        contentType 'application/json'
+        accept 'application/json'
+        json new_entry
       }
-
 
     then: "New directory entry created with the given name"
       dirent.name == name

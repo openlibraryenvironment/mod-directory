@@ -20,5 +20,8 @@ class UrlMappings {
     patch "/$controller/$id(.$format)?"(action:"patch")
     "500"(view: '/error')
     "404"(view: '/notFound')
+
+    "/directory/entry"(resources:'directoryEntry')
+
   }
 }
