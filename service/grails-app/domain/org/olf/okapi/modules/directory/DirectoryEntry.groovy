@@ -10,6 +10,12 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>  {
   String slug
   String description
 
+  
+
+  static graphql = true
+
+
+
   static mapping = {
                  id column:'de_id', generator: 'uuid', length:36
                name column:'de_name'
