@@ -5,23 +5,23 @@ class UrlMappings {
   static mappings = {
 
     "/"(controller: 'application', action:'index')
-    "/config"(controller: 'application', action:'config')
-    "/_/tenant"(controller: 'okapi', action:'tenant')
 
-    "/directory/kiwt/config/$extended?" (controller: 'config' , action: "resources")
-    "/directory/kiwt/config/schema/$type" (controller: 'config' , action: "schema")
-    "/directory/kiwt/config/schema/embedded/$type" (controller: 'config' , action: "schemaEmbedded")
+    "/directory/entry"(resources:'directoryEntry')
+    "/directory/service"(resources:'Service')
 
-    delete "/$controller/$id(.$format)?"(action:"delete")
-    get "/$controller(.$format)?"(action:"index")
-    get "/$controller/$id(.$format)?"(action:"show")
-    post "/$controller(.$format)?"(action:"save")
-    put "/$controller/$id(.$format)?"(action:"update")
-    patch "/$controller/$id(.$format)?"(action:"patch")
+    // Call /rs/refdata to list all refdata categories
+    '/directory/refdata'(resources: 'refdata') {
+      collection {
+        "/$domain/$property" (controller: 'refdata', action: 'lookup')
+      }
+    }
+
+    // Call /rs/custprop  to list all custom properties
+    '/directory/custprops'(resources: 'customPropertyDefinition')
+
     "500"(view: '/error')
     "404"(view: '/notFound')
 
-    "/directory/entry"(resources:'directoryEntry')
 
   }
 }
