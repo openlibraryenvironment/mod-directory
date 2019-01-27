@@ -48,19 +48,6 @@ class DirectoryHousekeepingService {
     // Please note that there is custom databinding at play here which means that in some places what appear to be strings
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
-
-      CustomPropertyDefinition cp_url = CustomPropertyDefinition.findByName('url') ?:
-                                               new CustomPropertyDefinition(name:'url',
-                                                                            description:'A Url',
-                                                                            type:CustomPropertyText).save(flush:true, failOnError:true);
-
-      RefdataValue iso_18626 = RefdataValue.lookupOrCreate('Service.type','ISO18626');
-
-      // For now, establish a loopback ISO18626 service that all directory entries could use if they wanted to only work locally
-      // Heads up : type:'ISO18626' is not normal idiomatic grails - it's using a special method of marshalling JSON into domain classes
-      // for refdata values.
-      // Service loopback_iso_18626 = Service.findByName('loopback-iso-18626') ?: new Service ( name:'loopback-iso-18626',
-      //                                                                                        type:'ISO18626').save(flush:true, failOnError:true);
     }
   }
 }
