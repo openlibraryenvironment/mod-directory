@@ -31,8 +31,6 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
              'SRW'])
   RefdataValue type
 
-  static graphql = true
-
   static hasMany = [
     tags:Tag
   ]
