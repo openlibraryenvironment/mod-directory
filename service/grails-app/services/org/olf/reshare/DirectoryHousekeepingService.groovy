@@ -49,10 +49,10 @@ class DirectoryHousekeepingService {
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
 
-      // CustomPropertyDefinition cp_url = CustomPropertyDefinition.findByName('url') ?:
-      //                                          new CustomPropertyDefinition(name:'url',
-      //                                                                       description:'A Url',
-      //                                                                       type:CustomPropertyText).save(flush:true, failOnError:true);
+      CustomPropertyDefinition cp_url = CustomPropertyDefinition.findByName('url') ?:
+                                               new CustomPropertyDefinition(name:'url',
+                                                                            description:'A Url',
+                                                                            type:CustomPropertyText).save(flush:true, failOnError:true);
 
       RefdataValue iso_18626 = RefdataValue.lookupOrCreate('Service.type','ISO18626');
 
@@ -60,7 +60,7 @@ class DirectoryHousekeepingService {
       // Heads up : type:'ISO18626' is not normal idiomatic grails - it's using a special method of marshalling JSON into domain classes
       // for refdata values.
       // Service loopback_iso_18626 = Service.findByName('loopback-iso-18626') ?: new Service ( name:'loopback-iso-18626',
-      //                                                                                        type:iso_18626).save(flush:true, failOnError:true);
+      //                                                                                        type:'ISO18626').save(flush:true, failOnError:true);
     }
   }
 }
