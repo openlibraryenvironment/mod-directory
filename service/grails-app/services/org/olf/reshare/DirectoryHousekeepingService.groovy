@@ -59,8 +59,8 @@ class DirectoryHousekeepingService {
       // For now, establish a loopback ISO18626 service that all directory entries could use if they wanted to only work locally
       // Heads up : type:'ISO18626' is not normal idiomatic grails - it's using a special method of marshalling JSON into domain classes
       // for refdata values.
-      Service loopback_iso_18626 = Service.findByName('loopback-iso-18626') ?: new Service ( name:'loopback-iso-18626',
-                                                                                             type:iso_18626).save(flush:true, failOnError:true);
+      // Service loopback_iso_18626 = Service.findByName('loopback-iso-18626') ?: new Service ( name:'loopback-iso-18626',
+      //                                                                                        type:iso_18626).save(flush:true, failOnError:true);
     }
   }
 }
