@@ -35,3 +35,6 @@ diku_loopback_rec=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_
 }'`
 
 echo Diku loopback service: $diku_loopback_rec
+
+echo Look up the serviceAccount for diku and loopback-iso-18626
+diku_iso_svc_lookup=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/serviceAccount?filter=service.name%3dloopback-iso-18626&accountHolder.name%3ddiku"`
