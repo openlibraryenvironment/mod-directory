@@ -8,9 +8,9 @@ mod-directory currently exposes the following resource paths
 * [/directory/service](docs/service.md) - A service record
 * [/directory/serviceAccount](docs/serviceAccount.md) - A service account - linking an entry with a service
 
-entry.md
-serviceAccount.md
-service.md
+Some specific and common stories 
+
+* [Find a service account for a given entry/service pair](docs/discovery.md)
 
 ## Purpose
 
