@@ -14,10 +14,12 @@ Some specific and common stories
 
 ## Purpose
 
-Mod-Directory is an okapi service for use in resource sharing environments. It's purpose is to provide a bounded context for the storage, retrieval and update
+Mod-Directory is an okapi service intiailly proposed for use in resource sharing environments but offering
+services to any library scenario that involves documenting and using service interactions between peers. 
+It's purpose is to provide a bounded context for the storage, retrieval and update
 of directory service information which underpins inter-library services. This directory contains, but is not restricted to
 
-* Organisations and Organisational Units
+* Organisations and Organisational Units (Including Instituitons and logical groups such as cosortia and regional assemblies)
 * Service Endpoints within organisations
 * Policy and Group Memberships (Consortia)
 * Registries - Organisations who collate and maintain directories - EG OLF may become a focal point for registry activity
