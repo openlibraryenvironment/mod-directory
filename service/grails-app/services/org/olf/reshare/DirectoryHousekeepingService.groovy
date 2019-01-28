@@ -12,11 +12,15 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
 
+import grails.databinding.SimpleMapDataBindingSource 
+
 /**
  * This service works at the module level, it's often called without a tenant context.
  */
 @Transactional
 class DirectoryHousekeepingService {
+
+  def grailsWebDataBinder
 
   /**
    * This is called by the eventing mechanism - There is no web request context
@@ -48,7 +52,27 @@ class DirectoryHousekeepingService {
     // Please note that there is custom databinding at play here which means that in some places what appear to be strings
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
+      def cp_url = ensureTextProperty('url');
+      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 'ISO18626', [ 'url': 'http://localhost:9130/rs/iso18626' ]);
     }
+
+    log.info("DirectoryHousekeepingService::setupData(${tenantName},${tenantId}) Completed Normally");
+  }
+
+  private CustomPropertyDefinition ensureTextProperty(String name) {
+    CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
+                                        name:name,
+                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class
+                                      ).save(flush:true, failOnError:true);
+    return result;
+  }
+
+  private Service ensureService(String name, String type, Map custProps) {
+    // def loopback_iso_service = new org.olf.okapi.modules.directory.Service()
+    // Map service_props = [
+    // ]
+    // grailsWebDataBinder.bind loopback_iso_service, service_props as SimpleMapDataBindingSource
+    return null;
   }
 }
 
