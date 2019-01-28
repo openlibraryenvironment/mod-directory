@@ -1,6 +1,6 @@
 # service discovery
 
-There are 2 primary use cases that can occour that need support from the directory service:
+There are 2 primary use cases that can occur that need support from the directory service:
 
 * 1. I've located an item in the shared catalog - and have a library identifier. I need to look up a service in order to know how and where to send a request to. Often, libraries will have a protocol specific symbol that we need to look up based on institution and protocol.
 * 2. I'm involved in a conversation with a partner organisation, I have a symbol and a protcol - I need to look up the details of how to connect. In this case, we likely know a protocol and a symbol and want the connect details instead.
