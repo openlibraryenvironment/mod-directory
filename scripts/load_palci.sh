@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
 QTEST=`echo '{  "value":"one" }' | jq -r ".value"`
+TARGET="http://localhost:9130"
+AUTH_TOKEN=`./okapi-login`
+
 
 if [ $JQREST="one" ]
 then
@@ -21,8 +24,8 @@ IFS=$'\n'       # make newlines the only separator
 count=0
 for row in $(echo "$json_result" | jq -rc ".entries[]" ); do
   echo "Posting ${row}"
-  # result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/custprops" -d "${row}")
-  # echo $result | jq
+  result=$(curl -sSL -H 'Accept:application/json' -H "X-Okapi-Token: $AUTH_TOKEN" -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/directory/entry" -d "${row}")
+  echo $result | jq
   # json_data=`echo "$json_data" | jq ".propertyDefinitions[$count] = $result"`
   count=$((count+1))
 done
