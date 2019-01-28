@@ -53,7 +53,7 @@ class DirectoryHousekeepingService {
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
       def cp_url = ensureTextProperty('url');
-      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 'ISO18626', [ 'url': 'http://localhost:9130/rs/iso18626' ]);
+      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 'ISO18626', ['system-default'], [ 'url': [ 'http://localhost:9130/rs/iso18626' ] ]);
     }
 
     log.info("DirectoryHousekeepingService::setupData(${tenantName},${tenantId}) Completed Normally");
@@ -67,12 +67,25 @@ class DirectoryHousekeepingService {
     return result;
   }
 
-  private Service ensureService(String name, String type, Map custProps) {
-    // def loopback_iso_service = new org.olf.okapi.modules.directory.Service()
-    // Map service_props = [
-    // ]
-    // grailsWebDataBinder.bind loopback_iso_service, service_props as SimpleMapDataBindingSource
-    return null;
+  private Service ensureService(String name, String type, List<String>tags, Map custProps) {
+    
+    def result = Service.findByName(name);
+
+    if ( result == null ) {
+      // This is an experiement - lets call the databinder so we can exploit all the clever functions that REST clients 
+      // use like the auto-lookup of refdata and the resolution of custprops property names.
+      result = new org.olf.okapi.modules.directory.Service()
+      Map service_props = [
+        name: name,
+        type: type,
+        tags: tags,
+        customProperties: custProps
+      ]
+      grailsWebDataBinder.bind result, service_props as SimpleMapDataBindingSource
+      result.save(flush:true, failOnError:true);
+    }
+
+    return result;
   }
 }
 
