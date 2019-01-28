@@ -25,3 +25,13 @@ diku_entry_rec=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOK
 
 diku_entry_id=`echo $diku_entry_rec | jq -r ".id" | tr -d '\r'`
 echo $diku_entry_id : $diku_entry_rec
+
+
+echo Create a serviceAccount entry for the loopback-iso-18626 service and entry diku
+diku_loopback_rec=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X POST http://localhost:9130/directory/serviceAccount -d ' {
+  "service": {id: "'"$loopback_svc_id"'" },
+  "accountHolder":{id: "'"$diku_entry_id"'" },
+  "accountDetails":"maybe_a_symbol"
+}'`
+
+echo Diku loopback service: $diku_loopback_rec

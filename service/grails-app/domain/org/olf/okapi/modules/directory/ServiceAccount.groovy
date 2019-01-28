@@ -11,8 +11,9 @@ import com.k_int.web.toolkit.refdata.Defaults;
 /**
  * The relationship between a service and a directory entry
  */
-class ServiceAccount  implements MultiTenant<ServiceAccount>  {
+class ServiceAccount  implements CustomProperties,MultiTenant<ServiceAccount>  {
 
+  String id
   Service service
   DirectoryEntry accountHolder
 

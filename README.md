@@ -1,8 +1,16 @@
 # mod-directory
 
-## Preamble
+## For front end and service developers wanting to use the resources mod-directory exposes
 
-This readme is a work in progress.... Feedback and constructive comment is welcome.
+mod-directory currently exposes the following resource paths
+
+* [/directory/entry](docs/entry.md) - An entry in the directory
+* [/directory/service](docs/service.md) - A service record
+* [/directory/serviceAccount](docs/serviceAccount.md) - A service account - linking an entry with a service
+
+entry.md
+serviceAccount.md
+service.md
 
 ## Purpose
 

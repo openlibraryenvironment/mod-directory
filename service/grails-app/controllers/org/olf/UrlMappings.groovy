@@ -8,6 +8,7 @@ class UrlMappings {
 
     "/directory/entry"(resources:'directoryEntry')
     "/directory/service"(resources:'Service')
+    "/directory/serviceAccount"(resources:'ServiceAccount')
 
     // Call /rs/refdata to list all refdata categories
     '/directory/refdata'(resources: 'refdata') {
