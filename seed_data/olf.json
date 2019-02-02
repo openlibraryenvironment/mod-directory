@@ -1,0 +1,12 @@
+{
+  "name":"Open Library Foundation",
+  "slug":"OLF",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json",
+  "url":"http://www.openlibraryfoundation.org/",
+  "tags":["CONSORTIUM"],
+  "members":[
+  ],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" }
+  ]
+}

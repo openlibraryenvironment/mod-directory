@@ -1,0 +1,11 @@
+{
+  "name":"Allegheny College",
+  "slug":"Allegheny_College",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json",
+  "url":"https://sites.allegheny.edu/",
+  "tags":["INSTITUTION"],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+  ]
+}

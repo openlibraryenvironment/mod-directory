@@ -1,0 +1,13 @@
+{
+  "name":"PALCI",
+  "slug":"PALCI",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json",
+  "url":"http://www.palci.org/",
+  "tags":["CONSORTIUM"],
+  "members":[
+  ],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+  ]
+}
