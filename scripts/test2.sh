@@ -1,50 +1,40 @@
+#!/bin/bash
+
 AUTH_TOKEN=`./okapi-login`
 
 echo Got auth token $AUTH_TOKEN
 
 echo Listing current entries
-curl --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET http://localhost:9130/directory/entry 
-
-# create the url custom property
-echo
-echo Create url custom property
-curl -sSL -H 'Accept:application/json' \
-	  -H 'Content-Type: application/json' \
-	  -H 'X-OKAPI-TENANT: diku' \
-	  -H "X-Okapi-Token: $AUTH_TOKEN" \
-	  -X POST http://localhost:9130/directory/custprops -d '{
- "name":"url", 
- "type":"Text"
-}'
+curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET http://localhost:9130/directory/entry 
 
 echo
-echo Create iso-18626 loopback service
-DirEnt1=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X POST http://localhost:9130/directory/entry -d ' {
+echo lookup the service for loopback-iso-18626
+loopback_svc_rec=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET http://localhost:9130/directory/service?filter=name%3dloopback-iso-18626`
+loopback_svc_id=`echo $loopback_svc_rec | jq -r ".[0].id" | tr -d '\r'`
+echo loopback svc $loopback_svc_id : $loopback_svc_rec
+
+echo Create a directory entry for diku
+diku_entry_rec=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X POST http://localhost:9130/directory/entry -d ' {
   "name":"diku",
   "slug":"diku",
   "description":"diku",
   "tags":[
-    "Testdata", "TestRun1", "MonographTest"
-  ],
-  "customProperties":{
-    "url": ["http://localhost:9130/rs/iso18626"]
-  }
+    "Testdata"
+  ]
 }'`
 
-echo
-echo Created request 1: $DirEnt1
+diku_entry_id=`echo $diku_entry_rec | jq -r ".id" | tr -d '\r'`
+echo $diku_entry_id : $diku_entry_rec
 
-service_1=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X POST http://localhost:9130/directory/service -d ' {
-  name:"loopback-iso-18626",
-  type:"ISO18626",
-  tags:[
-    "Testdata", "TestRun1", "MonographTest"
-  ],
-  customProperties:{
-    "url": ["http://localhost:9130/rs/iso18626"]
-  }
-}
-'`
-echo
-echo Created service 1: $service_1
 
+echo Create a serviceAccount entry for the loopback-iso-18626 service and entry diku
+diku_loopback_rec=`curl -sSL -H "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X POST http://localhost:9130/directory/serviceAccount -d ' {
+  "service": {id: "'"$loopback_svc_id"'" },
+  "accountHolder":{id: "'"$diku_entry_id"'" },
+  "accountDetails":"maybe_a_symbol"
+}'`
+
+echo Diku loopback service: $diku_loopback_rec
+
+echo Look up the serviceAccount for diku and loopback-iso-18626
+diku_iso_svc_lookup=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/serviceAccount?filter=service.name%3dloopback-iso-18626&accountHolder.name%3ddiku"`

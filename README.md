@@ -1,15 +1,25 @@
 # mod-directory
 
-## Preamble
+## For front end and service developers wanting to use the resources mod-directory exposes
 
-This readme is a work in progress.... Feedback and constructive comment is welcome.
+mod-directory currently exposes the following resource paths
+
+* [/directory/entry](docs/entry.md) - An entry in the directory
+* [/directory/service](docs/service.md) - A service record
+* [/directory/serviceAccount](docs/serviceAccount.md) - A service account - linking an entry with a service
+
+Some specific and common stories 
+
+* [Find a service account for a given entry/service pair](docs/discovery.md)
 
 ## Purpose
 
-Mod-Directory is an okapi service for use in resource sharing environments. It's purpose is to provide a bounded context for the storage, retrieval and update
+Mod-Directory is an okapi service intiailly proposed for use in resource sharing environments but offering
+services to any library scenario that involves documenting and using service interactions between peers. 
+It's purpose is to provide a bounded context for the storage, retrieval and update
 of directory service information which underpins inter-library services. This directory contains, but is not restricted to
 
-* Organisations and Organisational Units
+* Organisations and Organisational Units (Including Instituitons and logical groups such as cosortia and regional assemblies)
 * Service Endpoints within organisations
 * Policy and Group Memberships (Consortia)
 * Registries - Organisations who collate and maintain directories - EG OLF may become a focal point for registry activity
