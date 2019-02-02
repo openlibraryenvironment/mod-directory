@@ -5,6 +5,7 @@
   "url":"http://www.palci.org/",
   "tags":["CONSORTIUM"],
   "members":[
+    "Allegheny_College"
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
