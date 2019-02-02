@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "An entry in the directory service",
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name":{
+      "type": "string"
+    },
+    "slug":{
+      "type": "string"
+    },
+    "description":{
+      "type": "string"
+    },
+    "tags":{
+      "type": "string"
+    },
+    "customProperties":{
+      "type": "string"
+    }
+  },
+  "required": [
+  ]
+}

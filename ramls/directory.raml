@@ -1,0 +1,34 @@
+#%RAML 1.0
+
+title: Directory Service API
+baseUri: https://github.com/openlibraryenvironment/mod-directory
+version: v1
+
+documentation:
+  - title: mod-directory API
+    content: This documents the API calls that can be made to query and manage directory entries
+
+types:
+  DirectoryEntry: !include dirent.json
+
+
+/directory:
+  /entry:
+    get:
+      description: List directory entries
+      responses:
+        200:
+          description: "OK"
+    post:
+      description: Submit a new directory entry
+      body: 
+        application/json:
+          type: DirectoryEntry
+    /{direntId}:
+      get:
+        description: Retrieve a specific entry
+      put:
+        description: Update a specific entry
+  /refdata:
+    description: List all refdata categories currently known
+
