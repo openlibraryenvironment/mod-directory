@@ -18,13 +18,24 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   String description
   DirectoryEntry parent
 
+  /**
+   * DirectoryEntries can be managed here, or just stored for reference. Managed entries can be accessed via
+   * a foaf type service.
+   */
+  @Defaults(['Managed', 'Reference' ])
+  RefdataValue status
+
   static graphql = true
 
   static hasMany = [
-    tags:Tag
+    tags:Tag,
+    friends: FriendAssertion,
+    units: DirectoryEntry
   ]
 
   static mappedBy = [
+    friends: 'owner',
+    units: 'parent'
   ]
 
   static mapping = {
@@ -33,6 +44,7 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
                slug column:'de_slug'
         description column:'de_desc'
              parent column:'de_parent'
+             status column:'de_status_fk'
   }
 
   static constraints = {
@@ -40,5 +52,7 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
            slug(nullable:true, blank:false)
     description(nullable:true, blank:false)
          parent(nullable:true, blank:false)
+         status(nullable:true, blank:false)
+
   }
 }
