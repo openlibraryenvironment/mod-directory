@@ -1,5 +1,46 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "$comment": "This schema is hand reverse engineered from the domain classes, THEY are the authoritative definition of these types. see https://github.com/openlibraryenvironment/mod-directory/tree/master/service/grails-app/domain/org/olf/okapi/modules/directory. Those definitions can be customised by the gson files in the view, and the input json can be customised by bespoke data binding on the domain classes. You will get a better idea of the json by looking at actual data, for example https://github.com/openlibraryenvironment/mod-directory/blob/master/scripts/palci.jq",
+  "id": "DirectoryEntryDefinition",
+  "definitions":{
+    "Tag": {
+      "type":"object",
+      "properties": {
+        "id" : { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "Friend": {
+      "type":"object",
+      "properties": {
+        "id" : { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "Symbol": {
+      "type":"object",
+      "properties": {
+        "id" : { "type": "string" },
+	"authority" : { "type": "string" },
+	"symbol" : { 
+          "oneOf" : [
+	    { "type": "string" } },
+	    { "$ref": "#/definitions/Authority" }
+	  ]
+	},
+	"priority" : { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "Authority": {
+      "type":"object",
+      "properties": {
+        "id" : { "type": "string" },
+        "symbol" : { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
   "type": "object",
   "description": "An entry in the directory service",
   "additionalProperties": true,
@@ -23,20 +64,36 @@
       "$comment":"An array of tags, normally the system will pass and expect tag objects, however the modules understand a shorthand notation of a string array",
       "type": "array",
       "items":{
-        "type": "string"
+        "oneOf" : [
+          { "type": "string" },
+	  { "$ref": "#/definitions/Tag" }
+	]
       }
     },
     "customProperties":{
       "$comment":"Custom properties are a runtime defined set of name:value pairs, where values are themselves arbitrarily scalar types or complex objects",
       "type": "object",
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "units":{
       "type":"array",
       "items":{
+	"$comment":"items is a recursive structure",
+        "$ref":"#"
       }
     },
-    "$comment":"ToDo: friends: FriendAssertion, units: DirectoryEntry, symbols: Symbol "
+    "symbols":{
+      "type":"array",
+      "items":{
+	 { "$ref": "#/definitions/Symbol" }
+      }
+    },
+    "friends":{
+      "type":"array",
+      "items":{
+	 { "$ref": "#/definitions/Friend" }
+      }
+    }
   },
   "required": [
   ]
