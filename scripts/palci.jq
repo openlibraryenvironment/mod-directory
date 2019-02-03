@@ -7,9 +7,7 @@
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
       ],
-      symbols:[
-        { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" }
-      ]
+      symbols:[ { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" } ]
     },
     { "name":"Bloomsburg University",                        "slug":"Bloomsburg_University",                           status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ],
       "units": [
@@ -80,7 +78,11 @@
     { "name":"Washington & Jefferson College",               "slug":"Washington_and_Jefferson_College",                status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
     { "name":"West Chester University",                      "slug":"West_Chester_University",                         status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"West Virginia University",                     "slug":"West_Virginia_University",                        status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
-    { "name":"Widener University",                           "slug":"Widener_University",                              status:"Reference", tags: [ "Institution" ] },
+    { "name":"Widener University",                           "slug":"Widener_University",                              status:"Reference", tags: [ "Institution" ],
+      "units": [
+        { "name":"Widener University Main Library", "tags": ["Branch"], symbols:[ { "authority":"PALCI", "symbol":"WIDNER", priority:"a" } ] }
+      ]
+    },
     { "name":"York College of Pennsylvania",                 "slug":"York_College_of_Pennsylvania",                    status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"PALCI",                                        "slug":"PALCI",                                           status:"Managed",   tags: [ "Consortium" ],
       "members":[

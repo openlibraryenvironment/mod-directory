@@ -1,0 +1,14 @@
+{
+  "name":"DIKU",
+  "slug":"DIKU",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json",
+  "url":"https://www.indexdata.dk/DIKU",
+  "tags":["INSTITUTION"],
+  "units":[
+    { "name":"DIKU Main Library", "tags": ["Branch"], "symbols":[ { "authority":"PALCI", "symbol":"DIKU", "priority":"a" } ] }
+  ],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+  ]
+}
