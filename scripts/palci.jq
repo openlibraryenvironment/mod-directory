@@ -3,7 +3,7 @@
     { "name":"Allegheny College",                            "slug":"Allegheny_College",                               status:"Reference", tags: [ "E-ZBorrow", "Institution" ] ,
       "units": [
         { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
-          "symbols": [ { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" } ]
+          "symbols": [ { "authority":"PALCI", "symbol":"ACMAIN", priority:"a" } ]
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
       ],
