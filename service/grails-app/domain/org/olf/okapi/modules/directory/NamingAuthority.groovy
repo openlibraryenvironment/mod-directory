@@ -17,14 +17,12 @@ import com.k_int.web.toolkit.databinding.BindUsingWhenRef
   //@BindUsingWhenRef(org.olf.okapi.modules.directory.Symbol : (unsaved), authority, grails.databinding.SimpleMapDataBindingSource@5d0e003a
   //Result null
 
-  println("@BindUsingWhenRef(${obj}, ${propName}, ${source}, ${source.propertyNames}");
   NamingAuthority val = null;
 
   def data = source.getAt(propName)
 
   // If the data is asking for null binding then ensure we return here.
   if (data == null) {
-    println("${obj}.${propname} == ${data}");
     return null
   }
 
@@ -40,7 +38,6 @@ import com.k_int.web.toolkit.databinding.BindUsingWhenRef
     val = NamingAuthority.findBySymbol(data) ?: new NamingAuthority(symbol:data).save(flush:true, failOnError:true)
   }
 
-  println("Result ${val}");
   val
 })
 class NamingAuthority implements MultiTenant<NamingAuthority>  {
