@@ -30,12 +30,14 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   static hasMany = [
     tags:Tag,
     friends: FriendAssertion,
-    units: DirectoryEntry
+    units: DirectoryEntry,
+    symbols: Symbol
   ]
 
   static mappedBy = [
     friends: 'owner',
-    units: 'parent'
+    units: 'parent',
+    symbols: 'owner'
   ]
 
   static mapping = {
