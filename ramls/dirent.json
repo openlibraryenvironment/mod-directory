@@ -13,15 +13,30 @@
     "slug":{
       "type": "string"
     },
+    "status":{ 
+      "type": "object"
+    },
     "description":{
       "type": "string"
     },
     "tags":{
-      "type": "string"
+      "$comment":"An array of tags, normally the system will pass and expect tag objects, however the modules understand a shorthand notation of a string array",
+      "type": "array",
+      "items":{
+        "type": "string"
+      }
     },
     "customProperties":{
-      "type": "string"
-    }
+      "$comment":"Custom properties are a runtime defined set of name:value pairs, where values are themselves arbitrarily scalar types or complex objects",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "units":{
+      "type":"array",
+      "items":{
+      }
+    },
+    "$comment":"ToDo: friends: FriendAssertion, units: DirectoryEntry, symbols: Symbol "
   },
   "required": [
   ]
