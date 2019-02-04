@@ -1,0 +1,4623 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head><meta name="viewport" content="width=device-width" /><title>
+
+</title><script src="/bundles/jquery?v=wBUqTIMTmGl9Hj0haQMeRbd8CoM3UaGnAwp4uDEKfnM1"></script>
+
+    <style>
+        body {
+            font-family: Verdana,Arial,Helvetica,sans-serif;
+            font-size: 11px;
+        }
+
+        .errorMessage {
+            padding: 15px;
+            background-color: #990000;
+            color: #fff;
+            display: none;
+        }
+
+        .search {
+            padding: 3px 0;
+            background-color: #FCFCEC;
+            color: #183B71;
+        }
+
+            .search h3 {
+                background-color: #183B71;
+                font-size: 11px;
+                color: #fff;
+            }
+
+        .font {
+            font-style: normal;
+            font-weight: bold;
+            text-align: left;
+            padding: 5px 2px;
+        }
+
+        tr td:first-of-type {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="errorMessage">
+        <h3>Search could not be completed.</h3>
+        <p>Please enter either Library Name OR IDS ID - NOT BOTH</p>
+    </div>
+    <div class="search">
+        <h3 class="font">IDS Library Search Panel</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="font">Library Name</td>
+                    <td>
+                        <input type="text" name="library" /></td>
+                </tr>
+                <tr>
+                    <td class="font">IDS ID Number</td>
+                    <td>
+                        <input type="text" name="idsid" /></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="button" value="Search" class="submit" /><input type="button" value="Reset" class="clear" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        List of all IDS Libraries in IDSID order: <a href="/ids_guest/Export/IDSID">directory_by_idsid.pdf</a><br />
+        List of all IDS Libraries in Institution Name order: <a href="/ids_guest/Export">directory_by_institution.pdf</a>
+    </div>
+    <div>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Abington Township Public Library</span><br />
+            1030 Old York Road<br />
+            Abington, PA 19001
+        </p>
+        <p style="text-align: center;">
+            Director: Nancy Hammeke Marshall &bull; 215-885-5180 x114 &bull; nhammekemarshall@mclinc.org<br />
+            ILL: Heather Willever-Farr &bull; 215-885-5180 x124 &bull; hwilleverfarr@mclinc.org<br />
+            IDS ID Number: 210A01<br />
+            Consortia: PALINET<br />
+            OCLC: ABG
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Adams County Library System</span><br />
+            140 Baltimore Street<br />
+            <br />
+            Gettysburg, PA 17325
+        </p>
+        <p style="text-align: center;">
+            Director: Karla Trout &bull; 717-334-5716 x221 &bull; karlat@adamslibrary.org<br />
+            ILL: Martha Housch &bull; 717-334-5716 x227 &bull; marthah@adamslibrary.org<br />
+            IDS ID Number: 149A01<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Albright College</span><br />
+            Gingrich Library<br />
+            1621 N. 13th St.<br />
+            Reading, PA 19604-1708
+        </p>
+        <p style="text-align: center;">
+            Director: Sandy Stump &bull; 610-921-7205 &bull; sstump@albright.edu<br />
+            ILL: Samantha Thomas &bull; 610-921-7209 &bull; sthomas@albright.edu<br />
+            IDS ID Number: 103<br />
+            Consortia: ACLCP, Berks Co. Lib Assn., PALINET<br />
+            OCLC: ABI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Allegheny College</span><br />
+            Pelletier Library<br />
+            555 North Main St.<br />
+            Meadville, PA 16335
+        </p>
+        <p style="text-align: center;">
+            Director: Richard Holmgren &bull; 814-332-2765 &bull; pelladmin@allegheny.edu<br />
+            ILL: Linda Ernst &bull; 814-332-3790 &bull; loansrus@allegheny.edu<br />
+            IDS ID Number: 104<br />
+            Consortia: NICOP,PALINET,PALCI<br />
+            OCLC: AVL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Allentown Public Library</span><br />
+            1210 Hamilton Street<br />
+            Allentown, PA 18102
+        </p>
+        <p style="text-align: center;">
+            Director: Renee Haines &bull; 610-820-2400 x111 &bull; hainesr@allentownpl.org<br />
+            ILL: Nancy Horwath &bull; 610-820-2400 x145 &bull; horwathn@allentownpl.org<br />
+            IDS ID Number: 105<br />
+            Consortia: Allentown Con<br />
+            OCLC: AYP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Altoona Area Public Library</span><br />
+            1600 Fifth Avenue<br />
+            <br />
+            Altoona, PA 16602
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Knisely &bull; 814-946-0417 x122 &bull; director@altoonalibrary.org<br />
+            ILL: Amy Horell &bull; 814-946-0417 x134 &bull; dlc@altoonalibrary.org<br />
+            IDS ID Number: 106<br />
+            Consortia: PRLC, BLAIRBED<br />
+            OCLC: AOP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Alvernia University</span><br />
+            Franco Library<br />
+            400 Saint Bernardine St.<br />
+            Reading, PA 19607-1799
+        </p>
+        <p style="text-align: center;">
+            Director: Sharon A. Neal &bull; 610-568-1465 &bull; sharon.neal@alvernia.edu<br />
+            ILL: Mychele Criley &bull; 610-796-8355 &bull; mychele.criley@alvernia.edu<br />
+            IDS ID Number: 211<br />
+            Consortia: ACLCP<br />
+            OCLC: AVE
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Apollo-Ridge</span><br />
+            1825 State Route 56<br />
+            <br />
+            Spring Church, PA 15686
+        </p>
+        <p style="text-align: center;">
+            Director: Robert J. Fello &bull; 724-478-6000 x1040 &bull; fello@apolloridge.com<br />
+            ILL: Robert J. Fello &bull; 724-478-6000 x1040 &bull; fello@apolloridge.com<br />
+            IDS ID Number: 284A01<br />
+            Consortia: ARIN<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Arcadia University</span><br />
+            Landman Library<br />
+            450 S. Easton Rd.<br />
+            Glenside, PA 19038-3295
+        </p>
+        <p style="text-align: center;">
+            Director: Adam Hess &bull; 215-572-2842 x &bull; hessa@arcadia.edu<br />
+            ILL: Brittany Mease &bull; 215-572-2137 x &bull; measeb@arcadia.edu<br />
+            IDS ID Number: 107<br />
+            Consortia: PALINET, TCLC, DEVIC, PRILL, SEPCHE<br />
+            OCLC: BEA
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">ARIN IU #28</span><br />
+            Regional Learning Center<br />
+            2895 West Pike<br />
+            Indiana, PA 15701-9769
+        </p>
+        <p style="text-align: center;">
+            Director: Travis Stormer &bull; 724-463-5300 x1262 &bull; media@iu28.org<br />
+            ILL: Denise Chrispell &bull; 724-463-5300 x1262 &bull; dchrispell@iu28.org<br />
+            IDS ID Number: 284<br />
+            Consortia: ARIN Consortium<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Arthur Hufnagel PL of Glen Rock</span><br />
+            32 Main Street<br />
+            <br />
+            Glen Rock, PA 17327
+        </p>
+        <p style="text-align: center;">
+            Director: Angela Orwig &bull; 717-235-1127 x &bull; aorwig@yorklibraries.org<br />
+            ILL: Kathy Heisler &bull; 717-235-1127 x &bull; kheisler@yorklibraries.org<br />
+            IDS ID Number: 149A07<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Avella Area Public Library</span><br />
+            11 School Court<br />
+            Box 547<br />
+            Avella, PA 15312
+        </p>
+        <p style="text-align: center;">
+            Director: Melissa Ansell &bull; 724-587-5633 x &bull; melissa_ansell@yahoo.com<br />
+            ILL: Melissa Ansell &bull; 724-587-5633 x &bull; melissa_ansell@yahoo.com<br />
+            IDS ID Number: 197A01<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">B. F. Jones Memorial Library</span><br />
+            Aliquippa District Center<br />
+            663 Franklin Avenue<br />
+            Aliquippa, PA 15001
+        </p>
+        <p style="text-align: center;">
+            Director: Ann Andrews &bull; 724-375-2900 x100 &bull; aandrews@beaverlibraries.org<br />
+            ILL: Cindy Murphy &bull; 724-375-2900 x103 &bull; cmurphy@beaverlibraries.org<br />
+            IDS ID Number: 195<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Back Mountain Memorial Library</span><br />
+            96 Huntsville Rd.<br />
+            Dallas, PA 18612-1829
+        </p>
+        <p style="text-align: center;">
+            Director: Martha Butler &bull; 570-675-1182 &bull; bkmtlb@epix.net<br />
+            ILL: Michele Gesky &bull; 570-675-1182 &bull; bkmtlb@epix.net<br />
+            IDS ID Number: 222A01<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Baden Memorial Library</span><br />
+            385 State Street<br />
+            <br />
+            Baden, PA 15005
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Woolstrum &bull; 724-869-3960 x &bull; jwoolstrum@beaverlibraries.org<br />
+            ILL: ILL &bull; 724-869-3960 x &bull; jwoolstrum@beaverlibraries.org<br />
+            IDS ID Number: 195A03<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bala Cynwyd Library</span><br />
+            131 Old Lancaster Road<br />
+            <br />
+            Bala Cynwyd, PA 19004
+        </p>
+        <p style="text-align: center;">
+            Director: Jean Knapp &bull; 610-664-1196 x &bull; jknapp@lmls.org<br />
+            ILL: Jackie Schulmeister &bull; 610-664-1196 x &bull; BalaCynwydLibrary@lmls.org<br />
+            IDS ID Number: 210A13<br />
+            Consortia: MCMARS, PALINET, McLINC<br />
+            OCLC: LME
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bangor Public Library</span><br />
+            39 South Main St.<br />
+            <br />
+            Bangor, PA 18013
+        </p>
+        <p style="text-align: center;">
+            Director: Kathleen Lynch &bull; 610-588-4136 x &bull; bngrpl@bangorlibrary.org<br />
+            ILL: Kathleen Lynch &bull; 610-588-4136 x &bull; bngrpl@bangorlibrary.org<br />
+            IDS ID Number: 126A03<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Barrett Paradise Friendly Library</span><br />
+            6500 Route 191<br />
+            <br />
+            Cresco, PA 18326
+        </p>
+        <p style="text-align: center;">
+            Director: Cindy DeLuca &bull; 570-595-7171 x &bull; brfpubli@ptd.net<br />
+            ILL: Cindy DeLuca &bull; 570-595-7171 x &bull; brfpubli@ptd.net<br />
+            IDS ID Number: 126A04<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Beaver Area Memorial Library</span><br />
+            100 College Avenue<br />
+            <br />
+            Beaver, PA 15009
+        </p>
+        <p style="text-align: center;">
+            Director: Diane Wakefield &bull; 724-775-1132 x &bull; dwakefield@beaverlibraries.org<br />
+            ILL: Mary Jane Ulmer &bull; 724-775-1132 x &bull; beaverpl@mail.com<br />
+            IDS ID Number: 195A04<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Benson Memorial Library</span><br />
+            213 N. Franklin Street<br />
+            Titusville, PA 16354
+        </p>
+        <p style="text-align: center;">
+            Director: Justin Hoenke &bull; 814-827-2913 &bull; justin.hoenke@ccfls.org<br />
+            ILL: ILL &bull; 814-827-2913 &bull; bensonml@ccfls.org<br />
+            IDS ID Number: 304<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bentleyville Public Library</span><br />
+            931 Main St.<br />
+            <br />
+            Bentleyville, PA 15314
+        </p>
+        <p style="text-align: center;">
+            Director: Charlotte Carpenter &bull; 724-239-5122 x &bull; bentputlib@gmail.com<br />
+            ILL: Charlotte Carpenter &bull; 724-239-5122 x &bull; bentpublib@gmail.com<br />
+            IDS ID Number: 197A02<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Berks County IU #14</span><br />
+            Rivers Chase Business Center<br />
+            1111 Commons Blvd.<br />
+            Reading, PA 19612-6050
+        </p>
+        <p style="text-align: center;">
+            Director: Cherie Zimmerman &bull; 610-987-8567 x &bull; chezim@berksiu.org<br />
+            ILL: Judy High &bull; 610-987-8480 x &bull; judhig@berksiu.org<br />
+            IDS ID Number: 297<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bethlehem Area Public Library</span><br />
+            11 West Church Street<br />
+            Bethlehem, PA 18018
+        </p>
+        <p style="text-align: center;">
+            Director: Josh Berk &bull; 610-867-3761 x215 &bull; jberk@bapl.org<br />
+            ILL: Valerie Mann &bull; 610-867-3761 x233 &bull; interlibraryloan@bapl.org<br />
+            IDS ID Number: 108<br />
+            Consortia: LYRASIS, CONOR<br />
+            OCLC: 4115
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Blairsville Public Library</span><br />
+            113 North Walnut St.<br />
+            Blairsville, PA 15717
+        </p>
+        <p style="text-align: center;">
+            Director: Carol Kuhns &bull; 724-459-6077 x11 &bull; blpub@comcast.net<br />
+            ILL: Carol Kuhns &bull; 724-459-6077 &bull; blpub@comcast.net<br />
+            IDS ID Number: 342<br />
+            Consortia: ARIN<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bloomsburg University of Pennsylvania</span><br />
+            400 E. Second St.<br />
+            Bloomsburg, PA 17815
+        </p>
+        <p style="text-align: center;">
+            Director: Charlotte Droll &bull; 570-389-4207 &bull; cdroll@bloomu.edu<br />
+            ILL: Andrea Schwartz &bull; 570-389-4218 &bull; aschwart@bloomu.edu<br />
+            IDS ID Number: 109<br />
+            Consortia: SSHELCO, PALINET, SLC, PALCI, KLN, LVIS<br />
+            OCLC: PBB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Boyertown Area Sr. High School Library</span><br />
+            120 N. Monroe St.<br />
+            <br />
+            Boyertown, PA 19512
+        </p>
+        <p style="text-align: center;">
+            Director: Melissa Gramp &bull; 610-473-3651 x &bull; mgramp@boyertownasd.org<br />
+            ILL: Melissa Gramp &bull; 610-473-3651 x &bull; mgramp@boyertownasd.org<br />
+            IDS ID Number: 297A01<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Brandywine Heights Middle School Library</span><br />
+            200 W. Weis Street<br />
+            <br />
+            Topton, PA 19562
+        </p>
+        <p style="text-align: center;">
+            Director: Marie Ballantyne &bull; 610-682-5100 x3103 &bull; marbal@bhasd.org<br />
+            ILL: Marie Ballantyne &bull; 610-682-5100 x3103 &bull; marbal@bhasd.org<br />
+            IDS ID Number: 297A54<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Brownsville Free Public Library</span><br />
+            100 Seneca Street<br />
+            <br />
+            Brownsville, PA 15417-1974
+        </p>
+        <p style="text-align: center;">
+            Director: Emma Hardesty &bull; 724-785-7272 x &bull; brpublib@gmail.com<br />
+            ILL: Emma Hardesty &bull; 724-785-7272 x &bull; brpublib@gmail.com<br />
+            IDS ID Number: 197A17<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bryn Athyn College</span><br />
+            Swedenborg Library<br />
+            2925 College Drive<br />
+            Bryn Athyn, PA 19009-0740
+        </p>
+        <p style="text-align: center;">
+            Director: Carol Traveny &bull; 267-502-2531 &bull; carol.traveny@brynathyn.edu<br />
+            ILL: Gwynne Haladay &bull; 267-502-2517 &bull; interlibrary.loan@brynathyn.edu<br />
+            IDS ID Number: 194<br />
+            Consortia: TCLC, HSLC, PALINET, LVIS, LYRA<br />
+            OCLC: PBA
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bryn Mawr College</span><br />
+            Mariam Coffin Canaday Library<br />
+            101 N. Merion Ave.<br />
+            Bryn Mawr, PA 19010-2899
+        </p>
+        <p style="text-align: center;">
+            Director: Dr. Gina Siesing &bull; 610-526-5270 &bull; gsiesing@brynmawr.edu<br />
+            ILL: David Perry &bull; 610-526-5278 &bull; bmcill@brynmawr.edu<br />
+            IDS ID Number: 110<br />
+            Consortia: PALINET, OBEGROUP, PALCI<br />
+            OCLC: BMC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bucknell University</span><br />
+            Bertrand Library<br />
+            69 Coleman Hall Road<br />
+            Lewisburg, PA 17837
+        </p>
+        <p style="text-align: center;">
+            Director: R. Daniel Heuer &bull; 570-577-3249 &bull; dan.heuer@bucknell.edu<br />
+            ILL: Kay Knapp &bull; 570-577-1463 &bull; knappk@bucknell.edu<br />
+            IDS ID Number: 160<br />
+            Consortia: PALINET, SLC, ACLCP, PALCI<br />
+            OCLC: PBU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bucks County Community College</span><br />
+            Library<br />
+            275 Swamp Rd.<br />
+            Newtown, PA 18940-0999
+        </p>
+        <p style="text-align: center;">
+            Director: Monica Kuna &bull; 215-968-8003 x &bull; Monica.Kuna@bucks.edu<br />
+            ILL: Marzenna Ostrowski &bull; 215-968-8003 x &bull; Marzenna.Ostrowski@bucks.edu<br />
+            IDS ID Number: 224<br />
+            Consortia: PALINET, PCCLC, TCLC<br />
+            OCLC: BUC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bucks County Free Library</span><br />
+            Interlibrary Loan Department<br />
+            150 South Pine Street<br />
+            Doylestown, PA 18901
+        </p>
+        <p style="text-align: center;">
+            Director: Patty Harris &bull; 215-348-0332 x1225 &bull; harrisp@buckslib.org<br />
+            ILL: Laura Foltin &bull; 215-348-0332 x1244 &bull; foltinl@buckslib.org<br />
+            IDS ID Number: 111<br />
+            Consortia: PALINET, PRILL, BUCKSLINKS<br />
+            OCLC: DPB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Bucks County IU #22</span><br />
+            705 N. Shady Retreat Rd<br />
+            <br />
+            Doylestown, PA 18901
+        </p>
+        <p style="text-align: center;">
+            Director: Pam Dinan &bull; 215-348-2940 x1607 &bull; idsadmin@bucksiu.org<br />
+            ILL: Julia Fitzsimmons &bull; 215-348-2940 x1625 &bull; ids@bucksiu.org<br />
+            IDS ID Number: 281<br />
+            Consortia: BUCKSLINKS<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Burgettstown Community Library</span><br />
+            2 Kerr St.<br />
+            <br />
+            Burgettstown, PA 15021
+        </p>
+        <p style="text-align: center;">
+            Director: Kristin Frazier &bull; 724-947-9780 x &bull; librarian@burglibrary.org<br />
+            ILL: Kristin Frazier &bull; 724-947-9780 x &bull; librarian@burglibrary.org<br />
+            IDS ID Number: 197A04<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cabrini University</span><br />
+            Holy Spirit Library<br />
+            610 King of Prussia Road<br />
+            Radnor, PA 19087-3698
+        </p>
+        <p style="text-align: center;">
+            Director: Anne Schwelm &bull; 610-902-8536 &bull; aschwelm@cabrini.edu<br />
+            ILL: Adam Altman &bull; 610-902-8432 &bull; adam.altman@cabrini.edu<br />
+            IDS ID Number: 228<br />
+            Consortia: TCLC<br />
+            OCLC: PAB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">California Public Library</span><br />
+            100 Wood St.<br />
+            <br />
+            California, PA 15419
+        </p>
+        <p style="text-align: center;">
+            Director: Vacant &bull; 724-938-2907 x &bull; director@calpublib.org<br />
+            ILL: Georgia Willey &bull; 724-938-2907 x &bull; director@calpublib.org<br />
+            IDS ID Number: 197A05<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">California University of Pennsylvania</span><br />
+            Louis L. Manderino Library - ILL Dept.<br />
+            250 University Ave.<br />
+            California, PA 15419-1394
+        </p>
+        <p style="text-align: center;">
+            Director: Douglas A. Hoover &bull; 724-938-4096 &bull; hoover@calu.edu<br />
+            ILL: Vivian Dawson &bull; 724-938-4049 &bull; dawson@calu.edu<br />
+            IDS ID Number: 112<br />
+            Consortia: SSHELCO, PRLC, ASPIRE, PALCI, KLN<br />
+            OCLC: CSC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Calvary Baptist Academy</span><br />
+            11394 Rt. 286 Hwy. East<br />
+            <br />
+            Clymer, PA 15728
+        </p>
+        <p style="text-align: center;">
+            Director: Daryl Jeffers &bull; 724-254-9411 x &bull; academy@cbcclymer.com<br />
+            ILL: Daryl Jeffers &bull; 724-254-9411 x &bull; academy@cbcclymer.com<br />
+            IDS ID Number: 284A35<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cambria County Library</span><br />
+            248 Main Street<br />
+            Johnstown, PA 15901
+        </p>
+        <p style="text-align: center;">
+            Director: Lyn Meek &bull; 814-536-5131 x201 &bull; meekl@cclsys.org<br />
+            ILL: Nicole Lenz &bull; 814-536-5131 x217 &bull; ill@cclsys.org<br />
+            IDS ID Number: 113<br />
+            Consortia: Cam-Som/IU 8<br />
+            OCLC: JOC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cambridge Springs Public Library</span><br />
+            158 McClellan Street<br />
+            <br />
+            Cambridge Springs, PA 16403
+        </p>
+        <p style="text-align: center;">
+            Director: Amanda Scott &bull; 814-398-2123 x &bull; cspl@ccfls.org<br />
+            ILL: Amanda Scott &bull; 814-398-2123 x &bull; cspl@ccfls.org<br />
+            IDS ID Number: 305<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carbon Lehigh IU #21</span><br />
+            4210 Independence Drive<br />
+            <br />
+            Schnecksville, PA 18078-2597
+        </p>
+        <p style="text-align: center;">
+            Director: Diahann Snisky &bull; 610-769-4111 x1297 &bull; oulyd@cliu.org<br />
+            ILL: ILL &bull; 610-769-4111 x &bull; ill@cliu.org<br />
+            IDS ID Number: 280<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carlow University</span><br />
+            3333 Fifth Ave.<br />
+            Pittsburgh, PA 15213
+        </p>
+        <p style="text-align: center;">
+            Director: Michael B. Jones &bull; 412-578-6378 &bull; mbjones@carlow.edu<br />
+            ILL: Bret Stiffler &bull; 412-578-6137 &bull; bstiffler@carlow.edu<br />
+            IDS ID Number: 365<br />
+            Consortia: PALCI<br />
+            OCLC: CRC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Free Library</span><br />
+            299 South Pittsburgh Street<br />
+            <br />
+            Connellsville, PA 15425-3580
+        </p>
+        <p style="text-align: center;">
+            Director: Eileen Beveridge &bull; 724-628-1380 x &bull; eileen@carnegiefreelib.org<br />
+            ILL: Bill Zirkle &bull; 724-628-1380 x &bull; Bill@carnegiefreelib.org<br />
+            IDS ID Number: 197A18<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Free Library - Beaver Falls</span><br />
+            1301 Seventh Ave.<br />
+            <br />
+            Beaver Falls, PA 15010
+        </p>
+        <p style="text-align: center;">
+            Director: Jean Barsotti &bull; 724-846-4340 x &bull; jbarsotti@beaverlibraries.org<br />
+            ILL: Debbie Felice &bull; 724-846-4340 x &bull; dfelice@beaverlibraries.org<br />
+            IDS ID Number: 195A05<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Library - Midland</span><br />
+            61 Ninth St.<br />
+            <br />
+            Midland, PA 15059
+        </p>
+        <p style="text-align: center;">
+            Director: Linda Slopek &bull; 724-643-8980 x &bull; lslopek@beaverlibraries.org<br />
+            ILL: Linda Slopek &bull; 724-643-8980 x &bull; midlandpl@mail.com<br />
+            IDS ID Number: 195A06<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Library of Pittsburgh</span><br />
+            ILL Center<br />
+            50 Alexander Street<br />
+            Pittsburgh, PA 15220
+        </p>
+        <p style="text-align: center;">
+            Director: Christine M. LaMark &bull; 412-920-4520 &bull; lamarkt@carnegielibrary.org<br />
+            ILL: Laura Perrier &bull; 412-920-4536 &bull; perrierl@carnegielibrary.org<br />
+            IDS ID Number: 114<br />
+            Consortia: Oakland Lib.Con., Pitt.SD Con.,PALINET<br />
+            OCLC: CPL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Mellon U - Software Engineering Libr.</span><br />
+            4500 Fifth Avenue<br />
+            Pittsburgh, PA 15213
+        </p>
+        <p style="text-align: center;">
+            Director: Sheila Rosenthal &bull; 412-268-7846 &bull; tas@sei.cmu.edu<br />
+            ILL: Terry Ireland &bull; 412-268-5850 &bull; tas@sei.cmu.edu<br />
+            IDS ID Number: 187A03<br />
+            Consortia: <br />
+            OCLC: PMS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Mellon University</span><br />
+            5000 Forbes Ave-4400 Wean Hall Library<br />
+            <br />
+            Pittsburgh, PA 15213-3890
+        </p>
+        <p style="text-align: center;">
+            Director: Keith Webster &bull; 412-268-2447 x &bull; kwebster@andrew.cmu.edu<br />
+            ILL: Lori Keeling &bull; 412-268-7215 x &bull; lkeeling@andrew.cmu.edu<br />
+            IDS ID Number: 187A01<br />
+            Consortia: PALINET, DLF, OLC, PCHE, PALCI<br />
+            OCLC: PMC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Mellon University</span><br />
+            4400 Fifth Avenue<br />
+            Pittsburgh, PA 15213-3890
+        </p>
+        <p style="text-align: center;">
+            Director: Keith Webster &bull; 412-268-2447 &bull; kwebster@andrew.cmu.edu<br />
+            ILL: Lorri Keeling &bull; 412-268-7215 &bull; bossick@andrew.cmu.edu<br />
+            IDS ID Number: 187A02<br />
+            Consortia: PALINET, OLC, PCHE, PALCI, DLF<br />
+            OCLC: PMC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Carnegie Mellon University</span><br />
+            4909 Frew Street<br />
+            <br />
+            Pittsburgh, PA 15213-3890
+        </p>
+        <p style="text-align: center;">
+            Director: Keith Webster &bull; 412-268-2447 x &bull; kwebster@andrew.cmu.edu<br />
+            ILL: Andrew Marshall &bull; 412-268-3030 x &bull; amarshal@andrew.cmu.edu<br />
+            IDS ID Number: 187<br />
+            Consortia: PALINET, OLC, PCHE, PALCI, DLF<br />
+            OCLC: PMC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cedar Crest College</span><br />
+            100 College Drive<br />
+            Allentown, PA 18104
+        </p>
+        <p style="text-align: center;">
+            Director: Mary Beth Freeh &bull; 610-606-4666 x3541 &bull; mafreeh@cedarcrest.edu<br />
+            ILL: Kyle Suzanne Crimi &bull; 610-606-4666 x3543 &bull; kscrimi@cedarcrest.edu<br />
+            IDS ID Number: 338<br />
+            Consortia: LVAIC, LYRASIS<br />
+            OCLC: CC#
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Centre County Library</span><br />
+            200 N. Allegheny Street<br />
+            Bellefonte, PA 16823
+        </p>
+        <p style="text-align: center;">
+            Director: Denise Sticha &bull; 814-355-1516 x223 &bull; dsticha@centrecountylibrary.org<br />
+            ILL: Lisa Shaffer &bull; 814-355-1516 x201 &bull; illbel@centrecountylibrary.org<br />
+            IDS ID Number: 116<br />
+            Consortia: PRLC, Central<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Centre Hall Area Branch Library</span><br />
+            109 W. Beryl Street<br />
+            <br />
+            Centre Hall, PA 16828
+        </p>
+        <p style="text-align: center;">
+            Director: Denise Sticha &bull; 814-355-1516 x223 &bull; dsticha@centrecountylibrary.org<br />
+            ILL: Kim Bair &bull; 814-364-2580 x &bull; kbair@centrecountylibrary.org<br />
+            IDS ID Number: 318<br />
+            Consortia: PRLC, Central<br />
+            OCLC: PCR (via Centre County Library)
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Chartiers Houston Community Library</span><br />
+            730 W. Grant St.<br />
+            <br />
+            Houston, PA 15342
+        </p>
+        <p style="text-align: center;">
+            Director: Laura Swanson &bull; 724-745-4300 x &bull; chclbusiness@gmail.com<br />
+            ILL: Laura Swanson &bull; 724-745-4300 x &bull; chclbusiness@gmail.com<br />
+            IDS ID Number: 197A06<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Chatham University</span><br />
+            Jennie King Mellon Library<br />
+            Woodland Road<br />
+            Pittsburgh, PA 15232
+        </p>
+        <p style="text-align: center;">
+            Director: Jill Ausel &bull; 412-365-1244 &bull; jausel@chatham.edu<br />
+            ILL: Kate Wenger &bull; 412-365-1247 &bull; kwenger@chatham.edu<br />
+            IDS ID Number: 334<br />
+            Consortia: PALCI<br />
+            OCLC: HHC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Chester County Library and District Center</span><br />
+            450 Exton Square Parkway<br />
+            Exton, PA 19341-2496
+        </p>
+        <p style="text-align: center;">
+            Director: Joseph Sherwood &bull; 610-280-2611 &bull; jsherwood@ccls.org<br />
+            ILL: Carol Welch &bull; 610-280-2625 &bull; cwelch@ccls.org<br />
+            IDS ID Number: 117<br />
+            Consortia: LVIS, PRILL<br />
+            OCLC: PWC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Chippewa Branch Library</span><br />
+            Municipal Building<br />
+            2811 Darlington Rd.<br />
+            Beaver Falls, PA 15010
+        </p>
+        <p style="text-align: center;">
+            Director: Heather Metheny &bull; 724-847-1450 x &bull; hmetheny@beaverlibraries.org<br />
+            ILL: Heather Metheny &bull; 724-847-1450 x &bull; hmetheny@beaverlibraries.org<br />
+            IDS ID Number: 195A10<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Citizens Library</span><br />
+            55 S. College Street<br />
+            Washington, PA 15301
+        </p>
+        <p style="text-align: center;">
+            Director: Diane Ambrose &bull; 724-222-2400 x231 &bull; dambrose@citlib.org<br />
+            ILL: Bobby Lemmons &bull; 724-222-2400 x225 &bull; ill@citlib.org<br />
+            IDS ID Number: 197<br />
+            Consortia: ASPIRE<br />
+            OCLC: WWC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Clarion University of Pennsylvania</span><br />
+            840 Wood Street<br />
+            Clarion, PA 16214-1232
+        </p>
+        <p style="text-align: center;">
+            Director: Terry S. Latour &bull; 814-393-1931 &bull; libloan@clarion.edu<br />
+            ILL: Ginger McGiffin &bull; 814-393-2481 &bull; libloan@clarion.edu<br />
+            IDS ID Number: 119<br />
+            Consortia: NICOP, PALINET, PALCI<br />
+            OCLC: REC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Clearfield County Public Library</span><br />
+            601 Beech Street<br />
+            <br />
+            Curwensville, PA 16833
+        </p>
+        <p style="text-align: center;">
+            Director: Lois Francisco &bull; 814-236-0589 x &bull; lfrancisco@clearfieldcountylibrary.org<br />
+            ILL: Phyllis Turns &bull; 814-236-0589 x &bull; pturns@clearfieldcountylibrary.org<br />
+            IDS ID Number: 198<br />
+            Consortia: PRLC<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Clymer Library</span><br />
+            115 Fire House Road<br />
+            <br />
+            Pocono Pines, PA 18350
+        </p>
+        <p style="text-align: center;">
+            Director: Anne Hogya &bull; 570-646-0826 x &bull; clymer@clymerlibrary.org<br />
+            ILL: Melissa Lopez &bull; 570-646-0826 x &bull; mlopez@clymerlibrary.org<br />
+            IDS ID Number: 126A05<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cocalico High School Library</span><br />
+            810 South Fourth Street<br />
+            <br />
+            Denver, PA 17517
+        </p>
+        <p style="text-align: center;">
+            Director: Ginger Mickey &bull; 717-336-1435 x &bull; ginger_mickey@cocalico.org<br />
+            ILL: Renee Farlow &bull; 717-336-1435 x &bull; ill_hs@cocalico.org<br />
+            IDS ID Number: 279A03<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cocalico Middle School Library</span><br />
+            650 South Sixth Street<br />
+            <br />
+            Denver, PA 17517
+        </p>
+        <p style="text-align: center;">
+            Director: Susan Snyder &bull; 717-336-1477 x &bull; susan_snyder@cocalico.org<br />
+            ILL: Linda Wise &bull; 717-336-1477 x &bull; linda_wise@cocalico.org<br />
+            IDS ID Number: 279A29<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Cochranton Area Public Library</span><br />
+            107 W. Pine Street<br />
+            P.O. Box 296<br />
+            Cochranton, PA 16314
+        </p>
+        <p style="text-align: center;">
+            Director: Nadena Kramer &bull; 814-425-3996 x &bull; cochpl@hotmail.com<br />
+            ILL: Tricia Maloney &bull; 814-425-3996 x &bull; capl@ccfls.org<br />
+            IDS ID Number: 306<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Collinsville Area Community Library</span><br />
+            2632 Delta Road<br />
+            <br />
+            Brogue, PA 17309
+        </p>
+        <p style="text-align: center;">
+            Director: Ellen Helfrick &bull; 717-927-9014 x &bull; ehelfrick@yorklibraries.org<br />
+            ILL: Leslie Martin &bull; 717-927-9014 x &bull; lmartin@yorklibraries.org<br />
+            IDS ID Number: 149A02<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Conestoga Valley High School Library</span><br />
+            2110 Horseshoe Rd.<br />
+            <br />
+            Lancaster, PA 17601
+        </p>
+        <p style="text-align: center;">
+            Director: Mardy McGaw &bull; 717-397-5231 x1082 &bull; marady_mcgaw@conestogavalley.org<br />
+            ILL: Diane King &bull; 717-397-5231 x1082 &bull; diane_king@conestogavalley.org<br />
+            IDS ID Number: 279A04<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Conrad Weiser H.S. Library</span><br />
+            44 Big Spring Road<br />
+            <br />
+            Robesonia, PA 19551
+        </p>
+        <p style="text-align: center;">
+            Director: Ann Schmidt &bull; 610-693-8530 x &bull; a_schmidt@conradweiser.org<br />
+            ILL: Ann Schmidt &bull; 610-693-8530 x &bull; a_schmidt@conradweiser.org<br />
+            IDS ID Number: 297A11<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Daniel Boone Area High School Library</span><br />
+            501 Chestnut Street  Box 450<br />
+            <br />
+            Birdsboro, PA 19508
+        </p>
+        <p style="text-align: center;">
+            Director: Sara Gerhart &bull; 610-582-6100 x139 &bull; gerharts@dboone.org<br />
+            ILL: Sara Gerhart &bull; 610-582-6100 x139 &bull; gerharts@dboone.org<br />
+            IDS ID Number: 297A19<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Daniel Boone Middle School Library</span><br />
+            1845 Weavertown Road<br />
+            <br />
+            Douglassville, PA 19518-8948
+        </p>
+        <p style="text-align: center;">
+            Director: Robin Fox &bull; 610-689-6300 x226 &bull; fox@dboone.org<br />
+            ILL: Robin Fox &bull; 610-689-6300 x226 &bull; fox@dboone.org<br />
+            IDS ID Number: 297A28<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Dauphin County Library System - ILL</span><br />
+            East Shore Area Library, DCLS<br />
+            4501 Ethel Street<br />
+            Harrisburg, PA 17109
+        </p>
+        <p style="text-align: center;">
+            Director: Karen Cullings &bull; 717-234-4961 x1105 &bull; kcullings@dcls.org<br />
+            ILL: June Weaver &bull; 717-652-9380 x1014 &bull; ill@dcls.org<br />
+            IDS ID Number: 203<br />
+            Consortia: CHAIN<br />
+            OCLC: HBP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Delaware County Community College</span><br />
+            Library<br />
+            901 S. Media Line Rd.<br />
+            Media, PA 19063-1094
+        </p>
+        <p style="text-align: center;">
+            Director: Karen Kozachyn &bull; 610-359-5362 x &bull; kkozachyn@dccc.edu<br />
+            ILL: Jennie Hutchins &bull; 610-359-7353 x &bull; jhutchin@dccc.edu<br />
+            IDS ID Number: 225<br />
+            Consortia: TCLC,  PCCLC<br />
+            OCLC: PAC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Delaware County Library System</span><br />
+            340 N. Middletown Road<br />
+            Fair Acres, Building 19<br />
+            Media, PA 19063-5597
+        </p>
+        <p style="text-align: center;">
+            Director: Catherine Bittle &bull; 610-891-8622 &bull; support@delcolibraries.org<br />
+            ILL: Karen Sacco &bull; 610-891-5685 &bull; ksacco@delcolibraries.org<br />
+            IDS ID Number: 204<br />
+            Consortia: LYRASIS<br />
+            OCLC: DEL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">DeSales University</span><br />
+            Trexler Library<br />
+            2755 Station Avenue<br />
+            Center Valley, PA 18034-9568
+        </p>
+        <p style="text-align: center;">
+            Director: Debbie Malone &bull; 610-282-1100 x1253 &bull; debbie.malone@desales.edu<br />
+            ILL: Scott Parkinson &bull; 610-282-1100 x1257 &bull; scott.parkinson@desales.edu<br />
+            IDS ID Number: 156<br />
+            Consortia: LVAIC, LYRASIS,<br />
+            OCLC: ALL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Dickinson College-ILL</span><br />
+            Waidner-Spahr Library<br />
+            28 N. College St.<br />
+            Carlisle, PA 17013
+        </p>
+        <p style="text-align: center;">
+            Director: Eleanor Mitchell &bull; 717-245-1864 &bull; libnote@dickinson.edu<br />
+            ILL: Maureen OBrien Dermott &bull; 717-245-1142 &bull; dermottm@dickinson.edu<br />
+            IDS ID Number: 205<br />
+            Consortia: ACLCP, SSHELCO, PCCLC, PALCI, LVIS<br />
+            OCLC: DKC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Dillsburg Area Public Library</span><br />
+            204 A Mumper Lane<br />
+            <br />
+            Dillsburg, PA 17019
+        </p>
+        <p style="text-align: center;">
+            Director: Keith Greenawalt &bull; 717-432-5613 x &bull; kgreenawalt@yorklibraries.org<br />
+            ILL: Chris DeLuca &bull; 717-432-5613 x &bull; cdeluca@yorklibraries.org<br />
+            IDS ID Number: 149A03<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Dimmick Memorial Library</span><br />
+            54 Broadway<br />
+            Jim Thorpe, PA 18229
+        </p>
+        <p style="text-align: center;">
+            Director: Kara Edmonds &bull; 570-325-2131 &bull; dimmickmemoriallibrary@gmail.com<br />
+            ILL: ILL &bull; 570-325-2131 &bull; dimmickmemoriallibrary@gmail.com<br />
+            IDS ID Number: 105A05<br />
+            Consortia: Carbonlehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Divine Redeemer School</span><br />
+            726 Fourth Avenue<br />
+            <br />
+            Ford City, PA 16226-1103
+        </p>
+        <p style="text-align: center;">
+            Director: Nicalena Carlesi &bull; 724-763-3761 x &bull; ncarlesi@divineredeemer.org<br />
+            ILL: Nicalena Carlesi &bull; 724-763-3761 x &bull; ncarlesi@divineredeemer.org<br />
+            IDS ID Number: 284A25<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Donegal High School Library</span><br />
+            1025 Koser Road<br />
+            <br />
+            Mount Joy, PA 17552
+        </p>
+        <p style="text-align: center;">
+            Director: Sara Frazier &bull; 717-653-1871 x51553 &bull; Sara.frazier@donegalsd.org<br />
+            ILL: Donna Little &bull; 717-492-1219 x &bull; donegalhslibill@donegalsd.org<br />
+            IDS ID Number: 279A05<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Donora Public Library</span><br />
+            510 Meldon Ave.<br />
+            <br />
+            Donora, PA 15033
+        </p>
+        <p style="text-align: center;">
+            Director: Mark Boyer &bull; 724-379-7940 x &bull; boyermark15033@gmail.com<br />
+            ILL: Judy Thomas &bull; 724-379-7940 x &bull; jat.donoralibrary@gmail.com<br />
+            IDS ID Number: 197A07<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Dover Area Community Library</span><br />
+            3700-3 Davidsburg Road<br />
+            <br />
+            Dover, PA 17315
+        </p>
+        <p style="text-align: center;">
+            Director: Ray Van de Castle &bull; 717-292-6814 x &bull; rvandecastle@yorklibraries.org<br />
+            ILL: Carol Thomas &bull; 717-292-6814 x &bull; cthomas@yorklibraries.org<br />
+            IDS ID Number: 149A04<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Drexel Health Sciences Libs./Queen Lane</span><br />
+            2900 Queen Lane<br />
+            1st Floor<br />
+            Philadelphia, PA 19129
+        </p>
+        <p style="text-align: center;">
+            Director: John W. Wiggins &bull; 215-991-8740 x &bull; jww@drexel.edu<br />
+            ILL: Kenneth Fisher &bull; 215-895-2769 x &bull; kmf@drexel.edu<br />
+            IDS ID Number: 336<br />
+            Consortia: PALINET<br />
+            OCLC: DXU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Drexel Univ. Health Sciences/Hahnemann Lib.</span><br />
+            245 N. 15th St.<br />
+            Rm. 2219 New College Bldg.<br />
+            Philadelphia, PA 19102-1101
+        </p>
+        <p style="text-align: center;">
+            Director: John Wiggins &bull; 215-895-2750 x &bull; jww27@drexel.edu<br />
+            ILL: Kenneth Fiisher &bull; 215-895-2769 x &bull; kenneth.m.fisher@drexel.edu<br />
+            IDS ID Number: 150<br />
+            Consortia: LYRASIS,  MAR, NNLM<br />
+            OCLC: DXU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Drexel University/Hagerty</span><br />
+            3300 Market St.<br />
+            <br />
+            Philadelphia, PA 19104
+        </p>
+        <p style="text-align: center;">
+            Director: John Wiggins &bull; 215-895-2750 x &bull; john.wayne.wiggins@drexel.edu<br />
+            ILL: Kenneth Fisher &bull; 215-895-2769 x &bull; kmf83@drexel.edu<br />
+            IDS ID Number: 123<br />
+            Consortia: PALINET<br />
+            OCLC: DXU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">DuBois Public Library</span><br />
+            31 S. Brady Street<br />
+            DuBois, PA 15801
+        </p>
+        <p style="text-align: center;">
+            Director: Rebecca McTavish &bull; 814-371-5930 &bull; rmctavish@duboispubliclibrary.org<br />
+            ILL: Kasey Gressler &bull; 814-371-5930 &bull; ill@duboispubliclibrary.org<br />
+            IDS ID Number: 212<br />
+            Consortia: Central<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Duquesne University</span><br />
+            Gumberg Library<br />
+            600 Forbes Ave.<br />
+            Pittsburgh, PA 15219
+        </p>
+        <p style="text-align: center;">
+            Director: Sara B. Baron, Ed.D. &bull; 412-396-6138 x &bull; barons1@duq.edu<br />
+            ILL: Amy Lee Heinlen &bull; 412-396-5343 x &bull; heinlena@duq.edu<br />
+            IDS ID Number: 124<br />
+            Consortia: PALCI<br />
+            OCLC: DUQ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">East Stroudsburg University of PA</span><br />
+            Kemp Library<br />
+            200 Prospect Street<br />
+            East Stroudsburg, PA 18301-2999
+        </p>
+        <p style="text-align: center;">
+            Director: Jingfeng Xia &bull; 570-422-3457 x &bull; jxia@esu.edu<br />
+            ILL: Angela Lomonaco &bull; 570-422-3914 x &bull; alomonaco1@esu.edu<br />
+            IDS ID Number: 209<br />
+            Consortia: SSHELCO, PALINET, PRILL, PALCI, KLN, ACCESS PA<br />
+            OCLC: ETS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Eastern Lebanon High School Library</span><br />
+            180 ELCO Drive<br />
+            <br />
+            Myerstown, PA 17067
+        </p>
+        <p style="text-align: center;">
+            Director: Amanda Templeton &bull; 717-866-7447 x2013 &bull; atempleton@elcosd.org<br />
+            ILL: ILL &bull; 717-866-7447 x &bull; atempleton@elcosd.org<br />
+            IDS ID Number: 279A06<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Eastern University</span><br />
+            Warner Memorial Library<br />
+            1300 Eagle Road<br />
+            St. Davids, PA 19087-3696
+        </p>
+        <p style="text-align: center;">
+            Director: James L. Sauer &bull; 610-341-5957 &bull; jsauer@eastern.edu<br />
+            ILL: Ellen Mergner &bull; 610-341-5958 &bull; emergner@eastern.edu<br />
+            IDS ID Number: 326<br />
+            Consortia: PALCI, TCLC<br />
+            OCLC: EAS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Easton Area High School Library</span><br />
+            2601 William Penn Highway<br />
+            <br />
+            Easton, PA 18045
+        </p>
+        <p style="text-align: center;">
+            Director: Debra Soffera &bull; 610-250-2481 x32028 &bull; sofferad@eastonsd.org<br />
+            ILL: Debra Soffera &bull; 610-250-2481 x32028 &bull; sofferad@eastonsd.org<br />
+            IDS ID Number: 126A08<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Easton Area Public Library</span><br />
+            515 Church St.<br />
+            Easton, PA 18042-3587
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Long &bull; 610-258-2917 x310 &bull; jenniferl@eastonpl.org<br />
+            ILL: Victoria Stachnik &bull; 610-258-2917 x314 &bull; ill@eastonpl.org<br />
+            IDS ID Number: 126<br />
+            Consortia: CONOR, PALINET<br />
+            OCLC: EAP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Edinboro University of Pennsylvania</span><br />
+            Baron-Forness Library - ILL<br />
+            200 Tartan Road<br />
+            Edinboro, PA 16444
+        </p>
+        <p style="text-align: center;">
+            Director: Anthony McMullen &bull; 814-732-1061 &bull; amcmullen@edinboro.edu<br />
+            ILL: Judy Rauenswinter &bull; 814-732-2946 &bull; rauenswinter@edinboro.edu<br />
+            IDS ID Number: 127<br />
+            Consortia: SSHELCO, NICOP, Lyrasis, PALCI<br />
+            OCLC: EIB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Elizabethtown College</span><br />
+            High Library<br />
+            One Alpha Dr.<br />
+            Elizabethtown, PA 17022-2227
+        </p>
+        <p style="text-align: center;">
+            Director: Sarah Penniman &bull; 717-361-1428 &bull; pennimans@etown.edu<br />
+            ILL: ILL &bull; 717-361-1451 &bull; illiad@etown.edu<br />
+            IDS ID Number: 128<br />
+            Consortia: Lyrasis, ACLCP<br />
+            OCLC: ELZ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Elkins Park Free Library</span><br />
+            563 E. Church Rd.<br />
+            <br />
+            Elkins Park, PA 19027-2499
+        </p>
+        <p style="text-align: center;">
+            Director: John Pappas &bull; 215-635-5000 x &bull; jpappas@mclinc.org<br />
+            ILL: Susan Kettner &bull; 215-635-5000 x &bull; skettner@mclinc.org<br />
+            IDS ID Number: 210A03<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Emmaus Public Library</span><br />
+            11 East Main St.<br />
+            Emmaus, PA 18049
+        </p>
+        <p style="text-align: center;">
+            Director: Maryellen Kanarr &bull; 610-965-9284 &bull; emmauspl@cliu.org<br />
+            ILL: ILL &bull; 610-965-9284 &bull; eplill@cliu.org<br />
+            IDS ID Number: 105A01<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Ephrata Senior High School Media Center</span><br />
+            803 Oak Blvd.<br />
+            <br />
+            Ephrata, PA 17522
+        </p>
+        <p style="text-align: center;">
+            Director: Samantha Hull  &bull; 717-721-1478 x19400 &bull; samantha_hull@easdpa.org<br />
+            ILL: Linda Nicholas  &bull; 717-721-1478 x19403 &bull; l_nicholas@easdpa.org<br />
+            IDS ID Number: 279A08<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Erie County Public Library</span><br />
+            160 East Front Street<br />
+            Erie, PA 16507
+        </p>
+        <p style="text-align: center;">
+            Director: Erin Wincek &bull; 814-451-6914 &bull; ewincek@eriecountypa.gov<br />
+            ILL: Anitra Gates &bull; 814-451-6919 &bull; agates@eriecountypa.gov<br />
+            IDS ID Number: 129<br />
+            Consortia: <br />
+            OCLC: EPL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Eva K. Bowlby Public Library</span><br />
+            311 North West Street<br />
+            <br />
+            Waynesburg, PA 15370
+        </p>
+        <p style="text-align: center;">
+            Director: Kathy McClure &bull; 724-627-9776 x &bull; mcclure.kathy@evakbowlby.org<br />
+            ILL: Kathy Douglas &bull; 724-627-9776 x &bull; douglas.kathy@evakbowlby.org<br />
+            IDS ID Number: 197A03<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Evangel Heights Christian Academy</span><br />
+            120 Beale Road<br />
+            <br />
+            Sarver, PA 16055-9403
+        </p>
+        <p style="text-align: center;">
+            Director: Elizabeth Harvey &bull; 724-295-9199 x &bull; mrsharvey@ehcaeagles.org<br />
+            ILL: Alexis Hurlbut &bull; 724-295-9199 x &bull; misshurlbut@ehcaeagles.org<br />
+            IDS ID Number: 284A26<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Evangelical Lutheran School</span><br />
+            134 West Main Street<br />
+            PO Box 555<br />
+            Worthington, PA 16262
+        </p>
+        <p style="text-align: center;">
+            Director: Angela Goldinger &bull; 724-297-5600 x &bull; asgoldinger@yahoo.com<br />
+            ILL: Angela Goldinger &bull; 724-297-5600 x &bull; asgoldinger@yahoo.com<br />
+            IDS ID Number: 284A28<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Exeter Township High School Library</span><br />
+            201 E. 37th Street<br />
+            <br />
+            Reading, PA 19606
+        </p>
+        <p style="text-align: center;">
+            Director: Tera McFarland &bull; 610-779-3060 x &bull; tmmcfarland@exeter.k12.pa.us<br />
+            ILL: Tera McFarland &bull; 610-779-3060 x &bull; tmmcfarland@exeter.k12.pa.us<br />
+            IDS ID Number: 297A03<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Flenniken Public Library</span><br />
+            102 E. George St.<br />
+            <br />
+            Carmichaels, PA 15320
+        </p>
+        <p style="text-align: center;">
+            Director: Nicole Mitchell &bull; 724-966-5623 x &bull; director@flenniken.org<br />
+            ILL: Norma Kelley &bull; 724-966-5623 x &bull; normakelley26@yahoo.com<br />
+            IDS ID Number: 197A08<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Frank Sarris Public Library</span><br />
+            35 N . Jefferson Ave<br />
+            <br />
+            Canonsburg, PA 15317
+        </p>
+        <p style="text-align: center;">
+            Director: Peggy Tseng &bull; 724-745-1308 x &bull; ptseng@franksarrislibrary.org<br />
+            ILL: Noreen Poplaski &bull; 724-745-1308 x &bull; npoplaski@franksarrislibrary.org<br />
+            IDS ID Number: 197A10<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Franklin and Marshall College</span><br />
+            Shadek-Fackenthal Library<br />
+            450 College Ave.<br />
+            Lancaster, PA 17603
+        </p>
+        <p style="text-align: center;">
+            Director: Scott Vine &bull; 717-358-3840 &bull; lisa.stillwell@fandm.edu<br />
+            ILL: Lisa Stillwell &bull; 717-358-3844 &bull; lisa.stillwell@fandm.edu<br />
+            IDS ID Number: 130<br />
+            Consortia: ACLCP, PALINET, SSHELCO, OBERLIN<br />
+            OCLC: LFM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Fredericktown Area Public Library</span><br />
+            38 Water St.<br />
+            <br />
+            Fredricktown, PA 15333
+        </p>
+        <p style="text-align: center;">
+            Director: Theda Diethorn &bull; 724-377-0017 x &bull; fredpl@atlanticbbn.net<br />
+            ILL: Theda Diethorn &bull; 724-377-0017 x &bull; fredpl@atlanticbbn.net<br />
+            IDS ID Number: 197A09<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Free Library of Philadelphia</span><br />
+            1901 Vine Street, <br />
+            ILL Dept.<br />
+            Philadelphia, PA 19103-1189
+        </p>
+        <p style="text-align: center;">
+            Director: Siobhan A. Reardon &bull; 215-686-5300 x &bull; rearadons@freelibrary.org<br />
+            ILL: Daniel Ryan &bull; 215-686-5360 x &bull; RyanD@freelibrary.org<br />
+            IDS ID Number: 131<br />
+            Consortia: PALINET<br />
+            OCLC: PLF
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Free Library of Springfield Township</span><br />
+            8900 Hawthorne Lane<br />
+            <br />
+            Wyndmoor, PA 19038
+        </p>
+        <p style="text-align: center;">
+            Director: Marycatherine McGarvey &bull; 215-836-5300 x &bull; mmcgarvey@mclinc.org<br />
+            ILL: Mary Lou Hughes &bull; 215-836-5300 x &bull; mlhughes@mclinc.org<br />
+            IDS ID Number: 210A04<br />
+            Consortia: MCLINC<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Gannon University</span><br />
+            Nash Library - ILL Dept.<br />
+            109 University Square<br />
+            Erie, PA 16541
+        </p>
+        <p style="text-align: center;">
+            Director: Ken Brundage &bull; 814-871-7551 &bull; brundage001@gannon.edu<br />
+            ILL: Mary Beth Earll &bull; 814-871-5529 &bull; earll001@gannon.edu<br />
+            IDS ID Number: 185<br />
+            Consortia: OCLC, NICOP, PRLC, EAHIC<br />
+            OCLC: PGU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">German-Masontown Public Library</span><br />
+            104 S. Main Street<br />
+            <br />
+            Masontown, PA 15461-2025
+        </p>
+        <p style="text-align: center;">
+            Director: Chad Gump &bull; 724-583-7030 x &bull; germaslibrary01@yahoo.com<br />
+            ILL: Beverly Diamond &bull; 724-583-7030 x &bull; germaslibrary01@yahoo.com<br />
+            IDS ID Number: 197A19<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Gettysburg College</span><br />
+            Musselman Library<br />
+            300 N. Washington Street<br />
+            Gettysburg, PA 17325-1493
+        </p>
+        <p style="text-align: center;">
+            Director: Robin Wagner &bull; 717-337-6768 &bull; rowagner@gettysburg.edu<br />
+            ILL: Natalie Hinton &bull; 717-337-7032 &bull; nhinton@gettysburg.edu<br />
+            IDS ID Number: 132<br />
+            Consortia: ACLCP, LYRASIS, CPC, OBERLIN, PALCI<br />
+            OCLC: GDC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Gladwyne Free Library</span><br />
+            362 Righters Mill Road<br />
+            Gladwyne,, PA 19035
+        </p>
+        <p style="text-align: center;">
+            Director: Carolyn Conti &bull; 610-642-3957 &bull; cconti@lmls.org<br />
+            ILL: Valerie Vitale &bull; 610-642-3957 &bull; gladwynelibrary@lmls.org<br />
+            IDS ID Number: 210A15<br />
+            Consortia: Montgomery County-Norristown Public Library<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Glatfelter Memorial Library</span><br />
+            101 Glenview Road<br />
+            <br />
+            Spring Grove, PA 17362
+        </p>
+        <p style="text-align: center;">
+            Director: Kate Sweeney &bull; 717-225-3220 x &bull; ksweeney@yorklibraries.org<br />
+            ILL: April Hobson &bull; 717-225-3220 x &bull; ahobson@yorklibraries.org<br />
+            IDS ID Number: 149A06<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Glenside Free Library</span><br />
+            215 S. Keswick Ave.<br />
+            <br />
+            Glenside, PA 19038-4420
+        </p>
+        <p style="text-align: center;">
+            Director: Mary Kay Moran &bull; 215-885-0455 x &bull; glenside@mclinc.org<br />
+            ILL: ILL Librarian &bull; 215-885-0455 x &bull; glenside@mclinc.org<br />
+            IDS ID Number: 210A05<br />
+            Consortia: MCMARS<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Governor Mifflin High School Library</span><br />
+            101 S. Waverly St.<br />
+            <br />
+            Shillington, PA 19607
+        </p>
+        <p style="text-align: center;">
+            Director: Kristin Brumbach &bull; 610-775-5089 x &bull; kristin.brumbach@gmsd.org<br />
+            ILL: Kristin Brumbach &bull; 610-775-5089 x &bull; kristin.brumbach@gmsd.org<br />
+            IDS ID Number: 297A12<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Governor Mifflin Middle School Lib.</span><br />
+            130 E. Lancaster Ave.<br />
+            <br />
+            Shillington, PA 19607
+        </p>
+        <p style="text-align: center;">
+            Director: Kathleen Murray &bull; 610-775-1465 x1221 &bull; kathleen.murray@gmsd.org<br />
+            ILL: Kathleen Murray &bull; 610-775-1465 x1221 &bull; kathleen.murray@gmsd.org<br />
+            IDS ID Number: 297A05<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Grace Christian School</span><br />
+            215 Arthur Street<br />
+            <br />
+            Kittanning, PA 16201-2103
+        </p>
+        <p style="text-align: center;">
+            Director: Darlene Edwards &bull; 724-543-4019 x &bull; dsegcs@yahoo.com<br />
+            ILL: Darlene Edwards &bull; 724-543-4019 x &bull; dsegcs@yahoo.com<br />
+            IDS ID Number: 284A29<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Guthrie Memorial Library</span><br />
+            2 Library Place<br />
+            <br />
+            Hanover, PA 17331
+        </p>
+        <p style="text-align: center;">
+            Director: Lisa Kane &bull; 717-632-5183 x320 &bull; lkane@yorklibraries.org<br />
+            ILL: Linda Gladfelter &bull; 717-632-5183 x307 &bull; lgladfelter@yorklibraries.org<br />
+            IDS ID Number: 149A08<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hamburg Area High School Library</span><br />
+            Windsor Street<br />
+            <br />
+            Hamburg, PA 19526
+        </p>
+        <p style="text-align: center;">
+            Director: Teresa McCarthy &bull; 610-562-3861 x2326 &bull; termcc@hasdhawks.org<br />
+            ILL: Teresa McCarthy &bull; 610-562-3861 x &bull; termcc@hasdhawks.org<br />
+            IDS ID Number: 297A06<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hamburg Area Middle School Library</span><br />
+            Windsor Street<br />
+            <br />
+            Hamburg, PA 19526
+        </p>
+        <p style="text-align: center;">
+            Director: Kallie Ruhf &bull; 610-562-3990 x &bull; kalruh@hasdhawks.org<br />
+            ILL: Kallie Ruhf &bull; 160-562-3990 x &bull; kalruh@hasdhawks.org<br />
+            IDS ID Number: 297A25<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Harrisburg Area Community College</span><br />
+            One HACC Drive<br />
+            Harrisburg, PA 17110-2999
+        </p>
+        <p style="text-align: center;">
+            Director: Beth Evitts &bull; 717-780-1924 &bull; baevitts@hacc.edu<br />
+            ILL: Jonathan Clark &bull; 717-780-1152 &bull; jrclark@hacc.edu<br />
+            IDS ID Number: 192<br />
+            Consortia: ACLCP, LYRASIS, PCCLC, ACCESSPA<br />
+            OCLC: HAC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Haverford College</span><br />
+            Hiles Hall 305B<br />
+            370 Lancaster Ave.<br />
+            Haverford, PA 19041-1392
+        </p>
+        <p style="text-align: center;">
+            Director: Terry Snyder &bull; 610-896-1272 x &bull; tsnyder@haverford.edu<br />
+            ILL: Rob Haley &bull; 610-896-1171 x &bull; rhaley@haverford.edu<br />
+            IDS ID Number: 134<br />
+            Consortia: PALINET, PRILL, PALCI<br />
+            OCLC: HVC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hazleton Area Public Library</span><br />
+            55 N. Church St.<br />
+            <br />
+            Hazleton, PA 18201-5893
+        </p>
+        <p style="text-align: center;">
+            Director: James Reinmiller &bull; 570-454-2961 x &bull; jreinmiller@hazletonlibrary.org<br />
+            ILL: Jane Dougherty &bull; 570-454-2961 x &bull; jdougherty@hazletonlibrary.org<br />
+            IDS ID Number: 222A02<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hempfield High School Library Media Center</span><br />
+            200 Stanley Ave.<br />
+            <br />
+            Landisville, PA 17538
+        </p>
+        <p style="text-align: center;">
+            Director: Cathi Fuhrman  &bull; 717-898-5533 x &bull; cathi_fuhrman@hempfieldsd.org<br />
+            ILL: Denise Hall &bull; 717-898-5533 x &bull; hhs_ill@hempfieldsd.org<br />
+            IDS ID Number: 279A10<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Heritage Public Library</span><br />
+            52 Fourth St.<br />
+            <br />
+            McDonald, PA 15057
+        </p>
+        <p style="text-align: center;">
+            Director: Mary Duranti &bull; 724-926-8400 x &bull; heritagelibrary@comcast.net<br />
+            ILL: Becky Skirpan &bull; 724-926-8400 x &bull; heritagelibrary@comcast.net<br />
+            IDS ID Number: 197A11<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hershey Public Library</span><br />
+            701 Cocoa Avenue<br />
+            Hershey, PA 17033
+        </p>
+        <p style="text-align: center;">
+            Director: Laura O&#39;Grady &bull; 717-533-6555 x3715 &bull; lauraogrady@derrytownship.org<br />
+            ILL: Denise Phillips &bull; 717-533-6555 x3723 &bull; denisephillips@derrytownship.org<br />
+            IDS ID Number: 193<br />
+            Consortia: CHAIN, PALINET<br />
+            OCLC: PA2
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Holt Memorial Library</span><br />
+            17 North Front St.<br />
+            Philipsburg, PA 16866
+        </p>
+        <p style="text-align: center;">
+            Director: Denise Sticha &bull; 814-355-1516 x223 &bull; dstichaholt@centrecountylibrary.org<br />
+            ILL: Theresa Hutton &bull; 814-342-1987 &bull; thutton@centrecountylibrary.org<br />
+            IDS ID Number: 233<br />
+            Consortia: Central, ABC Film,  PRLC<br />
+            OCLC: PBC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Horsham Township Library</span><br />
+            435 Babylon Road<br />
+            <br />
+            Horsham, PA 19044-1224
+        </p>
+        <p style="text-align: center;">
+            Director: Regina Vesely &bull; 215-443-2609 x205 &bull; rvesely@mclinc.org<br />
+            ILL: Bryan Sotnyk &bull; 215-443-2609 x208 &bull; bsotnyk@mclinc.org<br />
+            IDS ID Number: 210A16<br />
+            Consortia: MCLINC<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hoyt Library</span><br />
+            284 Wyoming Ave.<br />
+            Kingston, PA 18704
+        </p>
+        <p style="text-align: center;">
+            Director: Melissa Werner &bull; 570-287-2013 x222 &bull; mszafran@luzernelibraries.org<br />
+            ILL: Cindy Jerrytone &bull; 570-287-2013 x230 &bull; <br />
+            IDS ID Number: 222A03<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Hunt Inst. for Botanical Documentation</span><br />
+            4825 Frew Street<br />
+            <br />
+            Pittsburgh, PA 15213-3890
+        </p>
+        <p style="text-align: center;">
+            Director: Robert Kiger &bull; 412-268-2434 x &bull; rkiger@andrew.cmu.edu<br />
+            ILL: Donald Brown &bull; 412-268-2436 x &bull; dwbrown@andrew.cmu.edu<br />
+            IDS ID Number: 187A04<br />
+            Consortia: PALINET, CBHL<br />
+            OCLC: HBI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Immaculata University</span><br />
+            1145 King Road, ILL 2nd  flr.<br />
+            Immaculata, PA 19345
+        </p>
+        <p style="text-align: center;">
+            Director: Jeffrey D. Rollison &bull; 484-323-3841 &bull; jrollison@immaculata.edu<br />
+            ILL: Carla Sands &bull; 484-323-3827 &bull; csands@immaculata.edu<br />
+            IDS ID Number: 223<br />
+            Consortia: ACLP, TCLC, SEPCHE<br />
+            OCLC: IMM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indian Valley Public Library</span><br />
+            100 E. Church Ave.<br />
+            Telford, PA 18969
+        </p>
+        <p style="text-align: center;">
+            Director: Margie Stern &bull; 215-723-9109 x102 &bull; mstern@ivpl.org<br />
+            ILL: Mary Porter &bull; 215-723-9109 x104 &bull; mporter@ivpl.org<br />
+            IDS ID Number: 210A02<br />
+            Consortia: <br />
+            OCLC: Does not lend  or borrow via OCLC/ILL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana Free Library</span><br />
+            845 Philadelphia St.<br />
+            Indiana, PA 15701
+        </p>
+        <p style="text-align: center;">
+            Director: Kate Geiger &bull; 724-465-8841 x7 &bull; publib.kate@gmail.com<br />
+            ILL: Valetta Shuppe &bull; 724-465-8841 x113 &bull; iflreference1861@gmail.com<br />
+            IDS ID Number: 349<br />
+            Consortia: ARIN<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana U. of PA, Punxsutawney Campus</span><br />
+            1012 Winslow Street<br />
+            Room 129<br />
+            Punsxutawney, PA 15767-4435
+        </p>
+        <p style="text-align: center;">
+            Director: Carrie Bishop &bull; 814-938-1381 x &bull; cbishop@iup.edu<br />
+            ILL: Carol Asamoah &bull; 814-938-4870 x &bull; carasam@iup.edu<br />
+            IDS ID Number: 375<br />
+            Consortia: PALCI<br />
+            OCLC: PZI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana University of PA</span><br />
+            431 S. Eleventh St.<br />
+            <br />
+            Indiana, PA 15705
+        </p>
+        <p style="text-align: center;">
+            Director: Janet Guyden &bull; 724-357-2330 x &bull; jguyden@iup.edu<br />
+            ILL: Beth Farabaugh &bull; 724-357-3037 x &bull; farabaug@iup.edu<br />
+            IDS ID Number: 136<br />
+            Consortia: PALINET   PALCI   LVIS<br />
+            OCLC: PZI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana University of PA-Dixon University Center</span><br />
+            2986 N. 2nd St.<br />
+            South Hall - Room 106<br />
+            Harrisburg, PA 17110
+        </p>
+        <p style="text-align: center;">
+            Director: Janet Guyden &bull; 724-357-2330 x &bull; jguyden@iup.edu<br />
+            ILL: Diann Armstrong &bull; 717-720-4064 x &bull; Diann.Armstrong@iup.edu<br />
+            IDS ID Number: 136A04<br />
+            Consortia: PALCI<br />
+            OCLC: PZI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana University of PA-Monroeville Center</span><br />
+            400 Penn Center Blvd<br />
+            Suite 900 - Bldg. 4<br />
+            Pittsburgh, PA 15235
+        </p>
+        <p style="text-align: center;">
+            Director: Janet Guyden &bull; 724-357-2330 &bull; jguyden@iup.edu<br />
+            ILL: Danielle Cole &bull; 412-824-1999 &bull; Danielle.Cole@iup.edu<br />
+            IDS ID Number: 136A01<br />
+            Consortia: PALCI, LVIS<br />
+            OCLC: PZI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana University of PA-Northpointe Regional Campus</span><br />
+            167 Northpointe Blvd<br />
+            <br />
+            Freeport, PA 16229
+        </p>
+        <p style="text-align: center;">
+            Director: Janet Guyden &bull; 724-357-2330 x &bull; jguyden@iup.edu<br />
+            ILL: William Daugherty &bull; 724-294-3300 x &bull; wdaugher@iup.edu<br />
+            IDS ID Number: 136A03<br />
+            Consortia: PALCI, LVIS<br />
+            OCLC: PZI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Indiana Wesleyan School</span><br />
+            18215 Rt. 403 Hwy. N<br />
+            PO Box 313<br />
+            Dixonville, PA 15734-0313
+        </p>
+        <p style="text-align: center;">
+            Director: Rick Markel &bull; 724-254-2000 x &bull; iws@juno.com<br />
+            ILL: Rick Markel &bull; 724-254-2000 x &bull; iws@juno.com<br />
+            IDS ID Number: 284A30<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">James V. Brown Library</span><br />
+            19 East Fourth St.<br />
+            <br />
+            Williamsport, PA 17701
+        </p>
+        <p style="text-align: center;">
+            Director: June Houghtaling &bull; 570-326-0536 x196 &bull; jhoughtaling@jvbrown.edu<br />
+            ILL: Linda Aston &bull; 570-326-0536 x194 &bull; laston@jvbrown.edu<br />
+            IDS ID Number: 138<br />
+            Consortia: PALINET, SLC, PALS<br />
+            OCLC: JVB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Jean Barnett Trone Memorial Library of East Berlin</span><br />
+            105 Locust Street<br />
+            <br />
+            East Berlin, PA 17316
+        </p>
+        <p style="text-align: center;">
+            Director: Brandt Ensor &bull; 717-259-9000 x &bull; brandte@adamslibrary.org<br />
+            ILL: Sally Caldwell &bull; 717-259-9000 x &bull; sallyc@adamslibrary.org<br />
+            IDS ID Number: 149A05<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Jefferson - East Falls Campus</span><br />
+            4201 Henry Avenue<br />
+            Philadelphia, PA 19144-5497
+        </p>
+        <p style="text-align: center;">
+            Director: Stan Gorski &bull; 215-951-2581 &bull; stanley.gorski@jefferson.edu<br />
+            ILL: Teresa Edge &bull; 215-951-2629 &bull; teresa.edge@jefferson.edu<br />
+            IDS ID Number: 292<br />
+            Consortia: TCLC, TIUC, PALCI, LVIS<br />
+            OCLC: PCT
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">John Tener Library</span><br />
+            638 Fallowfield Ave.<br />
+            <br />
+            Charleroi, PA 15022
+        </p>
+        <p style="text-align: center;">
+            Director: Toni Zbyl &bull; 724-483-8282 x &bull; charlibrary@comcast.net<br />
+            ILL: Toni Zbyl &bull; 724-483-8282 x &bull; illtener@comcast.net<br />
+            IDS ID Number: 197A12<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Juniata College</span><br />
+            1815 Moore St.<br />
+            Huntingdon, PA 16652-2120
+        </p>
+        <p style="text-align: center;">
+            Director: Lisa McDaniels &bull; 814-641-3458 &bull; mcdanil@juniata.edu<br />
+            ILL: Julie Woodling &bull; 814-641-3454 &bull; woodling@juniata.edu<br />
+            IDS ID Number: 139<br />
+            Consortia: ACLCP, LYRASIS, PALCI<br />
+            OCLC: PJU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Juniata County Library</span><br />
+            498 Jefferson St.<br />
+            Mifflintown, PA 17059
+        </p>
+        <p style="text-align: center;">
+            Director: Vincent M. Giordano &bull; 717-436-6378 &bull; vgiordano@juniatalibrary.org<br />
+            ILL: Jean Miller &bull; 717-436-6378 &bull; ill@juniatalibrary.org<br />
+            IDS ID Number: 140<br />
+            Consortia: Central<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kaltreider-Benfer Library</span><br />
+            147 South Charles Street<br />
+            <br />
+            Red Lion, PA 17356
+        </p>
+        <p style="text-align: center;">
+            Director: Don Dellinger &bull; 717-244-2032 x &bull; ddellinger@yorklibraries.org<br />
+            ILL: Julie Kell &bull; 717-244-2032 x &bull; jkell@yorklibraries.org<br />
+            IDS ID Number: 149A09<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Keys Montessori School</span><br />
+            695 School St.<br />
+            <br />
+            Indiana, PA 15701
+        </p>
+        <p style="text-align: center;">
+            Director: Ms. Brenda Hanna &bull; 724-599-4282 x &bull; keysmontessoripa@gmail.com<br />
+            ILL: Ms. Brenda Hanna &bull; 724-349-5680 x &bull; keysmontessoripa@gmail.com<br />
+            IDS ID Number: 284A31<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">King&#39;s College</span><br />
+            14 W. Jackson Street<br />
+            Wilkes-Barre, PA 18701
+        </p>
+        <p style="text-align: center;">
+            Director: David Schappert &bull; 570-208-5943 &bull; davidschappert@kings.edu<br />
+            ILL: Emily Sisk &bull; 570-208-5900 x5640 &bull; emilysisk@kings.edu<br />
+            IDS ID Number: 207<br />
+            Consortia: NPLN, LYRASIS<br />
+            OCLC: KOL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kreutz Creek Valley Library Center</span><br />
+            66 Walnut Springs Road<br />
+            <br />
+            Hellam, PA 17406
+        </p>
+        <p style="text-align: center;">
+            Director: Susan Nenstiel &bull; 717-252-4080 x &bull; snenstiel@yorklibraries.org<br />
+            ILL: Jennifer Johnson &bull; 717-252-4080 x &bull; jjohnson@yorklibraries.org<br />
+            IDS ID Number: 149A10<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kutztown  Elementary School Library</span><br />
+            40 Normal Ave.<br />
+            <br />
+            Kutztown, PA 19530
+        </p>
+        <p style="text-align: center;">
+            Director: Kathy Mannai &bull; 610-683-3635 x &bull; kmannai@kasd.org<br />
+            ILL: Kathy Mannai &bull; 610-683-3635 x &bull; kmannai@kasd.org<br />
+            IDS ID Number: 297A36<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kutztown - Greenwich Lenhartsville Elem Library</span><br />
+            1457 Krumsville Rd.<br />
+            <br />
+            Lenhartsville, PA 19534
+        </p>
+        <p style="text-align: center;">
+            Director: Christine Caulfield &bull; 610-756-6948 x &bull; ccaulfield@kasd.org<br />
+            ILL: Christine Caulfield &bull; 610-756-6948 x &bull; ccaulfield@kasd.org<br />
+            IDS ID Number: 297A37<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kutztown Area Middle School</span><br />
+            10 Deisher Lane<br />
+            <br />
+            Kutztown, PA 19530
+        </p>
+        <p style="text-align: center;">
+            Director: Jeffrey Huffert &bull; 610-683-3575 x &bull; jhuffert@kasd.org<br />
+            ILL: Jeffrey Huffert &bull; 610-683-3575 x &bull; jhuffert@kasd.org<br />
+            IDS ID Number: 297A63<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kutztown Sr. High Sch. Lib.</span><br />
+            50 Trexler Ave.<br />
+            <br />
+            Kutztown, PA 19530
+        </p>
+        <p style="text-align: center;">
+            Director: Brenda Boyer &bull; 610-683-7346 x &bull; bboyer@kasd.org<br />
+            ILL: Brenda Boyer &bull; 610-683-7346 x &bull; bboyer@kasd.org<br />
+            IDS ID Number: 297A29<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Kutztown University of Pennsylvania</span><br />
+            15200 Kutztown Road - Bldg #5<br />
+            Kutztown, PA 19530
+        </p>
+        <p style="text-align: center;">
+            Director: Martha Stevenson &bull; 610-683-4484 &bull; stevenson@kutztown.edu<br />
+            ILL: Karen Colburn &bull; 610-683-4158 &bull; kupill@kutztown.edu<br />
+            IDS ID Number: 141<br />
+            Consortia: ACLCP, SSHELCO, PALINET<br />
+            OCLC: KZS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">La Salle University</span><br />
+            1900 W. Olney Ave.<br />
+            Philadelphia, PA 19141
+        </p>
+        <p style="text-align: center;">
+            Director: Dr. Sarah Clark &bull; 215-951-1285 &bull; clarks@lasalle.edu<br />
+            ILL: Gerard Regan &bull; 215-951-1964 &bull; regang1@lasalle.edu<br />
+            IDS ID Number: 142<br />
+            Consortia: Lyrasis, PALCI, PACSCL<br />
+            OCLC: LAS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lafayette College</span><br />
+            710 Sullivan Rd.<br />
+            Easton, PA 18042-1797
+        </p>
+        <p style="text-align: center;">
+            Director: Kylie Bailin &bull; 610-330-5154 &bull; bailink@lafayette.edu<br />
+            ILL: Karen Haduck &bull; 610-330-5157 &bull; haduckk@lafayette.edu<br />
+            IDS ID Number: 208<br />
+            Consortia: LVAIC, PALINET, PALCI, LVIS, OBERLIN, RAPID<br />
+            OCLC: LAF
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lampeter-Strasburg High School Library</span><br />
+            1600 Book Road<br />
+            P O Box 428<br />
+            Lampeter, PA 17537
+        </p>
+        <p style="text-align: center;">
+            Director: Elizabeth Henry &bull; 717-464-3311 x2014 &bull; elizabeth_henry@L-spioneers.org<br />
+            ILL: ILL &bull; 717-464-3311 x &bull; elizabeth_henry@L-spioneers.org<br />
+            IDS ID Number: 279A11<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lancaster Public Library</span><br />
+            125 N. Duke Street<br />
+            <br />
+            Lancaster, PA 17602
+        </p>
+        <p style="text-align: center;">
+            Director: Heather Sharpe &bull; 717-394-2651 x108 &bull; hsharpe@lancasterpubliclibrary.org<br />
+            ILL: Malachi Lakey &bull; 717-394-2651 x120 &bull; mlakey@lancasterpubliclibrary.org<br />
+            IDS ID Number: 143<br />
+            Consortia: FILM CONSORTIUM, PALINET<br />
+            OCLC: LKC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lancaster-Lebanon IU #13/IMS</span><br />
+            1020 New Holland Avenue<br />
+            Lancaster, PA 17601
+        </p>
+        <p style="text-align: center;">
+            Director: Kenneth Zimmerman &bull; 717-606-1691 &bull; kenneth_zimmerman@iu13.org<br />
+            ILL: Melissa Adams &bull; 717-606-1843 &bull; melissa_adams@iu13.org<br />
+            IDS ID Number: 279<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">LaRoche College</span><br />
+            9000 Babcock Blvd<br />
+            <br />
+            Pittsburgh, PA 15237
+        </p>
+        <p style="text-align: center;">
+            Director: Alecia Kerr &bull; 412-536-1059 x &bull; alecia.kerr@laroche.edu<br />
+            ILL: Caroline Horgan &bull; 412-536-1057 x &bull; Caroline.Horgan@Laroche.edu<br />
+            IDS ID Number: 366<br />
+            Consortia: PALCI<br />
+            OCLC: PLA
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Laughlin Memorial Library</span><br />
+            99 - 11th Street<br />
+            <br />
+            Ambridge, PA 15003
+        </p>
+        <p style="text-align: center;">
+            Director: Julie Mulcahy &bull; 724-266-3857 x &bull; jmulcahy@beaverlibraries.org<br />
+            ILL: Sandra Gaitanis &bull; 724-266-3857 x &bull; jmulcahy@beaverlibraries.org<br />
+            IDS ID Number: 195A02<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lebanon County Libraries</span><br />
+            125 N. 7th Street<br />
+            Lebanon, PA 17046
+        </p>
+        <p style="text-align: center;">
+            Director: Michelle Hawk &bull; 717-273-7624 x208 &bull; hawk@lclibs.org<br />
+            ILL: Carol Yeagley &bull; 717-273-7624 x211 &bull; interlibloan@lclibs.org<br />
+            IDS ID Number: 325<br />
+            Consortia: LL$<br />
+            OCLC: Lan/Leb
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lebanon Valley College</span><br />
+            101 N. College Ave.<br />
+            <br />
+            Annville, PA 17003
+        </p>
+        <p style="text-align: center;">
+            Director: Sarah Greene &bull; 717-867-6985 x &bull; sgreene@lvc.edu<br />
+            ILL: Stacie Allison &bull; 717-867-6976 x &bull; sallison@lvc.edu<br />
+            IDS ID Number: 144<br />
+            Consortia: ACLCP, LYRASIS<br />
+            OCLC: LVC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Leechburg Area High School Library</span><br />
+            215 First St.<br />
+            <br />
+            Leechburg, PA 15656
+        </p>
+        <p style="text-align: center;">
+            Director: Paula E. Moran &bull; 724-842-0571 x134 &bull; pmoran@leechburg.k12.pa.us<br />
+            ILL: Paula E. Moran &bull; 724-842-0571 x &bull; pmoran@leechburg.k12.pa.us<br />
+            IDS ID Number: 284A19<br />
+            Consortia: ARIN Lib<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lehigh Carbon Community College</span><br />
+            4750 Orchard Road<br />
+            <br />
+            Schnecksville, PA 18078-2536
+        </p>
+        <p style="text-align: center;">
+            Director: Karen Ladley &bull; 610-799-1196 x &bull; kladley@lccc.edu<br />
+            ILL: Michele Anfuso &bull; 610-799-1163 x &bull; manfuso@lccc.edu<br />
+            IDS ID Number: 226<br />
+            Consortia: PCCLC, PALINET, PRILL, ALSS, CSSN<br />
+            OCLC: LCY
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lehigh University</span><br />
+            8A East Packer Ave.<br />
+            Bethlehem, PA 18015-3170
+        </p>
+        <p style="text-align: center;">
+            Director: Sharon Wiles-Young &bull; 610-758-3046 &bull; slw0@lehigh.edu<br />
+            ILL: Mark Canney &bull; 610-758-3028 &bull; mac609@lehigh.edu<br />
+            IDS ID Number: 145<br />
+            Consortia: LVAIC, PALINET,  PALCI<br />
+            OCLC: LYU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lehighton Area Memorial Library</span><br />
+            124 North Street<br />
+            Lehighton, PA 18235-1589
+        </p>
+        <p style="text-align: center;">
+            Director: Melissa Hawk &bull; 610-377-2750 &bull; liblehtn@ptd.net<br />
+            ILL: ILL &bull; 610-377-2750 &bull; liblehtn@ptd.net<br />
+            IDS ID Number: 105A07<br />
+            Consortia: CARBONLEHI<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Linesville Community Public Library</span><br />
+            111 Penn Street<br />
+            P.O. Box 97<br />
+            Linesville, PA 16424
+        </p>
+        <p style="text-align: center;">
+            Director: Telce Varee &bull; 814-683-4354 x &bull; lcpl@ccfls.org<br />
+            ILL: Ill &bull; 000-000-0000 x &bull; ill@ccfls.org<br />
+            IDS ID Number: 309<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lock Haven University</span><br />
+            401 N. Fairview St.<br />
+            Lock Haven, PA 17745
+        </p>
+        <p style="text-align: center;">
+            Director: Joby Topper &bull; 570-484-2465 &bull; jtopper@lockhaven.edu<br />
+            ILL: Susan Hanna &bull; 570-484-2311 &bull; shanna@lockhaven.edu<br />
+            IDS ID Number: 146<br />
+            Consortia: PALINET, SLC, SSHELCO<br />
+            OCLC: LQS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lock Haven University - Clearfield Campus</span><br />
+            Clearfield Campus Library<br />
+            201 University Drive<br />
+            Clearfield, PA 16830
+        </p>
+        <p style="text-align: center;">
+            Director: Mr. Joby Topper  &bull; 570-484-2465 &bull; skulas@lhup.edu<br />
+            ILL: Stephanie Kulas &bull; 814-768-3411 &bull; skulas@lhup.edu<br />
+            IDS ID Number: 323<br />
+            Consortia: PALINET, SLC, SSHELCO, Central PA Hlth Sci. Lib. A<br />
+            OCLC: LQS, Access PA  - ALHUP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lower Macungie Library</span><br />
+            3450 Brookside Road<br />
+            <br />
+            Macungie, PA 18062
+        </p>
+        <p style="text-align: center;">
+            Director: Kathee Rhode &bull; 610-966-6864 x &bull; rhodek@lowermaclib.org<br />
+            ILL: Jen Dell Beni &bull; 610-966-6864 x &bull; ill@lowermaclib.org<br />
+            IDS ID Number: 105A08<br />
+            Consortia: Carbonlehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lower Providence Community Library</span><br />
+            50 Parklane Drive<br />
+            <br />
+            Eagleville, PA 19403
+        </p>
+        <p style="text-align: center;">
+            Director: Lynn Burkholder &bull; 610-666-6640 x10 &bull; lburkholder@mclinc.org<br />
+            ILL: Jill Kozol &bull; 610-666-6640 x &bull; Jkozol@mclinc.org<br />
+            IDS ID Number: 210A17<br />
+            Consortia: MCLINC     ACCESS Code  PLPCL<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Ludington Public Library</span><br />
+            5 South Bryn Mawr Ave.<br />
+            <br />
+            Bryn Mawr, PA 19010
+        </p>
+        <p style="text-align: center;">
+            Director: Robyn Langston  &bull; 610-525-1776 x &bull; rlangston@lowermerion.org<br />
+            ILL: Wendy Edwards &bull; 610-525-1776 x &bull; wedwards@lmls.org<br />
+            IDS ID Number: 210A09<br />
+            Consortia: MCMARS, PALINET<br />
+            OCLC: LME
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Lycoming College</span><br />
+            700 College Place<br />
+            Williamsport, PA 17701
+        </p>
+        <p style="text-align: center;">
+            Director: Sue Beidler  &bull; 570-321-4082 &bull; beidler@lycoming.edu<br />
+            ILL: Adam Clark &bull; 570-321-4091 &bull; ill@lycoming.edu<br />
+            IDS ID Number: 147<br />
+            Consortia: SLC, PALINET, ACLCP, LVIS, PALCI, TCLC<br />
+            OCLC: LYC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Manheim Township High School Library</span><br />
+            115 Blue Streak Blvd.<br />
+            <br />
+            Lancaster, PA 17601
+        </p>
+        <p style="text-align: center;">
+            Director: Karen Leisey  &bull; 717-560-3097 x &bull; leiseyka@mtwp.net<br />
+            ILL: Nancy Kline &bull; 717-560-3097 x3243 &bull; kleinna@mtwp.net<br />
+            IDS ID Number: 279A16<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Manheim Township Middle School Library</span><br />
+            155 School Road<br />
+            <br />
+            Lancaster, PA 17601
+        </p>
+        <p style="text-align: center;">
+            Director: Steven Mellinger &bull; 717-560-3111 x &bull; mellinst@mtwp.net<br />
+            ILL: Virginia Border &bull; 717-560-3111 x &bull; bordervi@mtwp.net<br />
+            IDS ID Number: 279A28<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mansfield University of Pennsylvania</span><br />
+            5 Swan Street<br />
+            Mansfield, PA 16933
+        </p>
+        <p style="text-align: center;">
+            Director: Scott R. DiMarco &bull; 570-662-4689 &bull; sdimarco@mansfield.edu<br />
+            ILL: Beth Williams &bull; 570-662-4690 &bull; ewilliam@mansfield.edu<br />
+            IDS ID Number: 148<br />
+            Consortia: PALINET, SLC, PALS, PALCI, LVIS, SSHELCO, KLN<br />
+            OCLC: MAN
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Margaret Shontz Memorial Library</span><br />
+            145 S. 2nd Street<br />
+            P.O. Box 5117<br />
+            Conneaut Lake, PA 16316
+        </p>
+        <p style="text-align: center;">
+            Director: Diane Rhodes &bull; 814-382-6666 &bull; shontzpl@ccfls.org<br />
+            ILL: Judi Haylett &bull; 814-382-6666 &bull; shontzpl@ccfls.org<br />
+            IDS ID Number: 310<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Marian Sutherland Kirby Library</span><br />
+            35 Kirby Ave.<br />
+            Mountaintop, PA 18707-1214
+        </p>
+        <p style="text-align: center;">
+            Director: Allison Latagliata &bull; 570-474-9313 &bull; info@kirbylib.org<br />
+            ILL: Lisa Haasis &bull; 570-474-9313 x305 &bull; lhaasis@luzernelibraries.org<br />
+            IDS ID Number: 222A04<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Marianna Community Library</span><br />
+            247 Jefferson  Ave.<br />
+            P O Box 457<br />
+            Marianna, PA 15345
+        </p>
+        <p style="text-align: center;">
+            Director: Pam Clutter &bull; 724-267-3888 x &bull; mclib@roadlynx.net<br />
+            ILL: Pam Clutter &bull; 724-267-3888 x &bull; mclib@roadlynx.net<br />
+            IDS ID Number: 197A13<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Marshall University (PALCI)</span><br />
+            Drinko Library -Circulation Desk<br />
+            1 John Marshall Drive<br />
+            Huntington, WV 25755
+        </p>
+        <p style="text-align: center;">
+            Director: Monica Brooks &bull; 304-696-6474 x &bull; brooks@marshall.edu<br />
+            ILL: Mary Bowsher &bull; 304-696-6698 x &bull; curtis@marshall.edu<br />
+            IDS ID Number: 340<br />
+            Consortia: PALCI<br />
+            OCLC: WVH
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Martin Library</span><br />
+            159 E. Market Street<br />
+            York, PA 17401
+        </p>
+        <p style="text-align: center;">
+            Director: Robert Lambert &bull; 717-849-6948 &bull; rlambert@yorklibraries.org<br />
+            ILL: Bob Rambo &bull; 717-849-6939 &bull; brambo@yorklibraries.org<br />
+            IDS ID Number: 149<br />
+            Consortia: LYRASIS, SPIES<br />
+            OCLC: PYM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Martin Meylin Middle School Library</span><br />
+            1600 Book Road<br />
+            <br />
+            Lancaster, PA 17602
+        </p>
+        <p style="text-align: center;">
+            Director: Elizabeth Henry &bull; 717-464-3311 x3014 &bull; elizabeth_henry@L-spioneers.org<br />
+            ILL: RaeAnn Henry &bull; 717-464-3311 x &bull; rae_ann_henry@L-spioneers.org<br />
+            IDS ID Number: 279A35<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mary Meuser Memorial Library</span><br />
+            1803 Northampton Street<br />
+            <br />
+            Easton, PA 18042
+        </p>
+        <p style="text-align: center;">
+            Director: Dan Redington &bull; 610-258-3040 x &bull; meuserlib@rcn.com<br />
+            ILL: Christina Powell &bull; 610-258-3040 x &bull; meuserlib.ill@rcn.com<br />
+            IDS ID Number: 126A01<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mary S. Biesecker Library</span><br />
+            230 S. Rosina Ave.<br />
+            Somerset, PA 15501
+        </p>
+        <p style="text-align: center;">
+            Director: Lee Ann Schrock &bull; 814-445-4011 &bull; leeann@maryslibrary.com<br />
+            ILL: JoAnn Critchfield &bull; 814-445-4011 &bull; joann@maryslibrary.com<br />
+            IDS ID Number: 351<br />
+            Consortia: CAMSOM<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Marywood University</span><br />
+            2300 Adams Ave.<br />
+            <br />
+            Scranton, PA 18509-1598
+        </p>
+        <p style="text-align: center;">
+            Director: Jim Frutchey &bull; 570-348-6260 x &bull; jfrutchey@maryu.marywood.edu.edu<br />
+            ILL: Mary Kay Maldonato &bull; 570-348-6205 x &bull; mkmaldonato@maryu.marywood.edu<br />
+            IDS ID Number: 234<br />
+            Consortia: PALINET, NPLN, PALCI<br />
+            OCLC: MRW
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mason Dixon Public Library</span><br />
+            250 Bailey Drive<br />
+            <br />
+            Stewartstown, PA 17363
+        </p>
+        <p style="text-align: center;">
+            Director: Carol Stampler &bull; 717-993-2404 x &bull; cstampler@yorklibraries.org<br />
+            ILL: Carol Stampler &bull; 717-993-2404 x &bull; cstampler@yorklibraries.org<br />
+            IDS ID Number: 149A11<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Meadville Public Library</span><br />
+            848 N. Main Street<br />
+            <br />
+            Meadville, PA 16335
+        </p>
+        <p style="text-align: center;">
+            Director: John Brice &bull; 814-336-1773 x &bull; jbrice@ccfls.org<br />
+            ILL: Garrett Bouslough &bull; 814-336-1773 x300 &bull; garrett.bouslough@ccfls.org<br />
+            IDS ID Number: 288<br />
+            Consortia: SHARE NORTHWEST<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mercyhurst University</span><br />
+            501 E. 38th Street<br />
+            Erie, PA 16546
+        </p>
+        <p style="text-align: center;">
+            Director: Darci Jones &bull; 814-824-2237 &bull; djones@mercyhurst.edu<br />
+            ILL: Lori J. Krasnesky &bull; 814-824-3988 &bull; lkrasnesky@mercyhurst.edu<br />
+            IDS ID Number: 151<br />
+            Consortia: NICOP, LTRASIS, PALCI<br />
+            OCLC: QRA
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Messiah College</span><br />
+            Murray Library <br />
+            One College Avenue- Box 3002<br />
+            Mechanicsburg, PA 17055
+        </p>
+        <p style="text-align: center;">
+            Director: Linda Poston &bull; 717-691-6006 x3820 &bull; poston@messiah.edu<br />
+            ILL: Kimberly Steiner &bull; 717-691-6006 x7242 &bull; ksteiner@messiah.edu<br />
+            IDS ID Number: 152<br />
+            Consortia: ACLCP, PALINET, LVIS, PALCI<br />
+            OCLC: PGM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Meyersdale Public Library</span><br />
+            210 Center St.,<br />
+            Meyersdale, PA 15552
+        </p>
+        <p style="text-align: center;">
+            Director: Terri Foster &bull; 814-634-0512 &bull; mpldirector@meyersdalelibrary.org<br />
+            ILL: Cindi Brant &bull; 814-634-0512 &bull; cbrant@meyersdalelibrary.org<br />
+            IDS ID Number: 352<br />
+            Consortia: CAMSOM<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mifflin County Library</span><br />
+            123 N. Wayne Street<br />
+            Lewistown, PA 17044
+        </p>
+        <p style="text-align: center;">
+            Director: Molly Kinney &bull; 717-242-2391 &bull; mollykinney@mifcolib.org<br />
+            ILL: Susan Miriello &bull; 717-242-2391 &bull; smiriello@mifcolib.org<br />
+            IDS ID Number: 153<br />
+            Consortia: Central<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Mill Memorial Library</span><br />
+            495 E. Main St.<br />
+            <br />
+            Nanticoke, PA 18634-1897
+        </p>
+        <p style="text-align: center;">
+            Director: Cliff Farides &bull; 570-735-3030 x &bull; cfarides@osterhout.lib.pa.us<br />
+            ILL: Clementine Kondracki &bull; 570-735-3030 x &bull; egerian@gmail.com<br />
+            IDS ID Number: 222A05<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Millersville University of Pennsylvania</span><br />
+            9 N. George St.<br />
+            Millersville, PA 17551
+        </p>
+        <p style="text-align: center;">
+            Director: Andy Welaish &bull; 717-871-7125 &bull; Andy.Welaish@millersville.edu<br />
+            ILL: Krista Higham &bull; 717-871-5511 &bull; krista.higham@millersville.edu<br />
+            IDS ID Number: 154<br />
+            Consortia: ACLCP, PALINET, SSHELCO, PALCI<br />
+            OCLC: MVS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Misericordia University - MKB Library</span><br />
+            301 Lake Street<br />
+            Dallas, PA 18612
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Luksa &bull; 570-674-6224 &bull; jluksa@misericordia.edu<br />
+            ILL: Colleen Newhart &bull; 570-674-3036 &bull; cnewhart@misericordia.edu<br />
+            IDS ID Number: 367<br />
+            Consortia: PALCI<br />
+            OCLC: CMZ      ACCESS PA Code: AMISC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Monaca Public Library</span><br />
+            998 Indiana Ave<br />
+            2nd Floor<br />
+            Monaca, PA 15061
+        </p>
+        <p style="text-align: center;">
+            Director: Pat Smith &bull; 724-775-9608 x &bull; psmith@beaverlibraries.org<br />
+            ILL: Pat Smith &bull; 724-775-9608 x &bull; monacapl@hotmail.com<br />
+            IDS ID Number: 195A07<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Monongahela Area Library</span><br />
+            813 W. Main St.<br />
+            <br />
+            Monongahela, PA 15063
+        </p>
+        <p style="text-align: center;">
+            Director: Amy Riegner &bull; 724-258-5409 x &bull; ariegner@washlibs.org<br />
+            ILL: Amy Riegner &bull; 724-258-5409 x &bull; ariegner@washlibs.org<br />
+            IDS ID Number: 197A14<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Monroe County Public Library</span><br />
+            1002 N. 9th Street<br />
+            <br />
+            Stroudsburg, PA 18360
+        </p>
+        <p style="text-align: center;">
+            Director: Susan Lyons &bull; 570-421-0800 x &bull; slyons@monroepl.org<br />
+            ILL: Carol Varipapa &bull; 570-421-0800 x &bull; ill@monroepl.org<br />
+            IDS ID Number: 126A02<br />
+            Consortia: CONOR<br />
+            OCLC: pa 3
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Montgomery County-Norristown Public Library</span><br />
+            1001 Powell St.<br />
+            <br />
+            Norristown, PA 19401-3817
+        </p>
+        <p style="text-align: center;">
+            Director: Kathleen Arnold-Yerger &bull; 610-278-5100 x140 &bull; karnold-yerger@mclinc.org<br />
+            ILL: Valerie Johnson &bull; 610-278-5100 x120 &bull; vjohnson@mclinc.org<br />
+            IDS ID Number: 210<br />
+            Consortia: PALINET; MCLINC<br />
+            OCLC: MNL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Moravian College</span><br />
+            1200 Main St.<br />
+            <br />
+            Bethlehem, PA 18018
+        </p>
+        <p style="text-align: center;">
+            Director: Janet Ohles &bull; 610-861-1540 x &bull; ohlesj@moravian.edu<br />
+            ILL: Nancy Strobel &bull; 610-861-1545 x &bull; ill@moravian.edu<br />
+            IDS ID Number: 155<br />
+            Consortia: LVAIC, PALINET, SEPTLA, PALCI<br />
+            OCLC: MOR
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Muhlenberg College</span><br />
+            2400 Chew Street<br />
+            Level A<br />
+            Allentown, PA 18104
+        </p>
+        <p style="text-align: center;">
+            Director: Tina Hertel &bull; 484-664-3551 x &bull; thertel@muhlenberg.edu<br />
+            ILL: Kristin Brodt &bull; 484-664-3510 x &bull; kristinbrodt@muhlenberg.edu<br />
+            IDS ID Number: 337<br />
+            Consortia: PALCI<br />
+            OCLC: EVI
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">New Bethlehem Wesleyan Methodist School</span><br />
+            140 Calhoun School Rd.<br />
+            <br />
+            New Bethlehem, PA 16242
+        </p>
+        <p style="text-align: center;">
+            Director: Gabriel Clyde &bull; 724-545-1334 x &bull; gjclyde@gmail.com<br />
+            ILL: Gabriel Clyde &bull; 724-545-1334 x &bull; gjclyde@gmail.com<br />
+            IDS ID Number: 284A32<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">New Brighton Public Library</span><br />
+            1021 Third Ave.<br />
+            <br />
+            New Brighton, PA 15066
+        </p>
+        <p style="text-align: center;">
+            Director: Bernie McKean &bull; 724-846-7991 x &bull; bmckean@beaverlibraries.org<br />
+            ILL: Kate Weidner &bull; 724-846-7991 x &bull; bmckean@beaverlibraries.org<br />
+            IDS ID Number: 195A08<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">New Castle Public Library</span><br />
+            207 East North Street<br />
+            <br />
+            New Castle, PA 16101-3691
+        </p>
+        <p style="text-align: center;">
+            Director: Sandra Collins &bull; 724-658-6659 x113 &bull; scollins@ncdlc.org<br />
+            ILL: Amy Geisinger &bull; 724-658-6659 x124 &bull; ageisinger@ncdlc.org<br />
+            IDS ID Number: 163<br />
+            Consortia: Midwestern<br />
+            OCLC: QNC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">New York U./Clancy</span><br />
+            2963 Route 22<br />
+            <br />
+            Patterson, NY 12563
+        </p>
+        <p style="text-align: center;">
+            Director: Kristina Rose &bull; 212-998-2532 x &bull; kr37@nyu.edu<br />
+            ILL: Phoebe Walker &bull; 212-998-2549 x &bull; prw226@nyu.edu<br />
+            IDS ID Number: 374<br />
+            Consortia: <br />
+            OCLC: ZYU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">New York University</span><br />
+            70 Washington Square South<br />
+            LL2-33<br />
+            New York, NY 10012
+        </p>
+        <p style="text-align: center;">
+            Director: Kristina Rose &bull; 212-998-2532 x &bull; kristina.rose@nyu.edu<br />
+            ILL: Phoebe Walker &bull; 212-992-9996 x &bull; phoebe.walker@nyu.edu<br />
+            IDS ID Number: 370<br />
+            Consortia: <br />
+            OCLC: ZYU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Northampton Community College</span><br />
+            3835 Green Pond Rd.<br />
+            Bethlehem, PA 18020-7599
+        </p>
+        <p style="text-align: center;">
+            Director: Sandra Sander &bull; 610-861-5358 &bull; ssander@northampton.edu<br />
+            ILL: Mary Kae Mayock &bull; 610-861-5358 &bull; mmayock@northampton.edu<br />
+            IDS ID Number: 229<br />
+            Consortia: Access PA, Lyrasis, PCCLC, CONOR<br />
+            OCLC: PNC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Oley Valley Elementary Library</span><br />
+            3257 Friedensburg Rd.<br />
+            <br />
+            Oley, PA 19547
+        </p>
+        <p style="text-align: center;">
+            Director: Dawn Conrad &bull; 610-987-4100 x2083 &bull; dconrad@ovsdpa.org<br />
+            ILL: Dawn Conrad &bull; 610-987-4100 x2083 &bull; dconrad@ovsdpa.org<br />
+            IDS ID Number: 297A39<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Oley Valley High School Library</span><br />
+            17 Jefferson Street<br />
+            <br />
+            Oley, PA 19547
+        </p>
+        <p style="text-align: center;">
+            Director: David Hoffman &bull; 610-987-4100 x6070 &bull; dhoffman@ovsdpa.org<br />
+            ILL: David Hoffman &bull; 610-987-4100 x6070 &bull; dhoffman@ovsdpa.org<br />
+            IDS ID Number: 297A15<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Oley Valley Middle School Library</span><br />
+            3247 Friedensburg Road<br />
+            <br />
+            Oley, PA 19547
+        </p>
+        <p style="text-align: center;">
+            Director: Dianne Robinson &bull; 610-987-4100 x4307 &bull; drobinson@ovsdpa.org<br />
+            ILL: Dianne Robinson &bull; 610-989-4100 x4307 &bull; drobinson@ovsdpa.org<br />
+            IDS ID Number: 297A23<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Orchard Hills Christian Academy</span><br />
+            385 Kings Rd<br />
+            <br />
+            Apollo, PA 15613-8980
+        </p>
+        <p style="text-align: center;">
+            Director: Ms. Sandra Cornell &bull; 724-478-3455 x &bull; orchardhillsacademy@gmail.com<br />
+            ILL: Ms. Sandra Cornell &bull; 724-478-3455 x &bull; orchardhillsacademy@gmail.com<br />
+            IDS ID Number: 284A33<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Osterhout Free Library</span><br />
+            71 South Franklin St.<br />
+            Wilkes-Barre, PA 18701
+        </p>
+        <p style="text-align: center;">
+            Director: Richard Miller &bull; 570-823-0156 x233 &bull; rmiller@luzernelibraries.org<br />
+            ILL: Ainslee Golomb &bull; 570-823-0156 x207 &bull; agolomb@luzernelibraries.org<br />
+            IDS ID Number: 222<br />
+            Consortia: NEPBC, PALINET<br />
+            OCLC: OST
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Palmerton Area Library</span><br />
+            402 Delaware Ave.<br />
+            <br />
+            Palmerton, PA 18071
+        </p>
+        <p style="text-align: center;">
+            Director: Diane Danielson &bull; 610-826-3424 x &bull; plapalm@ptd.net<br />
+            ILL: Brenda Wentz &bull; 610-826-6248 x &bull; platech@ptd.net<br />
+            IDS ID Number: 105A09<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Parkland Community Library</span><br />
+            4422 Walbert Ave.<br />
+            <br />
+            Allentown, PA 18104
+        </p>
+        <p style="text-align: center;">
+            Director: Debbie Jack &bull; 610-398-1361 x &bull; jackd@parklandlibrary.org<br />
+            ILL: Karen O&#39;Connell &bull; 610-398-1361 x &bull; info@parklandlibrary.org<br />
+            IDS ID Number: 105A02<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Paul Smith Library of Southern York County</span><br />
+            80 Constitution Ave.<br />
+            P O Box 239<br />
+            Shrewsbury, PA 17361
+        </p>
+        <p style="text-align: center;">
+            Director: Michele Lefler &bull; 717-235-4313 x106 &bull; mlefler@yorklibraries.org<br />
+            ILL: Anna Paules &bull; 717-235-4313 x103 &bull; apaules@yorklibraries.org<br />
+            IDS ID Number: 149A12<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Abington</span><br />
+            1600 Woodland Rd.<br />
+            <br />
+            Abington, PA 19001
+        </p>
+        <p style="text-align: center;">
+            Director: Dolores Fidishun &bull; 215-881-7425 x &bull; dxf19@psu.edu<br />
+            ILL: Lil Hansberry &bull; 215-881-7428 x &bull; lah31@psu.edu<br />
+            IDS ID Number: 250<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Altoona</span><br />
+            3000 Ivyside Park<br />
+            <br />
+            Altoona, PA 16601-3760
+        </p>
+        <p style="text-align: center;">
+            Director: Bonnie Imler &bull; 814-949-5499 x &bull; bbi1@psu.edu<br />
+            ILL: Gale L. Biddle &bull; 814-949-5341 x &bull; glb131@psu.edu<br />
+            IDS ID Number: 244<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Beaver Library</span><br />
+            100 University Drive<br />
+            <br />
+            Monaca, PA 15061
+        </p>
+        <p style="text-align: center;">
+            Director: Amy L. Deuink &bull; 724-773-3791 x &bull; ald120@psu.edu<br />
+            ILL: Robin Schodt &bull; 724-773-3794 x &bull; rls49@psu.edu<br />
+            IDS ID Number: 255<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Berks</span><br />
+            2080 Tulpehocken Road<br />
+            <br />
+            Reading, PA 19610
+        </p>
+        <p style="text-align: center;">
+            Director: Melissa Millar &bull; 610-396-6241 x &bull; muf107@psu.edu<br />
+            ILL: ILL Librarian &bull; 610-396-6424 x &bull; cjw36@psu.edu<br />
+            IDS ID Number: 213<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Brandywine</span><br />
+            25 Yearsley Mill Road<br />
+            <br />
+            Media, PA 19063-5596
+        </p>
+        <p style="text-align: center;">
+            Director: Teresa Slobuski &bull; 610-892-1382 x &bull; sut477@psu.edu<br />
+            ILL: Mary Murray &bull; 610-892-1387 x &bull; mcm10@psu.edu<br />
+            IDS ID Number: 245<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - DuBois</span><br />
+            301 E. DuBois Ave.<br />
+            <br />
+            DuBois, PA 15801
+        </p>
+        <p style="text-align: center;">
+            Director: Barbara Kopshina &bull; 814-375-4754 x &bull; bkk125@psu.edu<br />
+            ILL: Michele Joseph &bull; 814-375-4755 x &bull; mlt108@psu.edu<br />
+            IDS ID Number: 246<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Erie - The Behrend College</span><br />
+            4951 College Drive<br />
+            Erie, PA 16563
+        </p>
+        <p style="text-align: center;">
+            Director: Matt Ciszek &bull; 814-898-6377 &bull; mciszek@psu.edu<br />
+            ILL: Sarah Koczan &bull; 814-898-6259 &bull; sek5413@psu.edu<br />
+            IDS ID Number: 254<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Fayette</span><br />
+            2201 University Drive<br />
+            Lemont Furnace, PA 15456
+        </p>
+        <p style="text-align: center;">
+            Director: Joanna DePolt &bull; 724-430-4156 &bull; jld575@psu.edu<br />
+            ILL: Amy Mihalko &bull; 724-430-4155 &bull; arm13@psu.edu<br />
+            IDS ID Number: 247<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Great Valley</span><br />
+            30 East Swedesford Rd.<br />
+            <br />
+            Malvern, PA 19355
+        </p>
+        <p style="text-align: center;">
+            Director: Billie Walker &bull; 640-648-3228 x &bull; bew11@psu.edu<br />
+            ILL: Billie Walker &bull; 610-648-3228 x &bull; bew11@psu.edu<br />
+            IDS ID Number: 261<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Greater Allegheny</span><br />
+            4000 University Drive<br />
+            White Oak , PA 15131-7644
+        </p>
+        <p style="text-align: center;">
+            Director: Andrew Marshall  &bull; 412-675-9119 &bull; adm135@psu.edu<br />
+            ILL: Linda Ferriss &bull; 412-675-9114 &bull; ljf13@psu.edu<br />
+            IDS ID Number: 248<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Harrisburg</span><br />
+            351 Olmsted Drive<br />
+            <br />
+            Middletown, PA 17057-4850
+        </p>
+        <p style="text-align: center;">
+            Director: Glenn McGuigan &bull; 717-948-6078 x &bull; gxm22@psu.edu<br />
+            ILL: Sherry Bancroft &bull; 717-948-6072 x &bull; sqb5@psu.edu<br />
+            IDS ID Number: 214<br />
+            Consortia: ACLCP, PALINET, RLG, CIC<br />
+            OCLC: UPM, LVIS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Hazleton</span><br />
+            76 University Drive<br />
+            <br />
+            Hazleton, PA 18202
+        </p>
+        <p style="text-align: center;">
+            Director: Valerie Lynn &bull; 570-450-3172 x &bull; vag3@psu.edu<br />
+            ILL: Erik Angel &bull; 570-450-3171 x &bull; ema33@psu.edu<br />
+            IDS ID Number: 256<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Lehigh Valley</span><br />
+            2809 Saucon Valley Rd<br />
+            <br />
+            Center Valley, PA 18034-8447
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Jarson &bull; 610-285-5119 x &bull; jmj12@psu.edu<br />
+            ILL: Kathy Romig &bull; 610-285-5151 x &bull; ritabook@psu.edu<br />
+            IDS ID Number: 243<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPC, UPM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Mont Alto Library</span><br />
+            1 Campus Drive<br />
+            Mont Alto, PA 17237-9703
+        </p>
+        <p style="text-align: center;">
+            Director: Tom Reinsfelder &bull; 717-749-6041 &bull; tlr15@psu.edu<br />
+            ILL: Jonathan Hindman &bull; 717-749-6049 &bull; jwh5116@psu.edu<br />
+            IDS ID Number: 257<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - New Kensington</span><br />
+            3550 7th Street Rd.- Rte.780<br />
+            <br />
+            New Kensington, PA 15068-1765
+        </p>
+        <p style="text-align: center;">
+            Director: Jennifer Gilley &bull; 724-334-6076 x &bull; jrg15@psu.edu<br />
+            ILL: Yesenia Figueroa &bull; 724-334-6073 x &bull; yuf3@psu.edu<br />
+            IDS ID Number: 249<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Schuylkill</span><br />
+            240 University Dr.<br />
+            <br />
+            Schuylkill Haven, PA 17972-2210
+        </p>
+        <p style="text-align: center;">
+            Director: Matthew Wayman &bull; 570-385-6223 x &bull; mjw13@psu.edu<br />
+            ILL: Rosanne M. Chesakis &bull; 570-385-6236 x &bull; rmc2@psu.edu<br />
+            IDS ID Number: 258<br />
+            Consortia: PRLC, RLG, Schuylkill I.U. #29<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Scranton</span><br />
+            120 Ridge View Dr.<br />
+            Dunmore, PA 18512-1699
+        </p>
+        <p style="text-align: center;">
+            Director: Jennie Levine Knies &bull; 570-963-2630 &bull; jak6029@psu.edu<br />
+            ILL: Natalie Kulick &bull; 570-963-2637 &bull; ndk6@psu.edu<br />
+            IDS ID Number: 237<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Shenango</span><br />
+            177 Vine Ave.<br />
+            <br />
+            Sharon, PA 16146
+        </p>
+        <p style="text-align: center;">
+            Director: Amy Deuink &bull; 724-983-2880 x &bull; amyd@psu.edu<br />
+            ILL: Debby Brennan &bull; 724-983-2877 x &bull; dsb189@psu.edu<br />
+            IDS ID Number: 259<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - Wilkes-Barre</span><br />
+            Nesbitt Library<br />
+            P.O. Box 264<br />
+            Lehman, PA 18627
+        </p>
+        <p style="text-align: center;">
+            Director: Megan MacGregor &bull; 570-675-9295 &bull; mam1201@psu.edu<br />
+            ILL: Christopher Burke &bull; 570-675-9261 &bull; ccb125@psu.edu<br />
+            IDS ID Number: 236<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State - York</span><br />
+            1031 Edgecomb Ave.<br />
+            <br />
+            York, PA 17403
+        </p>
+        <p style="text-align: center;">
+            Director: Barbara Eshbach &bull; 717-771-4023 x &bull; bee11@psu.edu<br />
+            ILL: Dawn Oswald &bull; 717-771-4021 x &bull; djo10@psu.edu<br />
+            IDS ID Number: 260<br />
+            Consortia: PRLC, RLG<br />
+            OCLC: UPM, UPC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State Dickinson Law</span><br />
+            150 S. College St.<br />
+            <br />
+            Carlisle, PA 17013
+        </p>
+        <p style="text-align: center;">
+            Director: Gail Partin &bull; 717-240-5294 x &bull; gap6@psu.edu<br />
+            ILL: Jeri Fitzsimons &bull; 717-240-5012 x &bull; jaf18@psu.edu<br />
+            IDS ID Number: 122<br />
+            Consortia: MALLCO<br />
+            OCLC: UPM
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State Hershey (College of Medicine)</span><br />
+            500 University Drive<br />
+            Room C1620<br />
+            Hershey, PA 17033-0850
+        </p>
+        <p style="text-align: center;">
+            Director: Cynthia K. Robinson &bull; 717-531-8628 &bull; ckr11@psu.edu<br />
+            ILL: Esther Dell &bull; 717-531-8633 &bull; eyd1@psu.edu<br />
+            IDS ID Number: 299<br />
+            Consortia: CPHSLA, CIC<br />
+            OCLC: MHY
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penn State University</span><br />
+            127 Paterno Library, Curtin Rd<br />
+            <br />
+            University Park, PA 16802-1812
+        </p>
+        <p style="text-align: center;">
+            Director: Barbara I. Dewey &bull; 814-865-0401 x &bull; bdewey@psu.edu<br />
+            ILL: Meg Massey &bull; 814-863-5634 x &bull; mem548@psu.edu<br />
+            IDS ID Number: 158<br />
+            Consortia: CIC, RLG, PALINET, PALCI, CRL<br />
+            OCLC: UPM, CRL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penns Manor Elementary</span><br />
+            6003 Rte 553 Highway<br />
+            <br />
+            Clymer, PA 15728
+        </p>
+        <p style="text-align: center;">
+            Director: Grace Shellenbarger &bull; 724-254-2666 x1138 &bull; shellegr@pennsmanor.org<br />
+            ILL: Grace Shellenbarger &bull; 724-254-2666 x1138 &bull; shellegr@pennsmanor.org<br />
+            IDS ID Number: 284A24<br />
+            Consortia: ARIN<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Penns Manor Jr/Sr High School</span><br />
+            6003 Rte. 553 Hwy.<br />
+            <br />
+            Clymer, PA 15728-8318
+        </p>
+        <p style="text-align: center;">
+            Director: Benjamin Murphy &bull; 724-254-2666 x2028 &bull; murphybe@pennsmanor.org<br />
+            ILL: Benjamin Murphy &bull; 724-254-2666 x2028 &bull; murphybe@pennsmanor.org<br />
+            IDS ID Number: 284A12<br />
+            Consortia: ARIN Lib<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pennsylvania College of Art &amp; Design</span><br />
+            204 N. Prince Street<br />
+            Lancaster, PA 17603
+        </p>
+        <p style="text-align: center;">
+            Director: Karen J. Hutchison &bull; 717-396-7833 x1021 &bull; khutchison@pcad.edu<br />
+            ILL: Karen J. Hutchison &bull; 717-396-7833 x1021 &bull; library@pcad.edu<br />
+            IDS ID Number: 324<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pennsylvania College of Technology</span><br />
+            One College Ave.<br />
+            Williamsport, PA 17701
+        </p>
+        <p style="text-align: center;">
+            Director: Tracey Amey &bull; 570-320-2400 x7386 &bull; tamey@pct.edu<br />
+            ILL: Zachary Hanford  &bull; 570-320-2400 x7914 &bull; zah5@pct.edu<br />
+            IDS ID Number: 231<br />
+            Consortia: PALINET, SLC, ACLCP<br />
+            OCLC: WSB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pennsylvania Highlands Community College</span><br />
+            101 Community College Way<br />
+            <br />
+            Johnstown, PA 15904
+        </p>
+        <p style="text-align: center;">
+            Director: Barbara Zaborowski &bull; 814-262-6425 x &bull; bzabor@pennhighlands.edu<br />
+            ILL: Alex Kirby &bull; 814-262-6484 x &bull; akirby@pennhighlands.edu<br />
+            IDS ID Number: 253<br />
+            Consortia: Lyrasis<br />
+            OCLC: CKF
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Peters Township Library</span><br />
+            616 E. McMurray Rd.<br />
+            <br />
+            McMurray, PA 15317
+        </p>
+        <p style="text-align: center;">
+            Director: Myra Oleynik &bull; 724-941-9430 x5 &bull; mOleynik@ptlibrary.org<br />
+            ILL: Margaret Deitzer &bull; 724-941-9430 x &bull; mdeitzer@ptlibrary.org<br />
+            IDS ID Number: 197A15<br />
+            Consortia: ASPIRE<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Philadelphia College of Osteopathic Medicine</span><br />
+            4170 City Ave - Evans  Hall<br />
+            Philadelphia, PA 19131-1694
+        </p>
+        <p style="text-align: center;">
+            Director: Stephanie Ferretti &bull; 215-871-6475 &bull; StephanieFe@pcom.edu<br />
+            ILL: Randall Blackwell &bull; 215-871-6481 &bull; randallbl@pcom.edu<br />
+            IDS ID Number: 319<br />
+            Consortia: PALCI<br />
+            OCLC: PHU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pittston Memorial Library</span><br />
+            47 Broad St.<br />
+            <br />
+            Pittston, PA 18640-2563
+        </p>
+        <p style="text-align: center;">
+            Director: Patricia Joyce &bull; 570-654-9565 x &bull; pjoyce@luzernelibraries.org<br />
+            ILL: Noelle Kozak &bull; 570-654-9565 x &bull; nkozak@luzernelibraries.org<br />
+            IDS ID Number: 222A06<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Plymouth Public Library</span><br />
+            107 W. Main St.<br />
+            Plymouth, PA 18651-2912
+        </p>
+        <p style="text-align: center;">
+            Director: Suzanne Youngblood &bull; 570-779-4775 &bull; ppl@epix.net<br />
+            ILL: Anne Riccetti &bull; 570-779-4775 &bull; annericcetti76@gmail.com<br />
+            IDS ID Number: 222A07<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pocono Mountain Public Library</span><br />
+            5500 Municipal Drive<br />
+            <br />
+            Tobyhanna, PA 18466
+        </p>
+        <p style="text-align: center;">
+            Director: Ann Shincovich &bull; 570-894-8860 x &bull; pmpl_library@yahoo.com<br />
+            ILL: Joe Cloyd &bull; 570-894-8860 x4 &bull; joseph_pmpl@yahoo.com<br />
+            IDS ID Number: 126A06<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Point Park University Library</span><br />
+            414 Wood Street<br />
+            <br />
+            Pittsburgh, PA 15222
+        </p>
+        <p style="text-align: center;">
+            Director: Elizabeth Evans &bull; 412-392-3161 x &bull; eevans@pointpark.edu<br />
+            ILL: Melanie Kirchartz &bull; 412-392-3163 x &bull; mkirchartz@pointpark.edu<br />
+            IDS ID Number: 332<br />
+            Consortia: PALINET, PALCI<br />
+            OCLC: PTP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Pottstown Regional Public Library</span><br />
+            500 East High St.<br />
+            Pottstown, PA 19464
+        </p>
+        <p style="text-align: center;">
+            Director: Michelle Kehoe &bull; 610-970-6551 &bull; mkehoe@mclinc.org<br />
+            ILL: Nicole Forst &bull; 610-970-6551 &bull; nforst@mclinc.org<br />
+            IDS ID Number: 210A10<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Public Library of Catasauqua</span><br />
+            Third and Bridge Street<br />
+            <br />
+            Catasauqua, PA 18032-2510
+        </p>
+        <p style="text-align: center;">
+            Director: Sandra Arden &bull; 610-264-4151 x &bull; catasauquapl@cliu.org<br />
+            ILL: ILL &bull; 610-264-4151 x &bull; catasauquapl@cliu.org<br />
+            IDS ID Number: 105A06<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Purchase Line Jr/Sr High School Library</span><br />
+            16559 Rte. 286, Highway E.<br />
+            <br />
+            Commodore, PA 15729
+        </p>
+        <p style="text-align: center;">
+            Director: Jody Dean &bull; 724-254-4312 x4143 &bull; deanj@plsd.k12.pa.us<br />
+            ILL: Jody Dean &bull; 724-254-4312 x4143 &bull; deanj@plsd.k12.pa.us<br />
+            IDS ID Number: 284A13<br />
+            Consortia: ARIN Lib<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Reading Public Library</span><br />
+            100 S. Fifth Street<br />
+            <br />
+            Reading, PA 19602
+        </p>
+        <p style="text-align: center;">
+            Director: Bronwen Gamble &bull; 610-655-6365 x &bull; Bronwen.gamble@reading.lib.pa.us<br />
+            ILL: Gloria Bush &bull; 610-655-6350 x235 &bull; rplill@reading.lib.pa.us<br />
+            IDS ID Number: 184<br />
+            Consortia: PALINET, MUHLENBERG/BERKS/WORKS<br />
+            OCLC: RPL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Red Land Community Library</span><br />
+            70 Newberry Commons<br />
+            <br />
+            Etters, PA 17319
+        </p>
+        <p style="text-align: center;">
+            Director: Karen Hostetter &bull; 717-938-5599 x &bull; khostetter@yorklibraries.org<br />
+            ILL: Karen Hostetter &bull; 717-938-5599 x &bull; khostetter@yorklibraries.org<br />
+            IDS ID Number: 149A14<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Robert Morris University</span><br />
+            6001 University Boulevard<br />
+            <br />
+            Moon Township, PA 15108
+        </p>
+        <p style="text-align: center;">
+            Director: Tim Schlak, PhD &bull; 412-397-6868 x &bull; schlak@rmu.edu<br />
+            ILL: Bruce Johnston &bull; 412-397-6877 x &bull; johnston@rmu.edu<br />
+            IDS ID Number: 322<br />
+            Consortia: PALCI<br />
+            OCLC: ROB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rochester Public Library</span><br />
+            252 Adams St.<br />
+            <br />
+            Rochester, PA 15074
+        </p>
+        <p style="text-align: center;">
+            Director: Kate Hildman &bull; 724-774-7783 x &bull; khildman@beaverlibraries.org<br />
+            ILL: Mary Jane Giralico &bull; 724-774-7783 x &bull; khildman@beaverlibraries.org<br />
+            IDS ID Number: 195A09<br />
+            Consortia: Beaver Co. Lib. Con.<br />
+            OCLC: BFJ
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rosemont College</span><br />
+            1400 Montgomery Avenue<br />
+            Rosemont, PA 19010-1699
+        </p>
+        <p style="text-align: center;">
+            Director: Catherine Fennell &bull; 610-527-0200 x2973 &bull; fennell@rosemont.edu<br />
+            ILL: Kathleen Deeming &bull; 610-527-0200 x2271 &bull; ill@rosemont.edu<br />
+            IDS ID Number: 166<br />
+            Consortia: PALINET, TCLC, PRILL<br />
+            OCLC: RMC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rowan University</span><br />
+            201 Mullica Hill Road<br />
+            <br />
+            Glassboro, NJ 08028
+        </p>
+        <p style="text-align: center;">
+            Director: Scott P. Muir &bull; 856-256-4981 x &bull; muir@rowan.edu<br />
+            ILL: Daniel Pugh &bull; 856-256-4989 x &bull; pugh@rowan.edu<br />
+            IDS ID Number: 362<br />
+            Consortia: PALCI  (E-Z Borrow)<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rutgers University  - Health Sciences at Newark</span><br />
+            30 – 12th Avenue<br />
+            <br />
+            Newark, NJ 07103
+        </p>
+        <p style="text-align: center;">
+            Director: Judy Cohn &bull; 973-972-0560 x &bull; judith.s.cohn@rutgers.edu<br />
+            ILL: Yini Zhu &bull; 973-972-7955 x &bull; yini.zhu@rutgers.edu<br />
+            IDS ID Number: 369<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rutgers University - Dana</span><br />
+            185 University Ave.<br />
+            Newark, NJ 07102-1814
+        </p>
+        <p style="text-align: center;">
+            Director: Consuella Askew &bull; 973-353-5222 &bull; consuella.askew@rutgers.edu<br />
+            ILL: Dorothy Grauer &bull; 973-353-5902 &bull; dgrauer@libraries.rutgers.edu<br />
+            IDS ID Number: 330<br />
+            Consortia: PALCI<br />
+            OCLC: NJR
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rutgers University Libraries - ILS</span><br />
+            Technical Services Building<br />
+            47 Davidson Road<br />
+            Piscataway, NJ 08854-5603
+        </p>
+        <p style="text-align: center;">
+            Director: Abigail L. DiPaolo &bull; 848-932-5998 x &bull; abigail.dipaolo@rutgers.edu<br />
+            ILL: Orla Mejia &bull; 848-932-6015 x &bull; om80@libraries.rutgers.edu<br />
+            IDS ID Number: 328<br />
+            Consortia: PALCI<br />
+            OCLC: NJR
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Rutgers University/Robeson</span><br />
+            300 N. 4th Street<br />
+            <br />
+            Camden, NJ 08102-1404
+        </p>
+        <p style="text-align: center;">
+            Director: Katie Anderson &bull; 856-225-2830 x &bull; katie.anderson@rutgers.edu<br />
+            ILL: Jennifer Reiber &bull; 856-225-2833 x &bull; jltaylor@libraries.rutgers.edu<br />
+            IDS ID Number: 331<br />
+            Consortia: PALCI<br />
+            OCLC: NJR
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Saegertown Area Library</span><br />
+            325 Broad Street<br />
+            PO Box 871<br />
+            Saegertown, PA 16433
+        </p>
+        <p style="text-align: center;">
+            Director: Heather J. Wakefield &bull; 814-763-5203 x &bull; sal@ccfls.org<br />
+            ILL: ILL &bull; 814-763-5203 x &bull; masque75us@yahoo.com<br />
+            IDS ID Number: 312<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Saint Josephs University</span><br />
+            5600 City Avenue<br />
+            <br />
+            Philadelphia, PA 19131
+        </p>
+        <p style="text-align: center;">
+            Director: Anne Krakow &bull; 610-660-1905 x &bull; akrakow@sju.edu<br />
+            ILL: ILL &bull; 610-660-1907 x &bull; ill@sju.edu<br />
+            IDS ID Number: 167<br />
+            Consortia: TCLC, PALCI, LYRASIS<br />
+            OCLC: SJD
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Schlow Centre Region Library</span><br />
+            211 S. Allen St.<br />
+            State College, PA 16801
+        </p>
+        <p style="text-align: center;">
+            Director: Cathi Alloway &bull; 814-235-7814 &bull; calloway@schlowlibrary.org<br />
+            ILL: Michele Valenza &bull; 814-237-6236 x120 &bull; interlib@schlowlibrary.org<br />
+            IDS ID Number: 168<br />
+            Consortia: Central Con, PALINET<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Schuylkill Valley Elementary Library</span><br />
+            62 Ashley Way<br />
+            <br />
+            Leesport, PA 19533-8629
+        </p>
+        <p style="text-align: center;">
+            Director: Amber Rubendall &bull; 610-916-5737 x &bull; arubendall@schuylkillvalley.org<br />
+            ILL: Amber Rubendall &bull; 610-916-5737 x &bull; arubendall@schuylkillvalley.org<br />
+            IDS ID Number: 297A30<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Schuylkill Valley High School Library</span><br />
+            929 Lakeshore Drive<br />
+            <br />
+            Leesport, PA 19533-8631
+        </p>
+        <p style="text-align: center;">
+            Director: Matt Reed &bull; 610-916-5498 x &bull; mreed@schuylkillvalley.org<br />
+            ILL: Matt Reed &bull; 610-916-5498 x &bull; mreed@schuylkillvalley.org<br />
+            IDS ID Number: 297A16<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Schuylkill Valley Middle School Library</span><br />
+            114 Ontelaunee Drive<br />
+            <br />
+            Leesport, PA 19533
+        </p>
+        <p style="text-align: center;">
+            Director: Emily Calaman &bull; 610-916-5620 x &bull; ecalaman@schuylkillvalley.org<br />
+            ILL: Emily Calaman &bull; 610-916-5620 x &bull; ecalaman@schuylkillvalley.org<br />
+            IDS ID Number: 297A24<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Scranton Public Library</span><br />
+            500 Vine Street<br />
+            Scranton, PA 18509-3298
+        </p>
+        <p style="text-align: center;">
+            Director: Jack Finnerty &bull; 570-348-3000 x3014 &bull; jrf@albright.org<br />
+            ILL: Tessa Mitchell &bull; 570-348-3000 x3018 &bull; ill@albright.org<br />
+            IDS ID Number: 169<br />
+            Consortia: Scranton Con<br />
+            OCLC: SCR
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Seeds of Faith Christian Academy</span><br />
+            640 Church St<br />
+            <br />
+            Indiana, PA 15701
+        </p>
+        <p style="text-align: center;">
+            Director: Erika Parks &bull; 724-463-7719 x &bull; principal@seedsoffaithacademy.org<br />
+            ILL: Erika Parks &bull; 724-463-7719 x &bull; principal@seedsoffaithacademy.org<br />
+            IDS ID Number: 284A34<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Seton Hall University</span><br />
+            400 South Orange Avenue<br />
+            <br />
+            South Orange, NJ 07079
+        </p>
+        <p style="text-align: center;">
+            Director: Dr. John Buschman &bull; 973-761-9005 x &bull; john.buschman@shu.edu<br />
+            ILL: Kaitlin Kehnemuyl &bull; 973-761-9795 x &bull; kaitlin.kehnemuyi@shu.edu<br />
+            IDS ID Number: 335<br />
+            Consortia: PALCI<br />
+            OCLC: STH
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Shaw Public Library</span><br />
+            1 South Front St.<br />
+            Clearfield, PA 16830
+        </p>
+        <p style="text-align: center;">
+            Director: Jayme Stonbraker  &bull; 814-765-3271 &bull; jstonbraker@shawlibrary.org<br />
+            ILL: Beth Shifter &bull; 814-765-3271 &bull; ill@shawlibrary.org<br />
+            IDS ID Number: 241<br />
+            Consortia: Central PA District Center<br />
+            OCLC: PCB
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Shippensburg University of Pennsylvania</span><br />
+            1871 Old Main Drive<br />
+            <br />
+            Shippensburg, PA 17257-2299
+        </p>
+        <p style="text-align: center;">
+            Director: Sara Pike &bull; 717-477-1027 x &bull; SLpike@ship.edu<br />
+            ILL: Rebecca (Alexx) Purcell &bull; 717-477-1463 x &bull; rdpurcell@ship.edu<br />
+            IDS ID Number: 170<br />
+            Consortia: ACLCP, KLN,PALCI,SPIES,PALINET<br />
+            OCLC: SQP
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Slatington  Library</span><br />
+            650 Main Streeet<br />
+            <br />
+            Slatington, PA 18080-1420
+        </p>
+        <p style="text-align: center;">
+            Director: Rosanne Pugh &bull; 610-767-6461 x &bull; slatlib@ptd.net<br />
+            ILL: ILL &bull; 610-767-6461 x &bull; slatlib@ptd.net<br />
+            IDS ID Number: 105A10<br />
+            Consortia: CARBONLEHI<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Slippery Rock University of Pennsylvania</span><br />
+            104 Central Loop<br />
+            Slippery Rock, PA 16057
+        </p>
+        <p style="text-align: center;">
+            Director: Brad Wilson &bull; 724-738-2379 &bull; bradley.wilson@sru.edu<br />
+            ILL: Ellen Pontius &bull; 724-738-4389 &bull; ellen.pontius@sru.edu<br />
+            IDS ID Number: 217<br />
+            Consortia: PRLC, SSHELCO<br />
+            OCLC: SRS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Solanco High School Library</span><br />
+            585 Solanco Road<br />
+            <br />
+            Quarryville, PA 17566
+        </p>
+        <p style="text-align: center;">
+            Director: Emily Dawley &bull; 717-786-2151 x8706 &bull; emily_dawley@solanco.k12.pa.us<br />
+            ILL: ILL &bull; 717-786-2151 x8706 &bull; emily_dawley@solanco.k12.pa.us<br />
+            IDS ID Number: 279A22<br />
+            Consortia: Lan-Leb<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Somerset County Library</span><br />
+            6022 Glades Pike<br />
+            Suite 120<br />
+            Somerset, PA 15501-4300
+        </p>
+        <p style="text-align: center;">
+            Director: Cheryl Morgan &bull; 814-445-5907 x4 &bull; cmorgan@somersetcolibrary.org<br />
+            ILL: Janis Komula &bull; 814-445-5907 x1 &bull; jkomula@somersetcolibrary.org<br />
+            IDS ID Number: 357<br />
+            Consortia: CAMSOM/IU8<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Southern Lehigh Public Library</span><br />
+            3200 Preston Lane<br />
+            P O Box 279<br />
+            Center Valley, PA 18034
+        </p>
+        <p style="text-align: center;">
+            Director: Lynnette Saeger &bull; 610-282-8825 x &bull; staff@solehipl.org<br />
+            ILL: Judy Thomson &bull; 610-282-8825 x &bull; ill@solehipl.org<br />
+            IDS ID Number: 105A03<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Springboro Public Library</span><br />
+            110 S. Main St.<br />
+            PO Box 51<br />
+            Springboro, PA 16435
+        </p>
+        <p style="text-align: center;">
+            Director: Joy Post &bull; 814-587-3901 x &bull; springboropl@ccfls.org<br />
+            ILL: Joy Post &bull; 814-587-3901 x &bull; springboropl@neohio.twcbc.com<br />
+            IDS ID Number: 313<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">St. Bernard Regional Catholic School</span><br />
+            300 Clairvaux Drive<br />
+            <br />
+            Indiana, PA 15701
+        </p>
+        <p style="text-align: center;">
+            Director: Ms. Denise Swope &bull; 724-465-7139 x &bull; dswope@stbernardlc.org<br />
+            ILL: Christine Palmer &bull; 724-465-7139 x &bull; CPalmer@stbernardlc.org<br />
+            IDS ID Number: 284A27<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">State Library of Pennsylvania</span><br />
+            607 South Drive<br />
+            Harrisburg, PA 17120-0600
+        </p>
+        <p style="text-align: center;">
+            Director: Kathy Hale &bull; 717-787-2327 &bull; kahale@pa.gov<br />
+            ILL: Victoria Volkov &bull; 717-787-4130 &bull; vvolkov@pa.gov<br />
+            IDS ID Number: 172<br />
+            Consortia: ACLCP, Lyrasis, PALCI, PACSCL, KLN<br />
+            OCLC: PHA
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Stone Memorial Library</span><br />
+            1101 Main Street<br />
+            Conneautville, PA 16406
+        </p>
+        <p style="text-align: center;">
+            Director: Pamela Clark &bull; 814-587-2142 &bull; stone@ccfls.org<br />
+            ILL: Pamela Clark &bull; 814-587-2142 &bull; stone@ccfls.org<br />
+            IDS ID Number: 314<br />
+            Consortia: SHARENW<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Susquehanna University</span><br />
+            514 University Ave.<br />
+            Selinsgrove, PA 17870-1164
+        </p>
+        <p style="text-align: center;">
+            Director: Cindy Whitmoyer &bull; 570-372-4459 &bull; whitmoyer@susqu.edu<br />
+            ILL: Nicole Baer &bull; 570-372-4016 &bull; baern@susqu.edu<br />
+            IDS ID Number: 173<br />
+            Consortia: ACLCP, PALINET, SLC<br />
+            OCLC: SUS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Swarthmore College</span><br />
+            500 College Ave.<br />
+            Swarthmore, PA 19081-1399
+        </p>
+        <p style="text-align: center;">
+            Director: Peggy Seiden &bull; 610-328-8489 &bull; pseiden1@swarthmore.edu<br />
+            ILL: Kerry Kristine McElrone &bull; 610-328-8491 &bull; emailill@swarthmore.edu<br />
+            IDS ID Number: 174<br />
+            Consortia: PALINET, Tri College<br />
+            OCLC: PSC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Temple University - Harrisburg Library</span><br />
+            234 Strawberry Square<br />
+            <br />
+            Harrisburg, PA 17101
+        </p>
+        <p style="text-align: center;">
+            Director: Laura Dimino &bull; 717-232-6400 x232 &bull; laura.dimino@temple.edu<br />
+            ILL: Laura Dimino &bull; 717-232-6400 x232 &bull; teuill@temple.edu<br />
+            IDS ID Number: 339<br />
+            Consortia: RLG SHARES, OCLC, PALCI<br />
+            OCLC: TE61
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Temple University - Samuel Paley Library</span><br />
+            1210 Polett Walk<br />
+            Room 100C<br />
+            Philadelphia, PA 19122-6088
+        </p>
+        <p style="text-align: center;">
+            Director: Joe Lucia &bull; 215-204-8231 &bull; tuf26747@temple.edu<br />
+            ILL: Justin Hill &bull; 215-204-0750 &bull; jhill@temple.edu<br />
+            IDS ID Number: 218<br />
+            Consortia: RLG SHARES, RAPID<br />
+            OCLC: TEU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Thaddeus Stevens College of Tech.</span><br />
+            750 East King St.<br />
+            <br />
+            Lancaster, PA 17602
+        </p>
+        <p style="text-align: center;">
+            Director: J. J. Landis &bull; 717-299-7754 x &bull; landis@stevenscollege.edu<br />
+            ILL: Erica Patel &bull; 717-391-3502 x &bull; patel@stevenscollege.edu<br />
+            IDS ID Number: 298<br />
+            Consortia: PALINET<br />
+            OCLC: PIS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">The Lincoln University</span><br />
+            1570 Baltimore Pike<br />
+            Lincoln University, PA 19352
+        </p>
+        <p style="text-align: center;">
+            Director: Carla Sarratt &bull; 484-365-7262 &bull; csarratt@lincoln.edu<br />
+            ILL: Bonnie Horn &bull; 484-365-7356 &bull; bhorn@lincoln.edu<br />
+            IDS ID Number: 157<br />
+            Consortia: PALINET, TCLC<br />
+            OCLC: LZU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">The New School</span><br />
+            55 W. 13th Street<br />
+            Lower Level<br />
+            New York, NY 10011
+        </p>
+        <p style="text-align: center;">
+            Director: Andy Toulas &bull; 212-229-8914 x3054 &bull; toulasa@newschool.edu<br />
+            ILL: Tammy Kitner &bull; 212-229-8914 x3054 &bull; kitert@newschool.edu<br />
+            IDS ID Number: 372<br />
+            Consortia: Research Consortium of Southern Manhattan, METRO, PALCI<br />
+            OCLC: ZMU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">The New School/Clancy</span><br />
+            2963 Route 22<br />
+            <br />
+            Patterson, NY 12563
+        </p>
+        <p style="text-align: center;">
+            Director: Andy Toulas &bull; 212-229-8914 x3054 &bull; toulasa@newschool.edu<br />
+            ILL: Chi Uwadione &bull; 845-222-0003 x &bull; cuwadione@clancymoving.com<br />
+            IDS ID Number: 373<br />
+            Consortia: Research Consortium of Southern Manhattan, METRO, PALCI<br />
+            OCLC: ZMU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Tulpehocken Bethel Elementary Library</span><br />
+            8390 Lancaster Ave.<br />
+            <br />
+            Bethel, PA 19507
+        </p>
+        <p style="text-align: center;">
+            Director: Lacey Baxter &bull; 610-488-6286 x &bull; lbaxter@tulpehocken.org<br />
+            ILL: Lacey Baxter &bull; 610-488-6286 x &bull; lbaxter@tulpehocken.org<br />
+            IDS ID Number: 297A42<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Tulpehocken High School Library</span><br />
+            430 New Schaefferstown Rd.<br />
+            <br />
+            Bernville, PA 19506
+        </p>
+        <p style="text-align: center;">
+            Director: Elaine Caffarelli &bull; 610-488-6286 x1121 &bull; ecaffarelli@tulpehocken.org<br />
+            ILL: Elaine Caffarelli &bull; 610-488-6286 x1121 &bull; ecaffarelli@tulpehocken.org<br />
+            IDS ID Number: 297A17<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Uniontown Public Library</span><br />
+            24 Jefferson Street<br />
+            <br />
+            Uniontown, PA 15401
+        </p>
+        <p style="text-align: center;">
+            Director: Christy Fusco &bull; 724-437-1165 x &bull; cfusco@uniontownlib.org<br />
+            ILL: Jenna DeFrei &bull; 724-437-1165 x &bull; jdefrei@uniontownlib.org<br />
+            IDS ID Number: 197A20<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pennsylvania</span><br />
+            3420 Walnut Street<br />
+            <br />
+            Philadelphia, PA 19104-6277
+        </p>
+        <p style="text-align: center;">
+            Director: Jon Shaw &bull; 215-573-3626 x &bull; jshaw4@pobox.upenn.edu<br />
+            ILL: Sheila Ketchum &bull; 215-746-1714 x &bull; interlib@pobox.upenn.edu<br />
+            IDS ID Number: 189<br />
+            Consortia: PALINET, RLG<br />
+            OCLC: PAU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pittsburgh</span><br />
+            3960 Forbes Ave.<br />
+            <br />
+            Pittsburgh, PA 15260
+        </p>
+        <p style="text-align: center;">
+            Director: Kornelia Tancheva &bull; 412-648-7705 x &bull; tancheva@pitt.edu<br />
+            ILL: Patricia Colbert &bull; 412-648-7891 x &bull; ptc1@pitt.edu<br />
+            IDS ID Number: 159<br />
+            Consortia: ARL, OLC, PALCI<br />
+            OCLC: PIT
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pittsburgh - Bradford</span><br />
+            300 Campus Drive<br />
+            Bradford, PA 16701-2898
+        </p>
+        <p style="text-align: center;">
+            Director: Marietta Frank &bull; 814-362-7614 &bull; marietta@pitt.edu<br />
+            ILL: Jean Luciano &bull; 814-362-7612 &bull; bradill@pitt.edu<br />
+            IDS ID Number: 295<br />
+            Consortia: PRLC, PALCI<br />
+            OCLC: PIT
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pittsburgh - Greensburg</span><br />
+            150 Finoli Drive<br />
+            Greensburg, PA 15601
+        </p>
+        <p style="text-align: center;">
+            Director: Eve Wider &bull; 724-836-9688 &bull; ewider@pitt.edu<br />
+            ILL: Bobby Walch &bull; 724-836-7123 &bull;  rwalch@pitt.edu<br />
+            IDS ID Number: 289<br />
+            Consortia: PALINET<br />
+            OCLC: PIT
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pittsburgh - Johnstown</span><br />
+            450 Schoolhouse Road<br />
+            <br />
+            Johnstown, PA 15904
+        </p>
+        <p style="text-align: center;">
+            Director: Peter Egler &bull; 814-269-7288 x &bull; pegler@pitt.edu<br />
+            ILL: Sara R. Herr &bull; 814-269-7292 x &bull; herr@pitt.edu<br />
+            IDS ID Number: 179<br />
+            Consortia: PRLC<br />
+            OCLC: PIT
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Pittsburgh - Titusville</span><br />
+            Haskell Memorial Library<br />
+            520 East Main Street<br />
+            Titusville, PA 16354
+        </p>
+        <p style="text-align: center;">
+            Director: Marc Ross &bull; 814-827-4452 x &bull; marcross@pitt.edu<br />
+            ILL: Ann Lucas &bull; 814-827-4414 x &bull; annlu@pitt.edu<br />
+            IDS ID Number: 235<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">University of Scranton</span><br />
+            300 Monroe Ave<br />
+            <br />
+            Scranton, PA 18510-4634
+        </p>
+        <p style="text-align: center;">
+            Director: Charles E. Kratz &bull; 570-941-4008 x &bull; charles.kratz@scranton.edu<br />
+            ILL: Kevin Kocur &bull; 570-941-4003 x &bull; kevin.kocur@scranton.edu<br />
+            IDS ID Number: 177<br />
+            Consortia: NPLN, LYRASIS, AJCU,PALCI<br />
+            OCLC: SRU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Upper Dublin Public Library</span><br />
+            805 Loch Alsh Avenue<br />
+            <br />
+            Fort Washington, PA 19034
+        </p>
+        <p style="text-align: center;">
+            Director: Cherilyn Fiory &bull; 215-628-8744 x &bull; udpstaff@mclinc.org<br />
+            ILL: Caroline Hewitt &bull; 215-628-8744 x &bull; udpstaff@mclinc.org<br />
+            IDS ID Number: 210A18<br />
+            Consortia: MCLINC    Mont. Cty Library &amp;amp; Info Network Consortium<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Upper Merion Township Library</span><br />
+            175 West Valley Forge Rd.<br />
+            <br />
+            King of Prussia, PA 19406
+        </p>
+        <p style="text-align: center;">
+            Director: Laura Arnhold &bull; 610-265-8548 x &bull; larnhold@mclinc.org<br />
+            ILL: Mary Davenport &bull; 610-265-4805 x &bull; mdavenport@mclinc.org<br />
+            IDS ID Number: 210A11<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Upper Moreland Free Public Library</span><br />
+            109 Park Ave.<br />
+            <br />
+            Willow Grove, PA 19090-3277
+        </p>
+        <p style="text-align: center;">
+            Director: Margie Repka-Peters &bull; 215-659-0741 x &bull; MPeters@mclinc.org<br />
+            ILL: InterLibrary Loan &bull; 215-659-0741 x &bull; uppermoreland@mclinc.org<br />
+            IDS ID Number: 210A12<br />
+            Consortia: MCLINC<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Ursinus College</span><br />
+            601 E. Main Street<br />
+            Collegeville, PA 19426
+        </p>
+        <p style="text-align: center;">
+            Director: Maureen Damiano &bull; 610-409-3000 x3607 &bull; mdamiano@ursinus.edu<br />
+            ILL: Dominique de Saint Etienne &bull; 610-409-3000 x3438 &bull; detienne@ursinus.edu<br />
+            IDS ID Number: 363<br />
+            Consortia: TCLC, PALCI (photocopy) LVIS, ACCESS PA<br />
+            OCLC: URS
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Venango Campus - Clarion University of PA</span><br />
+            1801 West First Street<br />
+            <br />
+            Oil City, PA 16301-3297
+        </p>
+        <p style="text-align: center;">
+            Director: Terry Latour &bull; 814-393-1931 x &bull; tlatour@clarion.edu<br />
+            ILL: Brenda Sturtz &bull; 814-676-6591 x1244 &bull; suhrlib@clarion.edu<br />
+            IDS ID Number: 119A01<br />
+            Consortia: NICOP, PALINET, PALCI<br />
+            OCLC: REC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Village Library - Jacobus</span><br />
+            35-C North Main Street<br />
+            <br />
+            Jacobus, PA 17407
+        </p>
+        <p style="text-align: center;">
+            Director: Krystal Fry &bull; 717-428-1034 x &bull; kfry@yorklibraries.org<br />
+            ILL: Krystal Fry &bull; 717-428-1034 x &bull; kfry@yorklibraries.org<br />
+            IDS ID Number: 149A16<br />
+            Consortia: SPIES<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Villanova University</span><br />
+            Falvey Memorial Library<br />
+            800 Lancaster Avenue<br />
+            Villanova, PA 19085
+        </p>
+        <p style="text-align: center;">
+            Director: Millicent Gaskell &bull; 610-519-4290 x &bull; Millicent.gaskell@villanova.edu<br />
+            ILL: Luisa Cywinski &bull; 610-519-5215 x &bull; luisa.cywinski@villanova.edu<br />
+            IDS ID Number: 221<br />
+            Consortia: LYRASIS, TCLC, PALCI, PACSCL<br />
+            OCLC: PVU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Warren Library Association - Seneca DLC</span><br />
+            205 Market Street<br />
+            Warren, PA 16365-2377
+        </p>
+        <p style="text-align: center;">
+            Director: Kelli Knapp &bull; 814-723-4650 &bull; kknapp@warrenlibrary.org<br />
+            ILL: Julie Miller &bull; 814-723-4650 &bull; jmiller@warrenlibrary.org<br />
+            IDS ID Number: 240<br />
+            Consortia: Seneca DLC<br />
+            OCLC: WDL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Washington and Jefferson College</span><br />
+            210 E. Wheeling Street<br />
+            Washington, PA 15301
+        </p>
+        <p style="text-align: center;">
+            Director: Ronalee Ciocco &bull; 724-503-1001 x3039 &bull; rciocco@washjeff.edu<br />
+            ILL: Rachael Bolden &bull; 724-223-6071 &bull; ill@washjeff.edu<br />
+            IDS ID Number: 376<br />
+            Consortia: <br />
+            OCLC: PUG
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Chester University of Pennsylvania</span><br />
+            25 W. Rosedale Ave.<br />
+            West Chester, PA 19383
+        </p>
+        <p style="text-align: center;">
+            Director: Mary Page &bull; 610-436-2643 &bull; mpage@wcupa.edu<br />
+            ILL: Deirdre Childs &bull; 610-738-0480 &bull; dchilds@wcupa.edu<br />
+            IDS ID Number: 190<br />
+            Consortia: Lyrasis, SSHELCO, TCLC, PALCI<br />
+            OCLC: QWC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Pittston Library</span><br />
+            200 Exeter Ave.<br />
+            West Pittston, PA 18643-2442
+        </p>
+        <p style="text-align: center;">
+            Director: David Bauman &bull; 570-654-9847 &bull; dbauman@luzernelibraries.org<br />
+            ILL: Kendra Obrien &bull; 570-654-9847 &bull; kobrien@luzernelibraries.org<br />
+            IDS ID Number: 222A08<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Virginia University	</span><br />
+            1111 Poultry Farm Road<br />
+            Morgantown, WV 26506-6069
+        </p>
+        <p style="text-align: center;">
+            Director: Hilary Fredette &bull; 304-293-0318 &bull; karen.diaz@mail.wvu.edu<br />
+            ILL: Randy Jenkins &bull; 304-293-4174 &bull; randy.jenkins@mail.wvu.edu<br />
+            IDS ID Number: 327A01<br />
+            Consortia: PALCI<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Virginia University</span><br />
+            3 Evansdale Drive<br />
+            <br />
+            Morgantown, WV 26506-6105
+        </p>
+        <p style="text-align: center;">
+            Director: Martha Yancey &bull; 304-293-5039 x &bull; martha.yancey@mail.wvu.wdu<br />
+            ILL: Tiana Phillips &bull; 304-293-9759 x &bull; illevan@mail.wvu.edu<br />
+            IDS ID Number: 327A02<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Virginia University</span><br />
+            One Medical Center Drive<br />
+            <br />
+            Morgantown, WV 26506-9801
+        </p>
+        <p style="text-align: center;">
+            Director: Susan Arnold &bull; 304-293-2105 x &bull; susan.arnold@mail.wvu.edu<br />
+            ILL: Anna Crawford &bull; 304-293-2115 x &bull; anna.crawford@mail.wvu.edu<br />
+            IDS ID Number: 327A03<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Virginia University</span><br />
+            101 Law School Drive<br />
+            Morgantown, WV 26506-6135
+        </p>
+        <p style="text-align: center;">
+            Director: Caroline Osborne &bull; 304-293-3591 &bull; caroline.osborne@mail.wvu.edu<br />
+            ILL: Bethany Bailey  &bull; 304-293-5300 &bull; wvulawbooks@mail.wvu.edu<br />
+            IDS ID Number: 327A04<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">West Virginia University</span><br />
+            1549 University Ave.<br />
+            <br />
+            Morgantown, WV 26505
+        </p>
+        <p style="text-align: center;">
+            Director: Hilary Fredette &bull; 304-293-0318 x &bull; hilary.fredette@mail.wvu.edu<br />
+            ILL: Kyla Lucas &bull; 304-293-0315 x &bull; illdowntown@mail.wvu.edu<br />
+            IDS ID Number: 327<br />
+            Consortia: PALCI<br />
+            OCLC: WVU
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Western Pocono Community Library</span><br />
+            131 Pilgrim Way<br />
+            <br />
+            Brodheadsville, PA 18322
+        </p>
+        <p style="text-align: center;">
+            Director: Carol Kern &bull; 570-992-7934 x &bull; wpcl@ptd.net<br />
+            ILL: Carol Kern &bull; 570-992-7934 x &bull; wpcl@ptd.net<br />
+            IDS ID Number: 126A07<br />
+            Consortia: CONOR<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Westminster College</span><br />
+            319 S. Market St.<br />
+            Interlibrary Loan dept.<br />
+            New Wilmington, PA 16172
+        </p>
+        <p style="text-align: center;">
+            Director: Erin T. Smith &bull; 724-946-7327 &bull; smithet@westminster.edu<br />
+            ILL: Connie Davis &bull; 724-946-7049 &bull; daviscc@westminster.edu<br />
+            IDS ID Number: 171<br />
+            Consortia: LYRASIS<br />
+            OCLC: WFN
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Westmoreland County Federated Library System</span><br />
+            226 Donohoe Road<br />
+            Suite 202<br />
+            Greensburg, PA 15601
+        </p>
+        <p style="text-align: center;">
+            Director: Cesare Muccari &bull; 724-420-5638 x &bull; cesare.muccari@wlnonline.org<br />
+            ILL: Kathy Miller &bull; 724-420-5638 x &bull; kathy.miller@wlnonline.org<br />
+            IDS ID Number: 368<br />
+            Consortia: Share Westmoreland<br />
+            OCLC: MPL
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Whitehall Township Public Library</span><br />
+            3700 Mechanicsville Rd.<br />
+            <br />
+            Whitehall, PA 18052
+        </p>
+        <p style="text-align: center;">
+            Director: Patty Vahey &bull; 610-432-4339 x201 &bull; vahey.p@whitehallpl.org<br />
+            ILL: Chris Andrews &bull; 610-432-4339 x202 &bull; andrews.c@whitehallpl.org<br />
+            IDS ID Number: 105A04<br />
+            Consortia: CarbonLehi<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Widener University</span><br />
+            One University Place<br />
+            <br />
+            Chester, PA 19013
+        </p>
+        <p style="text-align: center;">
+            Director: Deb Morley &bull; 610-499-4087 x &bull; dgmorley@widener.edu<br />
+            ILL: Susan Tsiouris &bull; 610-499-4069 x &bull; sctsiouris@widener.edu<br />
+            IDS ID Number: 186<br />
+            Consortia: CHI, LYRASIS, TCLC, PRILL,SSHELCO, PALCI<br />
+            OCLC: UWC
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wilson High School Library</span><br />
+            4 Cloister Court<br />
+            <br />
+            Sinking Spring, PA 19608
+        </p>
+        <p style="text-align: center;">
+            Director: Rachel Gutzler &bull; 610-670-0180 x1920 &bull; gutrac@wilsonsd.org<br />
+            ILL: Rachel Gutzler &bull; 610-670-0180 x1133 &bull; gutrac@share.wilsonsd.org<br />
+            IDS ID Number: 297A55<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wilson Southern Middle School Library</span><br />
+            4 Cloister court<br />
+            <br />
+            Sinking spring, PA 19608
+        </p>
+        <p style="text-align: center;">
+            Director: Rachel Gutzler &bull; 610-670-0180 x1920 &bull; gutrac@wilsonsd.org<br />
+            ILL: Jennifer Allbee &bull; 610-670-0544 x &bull; alljen@wilsonsd.org<br />
+            IDS ID Number: 297A47<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wilson West Middle School Library</span><br />
+            4 Cloister Court<br />
+            <br />
+            Sinking Spring, PA 19608
+        </p>
+        <p style="text-align: center;">
+            Director: Rachel Gutzler &bull; 610-670-0180 x1920 &bull; gutrac@wilsonsd.org<br />
+            ILL: Cheryl Borja &bull; 610-670-0180 x &bull; borche@wilsonsd.org<br />
+            IDS ID Number: 297A46<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Windber Public Library</span><br />
+            1909 Graham Ave.<br />
+            Windber, PA 15963
+        </p>
+        <p style="text-align: center;">
+            Director: Susan Brandau &bull; 814-467-4950 &bull; windlib@windberlibrary.org<br />
+            ILL: ILL &bull; 814-467-4950 &bull; ill@xxxxxxx.org<br />
+            IDS ID Number: 359<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wissahickon Valley Public Library</span><br />
+            650 Skippack Pike<br />
+            <br />
+            Blue Bell, PA 19422
+        </p>
+        <p style="text-align: center;">
+            Director: Anne Frank &bull; 215-643-1320 x11 &bull; AFrank@wvpl.org<br />
+            ILL: Caroline Frank &bull; 215-643-1320 x23 &bull; cfrank@wvpl.org<br />
+            IDS ID Number: 210A14<br />
+            Consortia: MCMARS<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wyoming Free Library</span><br />
+            358 Wyoming Ave.<br />
+            <br />
+            Wyoming, PA 18644-1822
+        </p>
+        <p style="text-align: center;">
+            Director: John Roberts &bull; 570-693-1364 x &bull; jroberts@osterhout.lib.pa.us<br />
+            ILL: John Roberts &bull; 570-693-1364 x &bull; jroberts@luzernelibraries.org<br />
+            IDS ID Number: 222A09<br />
+            Consortia: <br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">Wyomissing Area Jr./Sr. High Sch. Lib.</span><br />
+            630 Evans Avenue<br />
+            <br />
+            Wyomissing, PA 19610
+        </p>
+        <p style="text-align: center;">
+            Director: Brian Ackerman &bull; 610-374-0739 x2114 &bull; backerman@wyoarea.org<br />
+            ILL: Laurie Balatgek &bull; 610-374-0739 x2161 &bull; lbalatgek@wyoarea.org<br />
+            IDS ID Number: 297A10<br />
+            Consortia: Berks Regional Group<br />
+            OCLC: 
+        </p>
+        
+        <p style="text-align: center;">
+            <span style="font-weight: bold;">York College</span><br />
+            441 Country Club Road<br />
+            <br />
+            York, PA 17403-3651
+        </p>
+        <p style="text-align: center;">
+            Director: Jim Kapoun &bull; 717-815-1353 x &bull; jkapoun@ycp.edu<br />
+            ILL: Megan Blount &bull; 717-815-1485 x &bull; mblount@ycp.edu<br />
+            IDS ID Number: 161<br />
+            Consortia: ACLCP, PALINET, PALCI<br />
+            OCLC: YCP
+        </p>
+        
+    </div>
+    <script>
+            $('.submit').click(function () {
+                trySearch();
+            });
+            $('.clear').click(function () {
+                window.location.href = "/ids_guest/External";
+            });
+            function trySearch() {
+                var library = $(':input[name="library"]').val();
+                var idsid = $(':input[name="idsid"]').val();
+                if (library && idsid) {
+                    $('.errorMessage').show();
+                } else if (library) {
+                    window.location.href = "/ids_guest/External?library=" + library;
+                } else if (idsid) {
+                    window.location.href = "/ids_guest/External?idsid=" + idsid;
+                }
+            }
+    </script>
+    <script>
+            $(function () {
+                $(':input[name="library"]').bind('keypress', function (e) {
+                    if (e.keyCode == 13 || e.which == 13) {
+                        trySearch();
+                    }
+                });
+                $(':input[name="idsid"]').bind('keypress', function (e) {
+                    if (e.keyCode == 13 || e.which == 13) {
+                        trySearch();
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
