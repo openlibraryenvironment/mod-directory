@@ -53,7 +53,11 @@ class DirectoryHousekeepingService {
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
       def cp_url = ensureTextProperty('url');
-      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 'ISO18626', ['system-default'], [ 'url': [ 'http://localhost:9130/rs/iso18626' ] ]);
+      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 
+                                                     'ISO18626', 
+                                                     ['system-default'], 
+                                                     'http://localhost:9130/rs/iso18626',
+                                                     null);
     }
 
     log.info("DirectoryHousekeepingService::setupData(${tenantName},${tenantId}) Completed Normally");
@@ -67,7 +71,7 @@ class DirectoryHousekeepingService {
     return result;
   }
 
-  private Service ensureService(String name, String type, List<String>tags, Map custProps) {
+  private Service ensureService(String name, String type, List<String>tags, String address, Map custProps) {
     
     def result = Service.findByName(name);
 
@@ -78,6 +82,7 @@ class DirectoryHousekeepingService {
       Map service_props = [
         name: name,
         type: type,
+        address: address,
         tags: tags,
         customProperties: custProps
       ]

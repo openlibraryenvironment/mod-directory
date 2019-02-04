@@ -7,11 +7,18 @@
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
       ],
-      symbols:[ { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" } ]
+      symbols:[ { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" } ],
+      services:[
+        { service:{ name:"ReShare ISO18626 Service", address:"https://localhost/reshare/iso18626", type:"ISO18626" } }
+      ]
     },
     { "name":"Bloomsburg University",                        "slug":"Bloomsburg_University",                           status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ],
       "units": [
         { "name":"Bloomsburg University Main Library", "slug":"BLOOMMAIN", "tags": ["Branch"] }
+      ],
+      symbols:[ { "authority":"PALCI", "symbol":"BLOOMMAIN", priority:"a" } ],
+      services:[
+        { service:{ address:"https://localhost/reshare/iso18626" } }
       ]
     },
     { "name":"Bryn Mawr College",                            "slug":"Bryn_Mawr_College",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },

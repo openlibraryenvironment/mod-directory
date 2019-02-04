@@ -7,7 +7,7 @@ import com.k_int.web.toolkit.tags.Tag
 import grails.gorm.MultiTenant
 import com.k_int.web.toolkit.refdata.RefdataValue;
 import com.k_int.web.toolkit.refdata.Defaults;
-
+import com.k_int.web.toolkit.databinding.BindUsingWhenRef
 
 
 /**
@@ -16,10 +16,36 @@ import com.k_int.web.toolkit.refdata.Defaults;
  * symbols from multiple different institutions. This class then models the service
  * itself.
  */
+@BindUsingWhenRef({ obj, propName, source ->
+
+  //@BindUsingWhenRef(org.olf.okapi.modules.directory.Symbol : (unsaved), authority, grails.databinding.SimpleMapDataBindingSource@5d0e003a
+  //Result null
+
+  Service val = null;
+
+  def data = source.getAt(propName)
+
+  // If the data is asking for null binding then ensure we return here.
+  if (data == null) {
+    return null
+  }
+
+  if ( data instanceof Map ) {
+    if ( data.id ) {
+      val = Service.read(data.id);
+    }
+    else if ( data.address ) {
+      val = Service.findByAddress(data.address) ?: new Service(data).save(flush:true, failOnError:true)
+    }
+  }
+
+  val
+})
 class Service  implements CustomProperties,MultiTenant<Service>  {
 
   String id
   String name
+  String address
 
   @Defaults(['Z3950',
              'ISO10161.TCP',
@@ -41,11 +67,13 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
   static mapping = {
                  id column:'se_id', generator: 'uuid', length:36
                name column:'se_name'
+            address column:'se_address'
                type column:'se_type_fk'
   }
 
   static constraints = {
-           name(nullable:false, blank:false)
+           name(nullable:true, blank:false)
            type(nullable:false, blank:false)
+        address(nullable:false, blank:false)
   }
 }

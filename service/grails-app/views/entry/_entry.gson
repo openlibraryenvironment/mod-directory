@@ -2,5 +2,4 @@ import groovy.transform.*
 import org.olf.okapi.modules.directory.DirectoryEntry
 
 @Field DirectoryEntry entry
-json g.render(entry, [expand: [ 'customProperties', 'tags' ]])
-
+json g.render(entry, [expand: [ 'customProperties', 'tags', 'status', 'symbols' ]])
