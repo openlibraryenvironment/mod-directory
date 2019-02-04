@@ -3,7 +3,11 @@
     { "name":"Allegheny College",                            "slug":"Allegheny_College",                               status:"Reference", tags: [ "E-ZBorrow", "Institution" ] ,
       "units": [
         { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
-          "symbols": [ { "authority":"PALCI", "symbol":"ACMAIN", priority:"a" } ]
+          "symbols": [ 
+                       { "authority":"PALCI", "symbol":"ACMAIN", priority:"a" },
+                       { "authority":"IDS",   "symbol":"104",    priority:"a" },
+                       { "authority":"OCLC",  "symbol":"AVL",    priority:"a" }
+                     ]
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
       ],
@@ -16,14 +20,36 @@
       "units": [
         { "name":"Bloomsburg University Main Library", "slug":"BLOOMMAIN", "tags": ["Branch"] }
       ],
-      symbols:[ { "authority":"PALCI", "symbol":"BLOOMMAIN", priority:"a" } ],
+      "symbols":[ 
+        { "authority":"PALCI", "symbol":"BLOOMMAIN", priority:"a" },
+        { "authority":"OCLC", "symbol":"PBB", priority:"a" },
+        { "authority":"IDS", "symbol":"109", priority:"a" } 
+      ],
       services:[
         { service:{ address:"https://localhost/reshare/iso18626" } }
       ]
     },
-    { "name":"Bryn Mawr College",                            "slug":"Bryn_Mawr_College",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
-    { "name":"Bucknell University",                          "slug":"Bucknell University",                             status:"Reference", tags: [ "Institution" ] },
-    { "name":"California University of Pennsylvania",        "slug":"California_University_of_Pennsylvania",           status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
+    { "name":"Bryn Mawr College",                            "slug":"Bryn_Mawr_College",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ],
+      "symbols":[
+        { "authority":"PALCI", "symbol":"BRYN", priority:"a" },
+        { "authority":"OCLC", "symbol":"BMC", priority:"a" },
+        { "authority":"IDS", "symbol":"110", priority:"a" } 
+      ]
+    },
+    { "name":"Bucknell University",                          "slug":"Bucknell University",                             status:"Reference", tags: [ "Institution" ],
+      "symbols":[
+        { "authority":"PALCI", "symbol":"BUCK", priority:"a" },
+        { "authority":"OCLC", "symbol":"PBU", priority:"a" },
+        { "authority":"IDS", "symbol":"160", priority:"a" } 
+      ]
+    },
+    { "name":"California University of Pennsylvania",        "slug":"California_University_of_Pennsylvania",           status:"Reference", tags: [ "E-ZBorrow", "Institution" ] ,
+      "symbols":[
+        { "authority":"PALCI", "symbol":"CUP", priority:"a" },
+        { "authority":"OCLC", "symbol":"CSC", priority:"a" },
+        { "authority":"IDS", "symbol":"112", priority:"a" } 
+      ]
+    },
     { "name":"Carlow University",                            "slug":"Carlow_University",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"Carnegie Mellon University",                   "slug":"Carnegie_Mellon_University",                      status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"Chatham University",                           "slug":"Chatham_University",                              status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
