@@ -4,6 +4,19 @@
   "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json",
   "url":"https://sites.allegheny.edu/",
   "tags":["INSTITUTION"],
+  "units": [
+    { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
+      "symbols": [
+        { "authority":"PALCI", "symbol":"ACMAIN", "priority":"a" },
+        { "authority":"IDS",   "symbol":"104",    "priority":"a" },
+        { "authority":"OCLC",  "symbol":"AVL",    "priority":"a" }
+      ]
+    },
+    { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
+  ],
+  "services":[
+    { "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" } }
+  ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }

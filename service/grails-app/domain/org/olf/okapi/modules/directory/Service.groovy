@@ -47,6 +47,9 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
   String name
   String address
 
+  /**
+   * The actual protocol in use
+   */
   @Defaults(['Z3950',
              'ISO10161.TCP',
              'ISO10161.SMTP',
@@ -57,6 +60,12 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
              'SRW'])
   RefdataValue type
 
+  /**
+   * The business function served - if I want to list all services providing ILL, query this for ILL
+   */
+  @Defaults(['ILL','CIRC','RTAC'])
+  RefdataValue businessFunction
+
   static hasMany = [
     tags:Tag
   ]
@@ -65,15 +74,17 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
   ]
 
   static mapping = {
-                 id column:'se_id', generator: 'uuid', length:36
-               name column:'se_name'
-            address column:'se_address'
-               type column:'se_type_fk'
+                  id column:'se_id', generator: 'uuid', length:36
+                name column:'se_name'
+             address column:'se_address'
+                type column:'se_type_fk'
+    businessFunction column:'se_type_fk'
   }
 
   static constraints = {
-           name(nullable:true, blank:false)
-           type(nullable:false, blank:false)
-        address(nullable:false, blank:false)
+                name(nullable:true, blank:false)
+                type(nullable:false, blank:false)
+             address(nullable:false, blank:false)
+    businessFunction(nullable:true, blank:false)
   }
 }
