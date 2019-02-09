@@ -1,12 +1,14 @@
 {
   "entries":[
     { "name":"Allegheny College",                            "slug":"Allegheny_College",                               status:"Reference", tags: [ "E-ZBorrow", "Institution" ] ,
+      "symbols": [
+                   { "authority":"PALCI", "symbol":"ACMAIN", priority:"a" },
+                   { "authority":"OCLC",  "symbol":"AVL",    priority:"a" }
+      ],
       "units": [
         { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
           "symbols": [ 
-                       { "authority":"PALCI", "symbol":"ACMAIN", priority:"a" },
-                       { "authority":"IDS",   "symbol":"104",    priority:"a" },
-                       { "authority":"OCLC",  "symbol":"AVL",    priority:"a" }
+                       { "authority":"IDS",   "symbol":"104",    priority:"a" }
                      ]
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }

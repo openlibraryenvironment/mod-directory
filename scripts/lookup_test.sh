@@ -24,6 +24,11 @@ curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Co
 echo
 echo Find the ILL service for PALCI:BRYN - this gives us the protocol and the preferred namespace
 echo
+curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/serviceAccount?filters=accountHolder.symbols.symbol%3dBRYN&filters=accountHolder.symbols.authority.symbol%3dPALCI&filters=service.businessFunction.value%3dill&stats=true"
+
+
+echo Find some IDs
+echo
 BYRN_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBRYN&filters=symbols.authority.value=PALCI&stats=true"`
 BRYN_ID=`echo $BYRN_REC | jq -r ".results[0].id" | tr -d '\r'`
 BLOOMSBURG_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBLOOMMAIN&filters=symbols.authority.value=PALCI&stats=true"`

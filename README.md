@@ -4,13 +4,17 @@
 
 mod-directory currently exposes the following resource paths
 
-* [/directory/entry](docs/entry.md) - An entry in the directory
-* [/directory/service](docs/service.md) - A service record
-* [/directory/serviceAccount](docs/serviceAccount.md) - A service account - linking an entry with a service
+* [/directory/entry](doc/entry.md) - An entry in the directory
+* [/directory/service](doc/service.md) - A service record
+* [/directory/serviceAccount](doc/serviceAccount.md) - A service account - linking an entry with a service
+
+Additionally, this document sets out the primary business use case for mod directory
+
+* [/directory/api](doc/api.md) - A utility endpoint for tools and helpers - In particular, looking up symbols in a namespace
 
 Some specific and common stories 
 
-* [Find a service account for a given entry/service pair](docs/discovery.md)
+* [Find a service account for a given entry/service pair](doc/discovery.md)
 
 ## Purpose
 
