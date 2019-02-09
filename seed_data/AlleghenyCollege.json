@@ -15,10 +15,16 @@
     { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
   ],
   "services":[
-    { "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" } }
+    { 
+      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI","IDS"] } 
+    }
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+  ],
+  "announcements":[
+    { "date":"2019-02-08", "expires":"2019-02-09", "code":"LAST_RESPORT", "description":"Due to staff sickness, please consider Allegheny College a lender of last resort today, Friday 8th Feb 2019" }
   ]
 }

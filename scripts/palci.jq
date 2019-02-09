@@ -13,7 +13,10 @@
       ],
       "symbols":[ { "authority":"PALCI", "symbol":"Allegheny_College", priority:"a" } ],
       "services":[
-        { "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" } }
+        { 
+          "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  }  
+        }
       ]
     },
     { "name":"Bloomsburg University",                        "slug":"Bloomsburg_University",                           status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ],

@@ -52,7 +52,10 @@ class DirectoryHousekeepingService {
     // Please note that there is custom databinding at play here which means that in some places what appear to be strings
     // are being converted into java objects looked up in the database. 
     Tenants.withId(tenantId) {
+
+      def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
       def cp_url = ensureTextProperty('url');
+
       def iso_18626_loopback_service = ensureService('loopback-iso-18626', 
                                                      'ISO18626', 
                                                      ['system-default'], 

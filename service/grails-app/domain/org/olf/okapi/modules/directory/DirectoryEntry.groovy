@@ -32,14 +32,16 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
     friends: FriendAssertion,
     units: DirectoryEntry,
     symbols: Symbol,
-    services: ServiceAccount
+    services: ServiceAccount,
+    announcements: Announcement
   ]
 
   static mappedBy = [
     friends: 'owner',
     units: 'parent',
     symbols: 'owner',
-    services: 'accountHolder'
+    services: 'accountHolder',
+    announcements: 'owner',
   ]
 
   static mapping = {
