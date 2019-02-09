@@ -61,4 +61,27 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
          status(nullable:true, blank:false)
 
   }
+
+  /**
+   * Search the symbols attached to this entry to see if we can find one in the nominated
+   * namespace, if not and if there is a parent, try the parent
+   */
+  public String locateSymbolInNamespace(String ns) {
+    String result = null;
+    Symbol located_symbol = symbols.find { it.authority.symbol == ns }
+
+    // If we managed to find a symbol in that namespace, job done, return it
+    if ( located_symbol ) {
+      result = located_symbol.symbol
+    }
+    else {
+      // We didn't, does this entry have a parent?
+      if ( parent ) {
+        // Yes, see if the parent has a symbol matching that NS
+        result = parent.locateSymbolInNamespace(ns);
+      }
+    }
+
+    return result
+  }
 }

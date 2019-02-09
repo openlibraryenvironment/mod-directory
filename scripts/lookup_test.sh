@@ -24,18 +24,19 @@ curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Co
 echo
 echo Find the ILL service for PALCI:BRYN - this gives us the protocol and the preferred namespace
 echo
-curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/serviceAccount?filters=accountHolder.symbols.symbol%3dBRYN&filters=accountHolder.symbols.authority.symbol%3dPALCI&filters=service.businessFunction.value%3dill&stats=true"
+BYRN_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBRYN&filters=symbols.authority.value=PALCI&stats=true"`
+BRYN_ID=`echo $BYRN_REC | jq -r ".results[0].id" | tr -d '\r'`
+BLOOMSBURG_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBLOOMMAIN&filters=symbols.authority.value=PALCI&stats=true"`
+BLOOMSBURG_ID=`echo $BLOOMSBURG_REC | jq -r ".results[0].id" | tr -d '\r'`
 
-# echo Directory test
-# 
-# BRYN_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBRYN&filters=symbols.authority.value=PALCI&stats=true"`
-# BRYN_ID=""
-# BLOOMSBURG_REC=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dBLOOMMAIN&filters=symbols.authority.value=PALCI&stats=true"`
-# BLOOMSBURG_ID=""
+echo $BYRN_REC
+echo $BLOOMSBURG_REC
 
-
-
-# Lookup process
-# Find me all the service records for a given symbol
-# For each service
-# Find me a pair of symbols in the preferred namespace by traversing the tree
+echo
+echo Find Symbols for BRYN $BRYN_ID NS OCLC
+curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/api/findSymbol?for=$BRYN_ID&ns=OCLC"
+echo
+echo Find symbols for BLOOMSBURG $BLOOMSBURG_ID NS OCLC
+curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/api/findSymbol?for=$BLOOMSBURG_ID&ns=OCLC"
+echo
+echo

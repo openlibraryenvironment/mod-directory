@@ -4,6 +4,9 @@ import grails.core.GrailsApplication
 import grails.plugins.*
 import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
+import org.olf.okapi.modules.directory.DirectoryEntry
+import grails.converters.JSON
+
 
 @Slf4j
 @CurrentTenant
@@ -20,5 +23,21 @@ class ApplicationController implements PluginManagerAware {
     if ( request.method=='POST' ) {
       log.debug("ApplicationController::config POST");
     }
+  }
+
+  def findSymbol() {
+    log.debug("findSymbol() ${params}");
+    def result = [:]
+    DirectoryEntry directory_entry = DirectoryEntry.get(params.'for');
+    if ( directory_entry ) {
+      // got entry
+      log.debug("Located directory entry ${directory_entry} - symbols ${directory_entry.symbols.collect { it.symbol } }");
+      result.symbol = directory_entry.locateSymbolInNamespace(params.ns)
+    }
+    else {
+      result.message = "Unable to locate directory entry ${params.'for'}";
+    }
+
+    render result as JSON
   }
 }
