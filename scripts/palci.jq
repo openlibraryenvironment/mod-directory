@@ -29,7 +29,8 @@
         { "authority":"IDS", "symbol":"109", priority:"a" } 
       ],
       services:[
-        { service:{ address:"https://localhost/reshare/iso18626" } }
+        { service:{ address:"https://localhost/reshare/iso18626" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  } }
       ]
     },
     { "name":"Bryn Mawr College",                            "slug":"Bryn_Mawr_College",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ],
@@ -37,6 +38,10 @@
         { "authority":"PALCI", "symbol":"BRYN", priority:"a" },
         { "authority":"OCLC", "symbol":"BMC", priority:"a" },
         { "authority":"IDS", "symbol":"110", priority:"a" } 
+      ],
+      services:[
+        { service:{ address:"https://localhost/reshare/iso18626" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  } }
       ]
     },
     { "name":"Bucknell University",                          "slug":"Bucknell University",                             status:"Reference", tags: [ "Institution" ],
@@ -44,6 +49,10 @@
         { "authority":"PALCI", "symbol":"BUCK", priority:"a" },
         { "authority":"OCLC", "symbol":"PBU", priority:"a" },
         { "authority":"IDS", "symbol":"160", priority:"a" } 
+      ],
+      services:[
+        { service:{ address:"https://localhost/reshare/iso18626" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  } }
       ]
     },
     { "name":"California University of Pennsylvania",        "slug":"California_University_of_Pennsylvania",           status:"Reference", tags: [ "E-ZBorrow", "Institution" ] ,
@@ -51,6 +60,10 @@
         { "authority":"PALCI", "symbol":"CUP", priority:"a" },
         { "authority":"OCLC", "symbol":"CSC", priority:"a" },
         { "authority":"IDS", "symbol":"112", priority:"a" } 
+      ],
+      services:[
+        { service:{ address:"https://localhost/reshare/iso18626" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  } }
       ]
     },
     { "name":"Carlow University",                            "slug":"Carlow_University",                               status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
