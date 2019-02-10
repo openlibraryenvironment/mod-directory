@@ -3,16 +3,39 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 import org.olf.okapi.modules.directory.ServiceAccount
 
 @Field DirectoryEntry directoryEntry
-json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services' ]]) {
+json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services', 'parent' ]]) {
   services {
     // Manually render the services so we don't auto expand the back reference to the owner
 
     def service_accounts = directoryEntry.services.collect {
       [
-        sa_id: it.id
+        id: it.id,
+        service:[
+         id: it.service.id,
+         name: it.service.name,
+         address: it.service.address,
+         type:[
+           id:it.service.type?.id,
+           value:it.service.type?.value
+         ],
+         businessFunction:[
+           id:it.service.businessFunction?.id,
+           value:it.service.businessFunction?.value
+         ]
+        ],
+        accountDetails: it.accountDetails
       ]
     }
 
+
     services service_accounts
   }
+
+  if ( directoryEntry.parent ) {
+    parent {
+      id directoryEntry.parent?.id
+      name directoryEntry.parent?.name
+    }
+  }
+
 }
