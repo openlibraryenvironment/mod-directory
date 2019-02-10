@@ -3,33 +3,38 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 import org.olf.okapi.modules.directory.ServiceAccount
 
 @Field DirectoryEntry directoryEntry
-json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services', 'parent' ]]) {
-  services {
-    // Manually render the services so we don't auto expand the back reference to the owner
+json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services', 'parent', 'units' ]]) {
 
-    def service_accounts = directoryEntry.services.collect {
-      [
-        id: it.id,
-        service:[
-         id: it.service.id,
-         name: it.service.name,
-         address: it.service.address,
-         type:[
-           id:it.service.type?.id,
-           value:it.service.type?.value
-         ],
-         businessFunction:[
-           id:it.service.businessFunction?.id,
-           value:it.service.businessFunction?.value
-         ]
-        ],
-        accountDetails: it.accountDetails
-      ]
-    }
-
-
-    services service_accounts
+  // Manually render the child entries and services so we don't auto expand back references to the owner
+  def child_entries = directoryEntry.units.collect {
+    [
+      id: it.id,
+      name: it.name
+    ]
   }
+
+  def service_accounts = directoryEntry.services.collect {
+    [
+      id: it.id,
+      service:[
+       id: it.service.id,
+       name: it.service.name,
+       address: it.service.address,
+       type:[
+         id:it.service.type?.id,
+         value:it.service.type?.value
+       ],
+       businessFunction:[
+         id:it.service.businessFunction?.id,
+         value:it.service.businessFunction?.value
+       ]
+      ],
+      accountDetails: it.accountDetails
+    ]
+  }
+
+  services service_accounts
+  items child_entries
 
   if ( directoryEntry.parent ) {
     parent {
