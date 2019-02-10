@@ -6,9 +6,13 @@ import org.olf.okapi.modules.directory.ServiceAccount
 json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services' ]]) {
   services {
     // Manually render the services so we don't auto expand the back reference to the owner
-    directoryEntry.services.each { ServiceAccount sa ->
-      // This throws an exception - need steves help
-      // test 'hello'
+
+    def service_accounts = directoryEntry.services.collect {
+      [
+        sa_id: it.id
+      ]
     }
+
+    services service_accounts
   }
 }
