@@ -176,10 +176,10 @@ are IDS and PALCI. In normal use, there will be only one.
 We now know how and where we can send a resource sharing request to. The service account record indicates however that we should identify outselves using the PALCI
 namespace. By using the ID of the directory entry (accountHolder.id - ff80818168d1b4470168d1b643810025 in the json above) and the target namespace (PALCI) we can then find the symbols we need
 
-   curl -sSL -H "X-Okapi-Tenant: diku" \ 
-             -H "X-Okapi-Token: $AUTH_TOKEN" \ 
-             -H "Content-Type: application/json" \ 
-             -X GET "http://localhost:9130/directory/api/findSymbol?for=$ff80818168d1b4470168d1b643810025&ns=PALCI"
+    curl -sSL -H "X-Okapi-Tenant: diku" \ 
+              -H "X-Okapi-Token: $AUTH_TOKEN" \ 
+              -H "Content-Type: application/json" \ 
+              -X GET "http://localhost:9130/directory/api/findSymbol?for=$ff80818168d1b4470168d1b643810025&ns=PALCI"
 
 this call returns
 
@@ -189,10 +189,10 @@ Which is the symbol we should use when sending an ISO18626 request to https://lo
 
 If we wanted the OCLC symbol for this location we would use
 
-   curl -sSL -H "X-Okapi-Tenant: diku" \ 
-             -H "X-Okapi-Token: $AUTH_TOKEN" \ 
-             -H "Content-Type: application/json" \ 
-             -X GET "http://localhost:9130/directory/api/findSymbol?for=$ff80818168d1b4470168d1b643810025&ns=OCLC"
+    curl -sSL -H "X-Okapi-Tenant: diku" \ 
+              -H "X-Okapi-Token: $AUTH_TOKEN" \ 
+              -H "Content-Type: application/json" \ 
+              -X GET "http://localhost:9130/directory/api/findSymbol?for=$ff80818168d1b4470168d1b643810025&ns=OCLC"
 
 
 the same process can be used for the requesting location symbol if needed. If a directory entry does not have a symbol for the given namespace but DOES have
