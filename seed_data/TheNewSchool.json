@@ -1,0 +1,28 @@
+{
+  "name":"The New School",
+  "slug":"The_New_School",
+  "url":"https://www.newschool.edu/",
+  "tags":["INSTITUTION"],
+  "symbols": [
+    { "authority":"OCLC", "symbol":"ZMU", "priority":"a" },
+    { "authority":"RESHARE", "symbol":"TNS", "priority":"a" }
+  ],
+  "units": [
+    { "name":"List Center Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
+    { "name":"University Center Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
+    { "name":"Performing Arts Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
+  ],
+  "services":[
+    { 
+      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties":{ "ILLPreferredNamespaces":["RESHARE", "PALCI", "IDS"] } 
+    }
+  ],
+  "friends":[
+    { "url":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
+    { "url":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+  ],
+  "announcements":[
+    { "date":"2019-02-08", "expires":"2019-02-09", "code":"LAST_RESPORT", "description":"Due to staff sickness, please consider the Performing Arts Library a lender of last resort today, Friday 8th Feb 2019" }
+  ]
+}
