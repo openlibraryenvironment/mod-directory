@@ -46,4 +46,7 @@ json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', '
     }
   }
 
+  tagSummary directoryEntry.getTagSummary()
+  symbolSummary directoryEntry.getSymbolSummary()
+
 }

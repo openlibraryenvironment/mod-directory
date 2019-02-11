@@ -101,7 +101,20 @@
     { "name":"Misericordia University",                      "slug":"Misericordia_University",                         status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
     { "name":"Moravian College",                             "slug":"Moravian_College",                                status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
     { "name":"Muhlenberg College",                           "slug":"Muhlenberg_College",                              status:"Reference", tags: [ "Institution" ] },
-    { "name":"The New School",                               "slug":"The_New_School",                                  status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },
+    { "name":"The New School",                               "slug":"The_New_School",                                  status:"Reference", tags: [ "E-ZBorrow", "Institution" ],
+      "units":[
+        { "name":"List Center Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
+        { "name":"University Center Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
+        { "name":"Performing Arts Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
+      ],
+      "symbols":[ { "authority":"OCLC", "symbol":"ZMU", priority:"a" }, { "authority":"RESHARE", "symbol":"TNS", priority:"a" } ],
+      "services":[
+        { 
+          "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "RESHARE", "PALCI", "IDS" ]  }  
+        }
+      ]
+    },
     { "name":"New York University",                          "slug":"New_York_University",                             status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"Pennsylvania State University",                "slug":"Pennsylvania_State_University",                   status:"Reference", tags: [ "E-ZBorrow","RapidILL", "Institution" ] },
     { "name":"Philadelphia College of Osteopathic Medicine", "slug":"Philadelphia_College_of Osteopathic_Medicine",    status:"Reference", tags: [ "E-ZBorrow", "Institution" ] },

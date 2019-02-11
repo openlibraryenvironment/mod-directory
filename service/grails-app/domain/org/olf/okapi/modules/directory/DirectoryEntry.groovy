@@ -84,4 +84,12 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
 
     return result
   }
+
+  public String getTagSummary() {
+    return tags?.collect {it.value}.join(', ')
+  }
+
+  public String getSymbolSummary() {
+    return symbols?.collect {it.symbol}.join(', ')
+  }
 }
