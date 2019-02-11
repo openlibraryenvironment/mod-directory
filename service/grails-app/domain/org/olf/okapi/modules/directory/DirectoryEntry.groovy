@@ -90,6 +90,17 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   }
 
   public String getSymbolSummary() {
-    return symbols?.collect {it.symbol}.join(', ')
+    return symbols?.collect {it.authority.symbol+':'+it.symbol}.join(', ')
+  }
+
+  public String getFullyQualifiedName() {
+    String result = null;
+    if ( parent ) {
+      result = parent.getFullyQualifiedName() + ' / ' + name
+    }
+    else {
+      result = name
+    }
+    return result;
   }
 }
