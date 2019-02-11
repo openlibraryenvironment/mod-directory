@@ -46,14 +46,89 @@ The idea here is that a service account might support many different business fu
 
 This URL will return the following JSON
 
-
     {
 	"results": [{
-		"id": "ff80818168d1b4470168d1b643830029",
+		"id": "ff80818168dc0f740168dc11cf110027",
 		"accountHolder": {
-                        "id": "ff80818168d1b4470168d1b643810025",
+			"id": "ff80818168dc0f740168dc11cf0f0023",
+			"friends": [],
+			"customProperties": {},
+			"slug": "Bryn_Mawr_College",
+			"tags": [{
+				"id": 18,
+				"normValue": "rapidill",
+				"value": "RapidILL"
+			}, {
+				"id": 9,
+				"normValue": "e-zborrow",
+				"value": "E-ZBorrow"
+			}, {
+				"id": 10,
+				"normValue": "institution",
+				"value": "Institution"
+			}],
+			"symbols": [{
+				"id": "ff80818168dc0f740168dc11cf100025",
+				"priority": "a",
+				"authority": {
+					"id": "ff80818168dc0f740168dc11cd3a0015"
+				},
+				"owner": {
+					"id": "ff80818168dc0f740168dc11cf0f0023"
+				},
+				"symbol": "BRYN"
+			}, {
+				"id": "ff80818168dc0f740168dc11cf110026",
+				"priority": "a",
+				"authority": {
+					"id": "ff80818168dc0f740168dc11ce92001c"
+				},
+				"owner": {
+					"id": "ff80818168dc0f740168dc11cf0f0023"
+				},
+				"symbol": "BMC"
+			}, {
+				"id": "ff80818168dc0f740168dc11cf100024",
+				"priority": "a",
+				"authority": {
+					"id": "ff80818168dc0f740168dc11ccee0013"
+				},
+				"owner": {
+					"id": "ff80818168dc0f740168dc11cf0f0023"
+				},
+				"symbol": "110"
+			}],
 			"name": "Bryn Mawr College",
-                        <<SNIP>>
+			"announcements": [],
+			"status": {
+				"id": "ff80818168dc0f740168dc1064030002",
+				"value": "reference",
+				"label": "Reference",
+				"owner": {
+					"id": "ff80818168dc0f740168dc1063830000",
+					"desc": "DirectoryEntry.Status"
+				}
+			},
+			"services": [{
+				"id": "ff80818168dc0f740168dc11cf110027",
+				"service": {
+					"id": "ff80818168dc0f740168dc11cd330014",
+					"name": "ReShare ISO18626 Service",
+					"address": "https://localhost/reshare/iso18626",
+					"type": {
+						"id": "ff80818168dc0f740168dc1064360007",
+						"value": "iso18626"
+					},
+					"businessFunction": {
+						"id": "ff80818168dc0f740168dc10647b000d",
+						"value": "ill"
+					}
+				},
+				"accountDetails": null
+			}],
+			"tagSummary": "RapidILL, E-ZBorrow, Institution",
+			"symbolSummary": "PALCI:BRYN, OCLC:BMC, IDS:110",
+			"fullyQualifiedName": "Bryn Mawr College"
 		},
 		"customProperties": {
 			"ILLPreferredNamespaces": [{
@@ -67,22 +142,22 @@ This URL will return the following JSON
 			}]
 		},
 		"service": {
-			"id": "ff80818168d1b4470168d1b640620016",
+			"id": "ff80818168dc0f740168dc11cd330014",
 			"address": "https://localhost/reshare/iso18626",
 			"customProperties": {},
 			"tags": [],
 			"name": "ReShare ISO18626 Service",
 			"type": {
-				"id": "ff80818168d1b4470168d1b4bb690004",
+				"id": "ff80818168dc0f740168dc1064360007",
 				"value": "iso18626",
 				"label": "Iso18626",
 				"owner": {
-					"id": "ff80818168d1b4470168d1b4bac70000",
+					"id": "ff80818168dc0f740168dc1064100003",
 					"desc": "Service.Type"
 				}
 			},
 			"businessFunction": {
-				"id": "ff80818168d1b4470168d1b4bbbf000a"
+				"id": "ff80818168dc0f740168dc10647b000d"
 			}
 		}
 	}],
@@ -93,7 +168,6 @@ This URL will return the following JSON
 	"totalRecords": 1,
 	"total": 1
     }
-
 
 Some of the details are omitted for clarity, but note the service entry which gives the address / URL of the endpoint, and the type specifier which tells
 the caller this is an ISO18626 endpoint. Note also the top level customProperties section, which tells us that the preferred namespaces for ISO18626 at Bryn Mawr College
