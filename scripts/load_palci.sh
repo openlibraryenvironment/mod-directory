@@ -25,6 +25,7 @@ count=0
 for row in $(echo "$json_result" | jq -rc ".entries[]" ); do
   echo "Posting ${row}"
   result=$(curl -sSL -H 'Accept:application/json' -H "X-Okapi-Token: $AUTH_TOKEN" -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/directory/entry" -d "${row}")
+  echo $result
   echo $result | jq
   # json_data=`echo "$json_data" | jq ".propertyDefinitions[$count] = $result"`
   count=$((count+1))
