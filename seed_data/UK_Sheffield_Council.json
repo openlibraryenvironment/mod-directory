@@ -1,0 +1,53 @@
+{
+  "name":"Sheffield City Council, UK",
+  "slug":"UKSCC",
+  "url":"https://www.sheffield.gov.uk/",
+  "tags":["INSTITUTION"],
+  "symbols": [
+    { "authority":"RESHARE", "symbol":"UKSCC", "priority":"a" }
+  ],
+  "units": [
+    { "name":"Archives Service", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCAS", "priority":"a" } },
+    { "name":"Broomhill Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCBL", "priority":"a" } },
+    { "name":"Burngreave Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCBGL", "priority":"a" } },
+    { "name":"Central Children's Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCCCL", "priority":"a" } },
+    { "name":"Central Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCCL", "priority":"a" } },
+    { "name":"Chapeltown Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCHL", "priority":"a" } },
+    { "name":"Crystal Peaks Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCCPL", "priority":"a" } },
+    { "name":"Darnall Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCDL", "priority":"a" } },
+    { "name":"Ecclesall Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCECL", "priority":"a" } },
+    { "name":"Ecclesfield Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCIECF", "priority":"a" } },
+    { "name":"Firth Park Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCFPL", "priority":"a" } },
+    { "name":"Frecheville Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCFRL", "priority":"a" } },
+    { "name":"Gleadless Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCGLL", "priority":"a" } },
+    { "name":"Greenhill Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCGRL", "priority":"a" } },
+    { "name":"Highfield Library & Children's Centre", "tags": ["Branch"], "symbols": { "authority":"RESHAREHFL", "symbol":"UKSCC", "priority":"a" } },
+    { "name":"Hillsborough Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCHIL", "priority":"a" } },
+    { "name":"Jordanthorpe Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCJOR", "priority":"a" } },
+    { "name":"Local Studies Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCLSL", "priority":"a" } },
+    { "name":"Manor Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCMAN", "priority":"a" } },
+    { "name":"Newfield Green Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCNGL", "priority":"a" } },
+    { "name":"Park Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCPL", "priority":"a" } },
+    { "name":"Parson Cross Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCPXL", "priority":"a" } },
+    { "name":"Southey Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCSL", "priority":"a" } },
+    { "name":"Stannington Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCSTA", "priority":"a" } },
+    { "name":"Stocksbridge Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCSTO", "priority":"a" } },
+    { "name":"Tinsley Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCTIN", "priority":"a" } },
+    { "name":"Totley Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCTOT", "priority":"a" } },
+    { "name":"Upperthorpe Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCUP", "priority":"a" } },
+    { "name":"Walkley Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCWAL", "priority":"a" } },
+    { "name":"Weston Park Hospital - Hospital Library Service", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCWPH", "priority":"a" } },
+    { "name":"Woodhouse Community Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCWCL", "priority":"a" } },
+    { "name":"Woodseats Library", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"UKSCCWOO", "priority":"a" } }
+  ],
+  "services":[
+    { 
+      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties":{ "ILLPreferredNamespaces":["RESHARE" ] } 
+    }
+  ],
+  "friends":[
+  ],
+  "announcements":[
+  ]
+}
