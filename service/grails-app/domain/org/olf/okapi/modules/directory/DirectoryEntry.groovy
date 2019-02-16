@@ -33,7 +33,8 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
     units: DirectoryEntry,
     symbols: Symbol,
     services: ServiceAccount,
-    announcements: Announcement
+    announcements: Announcement,
+    addresses: Address
   ]
 
   static mappedBy = [
@@ -42,6 +43,7 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
     symbols: 'owner',
     services: 'accountHolder',
     announcements: 'owner',
+    addresses: 'owner',
   ]
 
   static mapping = {
@@ -86,11 +88,17 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   }
 
   public String getTagSummary() {
-    return tags?.collect {it.value}.join(', ')
+    String result = null;
+    if ( tags )
+     result = tags?.collect {it?.value?:'Missing Tag'}.join(', ')
+    return result;
   }
 
   public String getSymbolSummary() {
-    return symbols?.collect {it.authority.symbol+':'+it.symbol}.join(', ')
+    String result = null;
+    if ( symbols )
+      result = symbols?.collect {it?.authority?.symbol+':'+it?.symbol}.join(', ')
+    return result;
   }
 
   public String getFullyQualifiedName() {

@@ -1,0 +1,7 @@
+import groovy.transform.*
+import org.olf.okapi.modules.directory.Address
+
+@Field Address address
+json g.render(address, [expand: [ 'lines', 'tags']])
+
+

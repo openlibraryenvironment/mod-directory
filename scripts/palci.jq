@@ -161,6 +161,50 @@
           ]
         }
       ]
+    },
+    { "name":"DIKU",                      "slug":"DIKU",                                             status:"Managed",   tags: [ "Institution", "Reshare" ],
+      "units":[
+        { "name":"Branch Library A",
+          "symbols": [
+                       { "authority":"ReShare",   "symbol":"DIKUA",    priority:"a" }
+                     ],
+          "addresses": [
+            {
+              addressLabel:"Index Data Denmark office", tags:["DefaultAddress","ShippingAddress"], lines:[
+                { "seq":1, type:"AdministrativeArea", value:"Univate"},
+                { "seq":2, type:"Thoroughfare", value:"Njalsgade 76, 13"},
+                { "seq":3, type:"Department", value:"2300 København S"},
+                { "seq":4, type:"Country", value:"Denmark"}
+              ]
+            }
+          ]
+
+        },
+        { "name":"Branch Library B",
+          "symbols": [
+                       { "authority":"ReShare",   "symbol":"DIKUB",    priority:"a" }
+                     ]
+        },
+        { "name":"Branch Library C",
+          "symbols": [
+                       { "authority":"ReShare",   "symbol":"DIKUC",    priority:"a" }
+                     ]
+        }
+      ],
+      "services":[
+        { 
+          "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }  
+        },
+        { 
+          "service":{ "name":"ReShare ISO10161 Service", "address":"localhost:499", "type":"ISO10161.TCP", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }  
+        },
+        { 
+          "service":{ "name":"ReShare ISO10161 Service", "address":"ill@k-int.com", "type":"GSM.SMTP", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }  
+        }
+      ]
     }
   ]
 }

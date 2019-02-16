@@ -3,7 +3,7 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 import org.olf.okapi.modules.directory.ServiceAccount
 
 @Field DirectoryEntry directoryEntry
-json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements'], excludes:[ 'services', 'parent', 'units' ]]) {
+json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', 'symbols', 'announcements', 'addresses'], excludes:[ 'services', 'parent', 'units' ]]) {
 
   // Manually render the child entries and services so we don't auto expand back references to the owner
   if ( directoryEntry?.units ) {

@@ -1,34 +1,37 @@
 package org.olf.okapi.modules.directory
 
 import grails.gorm.MultiTenant
+import com.k_int.web.toolkit.tags.Tag
 import com.k_int.web.toolkit.custprops.CustomProperties
 import com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
-import com.k_int.web.toolkit.tags.Tag
 import com.k_int.web.toolkit.refdata.RefdataValue;
 import com.k_int.web.toolkit.refdata.Defaults;
 
 
-
-class FriendAssertion  implements MultiTenant<DirectoryEntry>  {
+class Address  implements MultiTenant<Address>  {
 
   String id
+  String addressLabel
 
   static hasMany = [
+    lines: AddressLine,
+    tags:Tag
   ]
 
   static mappedBy = [
+    lines: 'owner'
   ]
 
-  static belongsTo = [ owner: DirectoryEntry, friend_org: DirectoryEntry ]
+  static belongsTo = [
+    owner: DirectoryEntry
+  ]
 
   static mapping = {
-                 id column:'fa_id', generator: 'uuid', length:36
-              owner column:'fa_owner'
-         friend_org column:'fa_friend_org'
+                 id column:'addr_id', generator: 'uuid', length:36
+       addressLabel column:'addr_label'
   }
 
   static constraints = {
-           owner(nullable:false, blank:false)
-      friend_org(nullable:false, blank:false)
+    addressLabel(nullable:false, blank:false)
   }
 }
