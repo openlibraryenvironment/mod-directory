@@ -7,11 +7,15 @@ node {
   }
 
   stage ('test') {
-    sh './gradlew --no-daemon --console=plain clean test'
+    dir ( 'service' ) {
+      sh './gradlew --no-daemon --console=plain clean test'
+    }
   }
 
   stage ('build') {
-    sh './gradlew --no-daemon --console=plain build'
+    dir ( 'service' ) {
+      sh './gradlew --no-daemon --console=plain build'
+    }
   }
 
   stage ('archive') {
