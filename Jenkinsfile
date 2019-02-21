@@ -2,19 +2,19 @@
 
 node {
 
-  stage 'test' {
-    dir("service") {
-      sh './gradlew clean test'
-    }
+  stage ('checkout') {
+    checkout scm
   }
 
-  stage 'build' {
-    dir("service") {
-      sh './gradlew build'
-    }
+  stage ('test') {
+    sh './gradlew --no-daemon --console=plain clean test'
   }
 
-  stage 'archive' {
+  stage ('build') {
+    sh './gradlew --no-daemon --console=plain build'
+  }
+
+  stage ('archive') {
     archiveArtifacts artifacts: 'service/build/libs/mod-directory-*'
   }
 
