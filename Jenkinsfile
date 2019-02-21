@@ -1,21 +1,26 @@
 #!groovy
 
 node {
-  stage 'checkout'
-  checkout scm
-
-  stage 'test'
-  dir("service") {
-    sh './gradlew clean test'
+  stage 'checkout' {
+    checkout scm
   }
 
-  stage 'build'
-  dir("service") {
-    sh './gradlew build'
+  stage 'test' {
+    dir("service") {
+      sh './gradlew clean test'
+    }
   }
 
-  stage 'archive'
-  archiveArtifacts artifacts: 'service/build/libs/mod-directory-*'
+  stage 'build' {
+    dir("service") {
+      sh './gradlew build'
+    }
+  }
+
+  stage 'archive' {
+    archiveArtifacts artifacts: 'service/build/libs/mod-directory-*'
+  }
+
   // step([$class: 'ArtifactArchiver', artifacts: 'build/libs/*.jar', fingerprint: true])
   // 
   // stage 'reports'
