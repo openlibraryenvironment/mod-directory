@@ -90,7 +90,7 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   public String getTagSummary() {
     String result = null;
     if ( tags )
-     result = tags?.collect {it?.value?:'Missing Tag'}.join(', ')
+      result = tags?.collect {it?.value?:'Missing Tag'}.join(', ')
     return result;
   }
 
