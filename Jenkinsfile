@@ -14,7 +14,7 @@ node {
 
   stage ('build') {
     dir ( 'service' ) {
-      sh './gradlew --no-daemon --console=plain build'
+      sh './gradlew --no-daemon --console=plain assemble'
     }
   }
 
