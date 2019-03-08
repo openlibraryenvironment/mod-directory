@@ -1,5 +1,12 @@
 # DirectoryEntry Resources
 
+<!-- md2toc -l 2 entry.md -->
+* [Creating a new DirectoryEntry](#creating-a-new-directoryentry)
+* [Retrive a DirectoryEntry](#retrive-a-directoryentry)
+* [Updating an existing DirectoryEntry](#updating-an-existing-directoryentry)
+* [Searching and filtering DirectoryEntry records](#searching-and-filtering-directoryentry-records)
+
+
 This document is a guid to DirectoryEntry resources. Examples are provided, but the authoritative source
 should be the source code. DirectoryEntry domain instances are defined by the [Directory Entry domain class](../service/grails-app/domain/org/olf/okapi/modules/directory/DirectoryEntry.groovy) and the particular JSON format returned is under the control of [the gson template for directoryEntry](../service/grails-app/views/entry/_entry.gson)
 
