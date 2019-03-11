@@ -21,6 +21,7 @@ class UrlMappings {
 
     // Call /rs/custprop  to list all custom properties
     '/directory/custprops'(resources: 'customPropertyDefinition')
+    '/directory/tags'(resources: 'tags')
 
     "500"(view: '/error')
     "404"(view: '/notFound')
