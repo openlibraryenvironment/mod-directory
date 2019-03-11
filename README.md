@@ -7,6 +7,7 @@ mod-directory currently exposes the following resource paths
 * [/directory/entry](doc/entry.md) - An entry in the directory
 * [/directory/service](doc/service.md) - A service record
 * [/directory/serviceAccount](doc/serviceAccount.md) - A service account - linking an entry with a service
+* [/directory/tags](doc/tag.md) - Tags
 
 Additionally, this document sets out the primary business use case for mod directory
 
