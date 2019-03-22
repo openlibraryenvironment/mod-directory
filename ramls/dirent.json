@@ -24,7 +24,7 @@
 	"authority" : { "type": "string" },
 	"symbol" : { 
           "oneOf" : [
-	    { "type": "string" } },
+	    { "type": "string" },
 	    { "$ref": "#/definitions/Authority" }
 	  ]
 	},
@@ -85,13 +85,13 @@
     "symbols":{
       "type":"array",
       "items":{
-	 { "$ref": "#/definitions/Symbol" }
+	 "$ref": "#/definitions/Symbol"
       }
     },
     "friends":{
       "type":"array",
       "items":{
-	 { "$ref": "#/definitions/Friend" }
+	 "$ref": "#/definitions/Friend"
       }
     }
   },
