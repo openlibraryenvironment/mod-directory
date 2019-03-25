@@ -24,7 +24,7 @@ class ServiceAccount  implements CustomProperties,MultiTenant<ServiceAccount>  {
 
 
   static mapping = {
-                 id column:'sa_id', generator: 'uuid', length:36
+                 id column:'sa_id', generator: 'uuid2', length:36
             service column:'sa_service'
       accountHolder column:'sa_account_holder'
      accountDetails column:'sa_account_details'

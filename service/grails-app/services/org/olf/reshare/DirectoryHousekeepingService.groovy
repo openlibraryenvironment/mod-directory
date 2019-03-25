@@ -55,6 +55,7 @@ class DirectoryHousekeepingService {
 
       def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
       def cp_url = ensureTextProperty('url');
+      def cp_demoprop = ensureTextProperty('demoCustprop');
 
       def iso_18626_loopback_service = ensureService('loopback-iso-18626', 
                                                      'ISO18626', 

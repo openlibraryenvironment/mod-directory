@@ -163,6 +163,17 @@
       ]
     },
     { "name":"DIKU",                      "slug":"DIKU",                                             "status":"Managed",   "tags": [ "Institution", "Reshare" ],
+      "description": "The standard FOLIO DIKU test library",
+      "addresses": [
+        {
+          "addressLabel":"Index Data Denmark office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
+            { "seq":1, "type":"AdministrativeArea", "value":"Univate"},
+            { "seq":2, "type":"Thoroughfare", "value":"Njalsgade 76, 13"},
+            { "seq":3, "type":"Department", "value":"2300 København S"},
+            { "seq":4, "type":"Country", "value":"Denmark"}
+          ]
+        }
+      ],
       "units":[
         { "name":"Branch Library A",
           "symbols": [
@@ -204,7 +215,10 @@
           "service":{ "name":"ReShare ISO10161 Service", "address":"ill@k-int.com", "type":"GSM.SMTP", "businessFunction":"ILL" },
           "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }  
         }
-      ]
+      ],
+      "customProperties":{
+        "demoCustprop": [ "This is a demo custprop on the DIKU test entry" ]
+      }
     }
   ]
 }

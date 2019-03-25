@@ -27,7 +27,7 @@ class Address  implements MultiTenant<Address>  {
   ]
 
   static mapping = {
-                 id column:'addr_id', generator: 'uuid', length:36
+                 id column:'addr_id', generator: 'uuid2', length:36
        addressLabel column:'addr_label'
   }
 

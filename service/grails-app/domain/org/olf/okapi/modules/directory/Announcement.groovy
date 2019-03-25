@@ -27,7 +27,7 @@ class Announcement  implements MultiTenant<Announcement>  {
   ]
 
   static mapping = {
-                 id column:'ann_id', generator: 'uuid', length:36
+                 id column:'ann_id', generator: 'uuid2', length:36
               owner column:'ann_owner_fk'
        announceDate column:'ann_announce_date'
          expiryDate column:'ann_expiry_date'

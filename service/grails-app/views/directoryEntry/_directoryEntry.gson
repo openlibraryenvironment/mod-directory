@@ -13,7 +13,7 @@ json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', '
         name: it.name
       ]
     }
-    items child_entries
+    entries child_entries
   }
 
   if ( directoryEntry.services ) {
