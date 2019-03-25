@@ -30,7 +30,7 @@ class AddressLine  implements MultiTenant<AddressLine>  {
   ]
 
   static mapping = {
-                 id column:'al_id', generator: 'uuid', length:36
+                 id column:'al_id', generator: 'uuid2', length:36
                 seq column:'al_seq'
                type column:'al_type_rv_fk'
               value column:'al_value'

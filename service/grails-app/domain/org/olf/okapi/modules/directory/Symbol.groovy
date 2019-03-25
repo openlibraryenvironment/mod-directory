@@ -26,7 +26,7 @@ class Symbol  implements MultiTenant<Symbol>  {
   ]
 
   static mapping = {
-                 id column:'sym_id', generator: 'uuid', length:36
+                 id column:'sym_id', generator: 'uuid2', length:36
               owner column:'sym_owner_fk'
           authority column:'sym_authority_fk'
              symbol column:'sym_symbol'

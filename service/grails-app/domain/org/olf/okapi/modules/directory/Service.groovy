@@ -74,7 +74,7 @@ class Service  implements CustomProperties,MultiTenant<Service>  {
   ]
 
   static mapping = {
-                  id column:'se_id', generator: 'uuid', length:36
+                  id column:'se_id', generator: 'uuid2', length:36
                 name column:'se_name'
              address column:'se_address'
                 type column:'se_type_fk'
