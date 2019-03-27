@@ -22,7 +22,7 @@ class FriendAssertion  implements MultiTenant<DirectoryEntry>  {
   static belongsTo = [ owner: DirectoryEntry, friend_org: DirectoryEntry ]
 
   static mapping = {
-                 id column:'fa_id', generator: 'uuid', length:36
+                 id column:'fa_id', generator: 'uuid2', length:36
               owner column:'fa_owner'
          friend_org column:'fa_friend_org'
   }

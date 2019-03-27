@@ -52,7 +52,7 @@ class NamingAuthority implements MultiTenant<NamingAuthority>  {
   ]
 
   static mapping = {
-                 id column:'na_id', generator: 'uuid', length:36
+                 id column:'na_id', generator: 'uuid2', length:36
              symbol column:'na_symbol'
   }
 
