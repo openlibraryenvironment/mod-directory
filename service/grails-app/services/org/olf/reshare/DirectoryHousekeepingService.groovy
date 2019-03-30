@@ -12,6 +12,8 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
 
+import org.olf.okapi.modules.directory.NamingAuthority;
+
 import grails.databinding.SimpleMapDataBindingSource 
 
 /**

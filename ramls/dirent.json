@@ -12,6 +12,7 @@
     },
     "Friend": {
       "type":"object",
+      "description": "Used in the traversal of a FOAF style network of self-described directory entries - future feature",
       "properties": {
         "id" : { "type": "string" }
       },

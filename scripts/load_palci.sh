@@ -21,6 +21,8 @@ json_data=`echo '{}' | jq "$json_data_file"`
 json_result="$json_data"
 IFS=$'\n'       # make newlines the only separator
 
+# Set up the naming authorities first
+
 count=0
 for row in $(echo "$json_result" | jq -rc ".entries[]" ); do
   echo "Posting ${row}"

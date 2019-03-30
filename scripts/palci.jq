@@ -1,10 +1,10 @@
 {
   "entries":[
     { "name":"Allegheny College",                            "slug":"Allegheny_College",                               "status":"Reference", "tags": [ "E-ZBorrow", "Institution" ] ,
-      "symbols": [
-                   { "authority":"PALCI", "symbol":"ACMAIN", "priority":"a" },
-                   { "authority":"OCLC",  "symbol":"AVL",    "priority":"a" }
-      ],
+      "symbols":[ { "authority":"RESHARE", "symbol":"ACMAIN", "priority":"a" } ,
+                  { "authority":"PALCI", "symbol":"ACMAIN", "priority":"a" } ,
+                  { "authority":"OCLC",  "symbol":"AVL",    "priority":"a" }
+                  ],
       "units": [
         { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
           "symbols": [ 
@@ -13,11 +13,14 @@
         },
         { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
       ],
-      "symbols":[ { "authority":"PALCI", "symbol":"Allegheny_College", "priority":"a" } ],
       "services":[
         { 
           "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
           "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  }  
+        },
+        { 
+          "service":{ "name":"ReShare ISO10161 Service", "address":"localhost:499", "type":"ISO10161.TCP", "businessFunction":"ILL" },
+          "customProperties": { "ILLPreferredNamespaces": [ "PALCI" ]  }  
         }
       ]
     },
@@ -177,7 +180,8 @@
       "units":[
         { "name":"Branch Library A",
           "symbols": [
-                       { "authority":"ReShare",   "symbol":"DIKUA",    "priority":"a" }
+                       { "authority":"RESHARE",   "symbol":"DIKUA",    "priority":"a" },
+                       { "authority":"PALCI",     "symbol":"DIKUA",    "priority":"a" }
                      ],
           "addresses": [
             {
@@ -193,12 +197,14 @@
         },
         { "name":"Branch Library B",
           "symbols": [
-                       { "authority":"ReShare",   "symbol":"DIKUB",    "priority":"a" }
+                       { "authority":"RESHARE",   "symbol":"DIKUB",    "priority":"a" },
+                       { "authority":"PALCI",     "symbol":"DIKUB",    "priority":"a" }
                      ]
         },
         { "name":"Branch Library C",
           "symbols": [
-                       { "authority":"ReShare",   "symbol":"DIKUC",    "priority":"a" }
+                       { "authority":"RESHARE",   "symbol":"DIKUC",    "priority":"a" },
+                       { "authority":"PALCI",     "symbol":"DIKUC",    "priority":"a" }
                      ]
         }
       ],

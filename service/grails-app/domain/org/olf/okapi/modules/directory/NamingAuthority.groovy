@@ -32,10 +32,16 @@ import com.k_int.web.toolkit.databinding.BindUsingWhenRef
     }
     else if ( data.symbol ) {
       val = NamingAuthority.findBySymbol(data.symbol) ?: new NamingAuthority(symbol:data.symbol).save(flush:true, failOnError:true)
+      // If the ID isn't present - go fetch it
+      if ( val.id == null )
+        val = NamingAuthority.findBySymbol(data.symbol)
     }
   }
   else if ( data instanceof String ) {
     val = NamingAuthority.findBySymbol(data) ?: new NamingAuthority(symbol:data).save(flush:true, failOnError:true)
+    // If the ID isn't present - go fetch it
+    if ( val.id == null )
+      val = NamingAuthority.findBySymbol(data.symbol)
   }
 
   val
