@@ -1,9 +1,8 @@
 response.status 500
+Exception ex = request.getAttribute('exception')
 
-json {    
-  Exception ex = request.exception
+json {
   error 500
-  
   if (ex) {
     stackTrace (ex.stackTrace) { StackTraceElement ste ->
       "${ste}"
