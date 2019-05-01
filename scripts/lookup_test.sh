@@ -45,3 +45,7 @@ echo Find symbols for BLOOMSBURG $BLOOMSBURG_ID NS OCLC
 curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/api/findSymbol?for=$BLOOMSBURG_ID&ns=OCLC"
 echo
 echo
+
+echo
+echo Look up the symbol for RESHARE:DIKUA
+RESHARE_DIKUA=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/entry?filters=symbols.symbol%3dDIKUA&filters=symbols.authority.value=RESHARE&stats=true"`
