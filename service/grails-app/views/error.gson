@@ -1,5 +1,5 @@
 response.status 500
-Exception ex = request.getAttribute('exception')
+Exception ex = request.getAttribute('exception') as Exception
 
 json {
   error 500
