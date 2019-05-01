@@ -8,7 +8,7 @@ json {
     stackTrace (ex.stackTrace) { StackTraceElement ste ->
       "${ste}"
     }
-    message = ex.message
+    message "${ex.message}"
 
   } else {
     message "Unknown Internal server error"
