@@ -157,4 +157,7 @@ environments:
 okapi:
   schema:
     appName: 'mod-directory'
+  service:
+    register: false
+    deploy: false
 
