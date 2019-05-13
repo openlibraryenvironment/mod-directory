@@ -23,6 +23,27 @@ apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.plugins.views-json"
 apply plugin:"com.bmuschko.docker-remote-api"
 
+eclipse {
+  classpath {
+    file {
+      whenMerged {
+        def confEntries = (entries.findAll { it.path == 'grails-app/conf' }) as List
+        
+        if (confEntries) {
+          def singleEnty = confEntries[0]
+          
+          // Remove all the entries.
+          entries.removeAll ( confEntries )
+          
+          // Set the output directory, and re-add.
+          singleEnty.output = "bin/main"
+          entries << singleEnty
+        }
+      }
+    }
+  }
+}
+
 repositories {
   mavenLocal()
   maven { url 'http://maven.k-int.com/content/repositories/releases' }
