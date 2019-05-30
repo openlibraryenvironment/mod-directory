@@ -1,11 +1,11 @@
 #! /bin/sh
-USAGE="Usage: `basename $0` [-h] [-o okapiURL] [-u username] [-p password] [-t tenant] uri"
+USAGE="Usage: `basename $0` [-h] [-o okapiURL] [-t tenant] [-u username] [-p password] uri"
 # e.g. ./okapi-cmd -o https://okapi-reshare.apps.k-int.com -t reshare -u admin -p rE0gNx7m2o "/directory/refdata/DirectoryEntry/Status"
 
+OKAPI="http://localhost:9130"
 TENANT="diku"
 UN="diku_admin"
 PW="admin"
-OKAPI="http://localhost:9130"
 
 # Parse command line options.
 while getopts ho:u:p:t: OPT; do
@@ -17,14 +17,14 @@ while getopts ho:u:p:t: OPT; do
     o)
       OKAPI=$OPTARG
       ;;
+    t)
+      TENANT=$OPTARG
+      ;;
     u)
       UN=$OPTARG
       ;;
     p)
       PW=$OPTARG
-      ;;
-    t)
-      TENANT=$OPTARG
       ;;
     \?)
       # getopts issues an error message
