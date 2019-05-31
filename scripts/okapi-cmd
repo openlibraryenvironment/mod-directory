@@ -1,5 +1,6 @@
 #! /bin/sh
-USAGE="Usage: `basename $0` [-h] [-k] [-o okapiURL] [-t tenant] [-u username] [-p password] uri"
+USAGE="Usage: `basename $0` [-h] [-k] [-o okapiURL] [-t tenant] [-u username] [-p password] uri\n\
+Default parameters can be set by a '.okapirc' file."
 # e.g. ./okapi-cmd -o https://okapi-reshare.apps.k-int.com -t reshare -u admin -p rE0gNx7m2o "/directory/refdata/DirectoryEntry/Status"
 
 INSECURE=
@@ -7,6 +8,10 @@ OKAPI="http://localhost:9130"
 TENANT="diku"
 UN="diku_admin"
 PW="admin"
+
+if [ -f .okapirc ]; then
+  . .okapirc
+fi
 
 # Parse command line options.
 while getopts hko:u:p:t: OPT; do
