@@ -1,6 +1,6 @@
 #! /bin/sh
 USAGE="Usage: `basename $0` [-h] [-k] [-o okapiURL] [-t tenant] [-u username] [-p password] uri\n\
-Default parameters can be set by a '.okapirc' file."
+Default parameters can be set by a '.okapirc' file in working dir or home dir."
 # e.g. ./okapi-cmd -o https://okapi-reshare.apps.k-int.com -t reshare -u admin -p rE0gNx7m2o "/directory/refdata/DirectoryEntry/Status"
 
 INSECURE=
@@ -11,6 +11,8 @@ PW="admin"
 
 if [ -f .okapirc ]; then
   . .okapirc
+elif [ -f $HOME/.okapirc ]; then
+  . $HOME/.okapirc
 fi
 
 # Parse command line options.
