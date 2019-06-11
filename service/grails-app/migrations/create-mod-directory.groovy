@@ -162,11 +162,23 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
+            column(name: "pd_primary", type: "BOOLEAN") {
+                constraints(nullable: "false")
+            }
+
             column(name: "pd_type", type: "VARCHAR(255)") {
                 constraints(nullable: "false")
             }
 
+            column(name: "pd_label", type: "VARCHAR(255)") {
+                constraints(nullable: "false")
+            }
+
             column(name: "pd_description", type: "VARCHAR(255)")
+
+            column(name: "pd_weight", type: "INT") {
+                constraints(nullable: "false")
+            }
         }
     }
 
