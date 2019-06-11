@@ -1,26 +1,41 @@
 #! /bin/sh
-USAGE="Usage: `basename $0` [-h] [-u username] [-p password] [-t tenant] uri"
+USAGE="Usage: `basename $0` [-h] [-k] [-o okapiURL] [-t tenant] [-u username] [-p password] uri\n\
+Default parameters can be set by a '.okapirc' file in working dir or home dir."
+# e.g. ./okapi-cmd -o https://okapi-reshare.apps.k-int.com -t reshare -u admin -p rE0gNx7m2o "/directory/refdata/DirectoryEntry/Status"
 
+INSECURE=
+OKAPI="http://localhost:9130"
 TENANT="diku"
 UN="diku_admin"
 PW="admin"
-OKAPI="http://localhost:9130"
+
+if [ -f .okapirc ]; then
+  . .okapirc
+elif [ -f $HOME/.okapirc ]; then
+  . $HOME/.okapirc
+fi
 
 # Parse command line options.
-while getopts hupt: OPT; do
+while getopts hko:u:p:t: OPT; do
   case "$OPT" in
     h)
       echo $USAGE
       exit 0
+      ;;
+    k)
+      INSECURE=--insecure
+      ;;
+    o)
+      OKAPI=$OPTARG
+      ;;
+    t)
+      TENANT=$OPTARG
       ;;
     u)
       UN=$OPTARG
       ;;
     p)
       PW=$OPTARG
-      ;;
-    t)
-      TENANT=$OPTARG
       ;;
     \?)
       # getopts issues an error message
@@ -43,9 +58,9 @@ fi
 # variables $@, $*, $1, $2, etc. or using this loop:
 URI=$1
 
-AUTH_TOKEN=$(curl -sSL -D - -X POST -H 'accept: application/json' -H 'Content-type: application/json' \
+AUTH_TOKEN=$(curl $INSECURE -sSL -D - -X POST -H 'accept: application/json' -H 'Content-type: application/json' \
     -H "X-Okapi-Tenant: $TENANT" --connect-timeout 5 --max-time 30 -d "{ \"username\":\"${UN}\", \"password\": \"${PW}\" }" \
-    "${OKAPI}/authn/login" | grep -Fi x-okapi-token | sed -r 's/^.*\:\s*(([A-Za-z0-9+\/]+\.){2}[A-Za-z0-9+\/]+)/\1/' | xargs)
-curl -sSL -XGET -H "X-Okapi-Token: ${AUTH_TOKEN}" -H 'accept: application/json' -H 'Content-type: application/json' \
+    "${OKAPI}/authn/login" | grep -Fi x-okapi-token | sed 's/.*: *//;s/.$//' | xargs)
+curl $INSECURE -sSL -XGET -H "X-Okapi-Token: ${AUTH_TOKEN}" -H 'accept: application/json' -H 'Content-type: application/json' \
   -H "X-Okapi-Tenant: $TENANT" --connect-timeout 5 --max-time 30 "${OKAPI}${URI}"
 exit 0

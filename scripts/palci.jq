@@ -15,7 +15,7 @@
       ],
       "services":[
         { 
-          "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+          "service":{ "name":"ReShare ISO18626 Service", "address":"http://localhost:8079/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
           "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  }  
         },
         { 
@@ -34,7 +34,7 @@
         { "authority":"IDS", "symbol":"109", "priority":"a" } 
       ],
       "services":[
-        { "service":{ "address":"https://localhost/reshare/iso18626" },
+        { "service":{ "address":"https://localhost:8079/iso18626" },
           "customProperties": { "ILLPreferredNamespaces": [ "PALCI", "IDS" ]  } }
       ]
     },
@@ -210,7 +210,7 @@
       ],
       "services":[
         { 
-          "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+          "service":{ "name":"Local ISO18626 Service", "address":"https://localhost:8079/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
           "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }  
         },
         { 
