@@ -663,4 +663,11 @@ databaseChangeLog = {
     changeSet(author: "ianibbo (generated)", id: "1550313437708-77") {
         addForeignKeyConstraint(baseColumnNames: "tag_id", baseTableName: "directory_entry_tag", constraintName: "FKt8qbn40lvi5a2hi726uqc5igv", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "tag")
     }
+
+    changeSet(author: "ianibbo (manual)", id: "1550313437708-78") {
+      addColumn(tableName: "directory_entry") {
+        column(name: "de_foaf_url", type: "varchar(255)")
+        column(name: "de_foaf_timestamp", type: "BIGINT")
+      }
+    }
 }
