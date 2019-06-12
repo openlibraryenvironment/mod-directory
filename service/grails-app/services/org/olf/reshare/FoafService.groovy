@@ -2,6 +2,9 @@ package org.olf.reshare
 
 import grails.gorm.transactions.Transactional
 import org.olf.okapi.modules.directory.DirectoryEntry
+import groovyx.net.http.HTTPBuilder
+import groovyx.net.http.Method
+import groovyx.net.http.ContentType
 
 /**
  *
@@ -52,5 +55,55 @@ class FoafService {
   }
 
   private void processFriend(String url) {
+    def http = new HTTPBuilder(url)
+    //http.auth.basic ('username','password')
+    http.request(Method.GET, ContentType.JSON) {
+      headers.'Content-Type' = 'application/json'
+      response.success = { json ->
+        log.debug("Got json response ${json}");
+        // Make sure that the JSON really is an array of foaf descriptions
+        if ( validateJson(json) ) {
+          DirectoryEntry de = DirectoryEntry.findByFoafUrl(url) ?: new DirectoryEntry(foaf:url)
+          de.lastFoafReadTimestamp = System.currentTimeMillis();
+          updateFromJson(de,json)
+          de.save(flush:true, failOnError:true);
+        }
+      }
+      response.failure = { json ->
+        log.warn("Problem processing FOAF URL ${url}");
+      }
+    }
+  }
+
+  private boolean validateJson(json) {
+    boolean result = true;
+    return result;
+  }
+
+  // return true if record updated
+  private boolean updateFromJson(DirectoryEntry de, Map json) {
+    boolean result = false
+
+    // do update
+    result &= mergeField('foaf', de, json);
+    result &= mergeField('name', de, json);
+    result &= mergeField('url', de, json);
+    result &= mergeField('description', de, json);
+    result &= mergeField('slug', de, json);
+
+    return result;
+  }
+
+  /**
+   * Check to see if fieldname is present in json, and if so, compare it to the current value of that field in the object
+   * if different, set that field on the object and return true to signify that the record was updated.
+   */
+  private boolean mergeField(String fieldname, Object obj, Map json) {
+    boolean result = false;
+    if ( json[fieldname] != null ) {
+      obj[fieldname] = json[fieldname]
+      result = true;
+    }
+    return result;
   }
 }
