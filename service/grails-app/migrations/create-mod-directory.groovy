@@ -248,9 +248,7 @@ databaseChangeLog = {
 
             column(name: "de_slug", type: "VARCHAR(255)")
 
-            column(name: "last_foaf_read_timestamp", type: "BIGINT") {
-                constraints(nullable: "false")
-            }
+            column(name: "de_foaf_timestamp", type: "BIGINT")
 
             column(name: "de_foaf_url", type: "VARCHAR(255)")
 
