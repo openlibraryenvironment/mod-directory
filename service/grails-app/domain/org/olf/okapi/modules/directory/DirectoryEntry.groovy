@@ -17,7 +17,7 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   String slug
   String description
   String foafUrl
-  Long lastFoafReadTimestamp
+  Long foafTimestamp
   DirectoryEntry parent
 
   /**
