@@ -60,7 +60,7 @@ Some example queries:
 * `/directory/entry?match=name&match=tags.value&term=college`
   -- finds records that have the term "college" in either the `name` or `tags.value` field.
 * `/directory/entry?filters=tags.value==Branch||tags.value==Community`
-  -- finds records in which at least one tag had the value either "Branch" or "Comunity".
-* `/directory/entry?filters=foo=chicken||for=badger&filters=bar=weasel||bar=stoat` -- finds records where `foo` is either "chicken" or "badger", and `bar` is either "weasel" or "stoat". (There is no way to specify (A and B) or (C and D).)
+  -- finds records in which at least one tag has the value either "Branch" or "Comunity".
+* `/directory/entry?filters=foo=chicken||foo=badger&filters=bar=weasel||bar=stoat` -- finds records where `foo` is either "chicken" or "badger", and `bar` is either "weasel" or "stoat". (There is no way to specify (A and B) or (C and D).)
 
 (I _think_ these parameters are standard in the framework used for building most of the ReShare back-end modules, so similarly formed queries should work on other endpoints within mod-directory, and also in mod-rs and elsewhere.)
