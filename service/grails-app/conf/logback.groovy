@@ -33,6 +33,7 @@ logger ('pubskb', DEBUG)
 logger ('okapi', INFO)
 logger ('folio', DEBUG)
 logger ('org.olf', DEBUG)
+logger ('com.k_int.okapi.OkapiTenantAdminService', DEBUG)
 logger ('com.k_int.okapi.OkapiSchemaHandler', WARN)
 
 def targetDir = BuildSettings.TARGET_DIR

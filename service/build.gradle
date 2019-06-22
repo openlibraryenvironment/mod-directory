@@ -96,8 +96,8 @@ dependencies {
   testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
   // Custom non profile deps.
-  compile 'com.k_int.grails:web-toolkit-ce:3.4.4'
-  compile 'com.k_int.okapi:grails-okapi:3.5.3'
+  compile 'com.k_int.grails:web-toolkit-ce:3.5.3'
+  compile 'com.k_int.okapi:grails-okapi:3.6.2'
 
   compile "org.postgresql:postgresql:42.2.4"
 
@@ -128,6 +128,7 @@ sourceSets {
   main {
     resources {
       srcDir 'grails-app/migrations'
+      srcDir 'src/main/okapi/tenant'
     }
   }
 }
