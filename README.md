@@ -88,3 +88,4 @@ the migrations using one of the following commands:
     grails -Dgrails.env=dbGen dbm-gorm-diff description-of-change.groovy --add
     grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
 
+

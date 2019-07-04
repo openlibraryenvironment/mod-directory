@@ -33,8 +33,19 @@ logger ('pubskb', DEBUG)
 logger ('okapi', INFO)
 logger ('folio', DEBUG)
 logger ('org.olf', DEBUG)
+logger ('com.k_int.okapi.OkapiTenantAdminService', DEBUG)
 logger ('com.k_int.okapi.OkapiSchemaHandler', WARN)
 
+logger ('com.k_int.okapi.OkapiClient', DEBUG)
+//logger 'groovy.net.http.JavaHttpBuilder', DEBUG
+//logger 'groovy.net.http.JavaHttpBuilder.content', DEBUG
+//logger 'groovy.net.http.JavaHttpBuilder.headers', DEBUG
+
+if (Environment.currentEnvironment == Environment.TEST) {
+  logger 'groovy.net.http.JavaHttpBuilder', DEBUG
+  logger 'groovy.net.http.JavaHttpBuilder.content', DEBUG
+  logger 'groovy.net.http.JavaHttpBuilder.headers', DEBUG
+}
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir != null) {
     appender("FULL_STACKTRACE", FileAppender) {

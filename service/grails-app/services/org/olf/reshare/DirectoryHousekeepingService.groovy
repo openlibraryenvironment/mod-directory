@@ -9,6 +9,7 @@ import grails.gorm.transactions.Transactional
 
 import org.olf.okapi.modules.directory.Service
 import com.k_int.web.toolkit.refdata.RefdataValue
+import com.k_int.web.toolkit.refdata.RefdataCategory
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
 
@@ -31,72 +32,7 @@ class DirectoryHousekeepingService {
   @Subscriber('okapi:schema_update')
   public void onSchemaUpdate(tn, tid) {
     log.debug("DirectoryHousekeepingService::onSchemaUpdate(${tn},${tid})")
-    try {
-      // This is a workaround until we can implement an event that fires after all refdata properties
-      // are configured
-      Thread.sleep(2000);
-    }
-    catch ( Exception e ) {
-    }
-    setupData(tn, tid);
   }
 
-  /**
-   * Put calls to estabish any required reference data in here. This method MUST be communtative - IE repeated calls must leave the 
-   * system in the same state. It will be called regularly throughout the lifecycle of a project. It is common to see calls to
-   * lookupOrCreate, or "upsert" type functions in here."
-   */
-  private void setupData(tenantName, tenantId) {
-
-    log.info("DirectoryHousekeepingService::setupData(${tenantName},${tenantId})");
-
-    // Establish a database session in the context of the activated tenant. You can use GORM domain classes inside the closure
-    // Please note that there is custom databinding at play here which means that in some places what appear to be strings
-    // are being converted into java objects looked up in the database. 
-    Tenants.withId(tenantId) {
-
-      def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
-      def cp_url = ensureTextProperty('url');
-      def cp_demoprop = ensureTextProperty('demoCustprop');
-
-      def iso_18626_loopback_service = ensureService('loopback-iso-18626', 
-                                                     'ISO18626', 
-                                                     ['system-default'], 
-                                                     'http://localhost:9130/rs/iso18626',
-                                                     null);
-    }
-
-    log.info("DirectoryHousekeepingService::setupData(${tenantName},${tenantId}) Completed Normally");
-  }
-
-  private CustomPropertyDefinition ensureTextProperty(String name) {
-    CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
-                                        name:name,
-                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class
-                                      ).save(flush:true, failOnError:true);
-    return result;
-  }
-
-  private Service ensureService(String name, String type, List<String>tags, String address, Map custProps) {
-    
-    def result = Service.findByName(name);
-
-    if ( result == null ) {
-      // This is an experiement - lets call the databinder so we can exploit all the clever functions that REST clients 
-      // use like the auto-lookup of refdata and the resolution of custprops property names.
-      result = new org.olf.okapi.modules.directory.Service()
-      Map service_props = [
-        name: name,
-        type: type,
-        address: address,
-        tags: tags,
-        customProperties: custProps
-      ]
-      grailsWebDataBinder.bind result, service_props as SimpleMapDataBindingSource
-      result.save(flush:true, failOnError:true);
-    }
-
-    return result;
-  }
 }
 

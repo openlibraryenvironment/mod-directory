@@ -16,6 +16,8 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
   String name
   String slug
   String description
+  String foafUrl
+  Long foafTimestamp
   DirectoryEntry parent
 
   /**
@@ -53,15 +55,18 @@ class DirectoryEntry  implements MultiTenant<DirectoryEntry>,CustomProperties  {
         description column:'de_desc'
              parent column:'de_parent'
              status column:'de_status_fk'
+            foafUrl column:'de_foaf_url'
+      foafTimestamp column:'de_foaf_timestamp'
   }
 
   static constraints = {
-           name(nullable:false, blank:false)
-           slug(nullable:true, blank:false)
-    description(nullable:true, blank:false)
-         parent(nullable:true, blank:false)
-         status(nullable:true, blank:false)
-
+             name(nullable:false, blank:false)
+             slug(nullable:true, blank:false)
+      description(nullable:true, blank:false)
+           parent(nullable:true, blank:false)
+           status(nullable:true, blank:false)
+          foafUrl(nullable:true, blank:false)
+    foafTimestamp(nullable:true, blank:false)
   }
 
   /**
