@@ -6,7 +6,6 @@ class BootStrap {
 
     OkapiTenantAdminService okapiTenantAdminService
     def init = { servletContext ->
-  
       okapiTenantAdminService.freshenAllTenantSchemas()
     }
     def destroy = {
