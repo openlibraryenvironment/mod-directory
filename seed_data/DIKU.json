@@ -60,7 +60,8 @@
     }
   ],
   "customProperties":{
-    "demoCustprop": [ "This is a demo custprop on the DIKU test entry" ]
+    "demoCustprop": [ "This is a demo custprop on the DIKU test entry" ],
+    "local_ILSBarcode": "This is the barcode used in the local system for this institution"
   },
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
