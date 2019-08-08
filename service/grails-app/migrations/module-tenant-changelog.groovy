@@ -1,4 +1,4 @@
 databaseChangeLog = {
-  include file: 'initial-customisations.groovy'
-  include file: 'create-mod-directory.groovy'
+  include file: 'directory/initial-customisations.groovy'
+  include file: 'directory/create-mod-directory.groovy'
 }
