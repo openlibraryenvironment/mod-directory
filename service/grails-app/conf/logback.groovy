@@ -35,6 +35,7 @@ logger ('folio', DEBUG)
 logger ('org.olf', DEBUG)
 logger ('com.k_int.okapi.OkapiTenantAdminService', DEBUG)
 logger ('com.k_int.okapi.OkapiSchemaHandler', WARN)
+logger ('org.grails.gorm.graphql', WARN)
 
 logger ('com.k_int.okapi.OkapiClient', DEBUG)
 //logger 'groovy.net.http.JavaHttpBuilder', DEBUG
