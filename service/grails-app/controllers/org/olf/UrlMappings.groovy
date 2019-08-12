@@ -7,6 +7,7 @@ class UrlMappings {
     "/"(controller: 'application', action:'index')
 
     "/directory/api/findSymbol"(controller: 'application', action:'findSymbol')
+    "/directory/api/addFriend"(controller: 'application', action:'addFriend')
 
     "/directory/entry"(resources:'directoryEntry')
     "/directory/service"(resources:'Service')

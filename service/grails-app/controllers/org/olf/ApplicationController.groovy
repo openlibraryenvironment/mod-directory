@@ -40,4 +40,10 @@ class ApplicationController implements PluginManagerAware {
 
     render result as JSON
   }
+
+  def addFriend() {
+    def result=[status:'OK']
+    log.debug("ApplicationController::addFriend(${params})");
+    render result as JSON
+  }
 }

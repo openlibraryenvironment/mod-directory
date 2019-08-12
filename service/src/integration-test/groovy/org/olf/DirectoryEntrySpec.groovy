@@ -99,6 +99,24 @@ class DirectoryEntrySpec extends GebSpec {
 
   }
 
+  void "add Friend"(tenant_id, friend_url) {
+    when: "We add a new friend"
+      def dirent = null;
+      def resp = restBuilder().get("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
+        header 'X-Okapi-Tenant', tenant_id
+        authHeaders.rehydrate(delegate, owner, thisObject)()
+        accept 'application/json'
+      }
+
+    then: "New directory entry created with the given name"
+      // dirent.name == name
+      resp.status == OK.value()
+
+    where:
+      tenant_id | friend_url
+      'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json'
+  }
+
   void "Delete the tenants"(tenant_id, note) {
 
     expect:"post delete request to the OKAPI controller for "+tenant_id+" results in OK and deleted tennant"
