@@ -22,8 +22,8 @@ class FoafService {
     log.debug("addFriend(${url})");
 
     if ( ( url != null ) &&
-         ( url.length > 5 ) &&
-         ( url.startsWith('https') ) ) {
+         ( url.length() > 5 ) &&
+         ( url.toLowerCase().startsWith('http') ) ) {
 
 
       if ( shouldVisit(url) ) {
@@ -39,8 +39,8 @@ class FoafService {
     boolean result = false;
     DirectoryEntry de = DirectoryEntry.findByFoafUrl(url)
     if ( de != null ) {
-      if ( ( de.lastFoafReadTimestamp == null ) ||
-           ( System.currentTimeMillis() - de.lastFoafReadTimestamp > MIN_READ_INTERVAL ) ) {
+      if ( ( de.foafTimestamp == null ) ||
+           ( System.currentTimeMillis() - de.foafTimestamp > MIN_READ_INTERVAL ) ) {
         // We know this FOAF URL before but it has never been visited, or it 
         // was more than MIN_READ_INTERVAL ms ago, so lets reread.
         result = true;
@@ -59,12 +59,12 @@ class FoafService {
     //http.auth.basic ('username','password')
     http.request(Method.GET, ContentType.JSON) {
       headers.'Content-Type' = 'application/json'
-      response.success = { json ->
+      response.success = { resp, json ->
         log.debug("Got json response ${json}");
         // Make sure that the JSON really is an array of foaf descriptions
         if ( validateJson(json) ) {
           DirectoryEntry de = DirectoryEntry.findByFoafUrl(url) ?: new DirectoryEntry(foaf:url)
-          de.lastFoafReadTimestamp = System.currentTimeMillis();
+          de.foafTimestamp = System.currentTimeMillis();
           updateFromJson(de,json)
           de.save(flush:true, failOnError:true);
         }
@@ -85,11 +85,11 @@ class FoafService {
     boolean result = false
 
     // do update
-    result &= mergeField('foaf', de, json);
-    result &= mergeField('name', de, json);
-    result &= mergeField('url', de, json);
-    result &= mergeField('description', de, json);
-    result &= mergeField('slug', de, json);
+    result &= mergeField('foaf', 'foafUrl', de, json);
+    result &= mergeField('name', 'name', de, json);
+    // result &= mergeField('url', 'url', de, json);
+    result &= mergeField('description', 'description', de, json);
+    result &= mergeField('slug', 'slug', de, json);
 
     return result;
   }
@@ -98,10 +98,10 @@ class FoafService {
    * Check to see if fieldname is present in json, and if so, compare it to the current value of that field in the object
    * if different, set that field on the object and return true to signify that the record was updated.
    */
-  private boolean mergeField(String fieldname, Object obj, Map json) {
+  private boolean mergeField(String jsonField, String domainModelField, Object obj, Map json) {
     boolean result = false;
-    if ( json[fieldname] != null ) {
-      obj[fieldname] = json[fieldname]
+    if ( json[jsonField] != null ) {
+      obj[domainModelField] = json[jsonField]
       result = true;
     }
     return result;

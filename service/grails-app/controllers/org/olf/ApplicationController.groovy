@@ -6,6 +6,7 @@ import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
 import org.olf.okapi.modules.directory.DirectoryEntry
 import grails.converters.JSON
+import org.olf.reshare.FoafService;
 
 
 @Slf4j
@@ -14,6 +15,7 @@ class ApplicationController implements PluginManagerAware {
 
   GrailsApplication grailsApplication
   GrailsPluginManager pluginManager
+  FoafService foafService
 
   def index() {
     [grailsApplication: grailsApplication, pluginManager: pluginManager]
@@ -44,6 +46,9 @@ class ApplicationController implements PluginManagerAware {
   def addFriend() {
     def result=[status:'OK']
     log.debug("ApplicationController::addFriend(${params})");
+    if ( params.friendUrl ) {
+      foafService.addFriend(params.friendUrl);
+    }
     render result as JSON
   }
 }
