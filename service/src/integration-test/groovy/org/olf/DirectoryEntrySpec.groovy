@@ -52,7 +52,7 @@ class DirectoryEntrySpec extends GebSpec {
       }
 
     then:"The response is correct"
-      resp.status == OK.value()
+      resp.status == CREATED.value()
 
     where:
       tenantid | name
@@ -108,7 +108,7 @@ class DirectoryEntrySpec extends GebSpec {
       }
 
       logger.debug("completed DELETE request on ${tenant_id}");
-      resp.status == OK.value()
+      resp.status == NO_CONTENT.value()
 
     where:
       tenant_id | note
