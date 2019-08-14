@@ -44,7 +44,7 @@ class DirectoryEntrySpec extends GebSpec {
   void "Set up test tenants "(tenantid, name) {
     when:"We post a new tenant request to the OKAPI controller"
 
-      logger.debug("Post new tenant request for ${tenantid} to ${baseUrl}_/tenant");
+      logger.info("Post new tenant request for ${tenantid} to ${baseUrl}_/tenant");
 
       def resp = restBuilder().post("${baseUrl}_/tenant") {
         header 'X-Okapi-Tenant', tenantid
@@ -61,7 +61,7 @@ class DirectoryEntrySpec extends GebSpec {
 
   void "test directory entry creation"(tenantid, name) {
 
-    logger.debug("Sleep 2s to see that schema creation went OK - running test for ${tenantid} ${name}");
+    logger.info("Sleep 2s to see that schema creation went OK - running test for ${tenantid} ${name}");
 
     // Switching context, just want to make sure that the schema had time to finish initialising.
     Thread.sleep(2000)
@@ -100,6 +100,9 @@ class DirectoryEntrySpec extends GebSpec {
   }
 
   void "add Friend"(tenant_id, friend_url) {
+
+    logger.info("Add a friend");
+
     when: "We add a new friend"
       def dirent = null;
       def resp = restBuilder().get("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
@@ -119,6 +122,8 @@ class DirectoryEntrySpec extends GebSpec {
 
   void "Delete the tenants"(tenant_id, note) {
 
+    logger.info("Delete test friend");
+
     expect:"post delete request to the OKAPI controller for "+tenant_id+" results in OK and deleted tennant"
       def resp = restBuilder().delete("$baseUrl/_/tenant") {
         header 'X-Okapi-Tenant', tenant_id
@@ -133,9 +138,9 @@ class DirectoryEntrySpec extends GebSpec {
       'TestTenantG' | 'note'
   }
 
-   RestBuilder restBuilder() {
-        new RestBuilder()
-    }
+  RestBuilder restBuilder() {
+    new RestBuilder()
+  }
 
 }
 
