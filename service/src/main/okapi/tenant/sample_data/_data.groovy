@@ -2,18 +2,15 @@ import grails.gorm.multitenancy.Tenants
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.WithoutTenant
 import grails.gorm.transactions.Transactional
-
 import org.olf.okapi.modules.directory.Service
 import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.refdata.RefdataCategory
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
-
 import org.olf.okapi.modules.directory.NamingAuthority;
-
 import grails.databinding.SimpleMapDataBindingSource
-
-
+import static grails.async.Promises.*
+import org.olf.reshare.FoafService
 
 CustomPropertyDefinition ensureTextProperty(String name) {
   CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
@@ -78,4 +75,3 @@ def iso_18626_loopback_service = ensureService('loopback-iso-18626',
                                                        ['system-default'],
                                                        'http://localhost:9130/rs/iso18626',
                                                        null);
-

@@ -687,4 +687,20 @@ databaseChangeLog = {
     changeSet(author: "sosguthorpe (generated)", id: "1560352943887-80") {
         addForeignKeyConstraint(baseColumnNames: "tag_id", baseTableName: "directory_entry_tag", constraintName: "FKt8qbn40lvi5a2hi726uqc5igv", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "tag")
     }
+
+    changeSet(author: "ianibbo (manual)", id: "20190920-1004-001") {
+
+        addColumn(tableName: "custom_property_definition") {
+            column(name: "default_internal", type: "BOOLEAN") {
+                constraints(nullable: "false")
+            }
+        }
+
+        addColumn(tableName: "custom_property") {
+            column(name: "public_note", type: "CLOB")
+            column(name: "internal", type: "BOOLEAN") {
+                constraints(nullable: "false")
+            }
+        }
+    }
 }

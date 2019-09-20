@@ -15,9 +15,9 @@ class FoafService {
   private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 7 * 1000; // 7 days between directory reads
 
   /**
-   * Add the identified url as a friend
+   * Check a URL to see if it needs to be visited
    */
-  public void addFriend(String url) {
+  public void checkFriend(String url) {
 
     log.debug("addFriend(${url})");
 
@@ -34,7 +34,7 @@ class FoafService {
   }
 
   // return true if we should attempt to visit this URL - currently
-  // returns false if we already know about this URL and have not recently visited it
+  // returns false if we already know about this URL and have recently visited it
   private boolean shouldVisit(String url) {
     boolean result = false;
     DirectoryEntry de = DirectoryEntry.findByFoafUrl(url)

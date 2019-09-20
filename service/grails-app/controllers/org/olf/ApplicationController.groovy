@@ -47,7 +47,7 @@ class ApplicationController implements PluginManagerAware {
     def result=[status:'OK']
     log.debug("ApplicationController::addFriend(${params})");
     if ( params.friendUrl ) {
-      foafService.addFriend(params.friendUrl);
+      foafService.checkFriend(params.friendUrl);
     }
     render result as JSON
   }

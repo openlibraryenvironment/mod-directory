@@ -14,6 +14,14 @@ class UrlMappings {
     "/directory/serviceAccount"(resources:'ServiceAccount')
     "/directory/namingAuthority"(resources:'NamingAuthority')
 
+    "/directory/kiwt/config/$extended?" (controller: 'directoryConfig' , action: "resources")
+    "/directory/kiwt/config/schema/$type" (controller: 'directoryConfig' , action: "schema")
+    "/directory/kiwt/config/schema/embedded/$type" (controller: 'directoryConfig' , action: "schemaEmbedded")
+    "/directory/kiwt/raml" (controller: 'directoryConfig' , action: "raml")
+
+    "/directory/settings/worker" (controller: 'directorySettings', action: 'worker');
+
+
     // Call /rs/refdata to list all refdata categories
     '/directory/refdata'(resources: 'refdata') {
       collection {

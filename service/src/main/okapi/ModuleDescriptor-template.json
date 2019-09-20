@@ -25,6 +25,19 @@
         }
 
       ]
+    },
+    {
+      "id": "_timer",
+      "version": "1.0",
+      "interfaceType": "system",
+      "handlers": [
+        {
+          "methods": [ "POST" ],
+          "pathPattern": "/directory/settings/worker",
+          "unit": "minute",
+          "delay": "5"
+        }
+      ]
     }
   ],
   "permissionSets": [
