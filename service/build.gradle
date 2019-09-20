@@ -85,7 +85,7 @@ dependencies {
   // compile 'org.olf.reshare.dm.directory:dm-directory:0.0.9-graph'
 
   // non-graphql dependency
-  compile 'org.olf.reshare.dm.directory:dm-directory:0.0.9'
+  compile 'org.olf.reshare.dm.directory:dm-directory:1.0.1'
 
 
 

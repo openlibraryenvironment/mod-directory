@@ -702,5 +702,8 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
         }
+        addColumn(tableName: "directory_entry") {
+            column(name: "de_entry_url", type: "VARCHAR(255)")
+        }
     }
 }

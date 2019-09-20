@@ -38,3 +38,7 @@ echo Diku loopback service: $diku_loopback_rec
 
 echo Look up the serviceAccount for diku and loopback-iso-18626
 diku_iso_svc_lookup=`curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/serviceAccount?filter=service.name%3dloopback-iso-18626&accountHolder.name%3ddiku"`
+
+
+echo "Visit FOAF URL for the OLF"
+curl -sSL --header "X-Okapi-Tenant: diku" -H "X-Okapi-Token: $AUTH_TOKEN" -H "Content-Type: application/json" -X GET "http://localhost:9130/directory/api/addFriend?friendUrl=https%3a%2f%2fgithub.com%2fopenlibraryenvironment%2fmod-directory%2fblob%2fmaster%2fseed_data%2folf.json"
