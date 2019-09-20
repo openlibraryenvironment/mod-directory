@@ -7,6 +7,9 @@ import groovyx.net.http.Method
 import groovyx.net.http.ContentType
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.Tenants
+import grails.databinding.SimpleMapDataBindingSource
+import grails.web.databinding.GrailsWebDataBinder
+import groovy.json.JsonSlurper
 
 /**
  *
@@ -15,6 +18,8 @@ import grails.gorm.multitenancy.Tenants
 class FoafService {
 
   private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 7 * 1000; // 7 days between directory reads
+  def grailsWebDataBinder
+
 
   @Subscriber('okapi:dataload:sample')
   public void afterSampleLoaded (final String tenantId, final String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
@@ -74,15 +79,45 @@ class FoafService {
         headers.'Content-Type' = 'application/json'
         response.success = { resp, json ->
           log.debug("Got json response ${json}");
+
+
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
-            DirectoryEntry de = DirectoryEntry.findByFoafUrlOrSlug(url, json.slug) ?: new DirectoryEntry(foafUrl:url, name: json.name)
+
+            // Look up the directory entry for the root
+            DirectoryEntry de = DirectoryEntry.findByFoafUrlOrSlug(url, json.slug)
+
+            // Remove the friends list - we will process it later on
+            Object friends_list = json.remove('friends');
+            Object announcements = json.remove('announcements');
+
+            log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de}");
+            if ( de == null ) {
+              log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})");
+              de = new DirectoryEntry(foafUrl:url, name: json.name)
+            }
+            else {
+              log.debug("DE already exists");
+            }
+
+            // Create a simple binding
+            SimpleMapDataBindingSource source = new SimpleMapDataBindingSource(json)
+
+            // Load the json over the domain object
+            log.debug("About to call grailsWebDataBinder.bind(${de},${source})");
+            grailsWebDataBinder.bind(de, source)
+
+            // update the touched timestamp
             de.foafTimestamp = System.currentTimeMillis();
-            updateFromJson(de,json)
+
+            // save
+            log.debug("Saving...");
             de.save(flush:true, failOnError:true);
 
-            if ( json.friends ) {
-              json.friends.each { fr ->
+            // Process any friends
+            log.debug("Processing friends ${friends_list}");
+            if ( friends_list ) {
+              friends_list.each { fr ->
                 if ( fr.foaf ) {
                   checkFriend(fr.foaf, depth+1);
                 }
@@ -96,7 +131,10 @@ class FoafService {
       }
     }
     catch ( Exception e ) {
-      log.error("Problem trying to process FOAF URL ${url} : ${e.message}")
+      log.error("Problem trying to process FOAF URL ${url} : ${e.message}",e)
+    }
+    finally {
+      log.debug("leaving processFriend(${url},${depth}");
     }
   }
 
