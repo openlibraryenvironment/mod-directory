@@ -75,17 +75,8 @@ dependencies {
   compile "org.hibernate:hibernate-core:5.1.16.Final"
   compile "org.grails.plugins:views-json"
 
-  // There is a pr at https://github.com/grails/gorm-graphql/pull/32 which might resolve the
-  // graphql (No Tenant) issue. Fingers crossed! The issue with the custprop binding to Object remains and is mitigated
-  // by using the exclude construct on the GraphQLMapping.build static
-  //
-  // compile "org.grails:gorm-graphql:1.0.3.BUILD-SNAPSHOT"
-  // compile "org.grails.plugins:gorm-graphql:1.0.3.BUILD-SNAPSHOT"
-  // compile 'com.graphql-java:graphql-java:13.0'
-  // compile 'org.olf.reshare.dm.directory:dm-directory:0.0.9-graph'
-
   // non-graphql dependency
-  compile 'org.olf.reshare.dm.directory:dm-directory:1.0.3'
+  compile 'org.olf.reshare.dm.directory:dm-directory:1.0.4'
 
 
 

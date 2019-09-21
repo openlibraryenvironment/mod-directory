@@ -706,4 +706,10 @@ databaseChangeLog = {
             column(name: "de_entry_url", type: "VARCHAR(255)")
         }
     }
+
+    changeSet(author: "ianibbo (manual)", id: "20190921-1002-001") {
+        addColumn(tableName: "service_account") {
+            column(name: "sa_slug", type: "VARCHAR(255)");
+        }
+    }
 }
