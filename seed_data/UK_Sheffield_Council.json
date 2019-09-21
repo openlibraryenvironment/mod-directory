@@ -42,8 +42,12 @@
   ],
   "services":[
     { 
+      "slug": "UKSCC_ISO18626",
       "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
-      "customProperties":{ "ILLPreferredNamespaces":["RESHARE" ] } 
+      "customProperties":{ 
+        "ILLPreferredNamespaces":["RESHARE" ],
+        "local.localcp": ["Some value"]
+      } 
     }
   ],
   "friends":[

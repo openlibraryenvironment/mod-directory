@@ -47,14 +47,17 @@
   ],
   "services":[
     {
+      "slug": "DIKU_ISO18626",
       "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     },
     {
+      "slug": "DIKU_ISO10161",
       "service":{ "name":"ReShare ISO10161 Service", "address":"localhost:499", "type":"ISO10161.TCP", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     },
     {
+      "slug": "DIKU_GSM",
       "service":{ "name":"ReShare ISO10161 Service", "address":"ill@k-int.com", "type":"GSM.SMTP", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     }

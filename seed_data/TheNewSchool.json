@@ -14,10 +14,12 @@
   ],
   "services":[
     { 
+      "slug":"The_New_School_ISO18626",
       "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["RESHARE", "PALCI", "IDS"] } 
     },
     {
+      "slug":"The_New_School_NCIP",
       "service":{ "name":"NCIP", "address":"alephstage.library.nyu.edu:5994", "type":"NCIP", "businessFunction":"CIRC" }
     }
   ],
