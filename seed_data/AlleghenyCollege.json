@@ -7,9 +7,9 @@
   "units": [
     { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
       "symbols": [
-        { "authority":"PALCI", "symbol":"ACMAIN", "priority":"a" },
-        { "authority":"IDS",   "symbol":"104",    "priority":"a" },
-        { "authority":"OCLC",  "symbol":"AVL",    "priority":"a" }
+        { "authority":{ "symbol":"PALCI"}, "symbol":"ACMAIN", "priority":"a" },
+        { "authority":{ "symbol":"IDS"},   "symbol":"104",    "priority":"a" },
+        { "authority":{ "symbol":"OCLC"},  "symbol":"AVL",    "priority":"a" }
       ]
     },
     { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
