@@ -39,9 +39,7 @@ logger ('com.k_int.web.toolkit', TRACE)
 logger ('org.grails.gorm.graphql', WARN)
 
 logger ('com.k_int.okapi.OkapiClient', DEBUG)
-//logger 'groovy.net.http.JavaHttpBuilder', DEBUG
-//logger 'groovy.net.http.JavaHttpBuilder.content', DEBUG
-//logger 'groovy.net.http.JavaHttpBuilder.headers', DEBUG
+logger ('org.olf.okapi.modules.directory.CustomBinders', DEBUG)
 
 if (Environment.currentEnvironment == Environment.TEST) {
   logger 'groovy.net.http.JavaHttpBuilder', DEBUG

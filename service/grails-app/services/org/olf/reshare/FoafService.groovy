@@ -99,7 +99,7 @@ class FoafService implements DataBinder {
             }
 
             // Load the json over the domain object
-            log.debug("About to call doBind(${de},${source})")
+            log.debug("About to call doBind(${de},${json})")
             
             bindData (de, json)
 
