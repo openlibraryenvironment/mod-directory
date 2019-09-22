@@ -1,24 +1,22 @@
 package org.olf.reshare
 
-import grails.gorm.transactions.Transactional
 import org.olf.okapi.modules.directory.DirectoryEntry
-import groovyx.net.http.HTTPBuilder
-import groovyx.net.http.Method
-import groovyx.net.http.ContentType
+
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.Tenants
-import grails.databinding.SimpleMapDataBindingSource
-import grails.web.databinding.GrailsWebDataBinder
-import groovy.json.JsonSlurper
+import grails.gorm.transactions.Transactional
+import grails.web.databinding.DataBinder
+import groovyx.net.http.ContentType
+import groovyx.net.http.HTTPBuilder
+import groovyx.net.http.Method
 
 /**
  *
  */
 @Transactional
-class FoafService {
+class FoafService implements DataBinder {
 
   private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 7 * 1000; // 7 days between directory reads
-  def grailsWebDataBinder
 
 
   @Subscriber('okapi:dataload:sample')
@@ -88,24 +86,22 @@ class FoafService {
             DirectoryEntry de = DirectoryEntry.findByFoafUrlOrSlug(url, json.slug)
 
             // Remove the friends list - we will process it later on
-            Object friends_list = json.remove('friends');
-            Object announcements = json.remove('announcements');
+            Object friends_list = json.remove('friends')
+            Object announcements = json.remove('announcements')
 
-            log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de}");
+            log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de}")
             if ( de == null ) {
-              log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})");
+              log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})")
               de = new DirectoryEntry(foafUrl:url, name: json.name)
             }
             else {
               log.debug("DE already exists");
             }
 
-            // Create a simple binding
-            SimpleMapDataBindingSource source = new SimpleMapDataBindingSource(json)
-
             // Load the json over the domain object
-            log.debug("About to call grailsWebDataBinder.bind(${de},${source})");
-            grailsWebDataBinder.bind(de, source)
+            log.debug("About to call doBind(${de},${source})")
+            
+            bindData (de, json)
 
             // update the touched timestamp
             de.foafTimestamp = System.currentTimeMillis();
