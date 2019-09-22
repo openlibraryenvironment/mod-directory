@@ -1,0 +1,21 @@
+{
+  "name":"KINT",
+  "slug":"KINT",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json",
+  "url":"https://www.k-int.com",
+  "tags":["INSTITUTION"],
+  "description": "K-Int test institution",
+  "addresses": [
+    {
+      "addressLabel":"K-Int office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
+        { "seq":1, "type":"AdministrativeArea", "value":"Sheffield"},
+        { "seq":2, "type":"Thoroughfare", "value":"35 Paradise Street"},
+        { "seq":3, "type":"Department", "value":"Sheffield"},
+        { "seq":4, "type":"Country", "value":"UK"}
+      ]
+    }
+  ],
+  "symbols": [
+    { "authority":"RESHARE",   "symbol":"KNOWINT01",    "priority":"a" }
+  ]
+}
