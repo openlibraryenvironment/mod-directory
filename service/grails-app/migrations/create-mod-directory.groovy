@@ -691,14 +691,14 @@ databaseChangeLog = {
     changeSet(author: "ianibbo (manual)", id: "20190920-1004-001") {
 
         addColumn(tableName: "custom_property_definition") {
-            column(name: "default_internal", type: "BOOLEAN") {
+            column(name: "default_internal", type: "BOOLEAN", defaultValue: true) {
                 constraints(nullable: "false")
             }
         }
 
         addColumn(tableName: "custom_property") {
             column(name: "public_note", type: "CLOB")
-            column(name: "internal", type: "BOOLEAN") {
+            column(name: "internal", type: "BOOLEAN", defaultValue: true) {
                 constraints(nullable: "false")
             }
         }
