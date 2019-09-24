@@ -13,10 +13,15 @@ import groovyx.net.http.Method
 /**
  *
  */
-@Transactional
 class FoafService implements DataBinder {
 
   private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 7 * 1000; // 7 days between directory reads
+
+  // This is important! without it, all updates will be batched inside a single transaction and
+  // we don't want that.
+  static transactional = false;
+
+  
 
 
   @Subscriber('okapi:dataload:sample')
@@ -76,40 +81,47 @@ class FoafService implements DataBinder {
       http.request(Method.GET, ContentType.JSON) {
         headers.'Content-Type' = 'application/json'
         response.success = { resp, json ->
-          log.debug("Got json response ${json}");
-
+          log.debug("Got json response... slug is ${json?.slug}");
 
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
 
-            // Look up the directory entry for the root
-            DirectoryEntry de = DirectoryEntry.findByFoafUrlOrSlug(url, json.slug)
+            // Remove friends before processing
+            Object friends_list = json.remove('friends')
 
             // Remove the friends list - we will process it later on
-            Object friends_list = json.remove('friends')
             Object announcements = json.remove('announcements')
 
-            log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de}")
-            if ( de == null ) {
-              log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})")
-              de = new DirectoryEntry(foafUrl:url, name: json.name)
+            DirectoryEntry.withNewTransaction { status ->
+              log.info("processing directory entry ${url} - see if we have an entry for that URL or slug ${json.slug}\n\n");
+  
+              // Look up the directory entry for the root
+              DirectoryEntry de = DirectoryEntry.findByFoafUrlOrSlug(url, json.slug)
+  
+  
+              log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de}")
+              if ( de == null ) {
+                log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})")
+                de = new DirectoryEntry(foafUrl:url, name: json.name)
+              }
+              else {
+                log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
+                de.lock()
+              }
+  
+              // Load the json over the domain object
+              log.debug("About to call doBind(${de},${json})")
+              
+              bindData (de, json)
+  
+              // update the touched timestamp
+              de.foafTimestamp = System.currentTimeMillis();
+  
+              // save
+              log.debug("Saving...");
+              de.save(flush:true, failOnError:true);
             }
-            else {
-              log.debug("DE already exists");
-            }
-
-            // Load the json over the domain object
-            log.debug("About to call doBind(${de},${json})")
-            
-            bindData (de, json)
-
-            // update the touched timestamp
-            de.foafTimestamp = System.currentTimeMillis();
-
-            // save
-            log.debug("Saving...");
-            de.save(flush:true, failOnError:true);
-
+  
             // Process any friends
             log.debug("Processing friends ${friends_list}");
             if ( friends_list ) {

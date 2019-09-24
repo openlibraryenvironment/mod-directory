@@ -718,12 +718,23 @@ databaseChangeLog = {
             column(name: "gm_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
+
+            column(name: "version", type: "BIGINT") {
+                constraints(nullable: "false")
+            }
+
             column(name: "gm_group_fk", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
+
             column(name: "gm_member_fk", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
+
+            column(name: "custom_properties_id", type: "BIGINT") {
+                constraints(nullable: "false")
+            }
+
         }
 
         addPrimaryKey(columnNames: "gm_id", constraintName: "GroupMemberPK", tableName: "group_member")
