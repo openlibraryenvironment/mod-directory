@@ -5,8 +5,8 @@
   "url":"http://www.palci.org/",
   "tags":["CONSORTIUM"],
   "members":[
-    { "member":"Allegheny_College" },
-    { "member":"The_New_School" }
+    { "memberOrg":"Allegheny_College" },
+    { "memberOrg":"The_New_School" }
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },

@@ -5,8 +5,8 @@
   "url":"https://projectreshare.org/",
   "tags":["CONSORTIUM"],
   "members":[
-    "DIKU",
-    "KINT"
+    { "memberOrg": "DIKU" },
+    { "memberOrg": "KINT" }
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json" },

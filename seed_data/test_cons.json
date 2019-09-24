@@ -5,9 +5,9 @@
   "url":"http://not.a.real.consortium/",
   "tags":["CONSORTIUM"],
   "members":[
-    "Allegheny_College",
-    "University_of_Borcetshire",
-    "DIKU"
+    { "memberOrg": "Allegheny_College" },
+    { "memberOrg": "University_of_Borcetshire" },
+    { "memberOrg": "DIKU" }
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
