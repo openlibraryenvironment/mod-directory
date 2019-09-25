@@ -33,7 +33,7 @@ class FoafService implements DataBinder {
   public void afterSampleLoaded (final String tenantId, final String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
     log.debug("Sleep until load");
     try {
-      Thread.sleep(1000*120);
+      Thread.sleep(1000*20);
     }
     catch ( Exception e ) {
     }
@@ -122,23 +122,24 @@ class FoafService implements DataBinder {
                   de = new DirectoryEntry(foafUrl:url, name: json.name)
                 }
                 else {
-                  de.refresh();
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
-  
                   def iqr = DirectoryEntry.executeQuery('select de.id, de.version from DirectoryEntry as de where de.id=:id',[id:de.id]);
                   log.debug("Query version: ${iqr}");
-  
                   de.lock()
                 }
     
                 // Load the json over the domain object
                 log.debug("About to call doBind(${de},${json})")
+                log.debug("Info about de.addresses: ${de.addresses} ${de.addresses?.size()} ${de.addresses?.class?.name}");
                 
                 bindData (de, json)
     
                 // update the touched timestamp
                 de.foafTimestamp = System.currentTimeMillis();
     
+                log.debug("Dumping DE befoe save.....");
+                dumpDE(de);
+
                 // save
                 log.debug("Saving...");
                 de.save(flush:true, failOnError:true);
@@ -208,5 +209,17 @@ class FoafService implements DataBinder {
       result = true;
     }
     return result;
+  }
+
+  private void dumpDE(DirectoryEntry de, depth=0) {
+    if ( de != null ) {
+      log.debug("${'  '*depth} - DE ${de.id} ${de.version} ${de.slug}");
+      de.symbols.each {
+        log.debug("${'  '*depth}   - SYMBOL ${it.id} ${it}");
+      }
+      de.units.each {
+        dumpDE(it, depth+1);
+      }
+    }
   }
 }
