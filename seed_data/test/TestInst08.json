@@ -1,0 +1,11 @@
+{
+  "name":"TestInst08",
+  "slug":"TestInst08",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst08.json",
+  "url":"https://www.k-int.com",
+  "tags":["INSTITUTION"],
+  "description": "Reshare test institution",
+  "symbols": [
+    { "authority":"RESHARE",   "symbol":"TESTINST08",    "priority":"a" }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name":"Test Consortium",
+  "slug":"TestCons001",
+  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json",
+  "url":"http://not.a.real.consortium/",
+  "tags":["CONSORTIUM"],
+  "members":[
+    "DIKU",
+    "KINT",
+    "TestInst01",
+    "TestInst02",
+    "TestInst03",
+    "TestInst04",
+    "TestInst05",
+    "TestInst06",
+    "TestInst07",
+    "TestInst08",
+    "TestInst09",
+    "TestInst10"
+  ],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst01.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst02.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst03.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst04.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst05.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst06.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst07.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst08.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst09.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst10.json" }
+  ]
+}
