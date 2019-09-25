@@ -57,21 +57,12 @@ if (existing_tenant) {
   return
 }
 
-try {
-  log.debug("Sleeping.....")
-  synchronized(this) {
-    Thread.sleep(3000);
-  }
-}
-catch ( Exception e ) {
-}
+// def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
+// def cp_url = ensureTextProperty('url');
+// def cp_demoprop = ensureTextProperty('demoCustprop');
 
-def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
-def cp_url = ensureTextProperty('url');
-def cp_demoprop = ensureTextProperty('demoCustprop');
-
-def iso_18626_loopback_service = ensureService('loopback-iso-18626',
-                                                       'ISO18626',
-                                                       ['system-default'],
-                                                       'http://localhost:9130/rs/iso18626',
-                                                       null);
+// def iso_18626_loopback_service = ensureService('loopback-iso-18626',
+//                                                        'ISO18626',
+//                                                        ['system-default'],
+//                                                        'http://localhost:9130/rs/iso18626',
+//                                                        null);
