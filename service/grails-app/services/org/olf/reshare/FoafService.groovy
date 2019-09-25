@@ -214,6 +214,7 @@ class FoafService implements DataBinder {
   private void dumpDE(DirectoryEntry de, depth=0) {
     if ( de != null ) {
       log.debug("${'  '*depth} - DE ${de.id} ${de.version} ${de.slug}");
+      log.debug("${'  '*depth} - Symbols array: ${de.symbols?.class?.name} ${de.symbols?.size()}");
       de.symbols.each {
         log.debug("${'  '*depth}   - SYMBOL ${it.id} ${it}");
       }
