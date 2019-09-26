@@ -1,7 +1,7 @@
 {
   "name":"Test Consortium",
   "slug":"TestCons001",
-  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json",
   "url":"http://not.a.real.consortium/",
   "tags":["CONSORTIUM"],
   "members":[

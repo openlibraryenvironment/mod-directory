@@ -78,7 +78,7 @@ class FoafService implements DataBinder {
     }
     else {
       // We have not seen this URL before (At some point, we should probably have a blacklist to check)
-      log.debug("Matched a directory entry for foaf URL ${url} and its not expired yet")
+      log.debug("Matched a directory entry for foaf URL ${url} but its not expired yet")
       result = false;
     }
 
@@ -133,6 +133,9 @@ class FoafService implements DataBinder {
                 log.debug("Info about de.addresses: ${de.addresses} ${de.addresses?.size()} ${de.addresses?.class?.name}");
                 
                 bindData (de, json)
+
+                if ( ( de.foafUrl == null ) && ( url != null ) )
+                  de.foafUrl = url;
     
                 // update the touched timestamp
                 de.foafTimestamp = System.currentTimeMillis();

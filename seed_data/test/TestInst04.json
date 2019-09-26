@@ -1,7 +1,7 @@
 {
   "name":"TestInst04",
   "slug":"TestInst04",
-  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst04.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst04.json",
   "url":"https://www.k-int.com",
   "tags":["INSTITUTION"],
   "description": "Reshare test institution",
