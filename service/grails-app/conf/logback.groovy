@@ -42,7 +42,7 @@ logger ('com.k_int.okapi.OkapiClient', DEBUG)
 logger ('org.olf.okapi.modules.directory.CustomBinders', DEBUG)
 
 // LOG SQL - VERBOSE!!!!!!
-logger 'org.hibernate.SQL', TRACE, ['STDOUT']
+// logger 'org.hibernate.SQL', TRACE, ['STDOUT']
 
 // This one for SQL bind parameters
 // logger 'org.hibernate.type.descriptor.sql.BasicBinder', TRACE, ['STDOUT']
