@@ -80,7 +80,7 @@ public class AppListenerService implements ApplicationListener {
 
   private logDirectoryEvent(DirectoryEntry de, String tenant) {
 
-    String topic = "${tenant}_DirectoryServiceEvents".toString()
+    String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
     Map entry_data = [
       id: de.id,

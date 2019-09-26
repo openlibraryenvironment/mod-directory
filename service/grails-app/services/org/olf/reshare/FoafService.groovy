@@ -50,9 +50,6 @@ class FoafService implements DataBinder {
    * Check a URL to see if it needs to be visited.
    */
   public void checkFriend(String url, int depth = 0) {
-
-    log.debug("checkFriend(${url}, ${depth})");
-
     if ( ( url != null ) &&
          ( url.length() > 5 ) &&
          ( url.toLowerCase().startsWith('http') ) && 
@@ -73,12 +70,10 @@ class FoafService implements DataBinder {
     if ( p == 0 ) {
       // We know this FOAF URL before but it has never been visited, or it 
       // was more than MIN_READ_INTERVAL ms ago, so lets reread.
-      log.debug("No directory entry found for foaf URL ${url} and timestamp expired");
       result = true;
     }
     else {
       // We have not seen this URL before (At some point, we should probably have a blacklist to check)
-      log.debug("Matched a directory entry for foaf URL ${url} but its not expired yet")
       result = false;
     }
 
@@ -92,8 +87,6 @@ class FoafService implements DataBinder {
       http.request(Method.GET, ContentType.JSON) {
         headers.'Content-Type' = 'application/json'
         response.success = { resp, json ->
-          log.debug("Got json response... slug is ${json?.slug}");
-
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
 
@@ -128,10 +121,6 @@ class FoafService implements DataBinder {
                   de.lock()
                 }
     
-                // Load the json over the domain object
-                log.debug("About to call doBind(${de},${json})")
-                log.debug("Info about de.addresses: ${de.addresses} ${de.addresses?.size()} ${de.addresses?.class?.name}");
-                
                 bindData (de, json)
 
                 if ( ( de.foafUrl == null ) && ( url != null ) )
@@ -140,11 +129,9 @@ class FoafService implements DataBinder {
                 // update the touched timestamp
                 de.foafTimestamp = System.currentTimeMillis();
     
-                log.debug("Dumping DE befoe save.....");
-                dumpDE(de);
+                // dumpDE(de);
 
                 // save
-                log.debug("Saving...");
                 de.save(flush:true, failOnError:true);
                 session.flush();
               }
