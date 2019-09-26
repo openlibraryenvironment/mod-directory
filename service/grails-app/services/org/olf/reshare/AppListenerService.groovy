@@ -86,8 +86,33 @@ public class AppListenerService implements ApplicationListener {
       id: de.id,
       name: de.name,
       slug: de.slug,
-      foafUrl: de.foafUrl
+      foafUrl: de.foafUrl,
+      services:[],
+      symbols:[]
     ]
+
+    de.services.each { svc ->
+      entry_data.services.add([id:svc.id, 
+                    slug:svc.slug, 
+                    service:[
+                      id: svc.service.id,
+                      name: svc.service.name,
+                      address: svc.service.address,
+                      type: svc.service.type?.value,
+                      businessFunction: svc.service.businessFunction?.value,
+                    ]])
+    }
+
+    de.symbols.each { sym ->
+      entry_data.symbols.add (
+        [
+          id: sym.id,
+          authority: sym.authority.symbol,
+          symbol: sym.symbol,
+          priority: sym.priority
+        ]
+      );
+    }
 
     log.debug("Publish NewPatronRequest_ind event on topic ${topic} ${entry_data}");
 
@@ -97,6 +122,8 @@ public class AppListenerService implements ApplicationListener {
         slug: de.parent.slug
       ]
     }
+
+
 
     eventPublicationService.publishAsJSON(
           topic,
