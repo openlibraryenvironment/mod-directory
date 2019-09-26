@@ -20,7 +20,8 @@
     },
     {
       "slug":"The_New_School_NCIP",
-      "service":{ "name":"NCIP", "address":"alephstage.library.nyu.edu:5994", "type":"NCIP", "businessFunction":"CIRC" }
+      "service":{ "name":"NCIP", "address":"alephstage.library.nyu.edu:5994", "type":"NCIP", "businessFunction":"CIRC" },
+      "customProperties":{ "TestParam":["Testing service account with custprop. this was failing without this prop"] }
     }
   ],
   "friends":[
