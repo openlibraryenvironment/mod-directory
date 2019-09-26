@@ -123,14 +123,12 @@ public class AppListenerService implements ApplicationListener {
       ]
     }
 
-
-
     eventPublicationService.publishAsJSON(
           topic,
           null,             // key
           [
             event:'DirectoryEntryChange_ind',
-            tenant: tenant,
+            tenant: tenant.replaceAll('_mod_directory',''),  // Strip out the module name so we're left with just the tenant
             oid:'org.olf.okapi.modules.directory.DirectoryEntry:'+de.id,
             payload:entry_data
           ]
