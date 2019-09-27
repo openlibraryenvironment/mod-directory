@@ -119,7 +119,8 @@ public class AppListenerService implements ApplicationListener {
     if ( de.parent != null ) {
       entry_data.parent = [
         id: de.parent.id,
-        slug: de.parent.slug
+        slug: de.parent.slug,
+        name: de.parent.name
       ]
     }
 
