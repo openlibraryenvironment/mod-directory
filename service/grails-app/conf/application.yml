@@ -114,6 +114,30 @@ dataSource:
   url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
   schemaHandler: com.k_int.okapi.OkapiSchemaHandler
 
+events:
+  consumer:
+    zk:
+      connect: 'localhost:2181'
+    bootstrap:
+      servers: 'localhost:9092'
+    key:
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value:
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    group:
+      id: ModDirectoryConsumer
+
+  publisher:
+    zk:
+      connect: 'localhost:2181'
+    bootstrap:
+      servers: 'localhost:9092'
+    key:
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    value:
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+
+
 environments:
   test:
     dataSource:
@@ -152,6 +176,7 @@ environments:
         abandonWhenPercentageFull: 50
         jdbcInterceptors: ConnectionState
         defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+ 
 okapi:
   schema:
     appName: 'mod-directory'

@@ -39,7 +39,14 @@ logger ('com.k_int.web.toolkit', TRACE)
 logger ('org.grails.gorm.graphql', WARN)
 
 logger ('com.k_int.okapi.OkapiClient', DEBUG)
-logger ('org.olf.okapi.modules.directory.CustomBinders', DEBUG)
+logger ('org.olf.okapi.modules.directory.CustomBinders', WARN)
+
+// LOG SQL - VERBOSE!!!!!!
+// logger 'org.hibernate.SQL', TRACE, ['STDOUT']
+
+// This one for SQL bind parameters
+// logger 'org.hibernate.type.descriptor.sql.BasicBinder', TRACE, ['STDOUT']
+ 
 
 if (Environment.currentEnvironment == Environment.TEST) {
   logger 'groovy.net.http.JavaHttpBuilder', DEBUG

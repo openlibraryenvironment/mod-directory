@@ -1,7 +1,7 @@
 {
   "name":"DIKU",
   "slug":"DIKU",
-  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json",
   "url":"https://www.indexdata.dk/DIKU",
   "tags":["INSTITUTION"],
   "description": "The standard FOLIO DIKU test library",

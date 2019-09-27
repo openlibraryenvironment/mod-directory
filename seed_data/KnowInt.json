@@ -1,7 +1,7 @@
 {
   "name":"KINT",
   "slug":"KINT",
-  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json",
   "url":"https://www.k-int.com",
   "tags":["INSTITUTION"],
   "description": "K-Int test institution",

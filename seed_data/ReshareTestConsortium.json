@@ -1,7 +1,7 @@
 {
   "name":"RESHARE",
   "slug":"RESHARE",
-  "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/ReshareTestConsortium.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/ReshareTestConsortium.json",
   "url":"https://projectreshare.org/",
   "tags":["CONSORTIUM"],
   "members":[
