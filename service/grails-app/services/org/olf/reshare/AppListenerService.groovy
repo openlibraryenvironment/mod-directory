@@ -83,7 +83,6 @@ public class AppListenerService implements ApplicationListener {
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
     Map entry_data = [
-      id: de.id,
       name: de.name,
       slug: de.slug,
       foafUrl: de.foafUrl,
@@ -92,10 +91,9 @@ public class AppListenerService implements ApplicationListener {
     ]
 
     de.services.each { svc ->
-      entry_data.services.add([id:svc.id, 
+      entry_data.services.add([
                     slug:svc.slug, 
                     service:[
-                      id: svc.service.id,
                       name: svc.service.name,
                       address: svc.service.address,
                       type: svc.service.type?.value,
@@ -106,7 +104,6 @@ public class AppListenerService implements ApplicationListener {
     de.symbols.each { sym ->
       entry_data.symbols.add (
         [
-          id: sym.id,
           authority: sym.authority.symbol,
           symbol: sym.symbol,
           priority: sym.priority
@@ -118,7 +115,6 @@ public class AppListenerService implements ApplicationListener {
 
     if ( de.parent != null ) {
       entry_data.parent = [
-        id: de.parent.id,
         slug: de.parent.slug,
         name: de.parent.name
       ]
