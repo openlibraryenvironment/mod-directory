@@ -1,0 +1,37 @@
+{
+  "name":"Temple University",
+  "slug":"Temple_University",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json",
+  "url":"https://library.temple.edu/people",
+  "tags":["INSTITUTION"],
+  "symbols": [
+        { "authority":{ "symbol":"PALCI"}, "symbol":"TEMPLE", "priority":"a" },
+        { "authority":{ "symbol":"OCLC"},  "symbol":"TEU",    "priority":"a" }
+  ],
+  "units": [
+    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" },
+    { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "tags": ["Storage"], "lmsLocationCode":"ASRS" },
+    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "tags": ["Branch"], "lmsLocationCode":"KARDON" },
+    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "tags": ["Branch"], "lmsLocationCode":"AMBLER" }
+  ],
+  "services":[
+    { 
+      "slug":"Temple_ISO18626",
+      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
+    },
+    { 
+      "slug":"Temple_Z3950",
+      "service":{ "name":"Temple Z3950 Service", "address":"tcp:temple-psb.alma.exlibrisgroup.com:1921", "type":"Z3950", "businessFunction":"RTAC" },
+      "customProperties":{ "Z3950BaseName":["01TULI_INST"] } 
+    },
+    { 
+      "slug":"Temple_NCIP",
+      "service":{ "name":"Temple NCIP", "address":"https://na02-psb.alma.exlibrisgroup.com/view/NCIPServlet", "type":"OAI-PMH", "businessFunction":"CIRC" }
+    },
+    { 
+      "slug":"Temple_OAI_PMH",
+      "service":{ "name":"Temple OAI Service", "address":"https://na02-psb.alma.exlibrisgroup.com/view/oai/01TULI_INST/request", "type":"OAI-PMH", "businessFunction":"HARVEST" }
+    }
+  ]
+}

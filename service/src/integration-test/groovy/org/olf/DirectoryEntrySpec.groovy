@@ -117,7 +117,7 @@ class DirectoryEntrySpec extends GebSpec {
 
     where:
       tenant_id | friend_url
-      'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json'
+      'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json'
   }
 
   void "Delete the tenants"(tenant_id, note) {
