@@ -141,7 +141,18 @@ events:
 environments:
   test:
     dataSource:
-      url: jdbc:postgresql://localhost:54321/olftest
+      url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}"
+      properties:
+        initialSize: 7
+        minIdle: 2
+        maxIdle: 10
+        maxActive: 10
+        validationQuery: SELECT 1
+        testOnBorrow: true
+        testWhileIdle: true
+        testOnReturn: false
+        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
 
   dbGen:
     grails:
