@@ -61,7 +61,7 @@ def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
 def cp_url = ensureTextProperty('url');
 def cp_demoprop = ensureTextProperty('demoCustprop');
 def cp_test_prop = ensureTextProperty('TestParam');
-def cp_test_prop = ensureTextProperty('Z3950BaseName');
+def cp_z3950_base_name = ensureTextProperty('Z3950BaseName');
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',

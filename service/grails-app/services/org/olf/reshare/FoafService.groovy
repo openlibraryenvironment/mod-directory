@@ -87,6 +87,8 @@ class FoafService implements DataBinder {
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
 
+            Object addresses_list = json.remove('addresses')
+
             // Remove friends before processing
             Object friends_list = json.remove('friends')
 

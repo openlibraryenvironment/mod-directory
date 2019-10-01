@@ -20,16 +20,6 @@
       "symbols": [
         { "authority":"RESHARE",   "symbol":"DIKUA",    "priority":"a" },
         { "authority":"PALCI",     "symbol":"DIKUA",    "priority":"a" }
-      ],
-      "addresses": [
-        {
-          "addressLabel":"Index Data Denmark office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
-            { "seq":1, "type":"AdministrativeArea", "value":"Univate"},
-            { "seq":2, "type":"Thoroughfare", "value":"Njalsgade 76, 13"},
-            { "seq":3, "type":"Department", "value":"2300 København S"},
-            { "seq":4, "type":"Country", "value":"Denmark"}
-          ]
-        }
       ]
     },
     { "name":"Branch Library B",
