@@ -4,6 +4,7 @@ import grails.core.GrailsApplication
 import grails.plugins.*
 import grails.converters.JSON
 import org.olf.reshare.FoafService;
+import grails.gorm.multitenancy.Tenants;
 
 class DirectorySettingsController {
 
@@ -22,7 +23,7 @@ class DirectorySettingsController {
     def result = [result:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
     log.debug("FOAF thread invoked....${tenant_header}");
-    foafService.freshen();
+    foafService.freshen(tenant_header);
     render result as JSON
   }
 }

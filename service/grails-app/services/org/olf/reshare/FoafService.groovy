@@ -59,15 +59,16 @@ class FoafService implements DataBinder {
   // returns false if we already know about this URL and have recently visited it
   private boolean shouldVisit(String url) {
     boolean result = false;
-    int p = DirectoryEntry.executeQuery('select count(de.id) from DirectoryEntry as de where de.foafUrl=:url and ( ( de.foafTimestamp + :min_interval ) < :now )',
+
+    // Count all the directory entries for url=X and cache still valid
+    int p = DirectoryEntry.executeQuery('select count(de.id) from DirectoryEntry as de where de.foafUrl=:url and ( :now < ( de.foafTimestamp + :min_interval ) )',
                                                     [url:url, min_interval:MIN_READ_INTERVAL, now: System.currentTimeMillis()])[0];
     if ( p == 0 ) {
-      // We know this FOAF URL before but it has never been visited, or it 
-      // was more than MIN_READ_INTERVAL ms ago, so lets reread.
+      // unable to find that URL OR the cache has expired, so we should re-visit
       result = true;
     }
     else {
-      // We have not seen this URL before (At some point, we should probably have a blacklist to check)
+      // We found that URL and it's cache data is still within MIN_READ_INTERVAL, so we don't need to check
       result = false;
     }
 
@@ -213,12 +214,14 @@ class FoafService implements DataBinder {
     }
   }
 
-  public freshen() {
+  public freshen(String tenant) {
     Promise p = task {
-      DirectoryEntry.withNewSession {
-        DirectoryEntry.executeQuery('select de.foafUrl from DirectoryEntry as de').each { foaf_url ->
-          log.debug("freshen() checking ${foaf_url}");
-          checkFriend(foaf_url);
+      Tenants.withId(tenant+'_mod_directory') {
+        DirectoryEntry.withNewSession {
+          DirectoryEntry.executeQuery('select de.foafUrl from DirectoryEntry as de where de.foafUrl is not null').each { foaf_url ->
+            log.debug("freshen() checking ${foaf_url}");
+            checkFriend(foaf_url);
+          }
         }
       }
     }
@@ -228,7 +231,7 @@ class FoafService implements DataBinder {
     }
 
     p.onComplete { result ->
-      log.debug("this.spinUp promise complete");
+      log.debug("this.freshen promise complete");
     }
 
 
