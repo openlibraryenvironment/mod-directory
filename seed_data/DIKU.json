@@ -16,19 +16,22 @@
     }
   ],
   "units":[
-    { "name":"Branch Library A",
+    { "slug":"DIKU_A",
+      "name":"Branch Library A",
       "symbols": [
         { "authority":"RESHARE",   "symbol":"DIKUA",    "priority":"a" },
         { "authority":"PALCI",     "symbol":"DIKUA",    "priority":"a" }
       ]
     },
-    { "name":"Branch Library B",
+    { "slug":"DIKU_B",
+      "name":"Branch Library B",
       "symbols": [
         { "authority":"RESHARE",   "symbol":"DIKUB",    "priority":"a" },
         { "authority":"PALCI",     "symbol":"DIKUB",    "priority":"a" }
       ]
     },
-    { "name":"Branch Library C",
+    { "slug":"DIKU_C",
+      "name":"Branch Library C",
       "symbols": [
         { "authority":"RESHARE",   "symbol":"DIKUC",    "priority":"a" },
         { "authority":"PALCI",     "symbol":"DIKUC",    "priority":"a" }
