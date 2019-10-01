@@ -11,6 +11,8 @@ import groovyx.net.http.HTTPBuilder
 import groovyx.net.http.Method
 import org.hibernate.StatelessSession;
 import org.hibernate.Transaction;
+import grails.async.Promise
+import static grails.async.Promises.*
 
 
 /**
@@ -73,12 +75,15 @@ class FoafService implements DataBinder {
   }
 
   private void processFriend(String url, int depth=0) {
+    log.debug("processFriend(${url},${depth})");
     try {
       def http = new HTTPBuilder(url)
+
       //http.auth.basic ('username','password')
       http.request(Method.GET, ContentType.JSON) {
         headers.'Content-Type' = 'application/json'
         response.success = { resp, json ->
+          log.debug("HTTP get ${url} :: Success");
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
 
@@ -204,5 +209,26 @@ class FoafService implements DataBinder {
         dumpDE(it, depth+1);
       }
     }
+  }
+
+  public freshen() {
+    Promise p = task {
+      DirectoryEntry.withNewSession {
+        DirectoryEntry.executeQuery('select de.foafUrl from DirectoryEntry as de').each { foaf_url ->
+          log.debug("freshen() checking ${foaf_url}");
+          checkFriend(foaf_url);
+        }
+      }
+    }
+
+    p.onError { Throwable err ->
+      log.error("Problem",err);
+    }
+
+    p.onComplete { result ->
+      log.debug("this.spinUp promise complete");
+    }
+
+
   }
 }

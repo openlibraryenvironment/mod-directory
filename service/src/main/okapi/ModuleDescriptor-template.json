@@ -36,6 +36,12 @@
           "pathPattern": "/directory/settings/worker",
           "unit": "minute",
           "delay": "5"
+        },
+        {
+          "methods": [ "POST" ],
+          "pathPattern": "/directory/settings/foaf",
+          "unit": "hour",
+          "delay": "24"
         }
       ]
     }

@@ -80,6 +80,8 @@ public class AppListenerService implements ApplicationListener {
 
   private logDirectoryEvent(DirectoryEntry de, String tenant) {
 
+    log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
+
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
     Map entry_data = [
@@ -130,6 +132,9 @@ public class AppListenerService implements ApplicationListener {
             payload:entry_data
           ]
           );
+
+    log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant}) -- COMPLETE");
   }
+
 }
 

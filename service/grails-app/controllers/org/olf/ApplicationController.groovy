@@ -51,4 +51,11 @@ class ApplicationController implements PluginManagerAware {
     }
     render result as JSON
   }
+
+  def freshen() {
+    log.debug("ApplicationController::freshen()");
+    def result=[status:'OK']
+    foafService.freshen();
+    render result as JSON
+  }
 }

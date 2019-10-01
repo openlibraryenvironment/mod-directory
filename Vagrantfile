@@ -47,6 +47,15 @@ Vagrant.configure(2) do |config|
   # vbox instance can use it.
   config.vm.network "forwarded_port", guest: 5432, host: 54321
 
+  config.vm.network "forwarded_port", guest: 9130, host: 9130
+
+
+  # Zookeeper 2181
+  config.vm.network "forwarded_port", guest: 2181, host: 2181
+
+  # Kafka
+  config.vm.network "forwarded_port", guest: 9092, host: 9092
+
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -97,4 +106,27 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+
+  config.vm.provision "shell", run: 'once', inline: <<-SHELL
+    # sudo apt-get -y update
+    # sudo apt-get -y dist-upgrade
+    echo "Initialise kafka/docker"
+    docker network create zookeepernet
+    docker pull wurstmeister/zookeeper
+    docker pull wurstmeister/kafka
+    docker run --name zookeeper1 --restart always -p 2181:2181 --network zookeepernet -d wurstmeister/zookeeper
+
+    # Current issue see https://stackoverflow.com/questions/35788697/leader-not-available-kafka-in-console-producer
+    docker run --name kafka1 --restart always --network zookeepernet -p 9092:9092 \
+             -e "KAFKA_ADVERTISED_HOST_NAME=localhost" \
+             -e "KAFKA_ADVERTISED_PORT=9092" \
+             -e "KAFKA_AUTO_CREATE_TOPICS_ENABLE=true" \
+             -e "KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181" \
+             -e "KAFKA_BROKER_ID=1" \
+             -e "KAFKA_LOG_RETENTION_BYTES=-1" \
+             -e "KAFKA_LOG_RETENTION_HOURS=-1" \
+             -d wurstmeister/kafka
+
+  SHELL
+
 end

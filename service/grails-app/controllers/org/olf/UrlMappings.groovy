@@ -20,6 +20,7 @@ class UrlMappings {
     "/directory/kiwt/raml" (controller: 'directoryConfig' , action: "raml")
 
     "/directory/settings/worker" (controller: 'directorySettings', action: 'worker');
+    "/directory/settings/foaf" (controller: 'directorySettings', action: 'foaf');
 
 
     // Call /rs/refdata to list all refdata categories
