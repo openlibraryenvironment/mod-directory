@@ -1,7 +1,7 @@
 {
   "name":"Test Consortium",
   "slug":"TestCons001",
-  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test_cons.json",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json",
   "url":"http://not.a.real.consortium/",
   "tags":["CONSORTIUM"],
   "members":[
@@ -22,15 +22,15 @@
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json" },
     { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst01.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst02.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst03.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst04.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst05.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst06.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst07.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst08.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst09.json" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TestInst10.json" }
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst01.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst02.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst03.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst04.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst05.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst06.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst07.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst08.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst09.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst10.json" }
   ]
 }
