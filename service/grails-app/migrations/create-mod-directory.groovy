@@ -745,5 +745,8 @@ databaseChangeLog = {
         }
     }
 
+    changeSet(author: "ianibbo (manual)", id: "20191003-1519-001") {
+       addUniqueConstraint(columnNames: "de_slug", constraintName: "DE_SLUG_UNIQUE_CONSTRAINT", tableName: "directory_entry")
+    }
 
 }
