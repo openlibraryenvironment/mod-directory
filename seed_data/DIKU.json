@@ -5,6 +5,9 @@
   "url":"https://www.indexdata.dk/DIKU",
   "tags":["INSTITUTION"],
   "description": "The standard FOLIO DIKU test library",
+  "symbols":[
+    { "authority":"RESHARE",   "symbol":"idVuFind",    "priority":"a" }
+  ],
   "addresses": [
     {
       "addressLabel":"Index Data Denmark office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
