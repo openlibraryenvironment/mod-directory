@@ -6,7 +6,8 @@
   "tags":["INSTITUTION"],
   "symbols": [
         { "authority":{ "symbol":"PALCI"}, "symbol":"TEMPLE", "priority":"a" },
-        { "authority":{ "symbol":"OCLC"},  "symbol":"TEU",    "priority":"a" }
+        { "authority":{ "symbol":"OCLC"},  "symbol":"TEU",    "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},  "symbol":"US-PPT",    "priority":"a" }
   ],
   "units": [
     { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" },

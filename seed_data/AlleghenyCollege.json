@@ -9,7 +9,8 @@
       "symbols": [
         { "authority":{ "symbol":"PALCI"}, "symbol":"ACMAIN", "priority":"a" },
         { "authority":{ "symbol":"IDS"},   "symbol":"104",    "priority":"a" },
-        { "authority":{ "symbol":"OCLC"},  "symbol":"AVL",    "priority":"a" }
+        { "authority":{ "symbol":"OCLC"},  "symbol":"AVL",    "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},  "symbol":"US-PMA", "priority":"a" }
       ]
     },
     { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
