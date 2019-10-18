@@ -113,7 +113,7 @@ public class AppListenerService implements ApplicationListener {
       );
     }
 
-    log.debug("Publish NewPatronRequest_ind event on topic ${topic} ${entry_data}");
+    log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data}");
 
     if ( de.parent != null ) {
       entry_data.parent = [
