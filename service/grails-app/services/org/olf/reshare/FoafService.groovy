@@ -33,10 +33,12 @@ class FoafService implements DataBinder {
 
   @Subscriber('okapi:dataload:sample')
   public void afterSampleLoaded (final String tenantId, final String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
+    log.debug("FoafService::afterSampleLoaded");
     // See if we can find the URL of our seed entry in the directory
     Tenants.withId(tenantId+'_mod_directory') {
       checkFriend('https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json');
     }
+    log.debug("FoafService::afterSampleLoaded COMPLETE");
   }
 
 
@@ -141,7 +143,7 @@ class FoafService implements DataBinder {
             // session.close();
   
             // Process any friends
-            log.debug("Processing friends ${friends_list}");
+            log.debug("Processing friends list from entry at (${url}): ${friends_list}");
             if ( friends_list ) {
               friends_list.each { fr ->
                 if ( fr.foaf ) {

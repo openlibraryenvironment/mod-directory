@@ -27,18 +27,28 @@ public class EventPublicationService {
   }
 
   public void publishAsJSON(String topic, String key, Map data) {
-    if ( key == null )
-      key = new Random().nextLong()
 
-    String compoundMessage = groovy.json.JsonOutput.toJson(data)
+    log.debug("publishAsJSON(${topic}, ${key},...)");
 
-    // log.debug("publishAsJSON(topic:${topic} key:${key}, compoundMessage: ${compoundMessage})");
-    producer.send(
-        new ProducerRecord<String, String>(topic, key, compoundMessage), { RecordMetadata metadata, Exception e ->
-          // println "The offset of the record we just sent is: ${metadata?.offset()}"
-        }
-    )
-    // log.debug("Send returned, callback will be called once complete");
+    try {
+      if ( key == null )
+        key = new Random().nextLong()
+
+      String compoundMessage = groovy.json.JsonOutput.toJson(data)
+
+      // log.debug("publishAsJSON(topic:${topic} key:${key}, compoundMessage: ${compoundMessage})");
+      producer.send(
+          new ProducerRecord<String, String>(topic, key, compoundMessage), { RecordMetadata metadata, Exception e ->
+            // println "The offset of the record we just sent is: ${metadata?.offset()}"
+          }
+      )
+
+      log.debug("producer.send completed");
+    }
+    catch ( Exception e ) {
+      log.error("problem trying to publish event",e);
+    }
+
   }
 
   @javax.annotation.PreDestroy

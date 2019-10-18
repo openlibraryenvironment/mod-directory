@@ -20,6 +20,9 @@ import org.springframework.context.ApplicationEvent
 import org.grails.orm.hibernate.AbstractHibernateDatastore
 import grails.gorm.transactions.Transactional
 
+import static grails.async.Promises.*
+import grails.async.Promise
+
 
 /**
  * This class listens for asynchronous domain class events and fires of any needed indications
@@ -122,7 +125,8 @@ public class AppListenerService implements ApplicationListener {
       ]
     }
 
-    eventPublicationService.publishAsJSON(
+    Promise p = task {
+      eventPublicationService.publishAsJSON(
           topic,
           null,             // key
           [
@@ -131,7 +135,8 @@ public class AppListenerService implements ApplicationListener {
             oid:'org.olf.okapi.modules.directory.DirectoryEntry:'+de.id,
             payload:entry_data
           ]
-          );
+      );
+    }
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant}) -- COMPLETE");
   }
