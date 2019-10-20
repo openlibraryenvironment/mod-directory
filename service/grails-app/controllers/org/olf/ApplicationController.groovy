@@ -7,6 +7,7 @@ import groovy.util.logging.Slf4j
 import org.olf.okapi.modules.directory.DirectoryEntry
 import grails.converters.JSON
 import org.olf.reshare.FoafService;
+import org.olf.reshare.AppListenerService;
 
 
 @Slf4j
