@@ -138,6 +138,10 @@ public class AppListenerService implements ApplicationListener {
       );
     }
 
+    p.onError { Throwable err ->
+      log.error("There was a problem publishing the directory event",err);
+    }
+
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant}) -- COMPLETE");
   }
 
