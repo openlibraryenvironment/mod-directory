@@ -34,6 +34,10 @@ public class AppListenerService implements ApplicationListener {
 
   EventPublicationService eventPublicationService
 
+  def republish(String tenant) {
+    log.debug("Republish(${tenant})");
+  }
+
   /**
    * It's not really enough to do this afterInsert - we actually want this event to fire after the transaction
    * has committed. Be aware that the event may arrive back before the transaction has committed.

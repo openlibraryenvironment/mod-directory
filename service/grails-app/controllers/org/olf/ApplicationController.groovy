@@ -60,9 +60,7 @@ class ApplicationController implements PluginManagerAware {
     foafService.freshen();
 
     if ( ( params.republish=='Y' ) && ( tenant_header?.length() > 0 ) ) {
-      DirectoryEntry.each { de ->
-        appListenerService.logDirectoryEvent(de, tenant_header);
-      }
+      appListenerService.republish(tenant_header);
     }
 
     render result as JSON
