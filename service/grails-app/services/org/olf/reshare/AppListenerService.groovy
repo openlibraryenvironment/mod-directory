@@ -36,6 +36,9 @@ public class AppListenerService implements ApplicationListener {
 
   def republish(String tenant) {
     log.debug("Republish(${tenant})");
+    DirectoryEntry.each { de ->
+      logDirectoryEvent(de, tenant);
+    }
   }
 
   /**
