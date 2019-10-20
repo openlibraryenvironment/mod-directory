@@ -16,6 +16,7 @@ class ApplicationController implements PluginManagerAware {
   GrailsApplication grailsApplication
   GrailsPluginManager pluginManager
   FoafService foafService
+  AppListenerService appListenerService
 
   def index() {
     [grailsApplication: grailsApplication, pluginManager: pluginManager]
@@ -55,7 +56,16 @@ class ApplicationController implements PluginManagerAware {
   def freshen() {
     log.debug("ApplicationController::freshen()");
     def result=[status:'OK']
+    String tenant_header = request.getHeader('X-OKAPI-TENANT')
     foafService.freshen();
+
+    if ( ( params.republish=='Y' ) && ( tenant_header?.length() > 0 ) ) {
+      DirectoryEntry.each { de ->
+        appListenerService.logDirectoryEvent(de, tenant_header);
+      }
+    }
+
     render result as JSON
   }
+
 }

@@ -80,6 +80,7 @@ class FoafService implements DataBinder {
     try {
       def http = new HTTPBuilder(url)
 
+      log.debug("HTTP GET ${url}");
       //http.auth.basic ('username','password')
       http.request(Method.GET, ContentType.JSON) {
         headers.'Content-Type' = 'application/json'
