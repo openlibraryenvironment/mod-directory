@@ -25,6 +25,8 @@ public class EventPublicationService {
         String prop = grailsApplication.config.getProperty("events.publisher.${key}")
         props.setProperty(key, prop)
       }
+
+      log.debug("Configure EventPublicationService :: ${props}");
       producer = new KafkaProducer(props)
     }
     catch ( Exception e ) {
