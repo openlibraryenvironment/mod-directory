@@ -28,7 +28,7 @@ public class EventPublicationService {
 
   public void publishAsJSON(String topic, String key, Map data) {
 
-    log.debug("publishAsJSON(${topic}, ${key},...)");
+    log.debug("publishAsJSON(topic=${topic}, key=${key}, ...)");
 
     try {
       if ( key == null )
@@ -42,11 +42,12 @@ public class EventPublicationService {
             // println "The offset of the record we just sent is: ${metadata?.offset()}"
           }
       )
-
-      log.debug("producer.send completed");
     }
     catch ( Exception e ) {
       log.error("problem trying to publish event",e);
+    }
+    finally {
+      log.debug("producer.send completed");
     }
 
   }
