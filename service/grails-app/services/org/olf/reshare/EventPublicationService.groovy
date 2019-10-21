@@ -21,8 +21,9 @@ public class EventPublicationService {
     try {
       grailsApplication.config.events.publisher.toProperties().each { final String key, final String value ->
         // Directly access each entry to cause lookup from env
-        log.debug("Configuring event publication service :: ${key} ${value}");
         String prop = grailsApplication.config.getProperty("events.publisher.${key}")
+
+        log.debug("Configuring event publication service :: key:${key} prop:${prop} value:${value}");
         props.setProperty(key, prop)
       }
 
