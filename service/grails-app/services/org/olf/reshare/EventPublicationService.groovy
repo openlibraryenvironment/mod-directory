@@ -18,12 +18,18 @@ public class EventPublicationService {
   public void init() {
     log.debug("Configuring event publication service")
     Properties props = new Properties()
-    grailsApplication.config.events.publisher.toProperties().each { final String key, final String value ->
-      // Directly access each entry to cause lookup from env
-      String prop = grailsApplication.config.getProperty("events.publisher.${key}")
-      props.setProperty(key, prop)
+    try {
+      grailsApplication.config.events.publisher.toProperties().each { final String key, final String value ->
+        // Directly access each entry to cause lookup from env
+        log.debug("Configuring event publication service :: ${key} ${value}");
+        String prop = grailsApplication.config.getProperty("events.publisher.${key}")
+        props.setProperty(key, prop)
+      }
+      producer = new KafkaProducer(props)
     }
-    producer = new KafkaProducer(props)
+    catch ( Exception e ) {
+      log.debug("EventPublicationService::init() problem configuring producer",e);
+    }
   }
 
   public void publishAsJSON(String topic, String key, Map data) {
@@ -36,12 +42,17 @@ public class EventPublicationService {
 
       String compoundMessage = groovy.json.JsonOutput.toJson(data)
 
-      // log.debug("publishAsJSON(topic:${topic} key:${key}, compoundMessage: ${compoundMessage})");
-      producer.send(
-          new ProducerRecord<String, String>(topic, key, compoundMessage), { RecordMetadata metadata, Exception e ->
-            // println "The offset of the record we just sent is: ${metadata?.offset()}"
-          }
-      )
+      if ( producer ) {
+        // log.debug("publishAsJSON(topic:${topic} key:${key}, compoundMessage: ${compoundMessage})");
+        producer.send(
+            new ProducerRecord<String, String>(topic, key, compoundMessage), { RecordMetadata metadata, Exception e ->
+              // println "The offset of the record we just sent is: ${metadata?.offset()}"
+            }
+        )
+      }
+      else {
+        log.error("Producer not available");
+      }
     }
     catch ( Exception e ) {
       log.error("problem trying to publish event",e);
