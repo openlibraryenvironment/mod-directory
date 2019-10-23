@@ -51,7 +51,6 @@ class FoafService implements DataBinder {
          ( url.toLowerCase().startsWith('http') ) && 
          ( depth < 4 ) ) {
       if ( shouldVisit(url) ) {
-        log.debug("Visiting....${url}");
         processFriend(url, depth);
       }
     }
@@ -73,6 +72,8 @@ class FoafService implements DataBinder {
       // We found that URL and it's cache data is still within MIN_READ_INTERVAL, so we don't need to check
       result = false;
     }
+
+    log.debug("shouldVisit(${url}) : ${result}");
 
     return result;
   }
@@ -217,12 +218,13 @@ class FoafService implements DataBinder {
     }
   }
 
+
   public freshen(String tenant) {
     Promise p = task {
       Tenants.withId(tenant+'_mod_directory') {
         DirectoryEntry.withNewSession {
-          DirectoryEntry.executeQuery('select de.foafUrl from DirectoryEntry as de where de.foafUrl is not null').each { foaf_url ->
-            log.debug("freshen() checking ${foaf_url}");
+          DirectoryEntry.executeQuery('select de.foafUrl, de.foafTimestamp from DirectoryEntry as de where de.foafUrl is not null').each { foaf_url, foaf_ts ->
+            log.debug("freshen() checking ${foaf_url} ${foaf_ts} ${System.currentTimeMillis() - foaf_ts?:0}");
             checkFriend(foaf_url);
           }
         }
