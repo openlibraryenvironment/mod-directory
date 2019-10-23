@@ -52,16 +52,20 @@ Service ensureService(String name, String type, List<String>tags, String address
 
 log.info 'Importing sample data'
 
-if (existing_tenant) {
+/* if (existing_tenant) {
   log.info 'Skipping exisiting tenant'
   return
-}
+} */
 
 def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
 def cp_url = ensureTextProperty('url');
 def cp_demoprop = ensureTextProperty('demoCustprop');
 def cp_test_prop = ensureTextProperty('TestParam');
 def cp_z3950_base_name = ensureTextProperty('Z3950BaseName');
+def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode');
+def cp_local_widget1 = ensureTextProperty('local_widget_1');
+def cp_local_widget2 = ensureTextProperty('local_widget_2');
+def cp_local_widget3 = ensureTextProperty('local_widget_3');
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
