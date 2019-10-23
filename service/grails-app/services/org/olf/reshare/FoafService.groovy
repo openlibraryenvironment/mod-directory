@@ -223,8 +223,11 @@ class FoafService implements DataBinder {
     Promise p = task {
       Tenants.withId(tenant+'_mod_directory') {
         DirectoryEntry.withNewSession {
-          DirectoryEntry.executeQuery('select de.foafUrl, de.foafTimestamp from DirectoryEntry as de where de.foafUrl is not null').each { foaf_url, foaf_ts ->
-            log.debug("freshen() checking ${foaf_url} ${foaf_ts} ${System.currentTimeMillis() - foaf_ts?:0}");
+          DirectoryEntry.executeQuery('select de.foafUrl, de.foafTimestamp from DirectoryEntry as de where de.foafUrl is not null').each { row ->
+            def foaf_url = row[0]
+            def foaf_ts = row[1]
+
+            log.debug("freshen() checking ${foaf_url} last:${foaf_ts} remaining:${(MIN_READ_INTERVAL - ( System.currentTimeMillis() - foaf_ts?:0 ))/(60000) }mins");
             checkFriend(foaf_url);
           }
         }
