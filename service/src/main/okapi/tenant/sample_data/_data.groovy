@@ -12,10 +12,11 @@ import grails.databinding.SimpleMapDataBindingSource
 import static grails.async.Promises.*
 import org.olf.reshare.FoafService
 
-CustomPropertyDefinition ensureTextProperty(String name) {
+CustomPropertyDefinition ensureTextProperty(String name, boolean local = true) {
   CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
                                         name:name,
-                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class
+                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class,
+                                        defaultInternal: local
                                       ).save(flush:true, failOnError:true);
   return result;
 }
