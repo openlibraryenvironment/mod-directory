@@ -12,11 +12,12 @@ import grails.databinding.SimpleMapDataBindingSource
 import static grails.async.Promises.*
 import org.olf.reshare.FoafService
 
-CustomPropertyDefinition ensureTextProperty(String name, boolean local = true) {
+CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, String label = null) {
   CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
                                         name:name,
                                         type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class,
-                                        defaultInternal: local
+                                        defaultInternal: local,
+                                        label:label
                                       ).save(flush:true, failOnError:true);
   return result;
 }
@@ -63,10 +64,10 @@ def cp_url = ensureTextProperty('url');
 def cp_demoprop = ensureTextProperty('demoCustprop');
 def cp_test_prop = ensureTextProperty('TestParam');
 def cp_z3950_base_name = ensureTextProperty('Z3950BaseName');
-def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode');
-def cp_local_widget1 = ensureTextProperty('local_widget_1');
-def cp_local_widget2 = ensureTextProperty('local_widget_2');
-def cp_local_widget3 = ensureTextProperty('local_widget_3');
+def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode', label='Patron account barcode');
+def cp_local_widget1 = ensureTextProperty('local_widget_1', label='Widget 1');
+def cp_local_widget2 = ensureTextProperty('local_widget_2', label='Widget 2');
+def cp_local_widget3 = ensureTextProperty('local_widget_3', label='Widget 3');
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
