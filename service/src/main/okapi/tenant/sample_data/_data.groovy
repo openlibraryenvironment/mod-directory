@@ -64,10 +64,10 @@ def cp_url = ensureTextProperty('url');
 def cp_demoprop = ensureTextProperty('demoCustprop');
 def cp_test_prop = ensureTextProperty('TestParam');
 def cp_z3950_base_name = ensureTextProperty('Z3950BaseName');
-def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode', label='Patron account barcode');
-def cp_local_widget1 = ensureTextProperty('local_widget_1', label='Widget 1');
-def cp_local_widget2 = ensureTextProperty('local_widget_2', label='Widget 2');
-def cp_local_widget3 = ensureTextProperty('local_widget_3', label='Widget 3');
+def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode', true, 'Patron account barcode');
+def cp_local_widget1 = ensureTextProperty('local_widget_1', true, label='Widget 1');
+def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
+def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
