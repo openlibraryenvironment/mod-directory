@@ -59,11 +59,11 @@ log.info 'Importing sample data'
   return
 } */
 
-def cp_ns = ensureTextProperty('ILLPreferredNamespaces');
-def cp_url = ensureTextProperty('url');
-def cp_demoprop = ensureTextProperty('demoCustprop');
-def cp_test_prop = ensureTextProperty('TestParam');
-def cp_z3950_base_name = ensureTextProperty('Z3950BaseName');
+def cp_ns = ensureTextProperty('ILLPreferredNamespaces', false);
+def cp_url = ensureTextProperty('url', false);
+def cp_demoprop = ensureTextProperty('demoCustprop', false);
+def cp_test_prop = ensureTextProperty('TestParam', false);
+def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
 def cp_local_patronAccountBarcode = ensureTextProperty('local_patronAccountBarcode', true, 'Patron account barcode');
 def cp_local_widget1 = ensureTextProperty('local_widget_1', true, label='Widget 1');
 def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
