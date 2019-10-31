@@ -67,8 +67,8 @@ class DirectoryEntrySpec extends GebSpec {
     Thread.sleep(2000)
 
     Map new_entry = [
-          name:'hello',
-          slug:'hello',
+          name:name,
+          slug:name,
           description:'hello',
         ]
 
@@ -96,8 +96,9 @@ class DirectoryEntrySpec extends GebSpec {
     where:
       tenantid | name
       'TestTenantG' | 'University of DIKU'
-
   }
+
+
 
   void "add Friend"(tenant_id, friend_url) {
 
@@ -119,6 +120,135 @@ class DirectoryEntrySpec extends GebSpec {
       tenant_id | friend_url
       'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json'
   }
+
+
+
+
+
+  // Check parent loop failure
+  void "Check Parent loop fails"(tenantid, heirachy, expected, runthrough) {
+    logger.info("Checking parent loop");
+    logger.debug("========================================== runthrough ${runthrough} ==========================================")
+    
+    when: "We create some directory entries and set their parent structure"
+      def dir1 = null;
+      def dir2 = null;
+      def dir3 = null;
+    // Make some Directory Entries
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir1 = DirectoryEntry.findByName('dir1') ?: new DirectoryEntry(name:'dir1', slug:'dir1').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir2 = DirectoryEntry.findByName('dir2') ?: new DirectoryEntry(name:'dir2', slug:'dir2').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir3 = DirectoryEntry.findByName('dir3') ?: new DirectoryEntry(name:'dir3', slug:'dir3').save(flush:true, failOnError:true);
+      }
+    }
+
+    // Change list of strings to be the ids of entries defined above (choosing id so that we can easily pass these between sessions)
+    for (def i=0; i < heirachy.size(); i++){
+      Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+        DirectoryEntry.withTransaction {
+          heirachy[i] = (DirectoryEntry.findByName(heirachy[i])).id
+        }
+      }
+    }
+
+    // Set parents of those entries one by one.
+    for (def i = 0; i < heirachy.size(); i++) {
+      Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+        DirectoryEntry.withTransaction {
+          def dirent = DirectoryEntry.get(heirachy[i])
+          if (i + 1 < heirachy.size()) {
+            dirent.parent = DirectoryEntry.get(heirachy[i + 1])
+            dirent.save(flush:true, failOnError:true);
+          }
+        }
+      }
+    }
+
+
+    // Some debugging to write out list of directory entries and their parents
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        logger.debug("List of Directory Entries and their parents")
+        for (def i = 0; i < heirachy.size(); i++) {
+          def dirent = DirectoryEntry.get(heirachy[i])
+          def direntp = DirectoryEntry.get(heirachy[i]).parent
+          logger.debug("Directory Entry: ${dirent}, Parent: ${direntp}")
+        }
+      }
+    }
+
+
+    // Set a boolean to track validation failure/success
+    def parentValidation = null
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        parentValidation = (DirectoryEntry.get(heirachy[0])).validate(['parent'])
+        logger.debug("Updated parentValidation value: ${parentValidation}")
+      }
+    }
+
+
+    //Delete the temporary directory entries for the next runthrough
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        logger.debug("Deleting dir1")
+        def dirent1 = DirectoryEntry.findByName('dir1')
+        if (dirent1 != null) {
+          dirent1.delete(flush:true, failOnError:true);
+        } else {
+          logger.debug("dir1 does not exist")
+        }
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        logger.debug("Deleting dir2")
+        def dirent2 = DirectoryEntry.findByName('dir2')
+        if (dirent2 != null) {
+          dirent2.delete(flush:true, failOnError:true);
+        } else {
+          logger.debug("dir2 does not exist")
+        }
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        logger.debug("Deleting dir3")
+        def dirent3 = DirectoryEntry.findByName('dir3')
+        if (dirent3 != null) {
+          dirent3.delete(flush:true, failOnError:true);
+        } else {
+          logger.debug("dir3 does not exist")
+        }
+      }
+    }
+
+
+    then: "Check that we get the expected validation failures"
+
+    logger.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
+    expected == parentValidation
+
+    logger.debug("==================================================================================================")
+    
+
+    where:
+    tenantid | heirachy | expected | runthrough
+    'TestTenantG' | ['dir1', 'dir2', 'dir3', 'dir1'] | false | 1
+    'TestTenantG' | ['dir1', 'dir2', 'dir3'] | true | 2
+  }
+
+
+
 
   void "Delete the tenants"(tenant_id, note) {
 
