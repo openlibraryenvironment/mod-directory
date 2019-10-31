@@ -76,7 +76,7 @@ dependencies {
   compile "org.grails.plugins:views-json"
 
   // non-graphql dependency
-  compile 'org.olf.reshare.dm.directory:dm-directory:1.0.76'
+  compile 'org.olf.reshare.dm.directory:dm-directory:1.0.77'
 
 
 
