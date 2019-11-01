@@ -134,6 +134,9 @@ class DirectoryEntrySpec extends GebSpec {
       def dir1 = null;
       def dir2 = null;
       def dir3 = null;
+      def dir4 = null;
+      def dir5 = null;
+      def dir6 = null;
     // Make some Directory Entries
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
@@ -150,6 +153,21 @@ class DirectoryEntrySpec extends GebSpec {
         dir3 = DirectoryEntry.findByName('dir3') ?: new DirectoryEntry(name:'dir3', slug:'dir3').save(flush:true, failOnError:true);
       }
     }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir4 = DirectoryEntry.findByName('dir4') ?: new DirectoryEntry(name:'dir4', slug:'dir4').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir5 = DirectoryEntry.findByName('dir5') ?: new DirectoryEntry(name:'dir5', slug:'dir5').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir6 = DirectoryEntry.findByName('dir6') ?: new DirectoryEntry(name:'dir6', slug:'dir6').save(flush:true, failOnError:true);
+      }
+    }
 
     // Change list of strings to be the ids of entries defined above (choosing id so that we can easily pass these between sessions)
     for (def i=0; i < heirachy.size(); i++){
@@ -161,80 +179,32 @@ class DirectoryEntrySpec extends GebSpec {
     }
 
     // Set parents of those entries one by one.
-    for (def i = 0; i < heirachy.size(); i++) {
-      Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-        DirectoryEntry.withTransaction {
-          def dirent = DirectoryEntry.get(heirachy[i])
-          if (i + 1 < heirachy.size()) {
-            dirent.parent = DirectoryEntry.get(heirachy[i + 1])
-            dirent.save(flush:true, failOnError:true);
+    def parentValidation = null
+    try {
+      for (def i = 0; i < heirachy.size(); i++) {
+        Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+          DirectoryEntry.withTransaction {
+            def dirent = DirectoryEntry.get(heirachy[i])
+            if (i + 1 < heirachy.size()) {
+              dirent.parent = DirectoryEntry.get(heirachy[i + 1])
+              dirent.save(flush:true, failOnError: true);
+            }
           }
         }
       }
+      parentValidation = 'succeeds'
     }
-
-
-    // Some debugging to write out list of directory entries and their parents
-    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      DirectoryEntry.withTransaction {
-        logger.debug("List of Directory Entries and their parents")
-        for (def i = 0; i < heirachy.size(); i++) {
-          def dirent = DirectoryEntry.get(heirachy[i])
-          def direntp = DirectoryEntry.get(heirachy[i]).parent
-          logger.debug("Directory Entry: ${dirent}, Parent: ${direntp}")
-        }
-      }
+    catch(grails.validation.ValidationException e) {
+      logger.debug("WE GOT AN ERROR ${e}")
+        parentValidation = 'fails because loop'
     }
-
-
-    // Set a boolean to track validation failure/success
-    def parentValidation = null
-    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      DirectoryEntry.withTransaction {
-        parentValidation = (DirectoryEntry.get(heirachy[0])).validate(['parent'])
-        logger.debug("Updated parentValidation value: ${parentValidation}")
-      }
-    }
-
-
-    //Delete the temporary directory entries for the next runthrough
-    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      DirectoryEntry.withTransaction {
-        logger.debug("Deleting dir1")
-        def dirent1 = DirectoryEntry.findByName('dir1')
-        if (dirent1 != null) {
-          dirent1.delete(flush:true, failOnError:true);
-        } else {
-          logger.debug("dir1 does not exist")
-        }
-      }
-    }
-    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      DirectoryEntry.withTransaction {
-        logger.debug("Deleting dir2")
-        def dirent2 = DirectoryEntry.findByName('dir2')
-        if (dirent2 != null) {
-          dirent2.delete(flush:true, failOnError:true);
-        } else {
-          logger.debug("dir2 does not exist")
-        }
-      }
-    }
-    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      DirectoryEntry.withTransaction {
-        logger.debug("Deleting dir3")
-        def dirent3 = DirectoryEntry.findByName('dir3')
-        if (dirent3 != null) {
-          dirent3.delete(flush:true, failOnError:true);
-        } else {
-          logger.debug("dir3 does not exist")
-        }
-      }
+    catch (Exception e) {
+      logger.debug("WE GOT AN ERROR ${e}")
+      parentValidation = 'fails otherwise'
     }
 
 
     then: "Check that we get the expected validation failures"
-
     logger.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
     expected == parentValidation
 
@@ -243,8 +213,8 @@ class DirectoryEntrySpec extends GebSpec {
 
     where:
     tenantid | heirachy | expected | runthrough
-    'TestTenantG' | ['dir1', 'dir2', 'dir3', 'dir1'] | false | 1
-    'TestTenantG' | ['dir1', 'dir2', 'dir3'] | true | 2
+    'TestTenantG' | ['dir1', 'dir2', 'dir3', 'dir1'] | 'fails because loop' | 1
+    'TestTenantG' | ['dir4', 'dir5', 'dir6'] | 'succeeds' | 2
   }
 
 
