@@ -195,11 +195,11 @@ class DirectoryEntrySpec extends GebSpec {
       parentValidation = 'succeeds'
     }
     catch(grails.validation.ValidationException e) {
-      logger.debug("WE GOT AN ERROR ${e}")
+      logger.debug("An error has occured: ${e}")
         parentValidation = 'fails because loop'
     }
     catch (Exception e) {
-      logger.debug("WE GOT AN ERROR ${e}")
+      logger.debug("An error has occured: ${e}")
       parentValidation = 'fails otherwise'
     }
 
