@@ -1,6 +1,9 @@
 {
   "name":"Temple University",
   "slug":"Temple_University",
+  "phoneNumber":"+1 215-204-7000",
+  "emailAddress":"asktulibrary@temple.edu",
+  "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json",
   "url":"https://library.temple.edu/people",
   "tags":["INSTITUTION"],

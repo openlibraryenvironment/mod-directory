@@ -1,6 +1,9 @@
 {
   "name":"The New School",
   "slug":"The_New_School",
+  "phoneNumber":"+1 212 229 5600",
+  "emailAddress":"libhelp@newschool.edu",
+  "contactName":"Contact Name",
   "url":"https://www.newschool.edu/",
   "tags":["INSTITUTION"],
   "symbols": [
