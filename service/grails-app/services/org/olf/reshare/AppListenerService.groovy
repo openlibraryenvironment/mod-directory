@@ -99,7 +99,13 @@ public class AppListenerService implements ApplicationListener {
       slug: de.slug,
       foafUrl: de.foafUrl,
       services:[],
-      symbols:[]
+      symbols:[],
+      description: de.description,
+      entryUrl: de.entryUrl,
+      phoneNumber: de.phoneNumber,
+      emailAddress: de.emailAddress,
+      contactName: de.contactName,
+      lmsLocationCode: de.lmsLocationCode
     ]
 
     de.services.each { svc ->
