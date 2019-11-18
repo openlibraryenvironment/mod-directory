@@ -1,6 +1,9 @@
 {
   "name":"Allegheny College",
   "slug":"Allegheny_College",
+  "phoneNumber":"+1 814-332-3357",
+  "emailAddress":"info@allegheny.edu",
+  "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json",
   "url":"https://sites.allegheny.edu/",
   "tags":["INSTITUTION"],

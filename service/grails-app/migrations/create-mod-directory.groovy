@@ -749,4 +749,12 @@ databaseChangeLog = {
        addUniqueConstraint(columnNames: "de_slug", constraintName: "DE_SLUG_UNIQUE_CONSTRAINT", tableName: "directory_entry")
     }
 
+    changeSet(author: "ethanfreestone (manual)", id:"20191115-1318-001") {
+        addColumn(tableName: "directory_entry") {
+            column(name: "de_phone_number", type: "VARCHAR(255)")
+            column(name: "de_email_address", type: "VARCHAR(255)")
+            column(name: "de_contact_name", type: "VARCHAR(255)")
+        }
+    }
+
 }

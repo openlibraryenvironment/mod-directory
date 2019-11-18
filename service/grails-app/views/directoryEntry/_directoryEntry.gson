@@ -43,6 +43,7 @@ json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', '
     parent {
       id directoryEntry.parent?.id
       name directoryEntry.parent?.name
+      fullyQualifiedName directoryEntry.parent?.fullyQualifiedName
     }
   }
 

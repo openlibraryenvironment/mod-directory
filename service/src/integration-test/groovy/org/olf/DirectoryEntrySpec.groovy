@@ -67,8 +67,8 @@ class DirectoryEntrySpec extends GebSpec {
     Thread.sleep(2000)
 
     Map new_entry = [
-          name:'hello',
-          slug:'hello',
+          name:name,
+          slug:name,
           description:'hello',
         ]
 
@@ -96,8 +96,9 @@ class DirectoryEntrySpec extends GebSpec {
     where:
       tenantid | name
       'TestTenantG' | 'University of DIKU'
-
   }
+
+
 
   void "add Friend"(tenant_id, friend_url) {
 
@@ -119,6 +120,105 @@ class DirectoryEntrySpec extends GebSpec {
       tenant_id | friend_url
       'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json'
   }
+
+
+
+
+
+  // Check parent loop failure
+  void "Check Parent loop fails"(tenantid, heirachy, expected, runthrough) {
+    logger.info("Checking parent loop");
+    logger.debug("========================================== runthrough ${runthrough} ==========================================")
+    
+    when: "We create some directory entries and set their parent structure"
+      def dir1 = null;
+      def dir2 = null;
+      def dir3 = null;
+      def dir4 = null;
+      def dir5 = null;
+      def dir6 = null;
+    // Make some Directory Entries
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir1 = DirectoryEntry.findByName('dir1') ?: new DirectoryEntry(name:'dir1', slug:'dir1').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir2 = DirectoryEntry.findByName('dir2') ?: new DirectoryEntry(name:'dir2', slug:'dir2').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir3 = DirectoryEntry.findByName('dir3') ?: new DirectoryEntry(name:'dir3', slug:'dir3').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir4 = DirectoryEntry.findByName('dir4') ?: new DirectoryEntry(name:'dir4', slug:'dir4').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir5 = DirectoryEntry.findByName('dir5') ?: new DirectoryEntry(name:'dir5', slug:'dir5').save(flush:true, failOnError:true);
+      }
+    }
+    Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+      DirectoryEntry.withTransaction {
+        dir6 = DirectoryEntry.findByName('dir6') ?: new DirectoryEntry(name:'dir6', slug:'dir6').save(flush:true, failOnError:true);
+      }
+    }
+
+    // Change list of strings to be the ids of entries defined above (choosing id so that we can easily pass these between sessions)
+    for (def i=0; i < heirachy.size(); i++){
+      Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+        DirectoryEntry.withTransaction {
+          heirachy[i] = (DirectoryEntry.findByName(heirachy[i])).id
+        }
+      }
+    }
+
+    // Set parents of those entries one by one.
+    def parentValidation = null
+    try {
+      for (def i = 0; i < heirachy.size(); i++) {
+        Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
+          DirectoryEntry.withTransaction {
+            def dirent = DirectoryEntry.get(heirachy[i])
+            if (i + 1 < heirachy.size()) {
+              dirent.parent = DirectoryEntry.get(heirachy[i + 1])
+              dirent.save(flush:true, failOnError: true);
+            }
+          }
+        }
+      }
+      parentValidation = 'succeeds'
+    }
+    catch(grails.validation.ValidationException e) {
+      logger.debug("An error has occured: ${e}")
+        parentValidation = 'fails because loop'
+    }
+    catch (Exception e) {
+      logger.debug("An error has occured: ${e}")
+      parentValidation = 'fails otherwise'
+    }
+
+
+    then: "Check that we get the expected validation failures"
+    logger.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
+    expected == parentValidation
+
+    logger.debug("==================================================================================================")
+    
+
+    where:
+    tenantid | heirachy | expected | runthrough
+    'TestTenantG' | ['dir1', 'dir2', 'dir3', 'dir1'] | 'fails because loop' | 1
+    'TestTenantG' | ['dir4', 'dir5', 'dir6'] | 'succeeds' | 2
+  }
+
+
+
 
   void "Delete the tenants"(tenant_id, note) {
 

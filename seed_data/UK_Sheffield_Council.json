@@ -1,6 +1,9 @@
 {
   "name":"Sheffield City Council, UK",
   "slug":"UKSCC",
+  "phoneNumber":"+44 114 273 4567",
+  "emailAddress":"",
+  "contactName":"Contact Name",
   "url":"https://www.sheffield.gov.uk/",
   "tags":["INSTITUTION"],
   "symbols": [

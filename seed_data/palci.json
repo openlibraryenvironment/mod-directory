@@ -1,6 +1,9 @@
 {
   "name":"PALCI",
   "slug":"PALCI",
+  "phoneNumber":"+1 (215) 567-1755",
+  "emailAddress":"support@palci.org",
+  "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json",
   "url":"http://www.palci.org/",
   "tags":["CONSORTIUM"],
