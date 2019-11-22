@@ -5,6 +5,9 @@
   "url":"https://www.k-int.com",
   "tags":["INSTITUTION"],
   "description": "Reshare test institution",
+  "phoneNumber":"TestInst05 phone",
+  "emailAddress":"user@TestInst05.com",
+  "contactName":"TestInst05 Contact Name",
   "symbols": [
     { "authority":"RESHARE",   "symbol":"TESTINST05",    "priority":"a" }
   ],
