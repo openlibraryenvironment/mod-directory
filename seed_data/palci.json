@@ -10,7 +10,9 @@
   "members":[
     { "memberOrg":"Allegheny_College" },
     { "memberOrg":"Temple_University" },
-    { "memberOrg":"The_New_School" }
+    { "memberOrg":"The_New_School" },
+    { "memberOrg":"Villanova" },
+    { "memberOrg":"Millersville" }
   ],
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json" },
