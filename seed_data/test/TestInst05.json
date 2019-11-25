@@ -14,7 +14,7 @@
   "services":[
     {
       "slug": "TESTINST05_ISO18626",
-      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"ReShare ISO18626 Service", "address":"https://localhost:3000/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     }
   ]
