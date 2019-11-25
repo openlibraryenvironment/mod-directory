@@ -32,7 +32,7 @@
     },
     { 
       "slug":"Temple_NCIP",
-      "service":{ "name":"Temple NCIP", "address":"https://developers.exlibrisgroup.com/alma/integrations/resource_sharing/p2p/ncip/", "type":"OAI-PMH", "businessFunction":"CIRC" }
+      "service":{ "name":"Temple NCIP", "address":"https://developers.exlibrisgroup.com/alma/integrations/resource_sharing/p2p/ncip/", "type":"NCIP", "businessFunction":"CIRC" }
     },
     { 
       "slug":"Temple_OAI_PMH",

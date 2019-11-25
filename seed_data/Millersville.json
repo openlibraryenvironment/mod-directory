@@ -18,6 +18,10 @@
       "slug":"Mill_ISO18626",
       "service":{ "name":"ReShare ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
+    },
+    {
+      "slug":"Mill_NCIP",
+      "service":{ "name":"Millersvile NCIP", "address":"https://klnpa-millersville.alma.exlibrisgroup.com/view/NcipP2PServlet", "type":"NCIP", "businessFunction":"CIRC" }
     }
   ]
 }
