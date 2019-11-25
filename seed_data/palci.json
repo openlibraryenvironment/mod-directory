@@ -16,6 +16,8 @@
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TheNewSchool.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Villanova.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
   ]
 }

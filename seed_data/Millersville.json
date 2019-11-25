@@ -1,0 +1,23 @@
+{
+  "name":"Millersville",
+  "slug":"Millersville",
+  "phoneNumber":"+1 (717) 871-7111",
+  "contactName":"Contact Name",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json",
+  "url":"http://library.millersville.edu/home",
+  "tags":["INSTITUTION"],
+  "symbols": [
+        { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" }
+  ],
+  "units": [
+    { "name":"McNairy Library", "slug":"MILL_MCNL", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
+  ],
+  "services":[
+    { 
+      "slug":"Mill_ISO18626",
+      "service":{ "name":"ReShare ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
+    }
+  ]
+}
