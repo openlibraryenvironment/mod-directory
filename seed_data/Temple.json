@@ -11,7 +11,7 @@
         { "authority":{ "symbol":"PALCI"},    "symbol":"TEMPLE", "priority":"a" },
         { "authority":{ "symbol":"OCLC"},     "symbol":"TEU",    "priority":"a" },
         { "authority":{ "symbol":"ISIL"},     "symbol":"US-PPT",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEMPLEI",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEMPLEI",    "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"TEU",    "priority":"a" }
   ],
   "units": [

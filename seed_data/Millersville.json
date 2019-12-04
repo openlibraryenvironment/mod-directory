@@ -8,7 +8,7 @@
   "tags":["INSTITUTION"],
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
   "units": [
