@@ -9,6 +9,7 @@
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
   "units": [
     { "name":"McNairy Library", "slug":"MILL_MCNL", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }

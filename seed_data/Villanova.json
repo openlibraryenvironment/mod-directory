@@ -9,6 +9,7 @@
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"VILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"VILL",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"VLA",    "priority":"a" }
   ],
   "units": [
     { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
