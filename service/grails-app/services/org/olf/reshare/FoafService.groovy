@@ -22,7 +22,7 @@ class FoafService implements DataBinder {
 
   def sessionFactory
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 7 * 1000; // 7 days between directory reads
+  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 3 * 1000; // 3 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
@@ -220,6 +220,7 @@ class FoafService implements DataBinder {
 
 
   public freshen(String tenant) {
+    log.debug("FoafService::freshen(${tenant})");
     Promise p = task {
       Tenants.withId(tenant+'_mod_directory') {
         DirectoryEntry.withNewSession {

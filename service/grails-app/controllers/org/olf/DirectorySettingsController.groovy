@@ -20,6 +20,7 @@ class DirectorySettingsController {
   }
 
   def foaf() {
+    log.debug("DirectorySettingsController::foaf");
     def result = [result:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
     log.debug("FOAF thread invoked....${tenant_header}");
