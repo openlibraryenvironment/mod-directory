@@ -8,8 +8,8 @@
   "tags":["INSTITUTION"],
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"VILL", "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"VILL",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"VLA",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"VILL", "priority":"a" },
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"VLA",  "priority":"a" }
   ],
   "units": [
     { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
@@ -17,7 +17,7 @@
   "services":[
     { 
       "slug":"Vill_ISO18626",
-      "service":{ "name":"ReShare ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"ReShare ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
     }
   ]
