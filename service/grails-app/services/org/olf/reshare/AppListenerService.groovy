@@ -95,6 +95,7 @@ public class AppListenerService implements ApplicationListener {
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
     Map entry_data = [
+      id: de.id,  // We are using assigned identifiers now!
       name: de.name,
       slug: de.slug,
       foafUrl: de.foafUrl,
