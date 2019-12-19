@@ -140,32 +140,32 @@ class DirectoryEntrySpec extends GebSpec {
     // Make some Directory Entries
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir1 = DirectoryEntry.findByName('dir1') ?: new DirectoryEntry(name:'dir1', slug:'dir1').save(flush:true, failOnError:true);
+        dir1 = DirectoryEntry.findByName('dir1') ?: new DirectoryEntry(id:'dir1', name:'dir1', slug:'dir1').save(flush:true, failOnError:true);
       }
     }
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir2 = DirectoryEntry.findByName('dir2') ?: new DirectoryEntry(name:'dir2', slug:'dir2').save(flush:true, failOnError:true);
+        dir2 = DirectoryEntry.findByName('dir2') ?: new DirectoryEntry(id:'dir2', name:'dir2', slug:'dir2').save(flush:true, failOnError:true);
       }
     }
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir3 = DirectoryEntry.findByName('dir3') ?: new DirectoryEntry(name:'dir3', slug:'dir3').save(flush:true, failOnError:true);
+        dir3 = DirectoryEntry.findByName('dir3') ?: new DirectoryEntry(id:'dir3', name:'dir3', slug:'dir3').save(flush:true, failOnError:true);
       }
     }
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir4 = DirectoryEntry.findByName('dir4') ?: new DirectoryEntry(name:'dir4', slug:'dir4').save(flush:true, failOnError:true);
+        dir4 = DirectoryEntry.findByName('dir4') ?: new DirectoryEntry(id:'dir4', name:'dir4', slug:'dir4').save(flush:true, failOnError:true);
       }
     }
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir5 = DirectoryEntry.findByName('dir5') ?: new DirectoryEntry(name:'dir5', slug:'dir5').save(flush:true, failOnError:true);
+        dir5 = DirectoryEntry.findByName('dir5') ?: new DirectoryEntry(id:'dir5', name:'dir5', slug:'dir5').save(flush:true, failOnError:true);
       }
     }
     Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
       DirectoryEntry.withTransaction {
-        dir6 = DirectoryEntry.findByName('dir6') ?: new DirectoryEntry(name:'dir6', slug:'dir6').save(flush:true, failOnError:true);
+        dir6 = DirectoryEntry.findByName('dir6') ?: new DirectoryEntry(id:'dir6', name:'dir6', slug:'dir6').save(flush:true, failOnError:true);
       }
     }
 

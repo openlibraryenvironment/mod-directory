@@ -116,7 +116,10 @@ class FoafService implements DataBinder {
   
                 if ( de == null ) {
                   log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})")
-                  de = new DirectoryEntry(foafUrl:url, name: json.name)
+                  de = new DirectoryEntry(
+                                          id:java.util.UUID.randomUUID().toString(),
+                                          foafUrl:url, 
+                                          name: json.name)
                 }
                 else {
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
