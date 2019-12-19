@@ -115,19 +115,19 @@ class FoafService implements DataBinder {
                 log.debug("Result of DirectoryEntry.findByFoafUrlOrSlug(${url},${json.slug}) : ${de?.id}(${de?.version})")
   
                 if ( de == null ) {
-                  log.debug("Create a new directory entry(foafUrl:${url}, name:${json.name})")
-                  de = new DirectoryEntry(
-                                          id:java.util.UUID.randomUUID().toString(),
-                                          foafUrl:url, 
-                                          name: json.name)
+                  String new_id = java.util.UUID.randomUUID().toString();
+                  log.debug("Create a new directory entry(id:${new_id},foafUrl:${url}, name:${json.name})")
+                  de = new DirectoryEntry( foafUrl:url, name: json.name)
+                  de.id=new_id;
                 }
                 else {
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
-                  def iqr = DirectoryEntry.executeQuery('select de.id, de.version from DirectoryEntry as de where de.id=:id',[id:de.id]);
-                  log.debug("Query version: ${iqr}");
+                  // def iqr = DirectoryEntry.executeQuery('select de.id, de.version from DirectoryEntry as de where de.id=:id',[id:de.id]);
+                  // log.debug("Query version: ${iqr}");
                   de.lock()
                 }
     
+                log.debug("bind json ${json}");
                 bindData (de, json)
 
                 if ( ( de.foafUrl == null ) && ( url != null ) )
@@ -139,6 +139,7 @@ class FoafService implements DataBinder {
                 // dumpDE(de);
 
                 // save
+                log.debug("Save de - ID is ${de.id}");
                 de.save(flush:true, failOnError:true);
                 session.flush();
               }
