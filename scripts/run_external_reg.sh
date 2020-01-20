@@ -6,6 +6,8 @@
 # see https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html for info on overriding 
 # spring boot app config on the command line
 
+# This script should be run from the mod-directory/service directory after a "grails prod war" build completes
+
 the_jar_file=`ls build/libs/mod-directory*.jar | tail -n 1`
 
 
