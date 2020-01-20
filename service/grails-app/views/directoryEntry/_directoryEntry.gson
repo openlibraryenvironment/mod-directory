@@ -39,6 +39,16 @@ json g.render(directoryEntry, [expand: [ 'customProperties', 'tags', 'status', '
     services service_accounts
   }
 
+  if ( directoryEntry.members ) {
+    def memlist = directoryEntry.members?.collect {
+      [
+        id: it.memberOrg?.id,
+        name: it.memberOrg?.name
+      ]
+    }
+    members: memlist
+  }
+
   if ( directoryEntry.parent ) {
     parent {
       id directoryEntry.parent?.id
