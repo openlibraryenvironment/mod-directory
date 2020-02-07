@@ -37,7 +37,8 @@
     },
     { 
       "slug":"Temple_OAI_PMH",
-      "service":{ "name":"Temple OAI Service", "address":"https://na02-psb.alma.exlibrisgroup.com/view/oai/01TULI_INST/request", "type":"OAI-PMH", "businessFunction":"HARVEST" }
+      "service":{ "name":"Temple OAI Service", "address":"https://na02-psb.alma.exlibrisgroup.com/view/oai/01TULI_INST/request", "type":"OAI-PMH", "businessFunction":"HARVEST" },
+      "customProperties":{ "ALMA_AGENCY_ID":["TEMPLE"] }
     }
   ]
 }

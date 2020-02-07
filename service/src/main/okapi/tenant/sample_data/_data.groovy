@@ -67,6 +67,7 @@ def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
 def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, label='Institutional patron ID');
 def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
 def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
+def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',

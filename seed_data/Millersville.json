@@ -22,7 +22,8 @@
     },
     {
       "slug":"Mill_NCIP",
-      "service":{ "name":"Millersvile NCIP", "address":"https://klnpa-millersville.alma.exlibrisgroup.com/view/NcipP2PServlet", "type":"NCIP", "businessFunction":"CIRC" }
+      "service":{ "name":"Millersvile NCIP", "address":"https://klnpa-millersville.alma.exlibrisgroup.com/view/NcipP2PServlet", "type":"NCIP", "businessFunction":"CIRC" },
+      "customProperties":{ "ALMA_AGENCY_ID":["TEMPLE"] }
     }
   ]
 }
