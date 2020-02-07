@@ -106,7 +106,8 @@ public class AppListenerService implements ApplicationListener {
       phoneNumber: de.phoneNumber,
       emailAddress: de.emailAddress,
       contactName: de.contactName,
-      lmsLocationCode: de.lmsLocationCode
+      lmsLocationCode: de.lmsLocationCode,
+      tags: de.tags?.collect {it?.value}
     ]
 
     de.services.each { svc ->
