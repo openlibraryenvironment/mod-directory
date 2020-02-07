@@ -107,7 +107,8 @@ public class AppListenerService implements ApplicationListener {
       emailAddress: de.emailAddress,
       contactName: de.contactName,
       lmsLocationCode: de.lmsLocationCode,
-      tags: de.tags?.collect {it?.value}
+      tags: de.tags?.collect {it?.value},
+      customProperties: getCustprops(de.customProperties)
     ]
 
     de.services.each { svc ->
@@ -118,7 +119,8 @@ public class AppListenerService implements ApplicationListener {
                       address: svc.service.address,
                       type: svc.service.type?.value,
                       businessFunction: svc.service.businessFunction?.value,
-                    ]])
+                    ],
+                    customProperties: getCustprops(svc.customProperties)])
     }
 
     de.symbols.each { sym ->
@@ -161,5 +163,19 @@ public class AppListenerService implements ApplicationListener {
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant}) -- COMPLETE");
   }
 
+  private Map getCustprops(com.k_int.web.toolkit.custprops.types.CustomPropertyContainer svc) {
+    Map result = [:]
+    svc.value.each { cp ->
+      // result[k] = v
+      if ( result[cp.definition.name] == null ) {
+        result[cp.definition.name] = [ cp.value?.toString() ]
+      }
+      else {
+        result[cp.definition.name].add(cp.value?.toString())
+      }
+    }
+    log.debug("Adding service account custom properties: ${result}");
+    return result;
+  }
 }
 
