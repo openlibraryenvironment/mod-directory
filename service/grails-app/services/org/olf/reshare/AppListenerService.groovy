@@ -108,7 +108,8 @@ public class AppListenerService implements ApplicationListener {
       contactName: de.contactName,
       lmsLocationCode: de.lmsLocationCode,
       tags: de.tags?.collect {it?.value},
-      customProperties: getCustprops(de.customProperties)
+      customProperties: getCustprops(de.customProperties),
+      members:[]
     ]
 
     de.services.each { svc ->
@@ -131,6 +132,12 @@ public class AppListenerService implements ApplicationListener {
           priority: sym.priority
         ]
       );
+    }
+
+    de.members.each { mem ->
+      if ( mem?.memberOrg?.slug ) {
+        entry_data.members.add(['memberOrg':mem?.memberOrg?.slug])
+      }
     }
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data}");
