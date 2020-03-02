@@ -43,7 +43,7 @@
     { 
       "slug":"Temple_RS_Stats",
       "service":{ "name":"Temple Stats Service", "address":"http://reshare.reshare-dev.indexdata.com/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" },
-      "customProperties":{ "Header":["X-TENANT-ID:te"] }
+      "customProperties":{ "Header":["X-TENANT-ID:temple"] }
     }
   ]
 }
