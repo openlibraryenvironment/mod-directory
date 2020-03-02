@@ -15,10 +15,10 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"TEU",    "priority":"a" }
   ],
   "units": [
-    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" },
+    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main", "Pickup"], "lmsLocationCode":"MAIN" },
     { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "tags": ["Storage"], "lmsLocationCode":"ASRS" },
-    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "tags": ["Branch"], "lmsLocationCode":"KARDON" },
-    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "tags": ["Branch"], "lmsLocationCode":"AMBLER" }
+    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "tags": ["Branch", "Pickup"], "lmsLocationCode":"KARDON" },
+    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "tags": ["Branch", "Pickup"], "lmsLocationCode":"AMBLER" }
   ],
   "services":[
     { 
