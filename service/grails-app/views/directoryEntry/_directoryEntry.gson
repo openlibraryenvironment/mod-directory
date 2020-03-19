@@ -55,7 +55,7 @@ json g.render(directoryEntry, [
   if ( directoryEntry.parent ) {
     parent {
       id directoryEntry.parent?.id
-      slug it.memberOrg?.slug
+      slug directoryEntry.slug
       name directoryEntry.parent?.name
       fullyQualifiedName directoryEntry.parent?.fullyQualifiedName
     }
