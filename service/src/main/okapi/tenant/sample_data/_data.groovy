@@ -69,6 +69,13 @@ def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 
 def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
 def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
 
+RefdataValue.lookupOrCreate('Service.Type', 'ISO18626')
+RefdataValue.lookupOrCreate('Service.Type', 'RTAC')
+RefdataValue.lookupOrCreate('Service.Type', 'HTTP')
+RefdataValue.lookupOrCreate('Service.Type', 'NCIP')
+RefdataValue.lookupOrCreate('Service.Type', 'OAI-PMH')
+RefdataValue.lookupOrCreate('Service.Type', 'Z3950')
+
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
 //                                                        ['system-default'],

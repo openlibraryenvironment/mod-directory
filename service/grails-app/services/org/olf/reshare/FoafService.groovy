@@ -29,6 +29,12 @@ class FoafService implements DataBinder {
   // we don't want that.
   static transactional = false;
 
+  private static String GROUP_MEMBER_QUERY = '''select gm.id
+from GroupMember as gm
+where gm.groupOrg.slug=:group 
+and gm.memberOrg.slug=:member
+'''
+
   
 
 
@@ -175,13 +181,11 @@ class FoafService implements DataBinder {
                     if ( owner != null ) {
                       member_list.each { mem ->
                         log.debug("Checking member ${mem}");
-                        GroupMember gm = GroupMember.executeQuery(GROUP_MEMBER_QUERY, [group:json.slug, member: mem.memberOrg])
-                        if ( gm.size() == 0 ) {
+                        List<GroupMember> gm_list = GroupMember.executeQuery(GROUP_MEMBER_QUERY, [group:json.slug, member: mem.memberOrg])
+                        if ( gm_list.size() == 0 ) {
                           DirectoryEntry member_org = DirectoryEntry.findBySlug(mem.memberOrg);
                           if ( member_org != null ) {
-                            gm = new GroupMember(
-                                                 groupOrg: owner, 
-                                                 memberOrg: member_org).save(flush:true, failOnError:true);
+                            def gm = new GroupMember( groupOrg: owner, memberOrg: member_org).save(flush:true, failOnError:true);
                           }
                           else {
                             log.error("unexpected missing member org : ${mem.memberOrg} for parent ${json.slug}");
