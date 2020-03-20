@@ -1,6 +1,7 @@
 package org.olf.reshare
 
 import org.olf.okapi.modules.directory.DirectoryEntry
+import org.olf.okapi.modules.directory.GroupMember
 
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.Tenants
@@ -96,6 +97,7 @@ class FoafService implements DataBinder {
 
             // Remove friends before processing
             Object friends_list = json.remove('friends')
+            Object member_list = json.remove('members')
 
             // Remove the friends list - we will process it later on
             Object announcements = json.remove('announcements')
@@ -150,12 +152,52 @@ class FoafService implements DataBinder {
   
             // Process any friends
             log.debug("Processing friends list from entry at (${url}): ${friends_list}");
-            if ( friends_list ) {
+            if ( friends_list != null ) {
               friends_list.each { fr ->
                 if ( fr.foaf ) {
                   checkFriend(fr.foaf, depth+1);
                 }
               }
+            }
+
+            try {
+              if ( member_list != null ) {
+                log.debug("Process members");
+                boolean save_needed = false;
+                
+                // After we have processed all friend links lets make any links we need to
+                DirectoryEntry.withSession { session ->
+                  session.clear();
+                  DirectoryEntry.withTransaction { status ->
+  
+                    DirectoryEntry owner = DirectoryEntry.findBySlug(json.slug);
+  
+                    if ( owner != null ) {
+                      member_list.each { mem ->
+                        log.debug("Checking member ${mem}");
+                        GroupMember gm = GroupMember.executeQuery(GROUP_MEMBER_QUERY, [group:json.slug, member: mem.memberOrg])
+                        if ( gm.size() == 0 ) {
+                          DirectoryEntry member_org = DirectoryEntry.findBySlug(mem.memberOrg);
+                          if ( member_org != null ) {
+                            gm = new GroupMember(
+                                                 groupOrg: owner, 
+                                                 memberOrg: member_org).save(flush:true, failOnError:true);
+                          }
+                          else {
+                            log.error("unexpected missing member org : ${mem.memberOrg} for parent ${json.slug}");
+                          }
+                        }
+                      }
+                    }
+                    else {
+                      log.error("Owner slug ${json.slug} not found");
+                    }
+                  }
+                }
+              }
+            }
+            catch ( Exception e ) {
+              log.error("Problem processing member list",e);
             }
           }
         }
