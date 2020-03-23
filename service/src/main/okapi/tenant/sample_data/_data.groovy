@@ -76,6 +76,12 @@ RefdataValue.lookupOrCreate('Service.Type', 'NCIP')
 RefdataValue.lookupOrCreate('Service.Type', 'OAI-PMH')
 RefdataValue.lookupOrCreate('Service.Type', 'Z3950')
 
+RefdataValue.lookupOrCreate('Service.BusinessFunction', 'ILL')
+RefdataValue.lookupOrCreate('Service.BusinessFunction', 'CIRC')
+RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
+RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
+RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
+
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
 //                                                        ['system-default'],

@@ -8,11 +8,12 @@
   "url":"https://library.temple.edu/people",
   "tags":["INSTITUTION"],
   "symbols": [
-        { "authority":{ "symbol":"PALCI"},    "symbol":"TEMPLE", "priority":"a" },
-        { "authority":{ "symbol":"OCLC"},     "symbol":"TEU",    "priority":"a" },
-        { "authority":{ "symbol":"ISIL"},     "symbol":"US-PPT",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEMPLEI",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEU",    "priority":"a" }
+        { "authority":{ "symbol":"PALCI"},    "symbol":"TEMPLE",      "priority":"a" },
+        { "authority":{ "symbol":"OCLC"},     "symbol":"TEU",         "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},     "symbol":"US-PPT",      "priority":"a" },
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEMPLEI",     "priority":"a" },
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"TEU",         "priority":"a" },
+        { "authority":{ "symbol":"EXL"},      "symbol":"01TULI_INST", "priority":"a" }
   ],
   "units": [
     { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main", "Pickup"], "lmsLocationCode":"MAIN" },
