@@ -87,3 +87,4 @@ RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
 //                                                        ['system-default'],
 //                                                        'http://localhost:9130/rs/iso18626',
 //                                                        null);
+println("Completed tenant setup");

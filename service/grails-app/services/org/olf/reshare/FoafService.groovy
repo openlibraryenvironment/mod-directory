@@ -112,6 +112,7 @@ and gm.memberOrg.slug=:member
             // Transaction tx = session.beginTransaction();
 
             DirectoryEntry.withSession { session ->
+
               session.clear();
               DirectoryEntry.withTransaction { status ->
                 log.info("processing directory entry ${url} - see if we have an entry for that URL or slug ${json.slug}\n\n");
