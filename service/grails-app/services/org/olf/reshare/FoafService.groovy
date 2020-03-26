@@ -23,7 +23,7 @@ class FoafService implements DataBinder {
 
   def sessionFactory
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 3 * 1000; // 3 days between directory reads
+  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
