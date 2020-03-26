@@ -49,11 +49,11 @@ json g.render(directoryEntry, [
         name: it.memberOrg?.name
       ]
     }
-    memberCount: memlist.size()
-    members: memlist
+    memberCount memlist.size()
+    members memlist
   }
   else {
-    memberCount:0
+    memberCount 0
   }
 
   if ( directoryEntry.parent ) {
