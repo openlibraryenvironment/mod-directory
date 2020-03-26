@@ -80,7 +80,7 @@ and gm.memberOrg.slug=:member
       result = false;
     }
 
-    log.debug("shouldVisit(${url}) : ${result}");
+    log.debug("shouldVisit(${url}) : ${result}(${p})");
 
     return result;
   }
