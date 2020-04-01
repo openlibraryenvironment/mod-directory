@@ -23,7 +23,7 @@ class FoafService implements DataBinder {
 
   def sessionFactory
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 3 * 1000; // 3 days between directory reads
+  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
@@ -80,7 +80,7 @@ and gm.memberOrg.slug=:member
       result = false;
     }
 
-    log.debug("shouldVisit(${url}) : ${result}");
+    log.debug("shouldVisit(${url}) : ${result}(${p})");
 
     return result;
   }
@@ -112,6 +112,7 @@ and gm.memberOrg.slug=:member
             // Transaction tx = session.beginTransaction();
 
             DirectoryEntry.withSession { session ->
+
               session.clear();
               DirectoryEntry.withTransaction { status ->
                 log.info("processing directory entry ${url} - see if we have an entry for that URL or slug ${json.slug}\n\n");

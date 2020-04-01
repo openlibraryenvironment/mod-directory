@@ -41,15 +41,19 @@ json g.render(directoryEntry, [
     services service_accounts
   }
 
-  if ( directoryEntry.members ) {
-    def memlist = directoryEntry.members?.collect {
+  if ( directoryEntry.members != null ) {
+    def memlist = directoryEntry.members.collect {
       [
         id: it.memberOrg?.id,
         slug: it.memberOrg?.slug,
         name: it.memberOrg?.name
       ]
     }
-    members: memlist
+    memberCount memlist.size()
+    members memlist
+  }
+  else {
+    memberCount 0
   }
 
   if ( directoryEntry.parent ) {
