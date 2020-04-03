@@ -14,7 +14,7 @@ import org.hibernate.StatelessSession;
 import org.hibernate.Transaction;
 import grails.async.Promise
 import static grails.async.Promises.*
-
+import java.text.SimpleDateFormat
 
 /**
  *
@@ -98,6 +98,14 @@ and gm.memberOrg.slug=:member
           log.debug("HTTP get ${url} :: Success");
           // Make sure that the JSON really is an array of foaf descriptions
           if ( validateJson(json) ) {
+            def sdf = new SimpleDateFormat('yyyy-MM-dd\'T\'HH:mm:ssX')
+            Long parsed_last_modified = null;
+            try {
+              parsed_last_modified = json.lastModified ? sdf.parse(json.lastModified).getTime() : null;
+            }
+            catch ( Exception e ) {}
+ 
+            println("Entry has last_modified : ${parsed_last_modified}");
 
             Object addresses_list = json.remove('addresses')
 

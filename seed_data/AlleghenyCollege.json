@@ -9,7 +9,7 @@
   "url":"https://sites.allegheny.edu/",
   "type":"Institution",
   "units": [
-    { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
+    { "name":"Allegheny College Main Library", "slug":"ACMAIN", "type": "Branch",
       "symbols": [
         { "authority":{ "symbol":"PALCI"}, "symbol":"ACMAIN", "priority":"a" },
         { "authority":{ "symbol":"IDS"},   "symbol":"104",    "priority":"a" },
@@ -17,7 +17,7 @@
         { "authority":{ "symbol":"ISIL"},  "symbol":"US-PMA", "priority":"a" }
       ]
     },
-    { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "tags": ["Branch"] }
+    { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "type": "Branch" }
   ],
   "services":[
     { 

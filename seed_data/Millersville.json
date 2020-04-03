@@ -13,7 +13,7 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
   "units": [
-    { "name":"McNairy Library", "slug":"MILL_MCNL", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
+    { "name":"McNairy Library", "slug":"MILL_MCNL", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
   "services":[
     { 

@@ -13,7 +13,7 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"VLA",  "priority":"a" }
   ],
   "units": [
-    { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
+    { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
   "services":[
     { 

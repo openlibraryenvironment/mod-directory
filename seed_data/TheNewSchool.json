@@ -12,9 +12,9 @@
     { "authority":"RESHARE", "symbol":"TNS", "priority":"a" }
   ],
   "units": [
-    { "name":"List Center Library",       "slug":"TNS_LIST", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
-    { "name":"University Center Library", "slug":"TNS_UCL",  "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
-    { "name":"Performing Arts Library",   "slug":"TNS_PAL",  "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
+    { "name":"List Center Library",       "slug":"TNS_LIST", "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
+    { "name":"University Center Library", "slug":"TNS_UCL",  "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
+    { "name":"Performing Arts Library",   "slug":"TNS_PAL",  "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
   ],
   "services":[
     { 
