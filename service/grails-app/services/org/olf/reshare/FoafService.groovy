@@ -134,14 +134,20 @@ and gm.memberOrg.slug=:member
                 if ( de == null ) {
                   String new_id = java.util.UUID.randomUUID().toString();
                   log.debug("Create a new directory entry(id:${new_id},foafUrl:${url}, name:${json.name})")
-                  de = new DirectoryEntry( foafUrl:url, name: json.name)
+                  de = new DirectoryEntry( foafUrl:url, name: json.name, pubLastUpdate:parsed_last_modified)
                   de.id=new_id;
                 }
                 else {
+                  if ( ( parsed_last_modified != null ) &&
+                       ( de.pubLastUpdate != null ) &&
+                       ( de.pubLastUpdate == parsed_last_modified ) ) {
+                    log.debug("Entry has not changed since last visit");
+                    // return;
+                  }
+
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
-                  // def iqr = DirectoryEntry.executeQuery('select de.id, de.version from DirectoryEntry as de where de.id=:id',[id:de.id]);
-                  // log.debug("Query version: ${iqr}");
                   de.lock()
+                  de.pubLastUpdate = parsed_last_modified;
                 }
     
                 log.debug("bind json ${json}");
