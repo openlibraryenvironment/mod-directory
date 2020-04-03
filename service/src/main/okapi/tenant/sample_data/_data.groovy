@@ -107,11 +107,6 @@ RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
 
-<<<<<<< HEAD
-RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Consortium')
-RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Institution')
-RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Branch')
-=======
 RefdataValue.lookupOrCreate('YNO', 'Yes')
 RefdataValue.lookupOrCreate('YNO', 'No')
 RefdataValue.lookupOrCreate('YNO', 'Other')
@@ -124,7 +119,6 @@ RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', true, 'Accept Returns', 'YNO' )
 def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', true, 'ILL Loan Policy', 'LoanPolicy' )
 def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', true, 'Consider Institution As Last Resort', 'YNO' )
->>>>>>> 7e78d98136fc5dc4d041ece4ef64b25b714d1d6e
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
