@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/ReshareTestConsortium.json",
   "url":"https://projectreshare.org/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
     { "memberOrg": "DIKU" },
     { "memberOrg": "KINT" }

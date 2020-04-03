@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json",
   "url":"https://www.k-int.com",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "description": "K-Int test institution",
   "addresses": [
     {

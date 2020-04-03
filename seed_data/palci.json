@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json",
   "url":"http://www.palci.org/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
     { "memberOrg":"Allegheny_College" },
     { "memberOrg":"Temple_University" },

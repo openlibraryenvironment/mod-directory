@@ -5,7 +5,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Villanova.json",
   "url":"https://library.villanova.edu/",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"VILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"VILL", "priority":"a" },

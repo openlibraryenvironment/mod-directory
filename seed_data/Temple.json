@@ -8,7 +8,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json",
   "url":"https://library.temple.edu/people",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"TEMPLE",      "priority":"a" },
         { "authority":{ "symbol":"OCLC"},     "symbol":"TEU",         "priority":"a" },

@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json",
   "url":"http://www.openlibraryfoundation.org/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
   ],
   "friends":[

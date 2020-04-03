@@ -5,7 +5,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json",
   "url":"http://library.millersville.edu/home",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },

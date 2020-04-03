@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json",
   "url":"https://www.indexdata.dk/DIKU",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "description": "The standard FOLIO DIKU test library",
   "symbols":[
     { "authority":"RESHARE",   "symbol":"idVuFind",    "priority":"a" }

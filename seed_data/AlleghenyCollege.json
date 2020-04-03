@@ -6,7 +6,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json",
   "url":"https://sites.allegheny.edu/",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "units": [
     { "name":"Allegheny College Main Library", "slug":"ACMAIN", "tags": ["Branch"],
       "symbols": [

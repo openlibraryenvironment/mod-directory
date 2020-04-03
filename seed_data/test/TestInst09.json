@@ -3,7 +3,7 @@
   "slug":"TestInst09",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/TestInst09.json",
   "url":"https://www.k-int.com",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "description": "Reshare test institution",
   "phoneNumber":"TestInst09 phone",
   "emailAddress":"user@TestInst09.com",
