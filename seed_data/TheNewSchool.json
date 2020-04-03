@@ -1,19 +1,20 @@
 {
   "name":"The New School",
   "slug":"The_New_School",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 212 229 5600",
   "emailAddress":"libhelp@newschool.edu",
   "contactName":"Contact Name",
   "url":"https://www.newschool.edu/",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
     { "authority":"OCLC", "symbol":"ZMU", "priority":"a" },
     { "authority":"RESHARE", "symbol":"TNS", "priority":"a" }
   ],
   "units": [
-    { "name":"List Center Library",       "slug":"TNS_LIST", "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
-    { "name":"University Center Library", "slug":"TNS_UCL",  "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
-    { "name":"Performing Arts Library",   "slug":"TNS_PAL",  "tags": ["Branch"], "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
+    { "name":"List Center Library",       "slug":"TNS_LIST", "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSLCL", "priority":"a" } },
+    { "name":"University Center Library", "slug":"TNS_UCL",  "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSUCL", "priority":"a" } },
+    { "name":"Performing Arts Library",   "slug":"TNS_PAL",  "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"TNSPAL", "priority":"a" } }
   ],
   "services":[
     { 

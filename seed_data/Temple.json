@@ -1,6 +1,7 @@
 {
   "name":"Temple University",
   "slug":"Temple_University",
+  "lastModified":"2020-04-03T07:09:42Z",
   "type": "Institution",
   "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 215-204-7000",
@@ -8,7 +9,7 @@
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json",
   "url":"https://library.temple.edu/people",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"TEMPLE",      "priority":"a" },
         { "authority":{ "symbol":"OCLC"},     "symbol":"TEU",         "priority":"a" },
@@ -23,10 +24,10 @@
     "policy.ill.last_resort": ["No"]
   },
   "units": [
-    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main", "Pickup"], "lmsLocationCode":"MAIN" },
-    { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "tags": ["Storage"], "lmsLocationCode":"ASRS" },
-    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "tags": ["Branch", "Pickup"], "lmsLocationCode":"KARDON" },
-    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "tags": ["Branch", "Pickup"], "lmsLocationCode":"AMBLER" }
+    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "type": "Branch", "tags":["pickup"], "lmsLocationCode":"MAIN" },
+    { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "type": "Storage", "lmsLocationCode":"ASRS" },
+    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "type": "Branch", "tags":["Pickup"], "lmsLocationCode":"KARDON" },
+    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "type": "Branch", "tags": ["Pickup"], "lmsLocationCode":"AMBLER" }
   ],
   "services":[
     { 

@@ -1,12 +1,13 @@
 {
   "name":"Open Library Foundation",
   "slug":"OLF",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 215-253-8502",
   "emailAddress":"info@openlibraryfoundation.org",
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json",
   "url":"http://www.openlibraryfoundation.org/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
   ],
   "friends":[

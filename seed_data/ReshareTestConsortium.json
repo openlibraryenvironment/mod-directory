@@ -1,12 +1,13 @@
 {
   "name":"RESHARE",
   "slug":"RESHARE",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 (555)-555-555",
   "emailAddress":"info@projectreshare.org",
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/ReshareTestConsortium.json",
   "url":"https://projectreshare.org/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
     { "memberOrg": "DIKU" },
     { "memberOrg": "KINT" }

@@ -1,18 +1,19 @@
 {
   "name":"Millersville",
   "slug":"Millersville",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 (717) 871-7111",
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json",
   "url":"http://library.millersville.edu/home",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
   "units": [
-    { "name":"McNairy Library", "slug":"MILL_MCNL", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
+    { "name":"McNairy Library", "slug":"MILL_MCNL", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
   "services":[
     { 

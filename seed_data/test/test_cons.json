@@ -3,7 +3,7 @@
   "slug":"TestCons001",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json",
   "url":"http://not.a.real.consortium/",
-  "tags":["CONSORTIUM"],
+  "type":"Consortium",
   "members":[
     { "memberOrg":"DIKU" },
     { "memberOrg":"KINT"},

@@ -1,12 +1,13 @@
 {
   "name":"DIKU",
   "slug":"DIKU",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+45 93 51 59 79",
   "emailAddress":"info@di.ku.dk",
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/DIKU.json",
   "url":"https://www.indexdata.dk/DIKU",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "description": "The standard FOLIO DIKU test library",
   "symbols":[
     { "authority":"RESHARE",   "symbol":"idVuFind",    "priority":"a" }

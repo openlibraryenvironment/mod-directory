@@ -1,18 +1,19 @@
 {
   "name":"Villanova",
   "slug":"Villanova",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 610-519-4270",
   "contactName":"Contact Name",
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Villanova.json",
   "url":"https://library.villanova.edu/",
-  "tags":["INSTITUTION"],
+  "type":"Institution",
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"VILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"VILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"VLA",  "priority":"a" }
   ],
   "units": [
-    { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "tags": ["Branch", "Main"], "lmsLocationCode":"MAIN" }
+    { "name":"Falvey Memorial Library", "slug":"VILL_FALVEY", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
   "services":[
     { 
