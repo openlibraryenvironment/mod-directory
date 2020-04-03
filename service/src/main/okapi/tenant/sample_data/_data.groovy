@@ -116,9 +116,9 @@ RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lendin Physical only')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 
-def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', true, 'Accept Returns', 'YNO' )
-def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', true, 'ILL Loan Policy', 'LoanPolicy' )
-def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', true, 'Consider Institution As Last Resort', 'YNO' )
+def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'Accept Returns', 'YNO' )
+def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'ILL Loan Policy', 'LoanPolicy' )
+def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'Consider Institution As Last Resort', 'YNO' )
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
