@@ -1,6 +1,8 @@
 {
   "name":"Temple University",
   "slug":"Temple_University",
+  "type": "Institution",
+  "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"+1 215-204-7000",
   "emailAddress":"asktulibrary@temple.edu",
   "contactName":"Contact Name",
@@ -15,6 +17,11 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"TEU",         "priority":"a" },
         { "authority":{ "symbol":"EXL"},      "symbol":"01TULI_INST", "priority":"a" }
   ],
+  "customProperties":{ 
+    "policy.ill.loan_policy":["Lending all types"],
+    "policy.ill.returns": ["Yes"],
+    "policy.ill.last_resort": ["No"]
+  },
   "units": [
     { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "tags": ["Branch", "Main", "Pickup"], "lmsLocationCode":"MAIN" },
     { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "tags": ["Storage"], "lmsLocationCode":"ASRS" },

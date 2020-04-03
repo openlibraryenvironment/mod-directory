@@ -5,8 +5,9 @@ import grails.gorm.transactions.Transactional
 import org.olf.okapi.modules.directory.Service
 import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.refdata.RefdataCategory
-import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
+import com.k_int.web.toolkit.custprops.types.CustomPropertyRefdataDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
+import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import org.olf.okapi.modules.directory.NamingAuthority;
 import grails.databinding.SimpleMapDataBindingSource
 import static grails.async.Promises.*
@@ -21,6 +22,24 @@ CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, S
                                       ).save(flush:true, failOnError:true);
   return result;
 }
+
+CustomPropertyDefinition ensureRefdataProperty(String name, boolean local = true, String category, String label = null) {
+
+  CustomPropertyDefinition result = null;
+  def rdc = RefdataCategory.findByDesc(category);
+
+  if ( rdc != null ) {
+    result = CustomPropertyRefdataDefinition.findByName(name) ?: new CustomPropertyRefdataDefinition(
+                                        name:name,
+                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class,
+                                        defaultInternal: local,
+                                        label:label,
+                                        category: rdc
+                                      ).save(flush:true, failOnError:true);
+  }
+  return result;
+}
+
 
 Service ensureService(String name, String type, List<String>tags, String address, Map custProps) {
 
@@ -88,9 +107,24 @@ RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
 
+<<<<<<< HEAD
 RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Consortium')
 RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Institution')
 RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Branch')
+=======
+RefdataValue.lookupOrCreate('YNO', 'Yes')
+RefdataValue.lookupOrCreate('YNO', 'No')
+RefdataValue.lookupOrCreate('YNO', 'Other')
+
+RefdataValue.lookupOrCreate('LoanPolicy', 'Lending all types')
+RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
+RefdataValue.lookupOrCreate('LoanPolicy', 'Lendin Physical only')
+RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
+
+def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', true, 'Accept Returns', 'YNO' )
+def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', true, 'ILL Loan Policy', 'LoanPolicy' )
+def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', true, 'Consider Institution As Last Resort', 'YNO' )
+>>>>>>> 7e78d98136fc5dc4d041ece4ef64b25b714d1d6e
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
