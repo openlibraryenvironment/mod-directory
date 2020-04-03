@@ -88,6 +88,10 @@ RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
 RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
 
+RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Consortium')
+RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Institution')
+RefdataValue.lookupOrCreate('DirectoryEntry.Type', 'Branch')
+
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
 //                                                        ['system-default'],
