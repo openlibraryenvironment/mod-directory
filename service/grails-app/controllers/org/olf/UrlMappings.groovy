@@ -10,6 +10,7 @@ class UrlMappings {
     "/directory/api/addFriend"(controller: 'application', action:'addFriend')
 
     "/directory/entry"(resources:'directoryEntry')
+    "/directory/symbol"(resources:'Symbol')
     "/directory/service"(resources:'Service')
     "/directory/serviceAccount"(resources:'ServiceAccount')
     "/directory/namingAuthority"(resources:'NamingAuthority')
