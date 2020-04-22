@@ -23,19 +23,27 @@ CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, S
   return result;
 }
 
-CustomPropertyDefinition ensureRefdataProperty(String name, boolean local = true, String category, String label = null) {
+CustomPropertyDefinition ensureRefdataProperty(String name, boolean local, String category, String label = null) {
 
   CustomPropertyDefinition result = null;
   def rdc = RefdataCategory.findByDesc(category);
 
   if ( rdc != null ) {
-    result = CustomPropertyRefdataDefinition.findByName(name) ?: new CustomPropertyRefdataDefinition(
+    result = CustomPropertyDefinition.findByName(name) 
+    if ( result == null ) {
+      result = new CustomPropertyRefdataDefinition(
                                         name:name,
-                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class,
                                         defaultInternal: local,
                                         label:label,
-                                        category: rdc
-                                      ).save(flush:true, failOnError:true);
+                                        category: rdc)
+      // Not entirely sure why type can't be set in the above, but other bootstrap scripts do this
+      // the same way, so copying. Type doesn't work when set as a part of the definition above
+      result.type=com.k_int.web.toolkit.custprops.types.CustomPropertyRefdata.class
+      result.save(flush:true, failOnError:true);
+    }
+  }
+  else {
+    println("Unable to find category ${category}");
   }
   return result;
 }
@@ -116,13 +124,13 @@ RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lendin Physical only')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 
-def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'Accept Returns', 'YNO' )
-def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'ILL Loan Policy', 'LoanPolicy' )
-def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'Consider Institution As Last Resort', 'YNO' )
+def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
+def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
+def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
 //                                                        ['system-default'],
 //                                                        'http://localhost:9130/rs/iso18626',
 //                                                        null);
-println("Completed tenant setup");
+println("\n\n***Completed tenant setup***");

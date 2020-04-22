@@ -774,4 +774,8 @@ databaseChangeLog = {
         }
     }
 
+    changeSet(author: "ianibbo (manual)", id: "20200422-0925-001") {
+        dropNotNullConstraint(tableName: "address", columnName:'owner_id', type: "VARCHAR(36)")
+    }
+
 }
