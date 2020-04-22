@@ -1,0 +1,21 @@
+{
+  "name":"East",
+  "slug":"CardinalEast",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/east.json",
+  "url":"https://www.k-int.com",
+  "type":"Institution",
+  "description": "Reshare test institution - Cardinal EAST",
+  "phoneNumber":"Cardinal East phone",
+  "emailAddress":"user@TestInst01.com",
+  "contactName":"TestInst01 Contact Name",
+  "symbols": [
+    { "authority":"CARDINAL",   "symbol":"EAST",    "priority":"a" }
+  ],
+  "services":[
+    {
+      "slug": "CARDINAL_EAST_ISO18626",
+      "service":{ "name":"ReShare ISO18626 Service", "address":"http://east.reshare-dev.indexdata.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties": { "ILLPreferredNamespaces": [ "CARDINAL", "RESHARE" ]  }
+    }
+  ]
+}

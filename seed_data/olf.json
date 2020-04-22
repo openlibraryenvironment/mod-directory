@@ -13,5 +13,6 @@
   "friends":[
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/palci.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json" }
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/cardinal.json" }
   ]
 }
