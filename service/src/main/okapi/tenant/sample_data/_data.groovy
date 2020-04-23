@@ -101,6 +101,7 @@ NamingAuthority isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthori
 NamingAuthority oclc = NamingAuthority.findBySymbol('OCLC') ?: new NamingAuthority(symbol:'OCLC').save(flush:true, failOnError:true);
 NamingAuthority exl = NamingAuthority.findBySymbol('EXL') ?: new NamingAuthority(symbol:'EXL').save(flush:true, failOnError:true);
 NamingAuthority palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
+NamingAuthority cardinal = NamingAuthority.findBySymbol('CARDINAL') ?: new NamingAuthority(symbol:'CARDINAL').save(flush:true, failOnError:true);
 
 RefdataValue.lookupOrCreate('Service.Type', 'ISO18626')
 RefdataValue.lookupOrCreate('Service.Type', 'RTAC')
