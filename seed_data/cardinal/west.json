@@ -8,6 +8,12 @@
   "phoneNumber":"Cardinal West phone",
   "emailAddress":"user@TestInst01.com",
   "contactName":"TestInst01 Contact Name",
+  "customProperties":{
+    "policy.ill.loan_policy":["Lending all types"],
+    "policy.ill.returns": ["Yes"],
+    "policy.ill.last_resort": ["No"],
+    "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
+  },
   "symbols": [
     { "authority":"CARDINAL",   "symbol":"WEST",    "priority":"a" }
   ],

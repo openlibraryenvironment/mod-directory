@@ -12,6 +12,12 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
+  "customProperties":{ 
+    "policy.ill.loan_policy":["Lending all types"],
+    "policy.ill.returns": ["Yes"],
+    "policy.ill.last_resort": ["No"],
+    "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
+  },
   "units": [
     { "name":"McNairy Library", "slug":"MILL_MCNL", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
