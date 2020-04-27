@@ -16,7 +16,7 @@ import groovy.util.logging.Slf4j
  * External Read-Only APIs for resource sharing network connectivity
  */
 @Slf4j
-class externalApi {
+class ExternalApiController {
 
   GrailsApplication grailsApplication
 
