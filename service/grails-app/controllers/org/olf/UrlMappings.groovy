@@ -23,6 +23,10 @@ class UrlMappings {
     "/directory/settings/worker" (controller: 'directorySettings', action: 'worker');
     "/directory/settings/foaf" (controller: 'directorySettings', action: 'foaf');
 
+    "/directory/externalApi" (controller: 'externalApi', action:'index')
+    "/directory/externalApi/${tenant}/directory" (controller: 'externalApi', action:'directoryIndex' )
+    "/directory/externalApi/${tenant}/directory/${slug}" (controller: 'externalApi', action:'directoryEntry' )
+
 
     // Call /rs/refdata to list all refdata categories
     '/directory/refdata'(resources: 'refdata') {
