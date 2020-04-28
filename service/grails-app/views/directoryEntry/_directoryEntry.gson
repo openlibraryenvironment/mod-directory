@@ -3,75 +3,82 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 import org.olf.okapi.modules.directory.ServiceAccount
 
 @Field DirectoryEntry directoryEntry
-json g.render(directoryEntry, [
-                 expand: [ 'customProperties', 'tags', 'status', 'type', 'symbols', 'announcements', 'addresses'], 
-                 excludes:[ 'services', 'parent', 'units', 'members' ]]) {
 
-  // Manually render the child entries and services so we don't auto expand back references to the owner
-  if ( directoryEntry?.units ) {
-    def child_entries = directoryEntry?.units.collect {
-      [
-        id: it.id,
-        name: it.name
-      ]
-    }
-    units child_entries
-  }
+if (params.fullEntry) {
+  System.out.println "FULL ENTRY"
+  json tmpl."/directoryEntry/directoryEntryFull" (directoryEntry)
+  
+} else {
+  json g.render(directoryEntry, [
+     expand: [ 'customProperties', 'tags', 'status', 'type', 'symbols', 'announcements', 'addresses'], 
+     excludes:[ 'services', 'parent', 'units', 'members' ]]) {
 
-  if ( directoryEntry.services ) {
-    def service_accounts = directoryEntry.services?.collect {
-      [
-        id: it.id,
-        service:[
-         id: it.service.id,
-         name: it.service.name,
-         address: it.service.address,
-         type:[
-           id:it.service?.type?.id,
-           value:it.service?.type?.value
-         ],
-         businessFunction:[
-           id:it.service?.businessFunction?.id,
-           value:it.service?.businessFunction?.value
-         ]
-        ],
-        accountDetails: it.accountDetails
-      ]
-    }
-    services service_accounts
-  }
-
-  if ( directoryEntry.members != null ) {
-    def memlist = directoryEntry.members.collect {
-      [
-        id: it.memberOrg?.id,
-        slug: it.memberOrg?.slug,
-        name: it.memberOrg?.name,
-        memberOrg:[
-         id: it.memberOrg?.id
-        ],
-        groupOrg:[
-         id: it.groupOrg?.id
+    // Manually render the child entries and services so we don't auto expand back references to the owner
+    if ( directoryEntry?.units ) {
+      def child_entries = directoryEntry?.units.collect {
+        [
+          id: it.id,
+          name: it.name
         ]
-      ]
+      }
+      units child_entries
     }
-    memberCount memlist.size()
-    members memlist
-  }
-  else {
-    memberCount 0
-  }
-
-  if ( directoryEntry.parent ) {
-    parent {
-      id directoryEntry.parent?.id
-      slug directoryEntry.slug
-      name directoryEntry.parent?.name
-      fullyQualifiedName directoryEntry.parent?.fullyQualifiedName
+  
+    if ( directoryEntry.services ) {
+      def service_accounts = directoryEntry.services?.collect {
+        [
+          id: it.id,
+          service:[
+           id: it.service.id,
+           name: it.service.name,
+           address: it.service.address,
+           type:[
+             id:it.service?.type?.id,
+             value:it.service?.type?.value
+           ],
+           businessFunction:[
+             id:it.service?.businessFunction?.id,
+             value:it.service?.businessFunction?.value
+           ]
+          ],
+          accountDetails: it.accountDetails
+        ]
+      }
+      services service_accounts
     }
+  
+    if ( directoryEntry.members != null ) {
+      def memlist = directoryEntry.members.collect {
+        [
+          id: it.memberOrg?.id,
+          slug: it.memberOrg?.slug,
+          name: it.memberOrg?.name,
+          memberOrg:[
+           id: it.memberOrg?.id
+          ],
+          groupOrg:[
+           id: it.groupOrg?.id
+          ]
+        ]
+      }
+      memberCount memlist.size()
+      members memlist
+    }
+    else {
+      memberCount 0
+    }
+  
+    if ( directoryEntry.parent ) {
+      parent {
+        id directoryEntry.parent?.id
+        slug directoryEntry.slug
+        name directoryEntry.parent?.name
+        fullyQualifiedName directoryEntry.parent?.fullyQualifiedName
+      }
+    }
+  
+    tagSummary directoryEntry.getTagSummary()
+    symbolSummary directoryEntry.getSymbolSummary()
+    fullyQualifiedName directoryEntry.getFullyQualifiedName()
   }
-
-  tagSummary directoryEntry.getTagSummary()
-  symbolSummary directoryEntry.getSymbolSummary()
-  fullyQualifiedName directoryEntry.getFullyQualifiedName()
 }

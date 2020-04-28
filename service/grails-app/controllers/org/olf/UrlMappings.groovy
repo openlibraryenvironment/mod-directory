@@ -25,7 +25,9 @@ class UrlMappings {
 
     "/directory/externalApi" (resources: 'externalApi', excludes: ['update', 'patch', 'save', 'create', 'edit', 'delete']) {
       collection {
-        "/directory/$slug?" (controller: 'externalApi', action:'directoryIndex' )
+        "/directory/$slug?" (controller: 'externalApi', action:'directoryIndex' ) {
+          fullEntry = true
+        }
       }
     }
 
