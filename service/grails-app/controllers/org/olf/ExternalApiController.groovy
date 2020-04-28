@@ -1,27 +1,29 @@
 package org.olf
 
+import org.hibernate.FetchMode
 import org.olf.okapi.modules.directory.DirectoryEntry
 
-import grails.core.GrailsApplication
-import grails.plugins.*
+import com.k_int.okapi.OkapiTenantAwareController
+
 import grails.converters.JSON
-import grails.gorm.multitenancy.Tenants
-import java.text.SimpleDateFormat
-import groovy.xml.StreamingMarkupBuilder
+import grails.core.GrailsApplication
+import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.multitenancy.Tenants
 import groovy.util.logging.Slf4j
-import grails.gorm.transactions.Transactional
-import org.hibernate.FetchMode
 
 
 /**
  * External Read-Only APIs for resource sharing network connectivity
  */
-@Slf4j
-class ExternalApiController {
+@CurrentTenant
+class ExternalApiController extends OkapiTenantAwareController<DirectoryEntry> {
 
   GrailsApplication grailsApplication
 
+  ExternalApiController() {
+    super (DirectoryEntry, true)
+  }
+  
   def index() {
     def result =  [
       status:'OK',
@@ -29,55 +31,23 @@ class ExternalApiController {
     render result as JSON;
   }
 
-  def directoryIndex(String tenant) {
-    def result =  [
-      status:'OK',
-      tenant: tenant
-    ]
-    result.managedEntries = []
-    Tenants.withId(tenant << "_mod_directory") {
-      // We only want to return those entries which are listed as "Managed" in this tenant
-   
-      def directoryEntryList =  DirectoryEntry.createCriteria().list {
-
-        fetchMode("addresses", FetchMode.JOIN)
-        fetchMode("units", FetchMode.JOIN)
-        fetchMode("friends", FetchMode.JOIN)
-        fetchMode("tags", FetchMode.JOIN)
-        fetchMode("symbols", FetchMode.JOIN)
-        fetchMode("members", FetchMode.JOIN)
-        fetchMode("services", FetchMode.JOIN)
-        fetchMode("announcements", FetchMode.JOIN)
-
-        createAlias('status', 'the_status')
-        eq 'the_status.value', 'managed'
-        isNull("parent")
+  def directoryIndex(final String slug) {
+    
+    respond doTheLookup {
+      if (slug) {
+        // Filter by slug.
+        eq 'slug', slug
+      } else {
+        // Just output the whole tree, by finding the top-level entry with the status set to managed.
+        
+        // Should filter by this first as it will greatly reduce the number of results.
+        isNull('parent')
+        
+//        createAlias('status', 'the_status')
+//          eq 'the_status.value', 'managed'
       }
-      log.debug("DEBUG List of managed root Directory Entries ${directoryEntryList}")
-      
-      directoryEntryList.each{de ->
-        JSON.use("deep") {
-          result.managedEntries << de as JSON
-        }
-     }
     }
     
-    render result as JSON;
-  }
-
-  def directoryEntry(String tenant, String slug) {
-    def result =  [
-      status:'OK',
-      tenant: tenant
-    ]
-
-     def directoryEntryMatchingSlug = DirectoryEntry.createCriteria().list {
-        createAlias('slug', 'the_slug')
-        eq 'the_slug', slug
-      }
-      result.directoryEntry = directoryEntryMatchingSlug
-
-    render result as JSON;
   }
 
 }
