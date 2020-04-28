@@ -11,6 +11,7 @@ import groovy.xml.StreamingMarkupBuilder
 import grails.gorm.multitenancy.Tenants
 import groovy.util.logging.Slf4j
 import grails.gorm.transactions.Transactional
+import org.hibernate.FetchMode
 
 
 /**
@@ -33,18 +34,34 @@ class ExternalApiController {
       status:'OK',
       tenant: tenant
     ]
+    result.managedEntries = []
     Tenants.withId(tenant << "_mod_directory") {
       // We only want to return those entries which are listed as "Managed" in this tenant
    
       def directoryEntryList =  DirectoryEntry.createCriteria().list {
+
+        fetchMode("addresses", FetchMode.JOIN)
+        fetchMode("units", FetchMode.JOIN)
+        fetchMode("friends", FetchMode.JOIN)
+        fetchMode("tags", FetchMode.JOIN)
+        fetchMode("symbols", FetchMode.JOIN)
+        fetchMode("members", FetchMode.JOIN)
+        fetchMode("services", FetchMode.JOIN)
+        fetchMode("announcements", FetchMode.JOIN)
+
         createAlias('status', 'the_status')
         eq 'the_status.value', 'managed'
         isNull("parent")
       }
       log.debug("DEBUG List of managed root Directory Entries ${directoryEntryList}")
-      //result.managedEntries = directoryEntryList
+      
+      directoryEntryList.each{de ->
+        JSON.use("deep") {
+          result.managedEntries << de as JSON
+        }
+     }
     }
-
+    
     render result as JSON;
   }
 
