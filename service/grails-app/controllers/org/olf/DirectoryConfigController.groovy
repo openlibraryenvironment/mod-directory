@@ -1,4 +1,4 @@
-package mod.rs;
+package org.olf;
 
 import com.k_int.web.toolkit.ConfigController;
 
