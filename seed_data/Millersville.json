@@ -34,8 +34,7 @@
     },
     {
       "slug":"Mill_RS_Stats",
-      "service":{ "name":"Millersville Stats Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" },
-      "customProperties":{ "Header":["X-TENANT-ID:temple"] }
+      "service":{ "name":"Millersville Stats Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
     }
   ]
 }
