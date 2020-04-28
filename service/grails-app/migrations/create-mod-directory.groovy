@@ -777,5 +777,17 @@ databaseChangeLog = {
     changeSet(author: "ianibbo (manual)", id: "20200422-0925-001") {
         dropNotNullConstraint(tableName: "address", columnName:'owner_id', type: "VARCHAR(36)")
     }
-
+    
+    changeSet(author: "ianibbo (manual)", id: "20200422-0925-001") {
+        dropNotNullConstraint(tableName: "address", columnName:'owner_id', type: "VARCHAR(36)")
+    }
+    
+    changeSet(author: "sosguthorpe (generated)", id: "1588079243130-1") {
+        addColumn(tableName: "refdata_category") {
+            column(name: "internal", type: "boolean") {
+                constraints(nullable: "false")
+            }
+        }
+        addNotNullConstraint (tableName: "refdata_category", columnName: "internal", defaultNullValue: false)
+    }
 }
