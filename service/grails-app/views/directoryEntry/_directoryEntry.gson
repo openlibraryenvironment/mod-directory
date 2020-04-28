@@ -46,7 +46,13 @@ json g.render(directoryEntry, [
       [
         id: it.memberOrg?.id,
         slug: it.memberOrg?.slug,
-        name: it.memberOrg?.name
+        name: it.memberOrg?.name,
+        memberOrg:[
+         id: it.memberOrg?.id
+        ],
+        groupOrg:[
+         id: it.groupOrg?.id
+        ]
       ]
     }
     memberCount memlist.size()
