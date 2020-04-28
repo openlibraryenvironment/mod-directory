@@ -24,8 +24,8 @@ class UrlMappings {
     "/directory/settings/foaf" (controller: 'directorySettings', action: 'foaf');
 
     "/directory/externalApi" (controller: 'externalApi', action:'index')
-    "/directory/externalApi/${tenant}/directory" (controller: 'externalApi', action:'directoryIndex' )
-    "/directory/externalApi/${tenant}/directory/${slug}" (controller: 'externalApi', action:'directoryEntry' )
+    "/directory/externalApi/$tenant/directory" (controller: 'externalApi', action:'directoryIndex' )
+    "/directory/externalApi/$tenant/directory/$slug" (controller: 'externalApi', action:'directoryEntry' )
 
 
     // Call /rs/refdata to list all refdata categories
