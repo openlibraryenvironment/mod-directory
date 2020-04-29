@@ -43,10 +43,14 @@ class ExternalApiController extends OkapiTenantAwareController<DirectoryEntry> {
         // Should filter by this first as it will greatly reduce the number of results.
         isNull('parent')
         
-//        createAlias('status', 'the_status')
-//          eq 'the_status.value', 'managed'
+        createAlias('status', 'the_status')
+        eq 'the_status.value', 'managed'
+
+
       }
     }
+
+    
     
   }
 
