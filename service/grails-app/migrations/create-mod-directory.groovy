@@ -784,10 +784,9 @@ databaseChangeLog = {
     
     changeSet(author: "sosguthorpe (generated)", id: "1588079243130-1") {
         addColumn(tableName: "refdata_category") {
-            column(name: "internal", type: "boolean") {
-                constraints(nullable: "false")
-            }
+            column(name: "internal", type: "boolean")
         }
         addNotNullConstraint (tableName: "refdata_category", columnName: "internal", defaultNullValue: false)
+        validCheckSum ('7:4d7100920e9b9fd87d0d62d8440eec4e') // Might have already been applied.
     }
 }
