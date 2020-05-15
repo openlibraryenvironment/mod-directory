@@ -15,7 +15,8 @@
     "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
   },
   "symbols": [
-    { "authority":"CARDINAL",   "symbol":"US-EAST-1",    "priority":"a" }
+    { "authority":"CARDINAL",   "symbol":"US-EAST-1",    "priority":"a" },
+    { "authority":"RESHARE",    "symbol":"US-EAST",    "priority":"a" }
   ],
   "services":[
     {
