@@ -25,10 +25,10 @@
     "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
   },
   "units": [
-    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "type": "Branch", "tags":["pickup"], "lmsLocationCode":"MAIN" },
+    { "name":"Temple University - Main Library", "slug":"TEMPLE_MAIN", "type": "Branch", "lmsLocationCode":"MAIN" },
     { "name":"Automated Storage System", "slug": "TEMPLE_ASRS", "type": "Storage", "lmsLocationCode":"ASRS" },
-    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "type": "Branch", "tags":["Pickup"], "lmsLocationCode":"KARDON" },
-    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "type": "Branch", "tags": ["Pickup"], "lmsLocationCode":"AMBLER" }
+    { "name":"Kardon building", "slug": "TEMPLE_KARDON", "type": "Branch", "lmsLocationCode":"KARDON" },
+    { "name":"Ambler building", "slug": "TEMPLE_AMBLER", "type": "Branch", "lmsLocationCode":"AMBLER" }
   ],
   "services":[
     { 
