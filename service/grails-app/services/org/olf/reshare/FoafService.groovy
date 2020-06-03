@@ -138,11 +138,18 @@ and gm.memberOrg.slug=:member
                   de.id=new_id;
                 }
                 else {
+
                   if ( ( parsed_last_modified != null ) &&
                        ( de.pubLastUpdate != null ) &&
                        ( de.pubLastUpdate == parsed_last_modified ) ) {
                     log.debug("Entry has not changed since last visit");
-                    // return;
+                    return;
+                  }
+
+                  if ( de.status?.value?.equalsIgnoreCase('Managed') ) {
+                    // This directory entry is managed by this installation - do not accept updates from the the network
+                    log.debug("Update detected for Managed directory entry - Skip");
+                    return;
                   }
 
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
