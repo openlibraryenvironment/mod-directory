@@ -10,6 +10,7 @@ class UrlMappings {
     "/directory/api/addFriend"(controller: 'application', action:'addFriend')
 
     "/directory/entry"(resources:'directoryEntry')
+    "/directory/symbol"(resources:'Symbol')
     "/directory/service"(resources:'Service')
     "/directory/serviceAccount"(resources:'ServiceAccount')
     "/directory/namingAuthority"(resources:'NamingAuthority')
@@ -22,9 +23,13 @@ class UrlMappings {
     "/directory/settings/worker" (controller: 'directorySettings', action: 'worker');
     "/directory/settings/foaf" (controller: 'directorySettings', action: 'foaf');
 
-    "/directory/externalApi/${tenant}/entry/${slug}" (controller: 'externalApi', action:'dirent' )
-
-
+    "/directory/externalApi" (resources: 'externalApi', excludes: ['update', 'patch', 'save', 'create', 'edit', 'delete']) {
+      collection {
+        "/directory/$slug?" (controller: 'externalApi', action:'directoryIndex' ) {
+          fullEntry = true
+        }
+      }
+    }
 
     // Call /rs/refdata to list all refdata categories
     '/directory/refdata'(resources: 'refdata') {

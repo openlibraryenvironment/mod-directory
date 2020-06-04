@@ -12,6 +12,12 @@
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
   ],
+  "customProperties":{ 
+    "policy.ill.loan_policy":["Lending all types"],
+    "policy.ill.returns": ["Yes"],
+    "policy.ill.last_resort": ["No"],
+    "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
+  },
   "units": [
     { "name":"McNairy Library", "slug":"MILL_MCNL", "type": "Branch", "lmsLocationCode":"MAIN" }
   ],
@@ -25,6 +31,10 @@
       "slug":"Mill_NCIP",
       "service":{ "name":"Millersvile NCIP", "address":"https://klnpa-millersville.alma.exlibrisgroup.com/view/NcipP2PServlet", "type":"NCIP", "businessFunction":"CIRC" },
       "customProperties":{ "ALMA_AGENCY_ID":["TEMPLE"] }
+    },
+    {
+      "slug":"Mill_RS_Stats",
+      "service":{ "name":"Millersville Stats Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
     }
   ]
 }

@@ -119,7 +119,7 @@ events:
     zk:
       connect: 'localhost:2181'
     bootstrap:
-      servers: 'localhost:9092'
+      servers: 'localhost:29092'
     key:
       deserializer: org.apache.kafka.common.serialization.StringDeserializer
     value:
@@ -131,7 +131,7 @@ events:
     zk:
       connect: 'localhost:2181'
     bootstrap:
-      servers: 'localhost:9092'
+      servers: 'localhost:29092'
     key:
       serializer: org.apache.kafka.common.serialization.StringSerializer
     value:

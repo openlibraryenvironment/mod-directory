@@ -173,15 +173,29 @@ public class AppListenerService implements ApplicationListener {
   private Map getCustprops(com.k_int.web.toolkit.custprops.types.CustomPropertyContainer svc) {
     Map result = [:]
     svc.value.each { cp ->
-      // result[k] = v
+      // If we have not already mapped a value for this key, create an array in the response
       if ( result[cp.definition.name] == null ) {
-        result[cp.definition.name] = [ cp.value?.toString() ]
+        result[cp.definition.name] = [ getCPValue(cp.value) ]
       }
       else {
-        result[cp.definition.name].add(cp.value?.toString())
+        // otherwise, add this value to the existing array
+        result[cp.definition.name].add(getCPValue(cp.value))
       }
     }
     log.debug("Adding service account custom properties: ${result}");
+    return result;
+  }
+
+  private String getCPValue(Object o) {
+    String result = null;
+    if ( o != null ) {
+      if ( o instanceof com.k_int.web.toolkit.refdata.RefdataValue ) {
+        result = ((com.k_int.web.toolkit.refdata.RefdataValue)o).value
+      }
+      else {
+        result = o.toString();
+      }
+    }
     return result;
   }
 }

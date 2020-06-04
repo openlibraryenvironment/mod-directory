@@ -1,0 +1,17 @@
+{
+  "name":"Cardinal test Consortium",
+  "slug":"CARDINAL",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json",
+  "url":"http://not.a.real.consortium/",
+  "type":"Consortium",
+  "members":[
+    { "memberOrg":"CardinalUSEast"},
+    { "memberOrg":"CardinalUSWest"},
+    { "memberOrg":"CardinalEUWest1"}
+  ],
+  "friends":[
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/us-east-1.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/us-west-1.json" },
+    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/eu-west-1.json" }
+  ]
+}
