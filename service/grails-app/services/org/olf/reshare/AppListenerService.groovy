@@ -94,61 +94,10 @@ public class AppListenerService implements ApplicationListener {
 
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
-    Map entry_data = [
-      id: de.id,  // We are using assigned identifiers now!
-      name: de.name,
-      slug: de.slug,
-      foafUrl: de.foafUrl,
-      services:[],
-      symbols:[],
-      description: de.description,
-      entryUrl: de.entryUrl,
-      phoneNumber: de.phoneNumber,
-      emailAddress: de.emailAddress,
-      contactName: de.contactName,
-      lmsLocationCode: de.lmsLocationCode,
-      tags: de.tags?.collect {it?.value},
-      customProperties: getCustprops(de.customProperties),
-      members:[]
-    ]
 
-    de.services.each { svc ->
-      entry_data.services.add([
-                    slug:svc.slug, 
-                    service:[
-                      name: svc.service.name,
-                      address: svc.service.address,
-                      type: svc.service.type?.value,
-                      businessFunction: svc.service.businessFunction?.value,
-                    ],
-                    customProperties: getCustprops(svc.customProperties)])
-    }
+    Map entry_data = makeDirentJSON(de, false);
 
-    de.symbols.each { sym ->
-      entry_data.symbols.add (
-        [
-          authority: sym.authority.symbol,
-          symbol: sym.symbol,
-          priority: sym.priority
-        ]
-      );
-    }
-
-    de.members.each { mem ->
-      if ( mem?.memberOrg?.slug ) {
-        entry_data.members.add(['memberOrg':mem?.memberOrg?.slug])
-      }
-    }
-
-    log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data}");
-
-    if ( de.parent != null ) {
-      entry_data.parent = [
-        id: de.parent.id,
-        slug: de.parent.slug,
-        name: de.parent.name
-      ]
-    }
+    log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
     Promise p = task {
       eventPublicationService.publishAsJSON(
@@ -197,6 +146,73 @@ public class AppListenerService implements ApplicationListener {
       }
     }
     return result;
+  }
+
+  public Map makeDirentJSON(DirectoryEntry de, boolean include_units) {
+
+    Map entry_data = [
+      id: de.id,  // We are using assigned identifiers now!
+      name: de.name,
+      slug: de.slug,
+      foafUrl: de.foafUrl,
+      services:[],
+      symbols:[],
+      description: de.description,
+      entryUrl: de.entryUrl,
+      phoneNumber: de.phoneNumber,
+      emailAddress: de.emailAddress,
+      contactName: de.contactName,
+      lmsLocationCode: de.lmsLocationCode,
+      tags: de.tags?.collect {it?.value},
+      customProperties: getCustprops(de.customProperties),
+      members:[]
+    ]
+
+    de.services.each { svc ->
+      entry_data.services.add([
+                    slug:svc.slug, 
+                    service:[
+                      name: svc.service.name,
+                      address: svc.service.address,
+                      type: svc.service.type?.value,
+                      businessFunction: svc.service.businessFunction?.value,
+                    ],
+                    customProperties: getCustprops(svc.customProperties)])
+    }
+
+    de.symbols.each { sym ->
+      entry_data.symbols.add (
+        [
+          authority: sym.authority.symbol,
+          symbol: sym.symbol,
+          priority: sym.priority
+        ]
+      );
+    }
+
+    de.members.each { mem ->
+      if ( mem?.memberOrg?.slug ) {
+        entry_data.members.add(['memberOrg':mem?.memberOrg?.slug])
+      }
+    }
+
+
+    if ( de.parent != null ) {
+      entry_data.parent = [
+        id: de.parent.id,
+        slug: de.parent.slug,
+        name: de.parent.name
+      ]
+    }
+
+    if ( include_units ) {
+      entry_data.units = []
+      de.units.each { unit ->
+        entry_data.units.add(makeDirentJSON(unit, true))
+      }
+    }
+
+    return entry_data
   }
 }
 

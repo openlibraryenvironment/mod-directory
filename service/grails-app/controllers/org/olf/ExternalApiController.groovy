@@ -10,20 +10,17 @@ import grails.core.GrailsApplication
 import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.multitenancy.Tenants
 import groovy.util.logging.Slf4j
-
+import org.olf.reshare.AppListenerService
 
 /**
  * External Read-Only APIs for resource sharing network connectivity
  */
 @CurrentTenant
-class ExternalApiController extends OkapiTenantAwareController<DirectoryEntry> {
+class ExternalApiController {
 
   GrailsApplication grailsApplication
+  AppListenerService appListenerService
 
-  ExternalApiController() {
-    super (DirectoryEntry, true)
-  }
-  
   def index() {
     def result =  [
       status:'OK',
@@ -31,24 +28,23 @@ class ExternalApiController extends OkapiTenantAwareController<DirectoryEntry> {
     render result as JSON;
   }
 
-  def directoryIndex(final String slug) {
-    
-    respond doTheLookup {
-      if (slug) {
-        // Filter by slug.
-        eq 'slug', slug
-      } else {
-        // Just output the whole tree, by finding the top-level entry with the status set to managed.
-        
-        // Should filter by this first as it will greatly reduce the number of results.
-        isNull('parent')
-        
-        createAlias('status', 'the_status')
-        eq 'the_status.value', 'managed'
-      }
+  def directoryEntry(final String slug) {
+
+    Map result = null;
+    DirectoryEntry de = DirectoryEntry.findBySlug(slug)
+
+    log.debug("Looking up ${slug} - result:${de}");
+
+    // We want a JSON version of the directory entry without any identifiers in it - this is a context free object
+    // that other reshare instances will consume, not a JSON object for a local edit screen. appListenerService already
+    // exposes a method for this - so reuse it.
+    if ( de ) {
+      result = appListenerService.makeDirentJSON(de, true);
+    }
+    else {
+      response.sendError(404)
     }
 
-    
-    
+    render result as JSON
   }
 }
