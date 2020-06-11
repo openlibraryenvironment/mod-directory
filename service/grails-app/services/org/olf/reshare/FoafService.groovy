@@ -42,9 +42,9 @@ and gm.memberOrg.slug=:member
   public void afterSampleLoaded (final String tenantId, final String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
     log.debug("FoafService::afterSampleLoaded");
     // See if we can find the URL of our seed entry in the directory
-    Tenants.withId(tenantId+'_mod_directory') {
-      checkFriend('https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json');
-    }
+    // Tenants.withId(tenantId+'_mod_directory') {
+    //   checkFriend('https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json');
+    // }
     log.debug("FoafService::afterSampleLoaded COMPLETE");
   }
 
