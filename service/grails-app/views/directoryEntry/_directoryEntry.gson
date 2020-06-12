@@ -28,6 +28,7 @@ if (params.fullEntry) {
       def service_accounts = directoryEntry.services?.collect {
         [
           id: it.id,
+          slug: it.slug,
           service:[
            id: it.service.id,
            name: it.service.name,
