@@ -14,7 +14,7 @@
   "services":[
     {
       "slug": "TESTINST04_ISO18626",
-      "service":{ "name":"ReShare ISO18626 Service", "address":"https://iso18626-reshare.apps.k-int.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"TestInst04 ISO18626 Service", "address":"https://iso18626-reshare.apps.k-int.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     }
   ]
