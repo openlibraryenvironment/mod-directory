@@ -210,7 +210,7 @@ and gm.memberOrg.slug=:member
                             def gm = new GroupMember( groupOrg: owner, memberOrg: member_org).save(flush:true, failOnError:true);
                           }
                           else {
-                            log.error("unexpected missing member org : ${mem.memberOrg} for parent ${json.slug}");
+                            log.error("Cosortium contained a member org : ${mem.memberOrg} for parent ${json.slug} that could not be located in the directory");
                           }
                         }
                       }

@@ -5,8 +5,8 @@
   "url":"http://not.a.real.consortium/",
   "type":"Consortium",
   "members":[
-    { "memberOrg":"CardinalUSEast"},
-    { "memberOrg":"CardinalUSWest"},
+    { "memberOrg":"CardinalUSEast1"},
+    { "memberOrg":"CardinalUSWest1"},
     { "memberOrg":"CardinalEUWest1"}
   ],
   "friends":[
