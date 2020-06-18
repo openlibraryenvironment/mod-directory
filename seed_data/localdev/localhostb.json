@@ -20,7 +20,7 @@
   "services":[
     {
       "slug": "LOCALHOSTB_ISO18626",
-      "service":{ "name":"LOCALHOSTA ISO18626 Service", "address":"http://localhost:9130/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"LOCALHOSTA ISO18626 Service", "address":"http://localhost:9130/_/invoke/tenant/diku/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
     }
   ]
