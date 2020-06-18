@@ -1,0 +1,27 @@
+{
+  "name":"Localhost A",
+  "slug":"localhosta",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/localdev/localhosta.json",
+  "url":"https://www.k-int.com",
+  "type":"Institution",
+  "description": "developer localhost institution a",
+  "phoneNumber":"LocalhostA",
+  "emailAddress":"LocalhostA@TestInst01.com",
+  "contactName":"LocalhostA Contact Name",
+  "customProperties":{
+    "policy.ill.loan_policy":["Lending all types"],
+    "policy.ill.returns": ["Yes"],
+    "policy.ill.last_resort": ["No"],
+    "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
+  },
+  "symbols": [
+    { "authority":"RESHARE",   "symbol":"LOCALHOSTA",    "priority":"a" }
+  ],
+  "services":[
+    {
+      "slug": "LOCALHOSTA_ISO18626",
+      "service":{ "name":"LOCALHOSTA ISO18626 Service", "address":"http://localhost:9130/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
+    }
+  ]
+}

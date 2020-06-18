@@ -1,0 +1,17 @@
+{
+  "name":"Developer Network",
+  "slug":"LOCALNET",
+  "lastModified":"2020-04-03T07:09:42Z",
+  "phoneNumber":"+1 215-253-8502",
+  "emailAddress":"info@openlibraryfoundation.org",
+  "contactName":"Contact Name",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/localdev/localnet.json",
+  "url":"http://www.openlibraryfoundation.org/",
+  "type":"Consortium",
+  "members":[
+  ],
+  "friends":[
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/localdev/localhosta.json" },
+    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/localdev/localhostb.json" }
+  ]
+}
