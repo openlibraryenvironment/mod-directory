@@ -20,7 +20,7 @@
   "services":[
     {
       "slug": "CARDINAL_EU_WEST_ISO18626",
-      "service":{ "name":"Cardinal EU-West-1 ISO18626 Service", "address":"http://reshare.apps.k-int.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"Cardinal EU-West-1 ISO18626 Service", "address":"https://folio.k-int.com:9130/_/invoke/tenant/reshare_east/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "CARDINAL", "RESHARE" ]  }
     }
   ]
