@@ -21,7 +21,7 @@
   "services":[
     {
       "slug": "CARDINAL_US_WEST_1_ISO18626",
-      "service":{ "name":"Cardinal US-West-1 ISO18626 Service", "address":"https://west-okapi.folio-dev.indexdata.com:9130/_/invoke/tenant/reshare_west/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"Cardinal US-West-1 ISO18626 Service", "address":"https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "CARDINAL", "RESHARE" ]  }
     }
   ]
