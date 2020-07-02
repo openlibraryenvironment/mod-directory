@@ -12,6 +12,8 @@ import org.olf.okapi.modules.directory.NamingAuthority;
 import grails.databinding.SimpleMapDataBindingSource
 import static grails.async.Promises.*
 import org.olf.reshare.FoafService
+import com.k_int.web.toolkit.settings.AppSetting
+
 
 CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, String label = null) {
   CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
@@ -80,6 +82,13 @@ Service ensureService(String name, String type, List<String>tags, String address
 }
 
 log.info 'Importing sample data'
+
+AppSetting directory_announce_url = AppSetting.findByKey('directory_announce_url') ?: new AppSetting(
+                                  section:'directory',
+                                  settingType:'String',
+                                  key: 'directory_announce_url',
+                                  ).save(flush:true, failOnError: true);
+
 
 /* if (existing_tenant) {
   log.info 'Skipping exisiting tenant'

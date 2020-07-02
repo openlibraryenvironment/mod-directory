@@ -317,4 +317,8 @@ and gm.memberOrg.slug=:member
 
 
   }
+
+  public void announce(String tenant) {
+    log.debug("FoafService::announce(${tenant})");
+  }
 }
