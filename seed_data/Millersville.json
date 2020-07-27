@@ -24,7 +24,7 @@
   "services":[
     { 
       "slug":"Mill_ISO18626",
-      "service":{ "name":"Millersville ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"Millersville ISO18626 Service", "address":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "slug":"Mill_RS_Stats",
-      "service":{ "name":"Millersville Stats Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
+      "service":{ "name":"Millersville Stats Service", "address":"http://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
     }
   ]
 }
