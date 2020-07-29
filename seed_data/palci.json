@@ -20,7 +20,7 @@
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TheNewSchool.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json" },
+    { "foaf":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/directory/externalApi/entry/Millersville" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Villanova.json" },
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" },
     { "foaf":"https://seton-hall-okapi.folio-dev.indexdata.com/_/invoke/tenant/seton_hall/directory/externalApi/entry/seton_hall" }

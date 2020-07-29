@@ -10,7 +10,8 @@
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},     "symbol":"US-PMILS",    "priority":"a" }
   ],
   "customProperties":{ 
     "policy.ill.loan_policy":["Lending all types"],
