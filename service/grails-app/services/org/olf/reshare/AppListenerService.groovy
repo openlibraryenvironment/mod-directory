@@ -90,7 +90,7 @@ public class AppListenerService implements ApplicationListener {
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
 
-    String topic = "${tenant}_DirectoryEntryUpdate".toString()
+    String topic = "${tenant}_mod_directory_DirectoryEntryUpdate".toString()
 
 
     Map entry_data = makeDirentJSON(de, false);
