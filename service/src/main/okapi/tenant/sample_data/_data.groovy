@@ -139,6 +139,10 @@ def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', fa
 def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
 def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', true, label='ILL Loan To Borrow Ratio');
 
+def na_reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
+def na_isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
+def na_palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
+
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
 //                                                        ['system-default'],
