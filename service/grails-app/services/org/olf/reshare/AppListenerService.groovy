@@ -35,7 +35,7 @@ public class AppListenerService implements ApplicationListener {
   def republish(String tenant) {
     log.debug("Republish(${tenant})");
     DirectoryEntry.list().each { de ->
-      logDirectoryEvent(de, tenant);
+      logDirectoryEvent(de, tenant+'_mod_directory');
     }
   }
 
@@ -86,11 +86,14 @@ public class AppListenerService implements ApplicationListener {
   }
 
 
+  /**
+   *  it's important that tenant is of the form X_mod_directory and not just X
+   */
   private logDirectoryEvent(DirectoryEntry de, String tenant) {
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
 
-    String topic = "${tenant}_mod_directory_DirectoryEntryUpdate".toString()
+    String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
 
     Map entry_data = makeDirentJSON(de, false);
@@ -137,7 +140,7 @@ public class AppListenerService implements ApplicationListener {
     String result = null;
     if ( o != null ) {
       if ( o instanceof com.k_int.web.toolkit.refdata.RefdataValue ) {
-        result = ((com.k_int.web.toolkit.refdata.RefdataValue)o).value
+        Result = ((com.k_int.web.toolkit.refdata.RefdataValue)o).value
       }
       else {
         result = o.toString();
