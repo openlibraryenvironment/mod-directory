@@ -35,7 +35,7 @@
       "slug":"Temple_ISO18626",
       "service":{ 
         "name":"Temple ISO18626 Service", 
-        "address":"http://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/rs/externalApi/iso18626",
+        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/rs/externalApi/iso18626",
         "type":"ISO18626", 
         "businessFunction":"ILL" 
       },
@@ -72,7 +72,7 @@
       "slug":"Temple_RS_Stats",
       "service":{ 
         "name":"Temple Stats Service", 
-        "address":"http://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/rs/statistics",
+        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/rs/statistics",
         "type":"HTTP", 
         "businessFunction":"RS_STATS" 
       }
