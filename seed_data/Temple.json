@@ -72,7 +72,7 @@
       "slug":"Temple_RS_Stats",
       "service":{ 
         "name":"Temple Stats Service", 
-        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/rs/statistics",
+        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/rs/externalApi/statistics",
         "type":"HTTP", 
         "businessFunction":"RS_STATS" 
       }

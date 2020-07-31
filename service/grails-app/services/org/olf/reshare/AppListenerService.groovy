@@ -140,7 +140,7 @@ public class AppListenerService implements ApplicationListener {
     String result = null;
     if ( o != null ) {
       if ( o instanceof com.k_int.web.toolkit.refdata.RefdataValue ) {
-        Result = ((com.k_int.web.toolkit.refdata.RefdataValue)o).value
+        result = ((com.k_int.web.toolkit.refdata.RefdataValue)o).value
       }
       else {
         result = o.toString();
