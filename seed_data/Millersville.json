@@ -35,7 +35,7 @@
     },
     {
       "slug":"Mill_RS_Stats",
-      "service":{ "name":"Millersville Stats Service", "address":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
+      "service":{ "name":"Millersville Stats Service", "address":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/rs/externalApi/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
     }
   ]
 }
