@@ -850,7 +850,7 @@
       "permissionName": "mod-directory.all",
       "displayName": "all mod-directory",
       "description": "all mod-directory permissions",
-      "subpermissions": [
+      "subPermissions": [
           "mod-directory.entry.read",
           "mod-directory.entry.write",
           "mod-directory.symbol.write",
