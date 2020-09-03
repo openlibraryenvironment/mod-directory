@@ -173,6 +173,7 @@ public class AppListenerService implements ApplicationListener {
       contactName: de.contactName,
       lmsLocationCode: de.lmsLocationCode,
       tags: de.tags?.collect {it?.value},
+      type: de.type?.value,
       customProperties: getCustprops(de.customProperties),
       members:[]
     ]
