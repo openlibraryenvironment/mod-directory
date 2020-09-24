@@ -5,13 +5,11 @@
   "url":"http://not.a.real.consortium/",
   "type":"Consortium",
   "members":[
-    { "memberOrg":"CardinalUSEast1"},
-    { "memberOrg":"CardinalUSWest1"},
-    { "memberOrg":"CardinalEUWest1"}
+    { "memberOrg":"us-east-1"},
+    { "memberOrg":"us-west-1"}
   ],
   "friends":[
-    { "foaf": "https://east-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/directory/externalApi/entry/CardinalUSEast1" },
-    { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/CardinalUsWest1" },
-    { "foaf": "https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/cardinal/eu-west-1.json" }
+    { "foaf": "https://east-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/directory/externalApi/entry/us-east-1" },
+    { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-west-1" }
   ]
 }
