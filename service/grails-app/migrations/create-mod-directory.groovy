@@ -795,4 +795,32 @@ databaseChangeLog = {
             column(name: "addr_country_code", type: "VARCHAR(15)");
         }
     }
+    
+    changeSet(author: "efreestone (manual)", id: "20200617-1030-001") {
+        addColumn(tableName: "service") {
+            column(name: "se_status_fk", type: "VARCHAR(36)");
+        }
+    }
+
+    changeSet(author: "efreestone (manual)", id: "202006171030-01") {
+        addForeignKeyConstraint(baseColumnNames: "se_status_fk", baseTableName: "service", constraintName: "FK-service-status", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
+    }
+
+    changeSet(author: "ianibbo (manual)", id: "20191004-1451-001") {
+        createTable(tableName: "app_setting") {
+            column(name: "st_id", type: "VARCHAR(36)") {
+                constraints(nullable: "false")
+            }
+            column(name: "st_version", type: "BIGINT") {
+                constraints(nullable: "false")
+            }
+            column(name: 'st_section', type: "VARCHAR(255)")
+            column(name: 'st_key', type: "VARCHAR(255)")
+            column(name: 'st_setting_type', type: "VARCHAR(255)")
+            column(name: 'st_vocab', type: "VARCHAR(255)")
+            column(name: 'st_default_value', type: "VARCHAR(255)")
+            column(name: 'st_value', type: "VARCHAR(255)")
+        }
+    }
+
 }

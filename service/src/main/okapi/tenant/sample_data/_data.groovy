@@ -12,6 +12,8 @@ import org.olf.okapi.modules.directory.NamingAuthority;
 import grails.databinding.SimpleMapDataBindingSource
 import static grails.async.Promises.*
 import org.olf.reshare.FoafService
+import com.k_int.web.toolkit.settings.AppSetting
+
 
 CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, String label = null) {
   CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
@@ -81,6 +83,13 @@ Service ensureService(String name, String type, List<String>tags, String address
 
 log.info 'Importing sample data'
 
+AppSetting directory_announce_url = AppSetting.findByKey('directory_announce_url') ?: new AppSetting(
+                                  section:'directory',
+                                  settingType:'String',
+                                  key: 'directory_announce_url',
+                                  ).save(flush:true, failOnError: true);
+
+
 /* if (existing_tenant) {
   log.info 'Skipping exisiting tenant'
   return
@@ -129,6 +138,10 @@ def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false
 def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
 def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
 def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', true, label='ILL Loan To Borrow Ratio');
+
+def na_reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
+def na_isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
+def na_palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',

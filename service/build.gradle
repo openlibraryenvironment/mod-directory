@@ -76,7 +76,7 @@ dependencies {
   compile "org.grails.plugins:views-json"
 
   // non-graphql dependency
-  compile 'org.olf.reshare.dm.directory:dm-directory:1.1.17'
+  compile 'org.olf.reshare.dm.directory:dm-directory:1.1.18'
 
 
 
@@ -263,7 +263,7 @@ task createDockerfile(type: Dockerfile, dependsOn: prepareDocker) {
 
   destFile = project.file("${dockerBuildDir}/Dockerfile")
 
-  from 'folioci/openjdk8-jre-alpine:latest'
+  from 'folioci/alpine-jre-openjdk8:latest'
   maintainer 'Knowledge Integration'
 
   exposePort 8080

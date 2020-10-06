@@ -1,7 +1,7 @@
 {
   "name":"PALCI",
   "slug":"PALCI",  
-  "lastModified":"2020-04-03T07:09:42Z",
+  "lastModified":"2020-07-06T14:50:00Z",
   "phoneNumber":"+1 (215) 567-1755",
   "emailAddress":"support@palci.org",
   "contactName":"Contact Name",
@@ -9,18 +9,15 @@
   "url":"http://www.palci.org/",
   "type":"Consortium",
   "members":[
-    { "memberOrg":"Allegheny_College" },
-    { "memberOrg":"Temple_University" },
-    { "memberOrg":"The_New_School" },
-    { "memberOrg":"Villanova" },
-    { "memberOrg":"Millersville" }
+    { "memberOrg":"Temple" },
+    { "memberOrg":"New_School" },
+    { "memberOrg":"Millersville" },
+    { "memberOrg":"Seton_Hall" }
   ],
   "friends":[
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Temple.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/AlleghenyCollege.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/TheNewSchool.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Millersville.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/Villanova.json" },
-    { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
+    { "foaf":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/directory/externalApi/entry/Temple" },
+    { "foaf":"https://new-school-okapi.folio-dev.indexdata.com/_/invoke/tenant/new_school/directory/externalApi/entry/New_School" },
+    { "foaf":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/directory/externalApi/entry/Millersville" },
+    { "foaf":"https://seton-hall-okapi.folio-dev.indexdata.com/_/invoke/tenant/seton_hall/directory/externalApi/entry/Seton_Hall" }
   ]
 }

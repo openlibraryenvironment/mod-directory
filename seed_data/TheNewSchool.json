@@ -9,6 +9,7 @@
   "type":"Institution",
   "symbols": [
     { "authority":"OCLC", "symbol":"ZMU", "priority":"a" },
+    { "authority":"ISIL", "symbol":"US-NNNS", "priority":"a" },
     { "authority":"RESHARE", "symbol":"TNS", "priority":"a" }
   ],
   "units": [
@@ -19,7 +20,7 @@
   "services":[
     { 
       "slug":"The_New_School_ISO18626",
-      "service":{ "name":"TNS ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"TNS ISO18626 Service", "address":"https://new-school-okapi.folio-dev.indexdata.com/_/invoke/tenant/new_school/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["RESHARE", "PALCI", "IDS"] } 
     },
     {

@@ -9,19 +9,17 @@ import org.grails.datastore.mapping.engine.event.PostInsertEvent
 import org.grails.datastore.mapping.engine.event.PreInsertEvent
 import org.grails.datastore.mapping.engine.event.PostUpdateEvent
 import org.grails.datastore.mapping.engine.event.SaveOrUpdateEvent
-
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent
-
 import javax.annotation.PostConstruct;
 import groovy.transform.CompileStatic
 import org.springframework.context.ApplicationListener
 import org.springframework.context.ApplicationEvent
-
 import org.grails.orm.hibernate.AbstractHibernateDatastore
 import grails.gorm.transactions.Transactional
-
 import static grails.async.Promises.*
 import grails.async.Promise
+import java.text.SimpleDateFormat
+
 
 
 /**
@@ -36,8 +34,8 @@ public class AppListenerService implements ApplicationListener {
 
   def republish(String tenant) {
     log.debug("Republish(${tenant})");
-    DirectoryEntry.each { de ->
-      logDirectoryEvent(de, tenant);
+    DirectoryEntry.list().each { de ->
+      logDirectoryEvent(de, tenant+'_mod_directory');
     }
   }
 
@@ -88,6 +86,9 @@ public class AppListenerService implements ApplicationListener {
   }
 
 
+  /**
+   *  it's important that tenant is of the form X_mod_directory and not just X
+   */
   private logDirectoryEvent(DirectoryEntry de, String tenant) {
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
@@ -150,8 +151,16 @@ public class AppListenerService implements ApplicationListener {
 
   public Map makeDirentJSON(DirectoryEntry de, boolean include_units) {
 
+    String last_modified_str = null;
+    if ( ( de.pubLastUpdate != null ) && ( de.pubLastUpdate > 0 ) ) {
+      Date d = new Date(de.pubLastUpdate)
+      def sdf = new SimpleDateFormat('yyyy-MM-dd\'T\'HH:mm:ssX')
+      last_modified_str = sdf.format(d)
+    }
+
     Map entry_data = [
       id: de.id,  // We are using assigned identifiers now!
+      lastModified: last_modified_str,
       name: de.name,
       slug: de.slug,
       foafUrl: de.foafUrl,
@@ -164,6 +173,7 @@ public class AppListenerService implements ApplicationListener {
       contactName: de.contactName,
       lmsLocationCode: de.lmsLocationCode,
       tags: de.tags?.collect {it?.value},
+      type: de.type?.value,
       customProperties: getCustprops(de.customProperties),
       members:[]
     ]

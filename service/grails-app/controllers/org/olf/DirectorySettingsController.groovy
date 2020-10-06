@@ -15,6 +15,9 @@ class DirectorySettingsController {
     def result = [result:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
     log.debug("Worker thread invoked....${tenant_header}");
+    request.headerNames.each { hn ->
+      log.debug("  ${hn} -> ${request.getHeader(hn)}");
+    }
     // backgroundTaskService.performReshareTasks(tenant_header+'_mod_directory');
     render result as JSON
   }
@@ -25,6 +28,7 @@ class DirectorySettingsController {
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
     log.debug("FOAF thread invoked....${tenant_header}");
     foafService.freshen(tenant_header);
+    foafService.announce(tenant_header);
     render result as JSON
   }
 }

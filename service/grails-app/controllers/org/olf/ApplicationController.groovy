@@ -58,7 +58,7 @@ class ApplicationController implements PluginManagerAware {
     log.debug("ApplicationController::freshen()");
     def result=[status:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
-    foafService.freshen();
+    foafService.freshen(tenant_header);
 
     if ( ( params.republish=='Y' ) && ( tenant_header?.length() > 0 ) ) {
       appListenerService.republish(tenant_header);

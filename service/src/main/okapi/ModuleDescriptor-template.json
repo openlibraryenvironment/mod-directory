@@ -327,9 +327,11 @@
       "interfaceType" : "system",
       "handlers": [
         {
+          "permissionsRequired" : [],
           "methods": ["POST", "DELETE"],
           "pathPattern": "/_/tenant"
         }, {
+         "permissionsRequired" : [],
          "methods" : [ "POST" ],
          "pathPattern" : "/_/tenant/disable"
         }
@@ -342,12 +344,14 @@
       "interfaceType": "system",
       "handlers": [
         {
+          "permissionsRequired" : [],
           "methods": [ "POST" ],
           "pathPattern": "/directory/settings/worker",
           "unit": "minute",
           "delay": "5"
         },
         {
+          "permissionsRequired" : [],
           "methods": [ "POST" ],
           "pathPattern": "/directory/settings/foaf",
           "unit": "hour",

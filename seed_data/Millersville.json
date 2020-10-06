@@ -10,7 +10,8 @@
   "symbols": [
         { "authority":{ "symbol":"PALCI"},    "symbol":"MILL", "priority":"a" },
         { "authority":{ "symbol":"RESHARE"},  "symbol":"MILL",    "priority":"a" },
-        { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" }
+        { "authority":{ "symbol":"RESHARE"},  "symbol":"MVS",    "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},     "symbol":"US-PMILS",    "priority":"a" }
   ],
   "customProperties":{ 
     "policy.ill.loan_policy":["Lending all types"],
@@ -24,7 +25,7 @@
   "services":[
     { 
       "slug":"Mill_ISO18626",
-      "service":{ "name":"Millersville ISO18626 Service", "address":"http://reshare.reshare-dev.indexdata.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"Millersville ISO18626 Service", "address":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["PALCI"] } 
     },
     {
@@ -34,7 +35,7 @@
     },
     {
       "slug":"Mill_RS_Stats",
-      "service":{ "name":"Millersville Stats Service", "address":"http://reshare.reshare-dev.indexdata.com:9130/_/invoke/tenant/millersville/rs/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
+      "service":{ "name":"Millersville Stats Service", "address":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/rs/externalApi/statistics", "type":"HTTP", "businessFunction":"RS_STATS" }
     }
   ]
 }

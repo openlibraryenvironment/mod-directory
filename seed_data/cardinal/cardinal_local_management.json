@@ -1,0 +1,15 @@
+{
+  "name":"Cardinal test Consortium",
+  "slug":"CARDINAL",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/cardinal_local_management.json",
+  "url":"http://not.a.real.consortium/",
+  "type":"Consortium",
+  "members":[
+    { "memberOrg":"us-east-1"},
+    { "memberOrg":"us-west-1"}
+  ],
+  "friends":[
+    { "foaf": "https://east-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/directory/externalApi/entry/us-east-1" },
+    { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-west-1" }
+  ]
+}
