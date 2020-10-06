@@ -247,64 +247,19 @@
           "permissionsRequired" : [ "mod-directory.externalapi.delete" ]
         },
         {
-          "methods": [ "GET" ],
+          "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/kiwt*",
-          "permissionsRequired" : [ "mod-directory.kiwt.get" ]
+          "permissionsRequired" : [ "mod-directory.kiwt" ]
         },
         {
-          "methods": [ "POST" ],
-          "pathPattern": "/directory/kiwt*",
-          "permissionsRequired" : [ "mod-directory.kiwt.post" ]
-        },
-        {
-          "methods": [ "PUT" ],
-          "pathPattern": "/directory/kiwt*",
-          "permissionsRequired" : [ "mod-directory.kiwt.put" ]
-        },
-        {
-          "methods": [ "DELETE" ],
-          "pathPattern": "/directory/kiwt*",
-          "permissionsRequired" : [ "mod-directory.kiwt.delete" ]
-        },
-        {
-          "methods": [ "GET" ],
+          "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/settings*",
-          "permissionsRequired" : [ "mod-directory.settings.get" ]
+          "permissionsRequired" : [ "mod-directory.settings" ]
         },
         {
-          "methods": [ "POST" ],
-          "pathPattern": "/directory/settings*",
-          "permissionsRequired" : [ "mod-directory.settings.post" ]
-        },
-        {
-          "methods": [ "PUT" ],
-          "pathPattern": "/directory/settings*",
-          "permissionsRequired" : [ "mod-directory.settings.put" ]
-        },
-        {
-          "methods": [ "DELETE" ],
-          "pathPattern": "/directory/settings*",
-          "permissionsRequired" : [ "mod-directory.settings.delete" ]
-        },
-        {
-          "methods": [ "GET" ],
+          "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/refdata*",
-          "permissionsRequired" : [ "mod-directory.refdata.get" ]
-        },
-        {
-          "methods": [ "POST" ],
-          "pathPattern": "/directory/refdata*",
-          "permissionsRequired" : [ "mod-directory.refdata.post" ]
-        },
-        {
-          "methods": [ "PUT" ],
-          "pathPattern": "/directory/refdata*",
-          "permissionsRequired" : [ "mod-directory.refdata.put" ]
-        },
-        {
-          "methods": [ "DELETE" ],
-          "pathPattern": "/directory/refdata*",
-          "permissionsRequired" : [ "mod-directory.refdata.delete" ]
+          "permissionsRequired" : [ "mod-directory.refdata" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
@@ -700,112 +655,22 @@
       ]
     },
     {
-      "permissionName": "mod-directory.kiwt.get",
-      "displayName": "kiwt get",
-      "description": "get kiwt",
+      "permissionName": "mod-directory.kiwt",
+      "displayName": "kiwt permissions",
+      "description": "kiwt permissions",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.kiwt.post",
-      "displayName": "kiwt post",
-      "description": "create kiwt",
+      "permissionName": "mod-directory.settings",
+      "displayName": "settings permissions",
+      "description": "settings permissions",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.kiwt.put",
-      "displayName": "kiwt put",
-      "description": "update kiwt",
+      "permissionName": "mod-directory.refdata",
+      "displayName": "refdata permissions",
+      "description": "refdata permissions",
       "visible": false
-    },
-    {
-      "permissionName": "mod-directory.kiwt.delete",
-      "displayName": "kiwt delete",
-      "description": "delete kiwt",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.kiwt.write",
-      "displayName": "kiwt write",
-      "description": "write kiwt",
-      "visible": false,
-      "subPermissions" : [
-          "mod-directory.kiwt.get",
-          "mod-directory.kiwt.post",
-          "mod-directory.kiwt.put",
-          "mod-directory.kiwt.delete"
-      ]
-    },
-    {
-      "permissionName": "mod-directory.settings.get",
-      "displayName": "settings get",
-      "description": "get settings",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.settings.post",
-      "displayName": "settings post",
-      "description": "create settings",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.settings.put",
-      "displayName": "settings put",
-      "description": "update settings",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.settings.delete",
-      "displayName": "settings delete",
-      "description": "delete settings",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.settings.write",
-      "displayName": "settings write",
-      "description": "write settings",
-      "visible": false,
-      "subPermissions" : [
-          "mod-directory.settings.get",
-          "mod-directory.settings.post",
-          "mod-directory.settings.put",
-          "mod-directory.settings.delete"
-      ]
-    },
-    {
-      "permissionName": "mod-directory.refdata.get",
-      "displayName": "refdata get",
-      "description": "get refdata",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.refdata.post",
-      "displayName": "refdata post",
-      "description": "create refdata",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.refdata.put",
-      "displayName": "refdata put",
-      "description": "update refdata",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.refdata.delete",
-      "displayName": "refdata delete",
-      "description": "delete refdata",
-      "visible": false
-    },
-    {
-      "permissionName": "mod-directory.refdata.write",
-      "displayName": "refdata write",
-      "description": "write refdata",
-      "visible": false,
-      "subPermissions" : [
-          "mod-directory.refdata.get",
-          "mod-directory.refdata.post",
-          "mod-directory.refdata.put",
-          "mod-directory.refdata.delete"
-      ]
     },
     {
       "permissionName": "mod-directory.custprops",
@@ -839,12 +704,11 @@
           "mod-directory.service.read",
           "mod-directory.serviceaccount.read",
           "mod-directory.namingauthority.read",
-          
           "mod-directory.api.get",
           "mod-directory.externalapi.get",
-          "mod-directory.kiwt.get",
-          "mod-directory.settings.get",
-          "mod-directory.refdata.get",
+          "mod-directory.kiwt",
+          "mod-directory.settings",
+          "mod-directory.refdata",
           "mod-directory.custprops",
           "mod-directory.tags"
       ],
@@ -855,17 +719,14 @@
       "displayName": "all mod-directory",
       "description": "all mod-directory permissions",
       "subPermissions": [
-          "mod-directory.entry.read",
+          "mod-directory.all.read",
           "mod-directory.entry.write",
           "mod-directory.symbol.write",
           "mod-directory.service.write",
           "mod-directory.serviceaccount.write",
           "mod-directory.namingauthority.write",
           "mod-directory.api.write",
-          "mod-directory.externalapi.write",
-          "mod-directory.kiwt.write",
-          "mod-directory.settings.write",
-          "mod-directory.refdata.write"
+          "mod-directory.externalapi.write"
       ]
     }
   ],
