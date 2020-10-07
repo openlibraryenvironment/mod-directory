@@ -7,5 +7,5 @@ echo "Got admin id $ADMIN_USER_ID"
 
 curl -H "X-Okapi-Tenant:diku" -H "X-Okapi-Token:$AUTH_TOKEN" \
     -H "Content-Type: application/json" -X POST \
-    -d '{"permissionName" : "mod-directory.all"}' \
+    -d '{"permissionName" : "directory.all"}' \
     "http://localhost:9130/perms/users/$ADMIN_USER_ID/permissions?indexField=userId"

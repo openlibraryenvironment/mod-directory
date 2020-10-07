@@ -9,267 +9,267 @@
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/entry",
-          "permissionsRequired" : [ "mod-directory.entry.collection.get" ]
+          "permissionsRequired" : [ "directory.entry.collection.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ "mod-directory.entry.item.get" ]
+          "permissionsRequired" : [ "directory.entry.item.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/entry/{id}",
-          "permissionsRequired" : [ "mod-directory.entry.item.get" ]
+          "permissionsRequired" : [ "directory.entry.item.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/entry*",
-          "permissionsRequired" : [ "mod-directory.entry.item.post" ]
+          "permissionsRequired" : [ "directory.entry.item.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ "mod-directory.entry.item.put" ]
+          "permissionsRequired" : [ "directory.entry.item.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}",
-          "permissionsRequired" : [ "mod-directory.entry.item.put" ]
+          "permissionsRequired" : [ "directory.entry.item.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ "mod-directory.entry.item.delete" ]
+          "permissionsRequired" : [ "directory.entry.item.delete" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/entry/{id}",
-          "permissionsRequired" : [ "mod-directory.entry.item.delete" ]
+          "permissionsRequired" : [ "directory.entry.item.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/symbol",
-          "permissionsRequired" : [ "mod-directory.symbol.collection.get" ]
+          "permissionsRequired" : [ "directory.symbol.collection.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/symbol/{id}/*",
-          "permissionsRequired" : [ "mod-directory.symbol.item.get" ]
+          "permissionsRequired" : [ "directory.symbol.item.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/symbol/{id}",
-          "permissionsRequired" : [ "mod-directory.symbol.item.get" ]
+          "permissionsRequired" : [ "directory.symbol.item.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/symbol*",
-          "permissionsRequired" : [ "mod-directory.symbol.item.post" ]
+          "permissionsRequired" : [ "directory.symbol.item.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/symbol/{id}/*",
-          "permissionsRequired" : [ "mod-directory.symbol.item.put" ]
+          "permissionsRequired" : [ "directory.symbol.item.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/symbol/{id}",
-          "permissionsRequired" : [ "mod-directory.symbol.item.put" ]
+          "permissionsRequired" : [ "directory.symbol.item.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/symbol/{id}/*",
-          "permissionsRequired" : [ "mod-directory.symbol.item.delete" ]
+          "permissionsRequired" : [ "directory.symbol.item.delete" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/symbol/{id}",
-          "permissionsRequired" : [ "mod-directory.symbol.item.delete" ]
+          "permissionsRequired" : [ "directory.symbol.item.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/service",
-          "permissionsRequired" : [ "mod-directory.service.collection.get" ]
+          "permissionsRequired" : [ "directory.service.collection.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/service/{id}/*",
-          "permissionsRequired" : [ "mod-directory.service.item.get" ]
+          "permissionsRequired" : [ "directory.service.item.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/service/{id}",
-          "permissionsRequired" : [ "mod-directory.service.item.get" ]
+          "permissionsRequired" : [ "directory.service.item.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/service*",
-          "permissionsRequired" : [ "mod-directory.service.item.post" ]
+          "permissionsRequired" : [ "directory.service.item.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/service/{id}/*",
-          "permissionsRequired" : [ "mod-directory.service.item.put" ]
+          "permissionsRequired" : [ "directory.service.item.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/service/{id}",
-          "permissionsRequired" : [ "mod-directory.service.item.put" ]
+          "permissionsRequired" : [ "directory.service.item.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/service/{id}/*",
-          "permissionsRequired" : [ "mod-directory.service.item.delete" ]
+          "permissionsRequired" : [ "directory.service.item.delete" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/service/{id}",
-          "permissionsRequired" : [ "mod-directory.service.item.delete" ]
+          "permissionsRequired" : [ "directory.service.item.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/serviceAccount",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.collection.get" ]
+          "permissionsRequired" : [ "directory.serviceaccount.collection.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/serviceAccount/{id}/*",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.get" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/serviceAccount/{id}",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.get" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/serviceAccount*",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.post" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/serviceAccount/{id}/*",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.put" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/serviceAccount/{id}",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.put" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/serviceAccount/{id}/*",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.delete" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.delete" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/serviceAccount/{id}",
-          "permissionsRequired" : [ "mod-directory.serviceaccount.item.delete" ]
+          "permissionsRequired" : [ "directory.serviceaccount.item.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/namingAuthority",
-          "permissionsRequired" : [ "mod-directory.namingauthority.collection.get" ]
+          "permissionsRequired" : [ "directory.namingauthority.collection.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/namingAuthority/{id}/*",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.get" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.get" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/namingAuthority/{id}",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.get" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/namingAuthority*",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.post" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/namingAuthority/{id}/*",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.put" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/namingAuthority/{id}",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.put" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/namingAuthority/{id}/*",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.delete" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.delete" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/namingAuthority/{id}",
-          "permissionsRequired" : [ "mod-directory.namingauthority.item.delete" ]
+          "permissionsRequired" : [ "directory.namingauthority.item.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/api*",
-          "permissionsRequired" : [ "mod-directory.api.get" ]
+          "permissionsRequired" : [ "directory.api.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/api*",
-          "permissionsRequired" : [ "mod-directory.api.post" ]
+          "permissionsRequired" : [ "directory.api.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/api*",
-          "permissionsRequired" : [ "mod-directory.api.put" ]
+          "permissionsRequired" : [ "directory.api.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/api*",
-          "permissionsRequired" : [ "mod-directory.api.delete" ]
+          "permissionsRequired" : [ "directory.api.delete" ]
         },
         {
           "methods": [ "GET" ],
           "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "mod-directory.externalapi.get" ]
+          "permissionsRequired" : [ "directory.externalapi.get" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "mod-directory.externalapi.post" ]
+          "permissionsRequired" : [ "directory.externalapi.post" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "mod-directory.externalapi.put" ]
+          "permissionsRequired" : [ "directory.externalapi.put" ]
         },
         {
           "methods": [ "DELETE" ],
           "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "mod-directory.externalapi.delete" ]
+          "permissionsRequired" : [ "directory.externalapi.delete" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/kiwt*",
-          "permissionsRequired" : [ "mod-directory.kiwt" ]
+          "permissionsRequired" : [ "directory.kiwt" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/settings*",
-          "permissionsRequired" : [ "mod-directory.settings" ]
+          "permissionsRequired" : [ "directory.settings" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/refdata*",
-          "permissionsRequired" : [ "mod-directory.refdata" ]
+          "permissionsRequired" : [ "directory.refdata" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/custprops*",
-          "permissionsRequired" : [ "mod-directory.custprops" ]
+          "permissionsRequired" : [ "directory.custprops" ]
         },
         {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/tags*",
-          "permissionsRequired" : [ "mod-directory.tags" ]
+          "permissionsRequired" : [ "directory.tags" ]
         }
 
 
@@ -317,400 +317,400 @@
   ],
   "permissionSets": [
     {
-      "permissionName": "mod-directory.entry.collection.get",
+      "permissionName": "directory.entry.collection.get",
       "displayName": "entry collection get",
       "description": "get entry list",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.entry.item.get",
+      "permissionName": "directory.entry.item.get",
       "displayName": "entry item get",
       "description": "get entry item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.entry.item.post",
+      "permissionName": "directory.entry.item.post",
       "displayName": "entry item post",
       "description": "create entry item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.entry.item.put",
+      "permissionName": "directory.entry.item.put",
       "displayName": "entry item put",
       "description": "update entry item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.entry.item.delete",
+      "permissionName": "directory.entry.item.delete",
       "displayName": "entry item delete",
       "description": "delete entry item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.entry.read",
+      "permissionName": "directory.entry.read",
       "displayName": "entry read",
       "description": "read entry",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.entry.collection.get",
-          "mod-directory.entry.item.get"
+          "directory.entry.collection.get",
+          "directory.entry.item.get"
       ]
     },
     {
-      "permissionName": "mod-directory.entry.write",
+      "permissionName": "directory.entry.write",
       "displayName": "entry write",
       "description": "write entry",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.entry.read",
-          "mod-directory.entry.item.post",
-          "mod-directory.entry.item.put",
-          "mod-directory.entry.item.delete"
+          "directory.entry.read",
+          "directory.entry.item.post",
+          "directory.entry.item.put",
+          "directory.entry.item.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.symbol.collection.get",
+      "permissionName": "directory.symbol.collection.get",
       "displayName": "entry collection get",
       "description": "get entry list",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.symbol.item.get",
+      "permissionName": "directory.symbol.item.get",
       "displayName": "symbol item get",
       "description": "get symbol item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.symbol.item.post",
+      "permissionName": "directory.symbol.item.post",
       "displayName": "symbol item post",
       "description": "create symbol item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.symbol.item.put",
+      "permissionName": "directory.symbol.item.put",
       "displayName": "symbol item put",
       "description": "update symbol item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.symbol.item.delete",
+      "permissionName": "directory.symbol.item.delete",
       "displayName": "symbol item delete",
       "description": "delete symbol item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.symbol.read",
+      "permissionName": "directory.symbol.read",
       "displayName": "symbol read",
       "description": "read symbol",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.symbol.collection.get",
-          "mod-directory.symbol.item.get"
+          "directory.symbol.collection.get",
+          "directory.symbol.item.get"
       ]
     },
     {
-      "permissionName": "mod-directory.symbol.write",
+      "permissionName": "directory.symbol.write",
       "displayName": "symbol write",
       "description": "write symbol",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.symbol.read",
-          "mod-directory.symbol.item.post",
-          "mod-directory.symbol.item.put",
-          "mod-directory.symbol.item.delete"
+          "directory.symbol.read",
+          "directory.symbol.item.post",
+          "directory.symbol.item.put",
+          "directory.symbol.item.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.service.collection.get",
+      "permissionName": "directory.service.collection.get",
       "displayName": "service collection get",
       "description": "get service list",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.service.item.get",
+      "permissionName": "directory.service.item.get",
       "displayName": "service item get",
       "description": "get service item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.service.item.post",
+      "permissionName": "directory.service.item.post",
       "displayName": "service item post",
       "description": "create service item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.service.item.put",
+      "permissionName": "directory.service.item.put",
       "displayName": "service item put",
       "description": "update service item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.service.item.delete",
+      "permissionName": "directory.service.item.delete",
       "displayName": "service item delete",
       "description": "delete service item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.service.read",
+      "permissionName": "directory.service.read",
       "displayName": "service read",
       "description": "read service",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.service.collection.get",
-          "mod-directory.service.item.get"
+          "directory.service.collection.get",
+          "directory.service.item.get"
       ]
     },
     {
-      "permissionName": "mod-directory.service.write",
+      "permissionName": "directory.service.write",
       "displayName": "service write",
       "description": "write service",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.service.read",
-          "mod-directory.service.item.post",
-          "mod-directory.service.item.put",
-          "mod-directory.service.item.delete"
+          "directory.service.read",
+          "directory.service.item.post",
+          "directory.service.item.put",
+          "directory.service.item.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.serviceaccount.collection.get",
+      "permissionName": "directory.serviceaccount.collection.get",
       "displayName": "serviceaccount collection get",
       "description": "get serviceaccount list",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.serviceaccount.item.get",
+      "permissionName": "directory.serviceaccount.item.get",
       "displayName": "serviceaccount item get",
       "description": "get serviceaccount item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.serviceaccount.item.post",
+      "permissionName": "directory.serviceaccount.item.post",
       "displayName": "serviceaccount item post",
       "description": "create serviceaccount item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.serviceaccount.item.put",
+      "permissionName": "directory.serviceaccount.item.put",
       "displayName": "serviceaccount item put",
       "description": "update serviceaccount item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.serviceaccount.item.delete",
+      "permissionName": "directory.serviceaccount.item.delete",
       "displayName": "serviceaccount item delete",
       "description": "delete serviceaccount item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.serviceaccount.read",
+      "permissionName": "directory.serviceaccount.read",
       "displayName": "serviceaccount read",
       "description": "read serviceaccount",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.serviceaccount.collection.get",
-          "mod-directory.serviceaccount.item.get"
+          "directory.serviceaccount.collection.get",
+          "directory.serviceaccount.item.get"
       ]
     },
     {
-      "permissionName": "mod-directory.serviceaccount.write",
+      "permissionName": "directory.serviceaccount.write",
       "displayName": "serviceaccount write",
       "description": "write serviceaccount",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.serviceaccount.read",
-          "mod-directory.serviceaccount.item.post",
-          "mod-directory.serviceaccount.item.put",
-          "mod-directory.serviceaccount.item.delete"
+          "directory.serviceaccount.read",
+          "directory.serviceaccount.item.post",
+          "directory.serviceaccount.item.put",
+          "directory.serviceaccount.item.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.namingauthority.collection.get",
+      "permissionName": "directory.namingauthority.collection.get",
       "displayName": "namingauthority collection get",
       "description": "get namingauthority list",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.namingauthority.item.get",
+      "permissionName": "directory.namingauthority.item.get",
       "displayName": "namingauthority item get",
       "description": "get namingauthority item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.namingauthority.item.post",
+      "permissionName": "directory.namingauthority.item.post",
       "displayName": "namingauthority item post",
       "description": "create namingauthority item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.namingauthority.item.put",
+      "permissionName": "directory.namingauthority.item.put",
       "displayName": "namingauthority item put",
       "description": "update namingauthority item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.namingauthority.item.delete",
+      "permissionName": "directory.namingauthority.item.delete",
       "displayName": "namingauthority item delete",
       "description": "delete namingauthority item",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.namingauthority.read",
+      "permissionName": "directory.namingauthority.read",
       "displayName": "namingauthority read",
       "description": "read namingauthority",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.namingauthority.collection.get",
-          "mod-directory.namingauthority.item.get"
+          "directory.namingauthority.collection.get",
+          "directory.namingauthority.item.get"
       ]
     },
     {
-      "permissionName": "mod-directory.namingauthority.write",
+      "permissionName": "directory.namingauthority.write",
       "displayName": "namingauthority write",
       "description": "write namingauthority",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.namingauthority.read",
-          "mod-directory.namingauthority.item.post",
-          "mod-directory.namingauthority.item.put",
-          "mod-directory.namingauthority.item.delete"
+          "directory.namingauthority.read",
+          "directory.namingauthority.item.post",
+          "directory.namingauthority.item.put",
+          "directory.namingauthority.item.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.api.get",
+      "permissionName": "directory.api.get",
       "displayName": "api get",
       "description": "get api",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.api.post",
+      "permissionName": "directory.api.post",
       "displayName": "api post",
       "description": "create api",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.api.put",
+      "permissionName": "directory.api.put",
       "displayName": "api put",
       "description": "update api",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.api.delete",
+      "permissionName": "directory.api.delete",
       "displayName": "api delete",
       "description": "delete api",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.api.write",
+      "permissionName": "directory.api.write",
       "displayName": "api write",
       "description": "write api",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.api.get",
-          "mod-directory.api.post",
-          "mod-directory.api.put",
-          "mod-directory.api.delete"
+          "directory.api.get",
+          "directory.api.post",
+          "directory.api.put",
+          "directory.api.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.externalapi.get",
+      "permissionName": "directory.externalapi.get",
       "displayName": "externalapi get",
       "description": "get externalapi",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.externalapi.post",
+      "permissionName": "directory.externalapi.post",
       "displayName": "externalapi post",
       "description": "create externalapi",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.externalapi.put",
+      "permissionName": "directory.externalapi.put",
       "displayName": "externalapi put",
       "description": "update externalapi",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.externalapi.delete",
+      "permissionName": "directory.externalapi.delete",
       "displayName": "externalapi delete",
       "description": "delete externalapi",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.externalapi.write",
+      "permissionName": "directory.externalapi.write",
       "displayName": "externalapi write",
       "description": "write externalapi",
       "visible": false,
       "subPermissions" : [
-          "mod-directory.externalapi.get",
-          "mod-directory.externalapi.post",
-          "mod-directory.externalapi.put",
-          "mod-directory.externalapi.delete"
+          "directory.externalapi.get",
+          "directory.externalapi.post",
+          "directory.externalapi.put",
+          "directory.externalapi.delete"
       ]
     },
     {
-      "permissionName": "mod-directory.kiwt",
+      "permissionName": "directory.kiwt",
       "displayName": "kiwt permissions",
       "description": "kiwt permissions",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.settings",
+      "permissionName": "directory.settings",
       "displayName": "settings permissions",
       "description": "settings permissions",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.refdata",
+      "permissionName": "directory.refdata",
       "displayName": "refdata permissions",
       "description": "refdata permissions",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.custprops",
+      "permissionName": "directory.custprops",
       "displayName": "custprops",
       "description": "customproperties",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.tags",
+      "permissionName": "directory.tags",
       "displayName": "tags",
       "description": "tags",
       "visible": false
     },
     {
-      "permissionName": "mod-directory.all.read",
-      "displayName": "read all mod-directory",
-      "description": "all read permissions on mod-directory",
+      "permissionName": "directory.all.read",
+      "displayName": "read all directory",
+      "description": "all read permissions on directory",
       "subPermissions": [
-          "mod-directory.entry.read",
-          "mod-directory.symbol.read",
-          "mod-directory.service.read",
-          "mod-directory.serviceaccount.read",
-          "mod-directory.namingauthority.read",
-          "mod-directory.api.get",
-          "mod-directory.externalapi.get",
-          "mod-directory.kiwt",
-          "mod-directory.settings",
-          "mod-directory.refdata",
-          "mod-directory.custprops",
-          "mod-directory.tags"
+          "directory.entry.read",
+          "directory.symbol.read",
+          "directory.service.read",
+          "directory.serviceaccount.read",
+          "directory.namingauthority.read",
+          "directory.api.get",
+          "directory.externalapi.get",
+          "directory.kiwt",
+          "directory.settings",
+          "directory.refdata",
+          "directory.custprops",
+          "directory.tags"
       ],
       "visible": false
     },
     {
-      "permissionName": "mod-directory.all",
-      "displayName": "all mod-directory",
-      "description": "all mod-directory permissions",
+      "permissionName": "directory.all",
+      "displayName": "all directory",
+      "description": "all directory permissions",
       "subPermissions": [
-          "mod-directory.all.read",
-          "mod-directory.entry.write",
-          "mod-directory.symbol.write",
-          "mod-directory.service.write",
-          "mod-directory.serviceaccount.write",
-          "mod-directory.namingauthority.write",
-          "mod-directory.api.write",
-          "mod-directory.externalapi.write"
+          "directory.all.read",
+          "directory.entry.write",
+          "directory.symbol.write",
+          "directory.service.write",
+          "directory.serviceaccount.write",
+          "directory.namingauthority.write",
+          "directory.api.write",
+          "directory.externalapi.write"
       ]
     }
   ],
