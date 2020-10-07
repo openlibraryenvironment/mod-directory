@@ -29,7 +29,8 @@
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ "directory.entry.item.put" ]
+          "permissionsRequired" : [ "directory.entry.item.put" ],
+          "permissionsDesired": [ "directory.entry.managed-item.put" ]
         },
         {
           "methods": [ "PUT" ],
@@ -338,6 +339,12 @@
       "permissionName": "directory.entry.item.put",
       "displayName": "entry item put",
       "description": "update entry item",
+      "visible": false
+    },
+    {
+      "permissionName": "directory.entry.managed-item.put",
+      "displayName": "entry managed item put",
+      "description": "PUT to a directory entry that has the 'managed' flag",
       "visible": false
     },
     {
