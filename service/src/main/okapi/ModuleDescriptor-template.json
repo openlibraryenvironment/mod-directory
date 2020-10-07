@@ -317,12 +317,6 @@
   ],
   "permissionSets": [
     {
-      "permissionName": "module.directory-stripes.enabled",
-      "displayName": "OLF License",
-      "description": "Base property to enable any access the OLF License module",
-      "visible": false
-    },
-    {
       "permissionName": "mod-directory.entry.collection.get",
       "displayName": "entry collection get",
       "description": "get entry list",
@@ -683,16 +677,6 @@
       "displayName": "tags",
       "description": "tags",
       "visible": false
-    },
-
-    {
-      "permissionName": "mod-directory.user",
-      "displayName": "OLF License - User",
-      "description": "A user of OLF Directory",
-      "subPermissions": [
-        "module.directory-stripes.enabled"
-      ],
-      "visible": true
     },
     {
       "permissionName": "mod-directory.all.read",
