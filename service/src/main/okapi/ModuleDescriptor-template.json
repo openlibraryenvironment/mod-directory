@@ -30,7 +30,7 @@
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}/*",
           "permissionsRequired" : [ "directory.entry.item.put" ],
-          "permissionsDesired": [ "directory.entry.managed-item.put" ]
+          "permissionsDesired": [ "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
         },
         {
           "methods": [ "PUT" ],
@@ -345,6 +345,12 @@
       "permissionName": "directory.entry.managed-item.put",
       "displayName": "entry managed item put",
       "description": "PUT to a directory entry that has the 'managed' flag",
+      "visible": false
+    },
+    {
+      "permissionName": "directory.entry.item-local.put",
+      "displayName": "entry item local put",
+      "description": "PUT local information to a directory entry",
       "visible": false
     },
     {
