@@ -1,10 +1,11 @@
 package org.olf;
 
-import com.k_int.web.toolkit.ConfigController;
+// import com.k_int.web.toolkit.ConfigController;
 
 import grails.converters.JSON
 
-public class DirectoryConfigController extends ConfigController {
+// public class DirectoryConfigController extends ConfigController {
+public class DirectoryConfigController {
 
 private static String raml_text = '''
 #%RAML 1.0
