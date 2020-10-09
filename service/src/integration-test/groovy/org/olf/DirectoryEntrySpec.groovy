@@ -6,7 +6,6 @@ import static grails.web.http.HttpHeaders.*
 import static org.springframework.http.HttpStatus.*
 import spock.lang.*
 import geb.spock.*
-import grails.plugins.rest.client.RestBuilder
 import groovy.util.logging.Slf4j
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,7 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 @Slf4j
 @Integration
 @Stepwise
-class DirectoryEntrySpec extends GebSpec {
+class DirectoryEntrySpec extends BaseSpec {
 
   @Shared
   private Map test_info = [:]
@@ -46,7 +45,7 @@ class DirectoryEntrySpec extends GebSpec {
 
       logger.info("Post new tenant request for ${tenantid} to ${baseUrl}_/tenant");
 
-      def resp = restBuilder().post("${baseUrl}_/tenant") {
+      def resp = doPost("${baseUrl}_/tenant") {
         header 'X-Okapi-Tenant', tenantid
         authHeaders.rehydrate(delegate, owner, thisObject)()
       }
@@ -80,7 +79,7 @@ class DirectoryEntrySpec extends GebSpec {
       //     dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
       //   }
       // }
-      def resp = restBuilder().post("$baseUrl/directory/entry") {
+      def resp = doPost("$baseUrl/directory/entry") {
         header 'X-Okapi-Tenant', tenantid
         authHeaders.rehydrate(delegate, owner, thisObject)()
         contentType 'application/json'
@@ -106,7 +105,7 @@ class DirectoryEntrySpec extends GebSpec {
 
     when: "We add a new friend"
       def dirent = null;
-      def resp = restBuilder().get("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
+      def resp = doGet("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
         header 'X-Okapi-Tenant', tenant_id
         authHeaders.rehydrate(delegate, owner, thisObject)()
         accept 'application/json'
@@ -225,7 +224,7 @@ class DirectoryEntrySpec extends GebSpec {
     logger.info("Delete test friend");
 
     expect:"post delete request to the OKAPI controller for "+tenant_id+" results in OK and deleted tennant"
-      def resp = restBuilder().delete("$baseUrl/_/tenant") {
+      def resp = doDelete("$baseUrl/_/tenant") {
         header 'X-Okapi-Tenant', tenant_id
         authHeaders.rehydrate(delegate, owner, thisObject)()
       }
@@ -236,10 +235,6 @@ class DirectoryEntrySpec extends GebSpec {
     where:
       tenant_id | note
       'TestTenantG' | 'note'
-  }
-
-  RestBuilder restBuilder() {
-    new RestBuilder()
   }
 
 }
