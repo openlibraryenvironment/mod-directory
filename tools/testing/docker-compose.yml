@@ -1,0 +1,20 @@
+version: "2.0"
+
+volumes:
+  lsp_pgdata:
+    driver: local
+
+services:
+  postgres:
+    container_name: testing_pg
+    hostname: postgres
+    image: postgres:12
+    restart: "no"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pa55w0rd
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
