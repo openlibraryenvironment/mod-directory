@@ -68,12 +68,15 @@ class RefdataSpec extends HttpSpec {
   
   void "Create Test Categories" () {
     given: 'Fetch current categories'
+      log.debug("Fetch existing categories");
       Map httpResult = doGet('/directory/refdata', ['stats': true])
       final int initial_cats = httpResult.total
       
     and: 'Add all categories'
+      log.debug("Add new categories");
       for (int i=0; i<CATEGORIES.size();i++ ) {
         Map cat_def = CATEGORIES[i]
+        log.debug("Add new categories :: ${cat_def.desc}");
         httpResult = doPost('/directory/refdata', cat_def)        
         if (i == 0) {
           first_cat_id = httpResult.id
