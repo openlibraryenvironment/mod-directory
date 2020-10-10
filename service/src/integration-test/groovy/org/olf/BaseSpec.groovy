@@ -9,19 +9,25 @@ import spock.util.concurrent.PollingConditions
 
 @Stepwise
 abstract class BaseSpec extends HttpSpec {
+
   def setupSpec() {
-    httpClientConfig = {
+    addDefaultHeaders(
+      (OkapiHeaders.TENANT): 'http_tests',
+      (OkapiHeaders.USER_ID): 'http_test_user'
+    )
+
+    setHttpClientConfig {
       client.clientCustomizer { HttpURLConnection conn ->
-        conn.connectTimeout = 3000
-        conn.readTimeout = 20000
+        conn.connectTimeout = 10000
+        conn.readTimeout = 5000
       }
     }
-    addDefaultHeaders(
-      (OkapiHeaders.TENANT): "${this.class.simpleName}",
-      (OkapiHeaders.USER_ID): "${this.class.simpleName}_user"
-    ) 
   }
-  
+
+  def cleanupSpecWithSpring() {
+    Map resp = doDelete('/_/tenant', null)
+  }
+
   Map<String, String> getAllHeaders() {
     specDefaultHeaders + headersOverride
   }

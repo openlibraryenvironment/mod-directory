@@ -7,9 +7,11 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.utils.DomainUtils
 import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
+import grails.gorm.transactions.Transactional
 
 @Slf4j
 @CurrentTenant
+@Transactional
 class RefdataController extends OkapiTenantAwareController<RefdataCategory> {
   
   RefdataController() {
@@ -39,4 +41,29 @@ class RefdataController extends OkapiTenantAwareController<RefdataCategory> {
       }
     }
   }
+
+  @Override
+  def save() {
+    log.debug("RefdataController::save()");
+    RefdataCategory.withTransaction {
+      super.save()
+    }
+  }
+
+  @Override
+  def update() {
+    log.debug("RefdataController::update()");
+    RefdataCategory.withTransaction {
+      super.update()
+    }
+  }
+
+  @Override
+  def delete() {
+    log.debug("RefdataController::delete()");
+    RefdataCategory.withTransaction {
+      super.delete()
+    }
+  }
+
 }
