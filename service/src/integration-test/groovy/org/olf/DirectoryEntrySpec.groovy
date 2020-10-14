@@ -233,6 +233,9 @@ class DirectoryEntrySpec extends HttpSpec {
     log.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
     expected == parentValidation
 
+    // Give the out of band kafka event enough time to propagate
+    Thread.sleep(2000);
+
     log.debug("==================================================================================================")
     
 
