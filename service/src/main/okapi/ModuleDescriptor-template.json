@@ -378,6 +378,8 @@
           "directory.entry.read",
           "directory.entry.item.post",
           "directory.entry.item.put",
+          "directory.entry.managed-item.put",
+          "directory.entry.item-local.put",
           "directory.entry.item.delete"
       ]
     },
