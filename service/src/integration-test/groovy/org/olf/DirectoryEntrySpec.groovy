@@ -122,15 +122,24 @@ class DirectoryEntrySpec extends HttpSpec {
 
     when: "We add a new friend"
       def dirent = null;
-      setHeaders(['X-Okapi-Tenant': tenantid])
-      def resp = doGet("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
-        authHeaders.rehydrate(delegate, owner, thisObject)()
-        accept 'application/json'
+      setHeaders(['X-Okapi-Tenant': tenant_id])
+      def resp = httpClient.get {
+        request.uri = "$baseUrl/directory/entry".toString()
+        request.contentType = JSON[0]
+        request.headers = (specDefaultHeaders + headersOverride + ['X-Okapi-Tenant': tenant_id])
       }
+      // def resp = doGet("$baseUrl/directory/api/addFriend?friendUrl=$friend_url".toString()) {
+      //   authHeaders.rehydrate(delegate, owner, thisObject)()
+      //   accept 'application/json'
+      // }
 
     then: "New directory entry created with the given name"
       // dirent.name == name
-      resp.status == OK.value()
+      log.debug("Add friend response: ${resp}");
+      resp != null
+
+      // Give the out of band kafka event enough time to propagate
+      Thread.sleep(2000);
 
     where:
       tenant_id | friend_url
@@ -233,26 +242,6 @@ class DirectoryEntrySpec extends HttpSpec {
     'TestTenantG' | ['dir4', 'dir5', 'dir6'] | 'succeeds' | 2
   }
 
-
-
-
-  void "Delete the tenants"(tenant_id, note) {
-
-    log.info("Delete test friend");
-
-    expect:"post delete request to the OKAPI controller for "+tenant_id+" results in OK and deleted tennant"
-      setHeaders(['X-Okapi-Tenant': tenant_id])
-      def resp = doDelete("$baseUrl/_/tenant") {
-        authHeaders.rehydrate(delegate, owner, thisObject)()
-      }
-
-      log.debug("completed DELETE request on ${tenant_id}");
-      resp.status == NO_CONTENT.value()
-
-    where:
-      tenant_id | note
-      'TestTenantG' | 'note'
-  }
 
 }
 
