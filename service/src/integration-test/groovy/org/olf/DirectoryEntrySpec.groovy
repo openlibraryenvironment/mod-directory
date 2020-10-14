@@ -14,6 +14,7 @@ import spock.lang.Shared
 import grails.gorm.multitenancy.Tenants
 import org.olf.okapi.modules.directory.DirectoryEntry
 import com.k_int.web.toolkit.testing.HttpSpec
+import static groovyx.net.http.ContentTypes.JSON
 
 
 @Slf4j
@@ -32,19 +33,36 @@ class DirectoryEntrySpec extends HttpSpec {
     header OkapiHeaders.PERMISSIONS, '[ "directory.admin", "directory.user", "directory.own.read", "directory.any.read"]'
   }
 
-  final static Logger logger = LoggerFactory.getLogger(DirectoryEntrySpec.class);
-
   def setup() {
   }
 
   def cleanup() {
   }
 
+  void "Attempt to delete any old tenant"(tenantid, name) {
+    when:"We post a delete request"
+      try {
+        setHeaders(['X-Okapi-Tenant': tenantid])
+        def resp = doDelete("${baseUrl}_/tenant".toString(),null)
+      }
+      catch ( Exception e ) {
+        // If there is no TestTenantG we'll get an exception here, it's fine
+      }
+
+    then:"Any old tenant removed"
+      1==1
+
+    where:
+      tenantid | name
+      'TestTenantG' | 'TestTenantG'
+
+  }
+
   // Set up a new tenant called RSTestTenantA
   void "Set up test tenants "(tenantid, name) {
     when:"We post a new tenant request to the OKAPI controller"
 
-      logger.info("Post new tenant request for ${tenantid} to ${baseUrl}_/tenant");
+      log.debug("Post new tenant request for ${tenantid} to ${baseUrl}_/tenant");
 
       setHeaders(['X-Okapi-Tenant': tenantid])
       def resp = doPost("${baseUrl}_/tenant") {
@@ -63,36 +81,32 @@ class DirectoryEntrySpec extends HttpSpec {
 
   void "test directory entry creation"(tenantid, name) {
 
-    logger.info("Sleep 2s to see that schema creation went OK - running test for ${tenantid} ${name}");
+    log.debug("Sleep 2s to see that schema creation went OK - running test for ${tenantid} ${name}");
 
     // Switching context, just want to make sure that the schema had time to finish initialising.
     Thread.sleep(2000)
 
     Map new_entry = [
+          id: java.util.UUID.randomUUID().toString(),
           name:name,
           slug:name,
-          description:'hello',
-        ]
+          description:'Test new entry'
+    ]
 
 
     when: "We create a new directory entry"
-      def dirent = null;
-      // Tenants.withId(tenantid.toLowerCase()+'_mod_directory') {
-      //   DirectoryEntry.withTransaction {
-      //     dirent = DirectoryEntry.findByName(name) ?: new DirectoryEntry(name:name, slug:name).save(flush:true, failOnError:true);
-      //   }
-      // }
-      def resp = doPost("$baseUrl/directory/entry") {
-        header 'X-Okapi-Tenant', tenantid
-        authHeaders.rehydrate(delegate, owner, thisObject)()
-        contentType 'application/json'
-        accept 'application/json'
-        json new_entry
+      log.debug("Attempt to post ${new_entry}");
+
+      def resp = httpClient.post {
+        request.uri = "$baseUrl/directory/entry".toString()
+        request.contentType = JSON[0]
+        request.body = new_entry
+        request.headers = (specDefaultHeaders + headersOverride + ['X-Okapi-Tenant': tenantid])
       }
 
     then: "New directory entry created with the given name"
-      // dirent.name == name
-      resp.status == CREATED.value()
+      log.debug("Got response ${resp}");
+      resp != null;
 
 
     where:
@@ -104,12 +118,12 @@ class DirectoryEntrySpec extends HttpSpec {
 
   void "add Friend"(tenant_id, friend_url) {
 
-    logger.info("Add a friend");
+    log.debug("Add a friend");
 
     when: "We add a new friend"
       def dirent = null;
+      setHeaders(['X-Okapi-Tenant': tenantid])
       def resp = doGet("$baseUrl/directory/api/addFriend?friendUrl=$friend_url") {
-        header 'X-Okapi-Tenant', tenant_id
         authHeaders.rehydrate(delegate, owner, thisObject)()
         accept 'application/json'
       }
@@ -129,8 +143,8 @@ class DirectoryEntrySpec extends HttpSpec {
 
   // Check parent loop failure
   void "Check Parent loop fails"(tenantid, heirachy, expected, runthrough) {
-    logger.info("Checking parent loop");
-    logger.debug("========================================== runthrough ${runthrough} ==========================================")
+    log.debug("Checking parent loop");
+    log.debug("========================================== runthrough ${runthrough} ==========================================")
     
     when: "We create some directory entries and set their parent structure"
       def dir1 = null;
@@ -197,20 +211,20 @@ class DirectoryEntrySpec extends HttpSpec {
       parentValidation = 'succeeds'
     }
     catch(grails.validation.ValidationException e) {
-      logger.debug("An error has occured: ${e}")
+      log.debug("An error has occured: ${e}")
         parentValidation = 'fails because loop'
     }
     catch (Exception e) {
-      logger.debug("An error has occured: ${e}")
+      log.debug("An error has occured: ${e}")
       parentValidation = 'fails otherwise'
     }
 
 
     then: "Check that we get the expected validation failures"
-    logger.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
+    log.debug("Checking validator. Expected: ${expected}, Validation: ${parentValidation}")
     expected == parentValidation
 
-    logger.debug("==================================================================================================")
+    log.debug("==================================================================================================")
     
 
     where:
@@ -224,15 +238,15 @@ class DirectoryEntrySpec extends HttpSpec {
 
   void "Delete the tenants"(tenant_id, note) {
 
-    logger.info("Delete test friend");
+    log.info("Delete test friend");
 
     expect:"post delete request to the OKAPI controller for "+tenant_id+" results in OK and deleted tennant"
+      setHeaders(['X-Okapi-Tenant': tenant_id])
       def resp = doDelete("$baseUrl/_/tenant") {
-        header 'X-Okapi-Tenant', tenant_id
         authHeaders.rehydrate(delegate, owner, thisObject)()
       }
 
-      logger.debug("completed DELETE request on ${tenant_id}");
+      log.debug("completed DELETE request on ${tenant_id}");
       resp.status == NO_CONTENT.value()
 
     where:
