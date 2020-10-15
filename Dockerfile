@@ -2,7 +2,7 @@ FROM adoptopenjdk:11-jdk-openj9-bionic
 MAINTAINER Ian.Ibbotson@k-int.com
 VOLUME /tmp
 # ADD service-0.1.war mockncipserver.war
-COPY service/build/libs/mod-directory-*.*.*-SNAPSHOT.jar mod-directory.war
+COPY service/build/libs/mod-directory-*.*.*.jar mod-directory.war
 
 # Handy info here: https://dev.to/hugodias/wait-for-mongodb-to-start-on-docker-3h8b
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.6.0/wait /wait
