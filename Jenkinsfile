@@ -17,7 +17,7 @@ podTemplate(
 
     stage ('checkout') {
       checkout scm
-      props = readProperties file: './gradle.properties'
+      props = readProperties file: './service/gradle.properties'
       app_version = props.appVersion
       deploy_cfg = null;
       semantic_version_components = app_version.toString().split('\\.')
