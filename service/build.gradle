@@ -228,6 +228,7 @@ buildProperties.doLast {
   String version = properties.getProperty('info.app.version')
   def versionParts
   if (version && (versionParts = version =~ version_regex)) {
+    println("Version parts : ${versionParts[0]}");
     versionParts[0].with {
       properties.setProperty('info.app.majorVersion', it[3])
       properties.setProperty('info.app.minorVersion', it[2])
@@ -236,7 +237,10 @@ buildProperties.doLast {
       if (it[5]) {
         properties.setProperty('info.app.testVersion', it[5])
       }
+
+      println("version properties: ${properties}");
     }
+
     version.replaceAll(/^(((\d+)\.\d+)\.\d+)(-([\w]+))?$/ , '$1')
   }
 
