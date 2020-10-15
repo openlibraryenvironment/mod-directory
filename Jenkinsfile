@@ -38,7 +38,7 @@ podTemplate(
       container('jdk11') {
         dir('service') {
           sh './gradlew --version'
-          sh './gradlew --no-daemon --console=plain clean build'
+          sh './gradlew --no-daemon -x integrationTest --console=plain clean build'
           sh 'ls ./build/libs'
         }
       }
