@@ -1,29 +1,56 @@
 #!groovy
 
-node {
+podTemplate(
+  containers:[
+    containerTemplate(name: 'jdk11',                image:'adoptopenjdk:11-jdk-openj9',   ttyEnabled:true, command:'cat'),
+    containerTemplate(name: 'docker',               image:'docker:18',                    ttyEnabled:true, command:'cat')
+  ],
+  volumes: [
+    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+  ])
+{
+  node(POD_LABEL) {
 
-  stage ('checkout') {
-    checkout scm
-  }
+    // See https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/
+    // https://www.jenkins.io/doc/pipeline/steps/
+    // https://github.com/jenkinsci/nexus-artifact-uploader-plugin
 
-  stage ('test') {
-    dir ( 'service' ) {
-      sh './gradlew --no-daemon --console=plain clean test'
+    stage ('checkout') {
+      checkout scm
+      props = readProperties file: './gradle.properties'
+      app_version = props.appVersion
+      deploy_cfg = null;
+      semantic_version_components = app_version.toString().split('\\.')
+      is_snapshot = app_version.contains('SNAPSHOT')
+      println("Got props: asString:${props} appVersion:${props.appVersion}/${props['appVersion']}/${semantic_version_components}");
+      sh 'echo branch:$BRANCH_NAME'
+      sh 'echo commit:$checkout_details.GIT_COMMIT'
     }
-  }
 
-  stage ('build') {
-    dir ( 'service' ) {
-      sh './gradlew --no-daemon --console=plain assemble'
+    stage ('check') {
+      container('jdk11') {
+        echo 'Hello, JDK'
+        sh 'java -version'
+        sh './gradlew --version'
+      }
     }
-  }
 
-  stage ('archive') {
-    archiveArtifacts artifacts: 'service/build/libs/mod-directory-*'
-  }
+    stage ('build') {
+      container('jdk11') {
+        dir('service') {
+          sh './gradlew --no-daemon --console=plain clean build generatePomFileForMavenPublication'
+          sh 'ls ./build/libs'
+        }
+      }
+    }
 
-  // step([$class: 'ArtifactArchiver', artifacts: 'build/libs/*.jar', fingerprint: true])
-  // 
-  // stage 'reports'
-  // step([$class: 'JUnitResultArchiver', testResults: 'build/test-results/*.xml'])
+    // https://www.jenkins.io/doc/book/pipeline/docker/
+    stage('Build Docker Image') {
+      container('docker') {
+        //sh 'ls service/build/libs'
+        docker_image = docker.build("mod-directory")
+      }
+    }
+
+  }
 }
