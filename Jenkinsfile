@@ -31,13 +31,13 @@ podTemplate(
       container('jdk11') {
         echo 'Hello, JDK'
         sh 'java -version'
-        sh './gradlew --version'
       }
     }
 
     stage ('build') {
       container('jdk11') {
         dir('service') {
+          sh './gradlew --version'
           sh './gradlew --no-daemon --console=plain clean build generatePomFileForMavenPublication'
           sh 'ls ./build/libs'
         }
