@@ -12,12 +12,14 @@
     { "memberOrg":"Temple" },
     { "memberOrg":"New_School" },
     { "memberOrg":"Millersville" },
-    { "memberOrg":"Seton_Hall" }
+    { "memberOrg":"Seton_Hall" },
+    { "memberOrg":"Rowan" }
   ],
   "friends":[
     { "foaf":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/directory/externalApi/entry/Temple" },
     { "foaf":"https://new-school-okapi.folio-dev.indexdata.com/_/invoke/tenant/new_school/directory/externalApi/entry/New_School" },
     { "foaf":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/directory/externalApi/entry/Millersville" },
-    { "foaf":"https://seton-hall-okapi.folio-dev.indexdata.com/_/invoke/tenant/seton_hall/directory/externalApi/entry/Seton_Hall" }
+    { "foaf":"https://seton-hall-okapi.folio-dev.indexdata.com/_/invoke/tenant/seton_hall/directory/externalApi/entry/Seton_Hall" },
+    { "foaf":"https://rowan-okapi.folio-dev.indexdata.com/_/invoke/tenant/rowan/directory/externalApi/entry/Rowan" }
   ]
 }
