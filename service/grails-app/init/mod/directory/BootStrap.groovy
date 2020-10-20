@@ -16,8 +16,6 @@ class BootStrap {
     log.info("          build commit -> ${grailsApplication.metadata['build.git.commit']}");
     log.info("            build time -> ${grailsApplication.metadata['build.time']}");
     log.info("         Base JDBC URL -> ${grailsApplication.config.dataSource.url}");
-
-    okapiTenantAdminService.freshenAllTenantSchemas()
   }
 
 

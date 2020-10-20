@@ -37,6 +37,7 @@ logger ('com.k_int.okapi.OkapiTenantAdminService', DEBUG)
 logger ('com.k_int.okapi.OkapiSchemaHandler', WARN)
 logger ('com.k_int.web.toolkit', TRACE)
 logger ('org.grails.gorm.graphql', WARN)
+logger ('mod.directory', INFO)
 
 logger ('com.k_int.okapi.OkapiClient', DEBUG)
 // logger ('org.olf.okapi.modules.directory.CustomBinders', WARN)
