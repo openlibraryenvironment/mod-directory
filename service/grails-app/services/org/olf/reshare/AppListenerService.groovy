@@ -96,7 +96,7 @@ public class AppListenerService implements ApplicationListener {
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
 
-    Map entry_data = makeDirentJSON(de, false);
+    Map entry_data = makeDirentJSON(de, false, true);
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
@@ -120,16 +120,19 @@ public class AppListenerService implements ApplicationListener {
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant}) -- COMPLETE");
   }
 
-  private Map getCustprops(com.k_int.web.toolkit.custprops.types.CustomPropertyContainer svc) {
+  private Map getCustprops(com.k_int.web.toolkit.custprops.types.CustomPropertyContainer svc, boolean include_private_custprops=false) {
     Map result = [:]
     svc.value.each { cp ->
       // If we have not already mapped a value for this key, create an array in the response
-      if ( result[cp.definition.name] == null ) {
-        result[cp.definition.name] = [ getCPValue(cp.value) ]
-      }
-      else {
-        // otherwise, add this value to the existing array
-        result[cp.definition.name].add(getCPValue(cp.value))
+      if ( ( include_private_custprops == true ) ||
+           ( ( include_private_custprops == false ) && ( cp.definition.defaultInternal == false ) ) ) {
+        if ( result[cp.definition.name] == null ) {
+          result[cp.definition.name] = [ getCPValue(cp.value) ]
+        }
+        else {
+          // otherwise, add this value to the existing array
+          result[cp.definition.name].add(getCPValue(cp.value))
+        }   
       }
     }
     log.debug("Adding service account custom properties: ${result}");
@@ -149,7 +152,7 @@ public class AppListenerService implements ApplicationListener {
     return result;
   }
 
-  public Map makeDirentJSON(DirectoryEntry de, boolean include_units) {
+  public Map makeDirentJSON(DirectoryEntry de, boolean include_units=false, boolean include_private_custprops=false) {
 
     String last_modified_str = null;
     if ( ( de.pubLastUpdate != null ) && ( de.pubLastUpdate > 0 ) ) {
@@ -174,7 +177,7 @@ public class AppListenerService implements ApplicationListener {
       lmsLocationCode: de.lmsLocationCode,
       tags: de.tags?.collect {it?.value},
       type: de.type?.value,
-      customProperties: getCustprops(de.customProperties),
+      customProperties: getCustprops(de.customProperties, include_private_custprops),
       members:[]
     ]
 
@@ -187,7 +190,7 @@ public class AppListenerService implements ApplicationListener {
                       type: svc.service.type?.value,
                       businessFunction: svc.service.businessFunction?.value,
                     ],
-                    customProperties: getCustprops(svc.customProperties)])
+                    customProperties: getCustprops(svc.customProperties, include_private_custprops)])
     }
 
     de.symbols.each { sym ->
@@ -218,7 +221,7 @@ public class AppListenerService implements ApplicationListener {
     if ( include_units ) {
       entry_data.units = []
       de.units.each { unit ->
-        entry_data.units.add(makeDirentJSON(unit, true))
+        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops))
       }
     }
 
