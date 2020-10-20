@@ -9,7 +9,7 @@ class BootStrap {
 
   def init = { servletContext ->
 
-    log.info("mod-directory (${grailsApplication.metadata['app.version']}) initialising");
+    log.info("mod-directory (${grailsApplication.config?.info?.app?.version}) initialising");
     log.info("          build number -> ${grailsApplication.metadata['build.number']}");
     log.info("        build revision -> ${grailsApplication.metadata['build.git.revision']}");
     log.info("          build branch -> ${grailsApplication.metadata['build.git.branch']}");
