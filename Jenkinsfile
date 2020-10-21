@@ -61,7 +61,7 @@ podTemplate(
             // Some interesting stuff here https://github.com/jenkinsci/pipeline-examples/pull/83/files
             if ( !is_snapshot ) {
               // do_k8s_update=true
-              docker.withRegistry('','kidockerhub') {
+              docker.withRegistry('','nexus-kidevops') {
                 println("Publishing released version with latest tag and semver ${semantic_version_components}");
                 docker_image.push('latest')
                 docker_image.push("v${app_version}".toString())
@@ -71,7 +71,7 @@ podTemplate(
               }
             }
             else {
-              docker.withRegistry('','kidockerhub') {
+              docker.withRegistry('','nexus-kidevops') {
                 println("Publishing snapshot-latest");
                 docker_image.push('snapshot-latest')
                 // deploy_cfg='deploy_snapshot.yaml'
