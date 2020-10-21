@@ -16,7 +16,7 @@ podTemplate(
     // https://github.com/jenkinsci/nexus-artifact-uploader-plugin
 
     stage ('checkout') {
-      checkout scm
+      checkout_details = checkout scm
       props = readProperties file: './service/gradle.properties'
       app_version = props.appVersion
       deploy_cfg = null;
