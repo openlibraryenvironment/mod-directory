@@ -49,7 +49,7 @@ podTemplate(
     stage('Build Docker Image') {
       container('docker') {
         //sh 'ls service/build/libs'
-        docker_image = docker.build("mod-directory")
+        docker_image = docker.build("knowledgeintegration/mod-directory")
       }
     }
 
