@@ -22,6 +22,7 @@ podTemplate(
       deploy_cfg = null;
       semantic_version_components = app_version.toString().split('\\.')
       is_snapshot = app_version.contains('SNAPSHOT')
+      constructed_tag = "build-${props?.appVersion}-${checkout_details?.GIT_COMMIT?.take(12)}"
       println("Got props: asString:${props} appVersion:${props.appVersion}/${props['appVersion']}/${semantic_version_components}");
       sh 'echo branch:$BRANCH_NAME'
       sh 'echo commit:$checkout_details.GIT_COMMIT'
@@ -49,6 +50,38 @@ podTemplate(
       container('docker') {
         //sh 'ls service/build/libs'
         docker_image = docker.build("mod-directory")
+      }
+    }
+
+    stage('Publish Docker Image') {
+      container('docker') {
+        dir('docker') {
+          if ( checkout_details?.GIT_BRANCH == 'master' ) {
+            println("Considering build tag : ${constructed_tag} version:${props.appVersion}");
+            // Some interesting stuff here https://github.com/jenkinsci/pipeline-examples/pull/83/files
+            if ( !is_snapshot ) {
+              // do_k8s_update=true
+              docker.withRegistry('','kidockerhub') {
+                println("Publishing released version with latest tag and semver ${semantic_version_components}");
+                docker_image.push('latest')
+                docker_image.push("v${app_version}".toString())
+                docker_image.push("v${semantic_version_components[0]}.${semantic_version_components[1]}".toString())
+                docker_image.push("v${semantic_version_components[0]}".toString())
+                // deploy_cfg='deploy_latest.yaml'
+              }
+            }
+            else {
+              docker.withRegistry('','kidockerhub') {
+                println("Publishing snapshot-latest");
+                docker_image.push('snapshot-latest')
+                // deploy_cfg='deploy_snapshot.yaml'
+              }
+            }
+          }
+          else {
+            println("Not publishing docker image for branch ${checkout_details?.GIT_BRANCH}. Please merge to master for a docker image build");
+          }
+        }
       }
     }
 
