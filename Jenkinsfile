@@ -56,7 +56,7 @@ podTemplate(
     stage('Publish Docker Image') {
       container('docker') {
         dir('docker') {
-          if ( checkout_details?.GIT_BRANCH == 'master' ) {
+          if ( checkout_details?.GIT_BRANCH == 'origin/master' ) {
             println("Considering build tag : ${constructed_tag} version:${props.appVersion}");
             // Some interesting stuff here https://github.com/jenkinsci/pipeline-examples/pull/83/files
             if ( !is_snapshot ) {
