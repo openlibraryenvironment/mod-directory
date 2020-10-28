@@ -37,12 +37,17 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
     }
   }
 
-
-
   @Override
   def update() {
     DirectoryEntry.withTransaction {
       log.debug("Overridden DirectoryEntryController::update() - called when there is a post on a directory entry resource");
+      if ( request.JSON != null ) {
+        // If we are manually updating a directory entry, then it must be locally managed. Setting this manually
+        // will force an update event at the directory entry level even if a child property such as a custprop has been set
+        // This will subsequently trigger a directory entry updated event in kafka and cause an updated record to be issued.
+        request.JSON.pubLastUpdate = System.currentTimeMillis();
+      }
+
       super.update()
     }
   }
