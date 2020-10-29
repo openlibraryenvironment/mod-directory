@@ -228,26 +228,6 @@
           "permissionsRequired" : [ "directory.api.delete" ]
         },
         {
-          "methods": [ "GET" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.get" ]
-        },
-        {
-          "methods": [ "POST" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.post" ]
-        },
-        {
-          "methods": [ "PUT" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.put" ]
-        },
-        {
-          "methods": [ "DELETE" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.delete" ]
-        },
-        {
           "methods": [ "GET", "POST", "PUT", "DELETE" ],
           "pathPattern": "/directory/kiwt*",
           "permissionsRequired" : [ "directory.kiwt" ]
@@ -628,42 +608,6 @@
       ]
     },
     {
-      "permissionName": "directory.externalapi.get",
-      "displayName": "externalapi get",
-      "description": "get externalapi",
-      "visible": false
-    },
-    {
-      "permissionName": "directory.externalapi.post",
-      "displayName": "externalapi post",
-      "description": "create externalapi",
-      "visible": false
-    },
-    {
-      "permissionName": "directory.externalapi.put",
-      "displayName": "externalapi put",
-      "description": "update externalapi",
-      "visible": false
-    },
-    {
-      "permissionName": "directory.externalapi.delete",
-      "displayName": "externalapi delete",
-      "description": "delete externalapi",
-      "visible": false
-    },
-    {
-      "permissionName": "directory.externalapi.write",
-      "displayName": "externalapi write",
-      "description": "write externalapi",
-      "visible": false,
-      "subPermissions" : [
-          "directory.externalapi.get",
-          "directory.externalapi.post",
-          "directory.externalapi.put",
-          "directory.externalapi.delete"
-      ]
-    },
-    {
       "permissionName": "directory.kiwt",
       "displayName": "kiwt permissions",
       "description": "kiwt permissions",
@@ -704,7 +648,6 @@
           "directory.serviceaccount.read",
           "directory.namingauthority.read",
           "directory.api.get",
-          "directory.externalapi.get",
           "directory.kiwt",
           "directory.settings",
           "directory.refdata",
@@ -724,8 +667,7 @@
           "directory.service.write",
           "directory.serviceaccount.write",
           "directory.namingauthority.write",
-          "directory.api.write",
-          "directory.externalapi.write"
+          "directory.api.write"
       ]
     }
   ],
