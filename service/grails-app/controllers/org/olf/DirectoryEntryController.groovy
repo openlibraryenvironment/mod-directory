@@ -21,10 +21,11 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
   @Override
   def save() {
     DirectoryEntry.withTransaction {
-      log.debug("Overridden DirectoryEntryController::save() - called when there is a put on a directory entry resource");
+      log.debug("Overridden DirectoryEntryController::save() - called when there is a post on a directory entry resource");
 
       // Here is one way to get hold of the permissions
-      String okapi_permissions_str = request.getHeader(OkapiHeaders.PERMISSIONS) ?: '[]'
+      String okapi_permissions_str = request.getHeader(OkapiHeaders.PERMISSIONS) ?: '[]';
+      log.debug("Permissions for this request are: ${okapi_permissions_str}");
 
       // But the superclass should be parsing that and surfacing the permissions so that
       // request.isUserInRole("okapi.directory.entry.item.update") 
@@ -40,7 +41,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
   @Override
   def update() {
     DirectoryEntry.withTransaction {
-      log.debug("Overridden DirectoryEntryController::update() - called when there is a post on a directory entry resource");
+      log.debug("Overridden DirectoryEntryController::update() - called when there is a put on a directory entry resource");
       if ( request.JSON != null ) {
         // If we are manually updating a directory entry, then it must be locally managed. Setting this manually
         // will force an update event at the directory entry level even if a child property such as a custprop has been set
