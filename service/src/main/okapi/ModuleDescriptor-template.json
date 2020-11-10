@@ -229,8 +229,7 @@
         },
         {
           "methods": [ "GET" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.get" ]
+          "pathPattern": "/directory/externalApi*"
         },
         {
           "methods": [ "POST" ],
@@ -311,7 +310,7 @@
           "methods": [ "POST" ],
           "pathPattern": "/directory/settings/foaf",
           "unit": "hour",
-          "delay": "24"
+          "delay": "4"
         }
       ]
     }
