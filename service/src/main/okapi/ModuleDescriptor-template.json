@@ -29,8 +29,8 @@
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ "directory.entry.item.put" ],
-          "permissionsDesired": [ "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
+          "permissionsRequired" : [ ],
+          "permissionsDesired": [ "directory.entry.item.put", "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
         },
         {
           "methods": [ "PUT" ],
