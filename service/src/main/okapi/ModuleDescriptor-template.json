@@ -230,7 +230,8 @@
         },
         {
           "methods": [ "GET" ],
-          "pathPattern": "/directory/externalApi*"
+          "pathPattern": "/directory/externalApi*",
+          "permissionsRequired": []
         },
         {
           "methods": [ "POST" ],
