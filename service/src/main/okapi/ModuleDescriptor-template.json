@@ -229,8 +229,7 @@
         },
         {
           "methods": [ "GET" ],
-          "pathPattern": "/directory/externalApi*",
-          "permissionsRequired" : [ "directory.externalapi.get" ]
+          "pathPattern": "/directory/externalApi*"
         },
         {
           "methods": [ "POST" ],
