@@ -82,7 +82,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
       
       if(!updateAny) {
         DirectoryEntry originalEntry = queryForResource(params.id);
-        if(originalEntry.status?.value == 'Managed' && updateManaged) {
+        if(originalEntry.status?.value == 'managed' && updateManaged) {
           log.debug("Managed update permitted for entry ${params.id}");
           super.update();
           return;

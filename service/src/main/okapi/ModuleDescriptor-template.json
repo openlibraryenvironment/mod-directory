@@ -35,7 +35,8 @@
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}",
-          "permissionsRequired" : [ "directory.entry.item.put" ]
+          "permissionsRequired" : [],
+          "permissionsDesired": [ "directory.entry.item.put", "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
         },
         {
           "methods": [ "DELETE" ],
