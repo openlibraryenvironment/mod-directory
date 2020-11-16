@@ -89,10 +89,18 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
         }
         if(updateLocal) {
           log.debug("Only updating 'customProperties' for entry ${params.id}");
-          newJSON = new JSONObject();
-          newJSON.customProperties = request.JSON?.customProperties;
-          newJson.id = request.JSON?.id;
-          request.JSON = newJSON;
+          def keys = request.JSON.keys();
+          def badKeyList = []
+          for(String key : keys) {
+            log.debug("Key is ${key}");
+            if(! (key.equals("id") || key.equals("customProperties") || key.equals("pubLastUpdate")) ) {
+              badKeyList.add(key)
+            }
+          }
+          for(String key : badKeyList) {
+            request.JSON.put(key, null);
+            log.debug("Setting key key ${key} from request.JSON to null");
+          }
           super.update();
           return;
         }
