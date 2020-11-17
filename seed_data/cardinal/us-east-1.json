@@ -28,7 +28,7 @@
       "slug":"US_EAST_1_RS_Stats",
       "service":{ 
         "name":"US-EAST-1 Stats Service", 
-        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/rs/externalApi/statistics",
+        "address":"https://east-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/rs/externalApi/statistics",
         "type":"HTTP", 
         "businessFunction":"RS_STATS" 
       }
