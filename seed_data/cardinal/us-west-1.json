@@ -23,6 +23,15 @@
       "slug": "CARDINAL_US_WEST_1_ISO18626",
       "service":{ "name":"Cardinal US-West-1 ISO18626 Service", "address":"https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "CARDINAL", "RESHARE" ]  }
-    }
+    },
+    {
+      "slug":"US_WEST_1_RS_Stats",
+      "service":{
+        "name":"US-WEST-1 Stats Service",
+        "address":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/rs/externalApi/statistics",
+        "type":"HTTP",
+        "businessFunction":"RS_STATS"
+      }
+
   ]
 }
