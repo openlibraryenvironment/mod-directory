@@ -134,10 +134,11 @@ RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lendin Physical only')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 
+// Code, Internal(True=Local/private, False=Global/shared), [optional refdata category]  label
 def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
 def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
 def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
-def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', true, label='ILL Loan To Borrow Ratio');
+def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, label='ILL Loan To Borrow Ratio');
 
 def na_reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
 def na_isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
