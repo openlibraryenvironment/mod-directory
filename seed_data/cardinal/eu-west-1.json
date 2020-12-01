@@ -20,8 +20,17 @@
   "services":[
     {
       "slug": "CARDINAL_EU_WEST_ISO18626",
-      "service":{ "name":"Cardinal EU-West-1 ISO18626 Service", "address":"https://folio.k-int.com/_/invoke/tenant/reshare_east/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"Cardinal EU-West-1 ISO18626 Service", "address":"https://folio.k-int.com/_/invoke/tenant/eu_west_1/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties": { "ILLPreferredNamespaces": [ "CARDINAL", "RESHARE" ]  }
-    }
+    },
+    {
+      "slug":"EU-WEST_1_RS_Stats",
+      "service":{
+        "name":"EU-WEST-1 Stats Service",
+        "address":"https://folio.k-int.com/_/invoke/tenant/eu_west_1/rs/externalApi/statistics",
+        "type":"HTTP",
+        "businessFunction":"RS_STATS"
+      }
+
   ]
 }
