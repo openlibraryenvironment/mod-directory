@@ -8,6 +8,7 @@ import org.olf.okapi.modules.directory.DirectoryEntry
 import com.k_int.okapi.OkapiHeaders
 import org.grails.web.json.JSONObject
 import org.grails.web.json.JSONArray
+import groovy.json.JsonOutput;
 
 
 /**
@@ -25,6 +26,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
     super(DirectoryEntry)
   }
 
+  
   @Override
   def save() {
     DirectoryEntry.withTransaction {
@@ -79,9 +81,9 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
       Boolean updateManaged = permsArray.contains(UPDATE_MANAGED_PERMISSION);
       Boolean updateAny = permsArray.contains(UPDATE_ANY_PERMISSION);
       //Boolean updateAny = request.isUserInRole("okapi." + UPDATE_ANY_PERMISSION);
+      DirectoryEntry originalEntry = queryForResource(params.id);
       
-      if(!updateAny) {
-        DirectoryEntry originalEntry = queryForResource(params.id);
+      if(!updateAny) {        
         if(originalEntry.status?.value == 'managed' && updateManaged) {
           log.debug("Managed update permitted for entry ${params.id}");
           super.update();
@@ -101,6 +103,22 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
             request.JSON.put(key, null);
             log.debug("Setting key key ${key} from request.JSON to null");
           }
+          //now we need to remove any members from customProperties that are not "local"
+          def customProps = request.JSON["customProperties"];
+          if(customProps) {
+            def cpKeys = customProps.keys();
+            def badCPKeys = []
+            for(cpKey in cpKeys) {
+              if(isNotLocalProperty(cpKey, originalEntry)) {
+                badCPKeys.add(cpKey);
+              }
+            }
+            for(badCPKey in badCPKeys) {
+              request.JSON["customProperties"].remove(badCPKey);
+              log.debug("Removing entry ${badCPKey} from customProperties PUT data");
+            }
+          }
+          log.debug("The result of request.JSON is ${JsonOutput.toJson(request.JSON)}");
           super.update();
           return;
         }
@@ -114,6 +132,19 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
     }
   }
   
-
+  def boolean isNotLocalProperty(propName, entry) {
+    for(cpValue in entry.customProperties.value) {
+      if(!propName.equals(cpValue.definition.name)) {
+        log.debug("${propName} not equal to ${cpValue.definition.name}")
+        continue;
+      }
+      log.debug("defaultInternal for ${propName} is ${cpValue.definition.defaultInternal}")
+      if(cpValue.definition.defaultInternal == false) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }
 
