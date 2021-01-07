@@ -15,6 +15,18 @@
     { "memberOrg":"Seton_Hall" },
     { "memberOrg":"Rowan" }
   ],
+  "services":[
+    {
+      "slug":"PALCI_SI_DEV",
+      "service":{
+        "name":"PALCI Shared Index",
+        "address":"http://shared-index.reshare-dev.indexdata.com:9130",
+        "type":"FOLIOSI",
+        "businessFunction":"SI"
+      },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI"] }
+    }
+  ],
   "friends":[
     { "foaf":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/directory/externalApi/entry/Temple" },
     { "foaf":"https://new-school-okapi.folio-dev.indexdata.com/_/invoke/tenant/new_school/directory/externalApi/entry/New_School" },
