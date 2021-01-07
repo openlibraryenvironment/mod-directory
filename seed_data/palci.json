@@ -19,7 +19,7 @@
     {
       "slug":"PALCI_SI_DEV",
       "service":{
-        "name":"PALCI Shared Index",
+        "name":"PALCI Shared Index (Development)",
         "address":"http://shared-index.reshare-dev.indexdata.com:9130",
         "type":"FOLIOSI",
         "businessFunction":"SI"
