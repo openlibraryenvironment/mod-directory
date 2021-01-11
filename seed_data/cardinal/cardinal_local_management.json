@@ -6,10 +6,14 @@
   "type":"Consortium",
   "members":[
     { "memberOrg":"us-east-1"},
-    { "memberOrg":"us-west-1"}
+    { "memberOrg":"us-west-1"},
+    { "memberOrg":"us-north-1"},
+    { "memberOrg":"us-south-1"}
   ],
   "friends":[
     { "foaf": "https://east-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_east/directory/externalApi/entry/us-east-1" },
-    { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-west-1" }
+    { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-west-1" },
+    { "foaf": "https://north-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-north-1" },
+    { "foaf": "https://south-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-south-1" }
   ]
 }
