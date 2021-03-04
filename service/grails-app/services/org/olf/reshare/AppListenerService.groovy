@@ -178,7 +178,8 @@ public class AppListenerService implements ApplicationListener {
       tags: de.tags?.collect {it?.value},
       type: de.type?.value,
       customProperties: getCustprops(de.customProperties, include_private_custprops),
-      members:[]
+      members:[],
+      status: de.status?.value
     ]
 
     de.services.each { svc ->
