@@ -85,6 +85,12 @@ podTemplate(
       }
     }
 
+    stage('Publish module descriptor') {
+      dir('build/resources/main/okapi') {
+        sh 'cat ModuleDescriptor.json'
+      }
+    }
+
   }
 
   stage ('Remove old builds') {
