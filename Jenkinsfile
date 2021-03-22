@@ -90,7 +90,7 @@ podTemplate(
       sh 'ls -la service/build/resources/main/okapi'
       // this worked as expected
       // sh "curl http://okapi.reshare:9130/_/discovery/modules"
-      sh "curl -XPOST 'http://okapi.reshare:9130/_/proxy/modules' -d @"service/build/resources/main/okapi/ModuleDescriptor.json"
+      sh "curl -XPOST 'http://okapi.reshare:9130/_/proxy/modules' -d @service/build/resources/main/okapi/ModuleDescriptor.json"
     }
 
   }
