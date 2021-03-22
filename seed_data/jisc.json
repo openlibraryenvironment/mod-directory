@@ -1,0 +1,60 @@
+{
+  "name":"JISC",
+  "slug":"JISC",  
+  "lastModified":"2021-01-07T10:R4500Z",
+  "phoneNumber":"n/a",
+  "emailAddress":"n/a",
+  "contactName":"Contact Name",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/jisc.json",
+  "url":"https://www.jisc.ac.uk/",
+  "type":"Consortium",
+  "members":[
+  ],
+  "services":[
+    {
+      "slug":"JISC_LHD_Z3950",
+      "service":{
+        "name":"Jisc Library Hub Discover (Z3950)",
+        "address":"tcp://discover.libraryhub.jisc.ac.uk:210/DISCOVER",
+        "type":"Z3950",
+        "businessFunction":"SI",
+        "notes": "See https://discover.libraryhub.jisc.ac.uk/support/api/ Supports MODS(XML) and SUTRS"
+      },
+      "customProperties":{ 
+        "z3950.databases":["discover"],.
+        "z3950.format":["XML"],
+        "z3950.elementSetName":["MODS"],
+        "z3950.auth":["none"],
+        "ILLPreferredNamespaces":["PALCI"] 
+      }
+    },
+    {
+      "slug":"JISC_LHD_SRU",
+      "service":{
+        "name":"Jisc Library Hub Discover (SRU)",
+        "address":"http://discover.libraryhub.jisc.ac.uk:210/discover",
+        "type":"SRU",
+        "businessFunction":"SI"
+      },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI"] }
+    },
+    {
+      "slug":"JISC_LHD_PROP",
+      "service":{
+        "name":"Jisc Library Hub Discover (Proprietary JSON)",
+        "address":"http://discover.libraryhub.jisc.ac.uk:210/discover",
+        "type":"LHD",
+        "businessFunction":"SI",
+        "notes":"As SRU but add format=json"
+      },
+      "customProperties":{ "ILLPreferredNamespaces":["PALCI"] }
+    }
+  ],
+  "friends":[
+    { "foaf":"https://temple-okapi.folio-dev.indexdata.com/_/invoke/tenant/temple/directory/externalApi/entry/Temple" },
+    { "foaf":"https://new-school-okapi.folio-dev.indexdata.com/_/invoke/tenant/new_school/directory/externalApi/entry/New_School" },
+    { "foaf":"https://millersville-okapi.folio-dev.indexdata.com/_/invoke/tenant/millersville/directory/externalApi/entry/Millersville" },
+    { "foaf":"https://seton-hall-okapi.folio-dev.indexdata.com/_/invoke/tenant/seton_hall/directory/externalApi/entry/Seton_Hall" },
+    { "foaf":"https://rowan-okapi.folio-dev.indexdata.com/_/invoke/tenant/rowan/directory/externalApi/entry/Rowan" }
+  ]
+}
