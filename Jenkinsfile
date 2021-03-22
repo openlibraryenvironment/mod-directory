@@ -6,7 +6,8 @@ podTemplate(
     containerTemplate(name: 'docker',               image:'docker:18',                    ttyEnabled:true, command:'cat')
   ],
   volumes: [
-    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+    hostPathVolume(hostPath: '/var/lib/jenkins/.gradledist', mountPath: '/root/.gradle')
   ])
 {
   node(POD_LABEL) {
@@ -86,14 +87,14 @@ podTemplate(
     }
 
     stage('Publish module descriptor') {
-      container('jdk11') {
-        sh 'ls -la service/build/resources/main/okapi'
-        dir('service/build/resources/main/okapi') {
-          sh 'curl http://okapi.reshare:9130/_/discovery/modules'
+      sh 'ls -la service/build/resources/main/okapi'
+      sh "curl http://okapi.reshare:9130/_/discovery/modules"
+        // httpRequest "http://okapi.reshare:9130/_/discovery/modules"
+        // dir('service/build/resources/main/okapi') {
+          // sh 'curl http://okapi.reshare:9130/_/discovery/modules'
           // sh 'ls -la'
           // sh 'cat ModuleDescriptor.json'
-        }
-      }
+        // }
     }
 
   }
