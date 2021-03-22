@@ -88,13 +88,9 @@ podTemplate(
 
     stage('Publish module descriptor') {
       sh 'ls -la service/build/resources/main/okapi'
-      sh "curl http://okapi.reshare:9130/_/discovery/modules"
-        // httpRequest "http://okapi.reshare:9130/_/discovery/modules"
-        // dir('service/build/resources/main/okapi') {
-          // sh 'curl http://okapi.reshare:9130/_/discovery/modules'
-          // sh 'ls -la'
-          // sh 'cat ModuleDescriptor.json'
-        // }
+      // this worked as expected
+      // sh "curl http://okapi.reshare:9130/_/discovery/modules"
+      sh "curl -XPOST 'http://okapi.reshare:9130/_/proxy/modules' -d @"service/build/resources/main/okapi/ModuleDescriptor.json"
     }
 
   }
