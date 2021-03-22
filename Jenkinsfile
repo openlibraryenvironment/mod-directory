@@ -86,10 +86,12 @@ podTemplate(
     }
 
     stage('Publish module descriptor') {
-      sh 'ls service/build/resources/main/okapi'
-      dir('service/build/resources/main/okapi') {
-        sh 'ls'
-        // sh 'cat ModuleDescriptor.json'
+      container('jdk11') {
+        sh 'ls service/build/resources/main/okapi'
+        dir('service/build/resources/main/okapi') {
+          sh 'ls'
+          // sh 'cat ModuleDescriptor.json'
+        }
       }
     }
 
