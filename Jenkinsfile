@@ -89,7 +89,8 @@ podTemplate(
       container('jdk11') {
         sh 'ls -la service/build/resources/main/okapi'
         dir('service/build/resources/main/okapi') {
-        //   sh 'ls -la'
+          sh 'curl http://okapi.reshare:9130/_/discovery/modules'
+          // sh 'ls -la'
           // sh 'cat ModuleDescriptor.json'
         }
       }
