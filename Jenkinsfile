@@ -98,7 +98,7 @@ podTemplate(
       kubernetesDeploy(
         enableConfigSubstitution: true,
         kubeconfigId: 'local_k8s',
-        configs: 'other-scripts/k8s_deployment_template.yaml'
+        configs: 'scripts/k8s_deployment_template.yaml'
       );
     }
 
