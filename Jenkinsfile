@@ -107,6 +107,16 @@ podTemplate(
       // this worked as expected
       // sh "curl http://okapi.reshare:9130/_/discovery/modules"
       sh "curl -XPOST 'http://okapi.reshare:9130/_/proxy/modules' -d @service/build/resources/main/okapi/ModuleDescriptor.json"
+
+      // Now deployment descriptor
+      // curl -XPOST 'http://localhost:9130/_/discovery/modules' -d "$DEP_DESC"
+      // DEP_DESC == { "srvcId": "mod-directory-2.0.0-SNAPSHOT.201", "instId": "cluster-mod-directory-2.0.0-SNAPSHOT.201", "url": "http://10.0.2.2:8080/" }
+
+
+      // now install for tenant
+      // curl -XPOST 'http://localhost:9130/_/proxy/tenants/diku/install?tenantParameters=loadSample%3Dtest,loadReference%3Dother' -d "$ENABLE_DOC"
+      // ENABLE_DOC == '[{id: .srvcId, action: "enable"}]'
+
     }
 
   }
