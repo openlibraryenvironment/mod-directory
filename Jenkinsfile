@@ -39,6 +39,8 @@ podTemplate(
     stage ('build') {
       container('jdk11') {
         dir('service') {
+          env.GIT_BRANCH=checkout_details.GIT_BRANCH
+          env.GIT_COMMIT=checkout_details.GIT_COMMIT
           sh './gradlew --version'
           sh './gradlew --no-daemon -x integrationTest --console=plain clean build'
           sh 'ls ./build/libs'
@@ -62,7 +64,7 @@ podTemplate(
             // Some interesting stuff here https://github.com/jenkinsci/pipeline-examples/pull/83/files
             if ( !is_snapshot ) {
               // do_k8s_update=true
-              docker.withRegistry('','nexus-kidevops') {
+              docker.withRegistry('https://docker.libsdev.k-int.com','libsdev-deployer') {
                 println("Publishing released version with latest tag and semver ${semantic_version_components}");
                 docker_image.push('latest')
                 docker_image.push("v${app_version}".toString())
@@ -70,13 +72,18 @@ podTemplate(
                 docker_image.push("v${semantic_version_components[0]}".toString())
                 // deploy_cfg='deploy_latest.yaml'
               }
+              env.MOD_DIR_IMAGE="knowledgeintegration/mod-directory:${app_versionapp_version}"
+              env.MOD_DIR_DEPLOY_AS="mod-directory-${app_version}".replaceAll('\\.','-').toLowerCase()
             }
             else {
-              docker.withRegistry('','nexus-kidevops') {
+              docker.withRegistry('https://docker.libsdev.k-int.com','libsdev-deployer') {
                 println("Publishing snapshot-latest");
                 docker_image.push('snapshot-latest')
+                docker_image.push("${app_version}.${BUILD_NUMBER}".toString())
                 // deploy_cfg='deploy_snapshot.yaml'
               }
+              env.MOD_DIR_IMAGE="knowledgeintegration/mod-directory:${app_version}.${BUILD_NUMBER}"
+              env.MOD_DIR_DEPLOY_AS="mod-directory-${app_version}.${BUILD_NUMBER}".replaceAll('\\.','-').toLowerCase();
             }
           }
           else {
