@@ -262,8 +262,6 @@ buildProperties.doLast {
     version.replaceAll(/^(((\d+)\.\d+)\.\d+)(-([\w]+))?$/ , '$1')
   }
 
-  Map<String, String> env = System.getenv()
-
   if(env.BUILD_NUMBER)
     properties.setProperty('build.number', env.BUILD_NUMBER)
 
