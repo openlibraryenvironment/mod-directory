@@ -72,8 +72,8 @@ podTemplate(
                 docker_image.push("v${semantic_version_components[0]}".toString())
                 // deploy_cfg='deploy_latest.yaml'
               }
-              env.MOD_DIR_IMAGE="knowledgeintegration/mod-directory:${app_versionapp_version}"
-              env.MOD_DIR_DEPLOY_AS="mod-directory-${app_version}".replaceAll('\\.','-').toLowerCase()
+              env.MOD_DIRECTORY_IMAGE="knowledgeintegration/mod-directory:${app_versionapp_version}"
+              env.MOD_DIRECTORY_DEPLOY_AS="mod-directory-${app_version}".replaceAll('\\.','-').toLowerCase()
             }
             else {
               docker.withRegistry('https://docker.libsdev.k-int.com','libsdev-deployer') {
@@ -82,8 +82,8 @@ podTemplate(
                 docker_image.push("${app_version}.${BUILD_NUMBER}".toString())
                 // deploy_cfg='deploy_snapshot.yaml'
               }
-              env.MOD_DIR_IMAGE="knowledgeintegration/mod-directory:${app_version}.${BUILD_NUMBER}"
-              env.MOD_DIR_DEPLOY_AS="mod-directory-${app_version}.${BUILD_NUMBER}".replaceAll('\\.','-').toLowerCase();
+              env.MOD_DIRECTORY_IMAGE="knowledgeintegration/mod-directory:${app_version}.${BUILD_NUMBER}"
+              env.MOD_DIRECTORY_DEPLOY_AS="mod-directory-${app_version}.${BUILD_NUMBER}".replaceAll('\\.','-').toLowerCase();
             }
           }
           else {
@@ -91,6 +91,15 @@ podTemplate(
           }
         }
       }
+    }
+
+    stage ('deploy') {
+      println("Attempt deployment : ${env.MOD_DIRECTORY_IMAGE} as ${env.MOD_DIRECTORY_DEPLOY_AS}");
+      kubernetesDeploy(
+        enableConfigSubstitution: true,
+        kubeconfigId: 'local_k8s',
+        configs: 'other-scripts/k8s_deployment_template.yaml'
+      );
     }
 
     stage('Publish module descriptor') {
