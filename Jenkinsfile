@@ -103,7 +103,8 @@ podTemplate(
         configs: 'scripts/k8s_deployment_template.yaml'
       );
       println("Wait for module to start...")
-      timeout(120) {
+      // Timeout in minutes
+      timeout(5) {
         waitUntil(initialRecurrencePeriod:10000) {
           try {
             println("Attempting to contact deployed module....");
@@ -111,7 +112,7 @@ podTemplate(
             println("Result: ${r}");
             return (r == 0);
           } catch (exception) {
-            println("Exception",exception);
+            exception.printStackTrace()
             return false
           }
         }
