@@ -730,7 +730,8 @@
       ]
     }
   ],
-  "requires":[],
+  "requires": [
+  ],
   "launchDescriptor": {
     "dockerImage": "${info.app.name}:${info.app.version}",
     "dockerArgs": {

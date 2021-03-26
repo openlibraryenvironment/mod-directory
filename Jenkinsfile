@@ -103,7 +103,7 @@ podTemplate(
         configs: 'scripts/k8s_deployment_template.yaml'
       );
       println("Wait for module to start...")
-      sleep(10)
+      sleep(30)
       println("Continue");
     }
 
