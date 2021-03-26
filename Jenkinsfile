@@ -106,15 +106,13 @@ podTemplate(
       // Timeout in minutes
       timeout(5) {
         waitUntil(initialRecurrencePeriod:10000) {
-          script {
-            println("Attempting to contact deployed module health actuator endpoint....");
-            final def (String response, int code) =
+          println("Attempting to contact deployed module health actuator endpoint....");
+          final def (String response, int code) =
               sh(script:"curl -s -w '\\n%{response_code}' http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/actuator/health", returnStdout: true)
                  .trim()
-                 .tokenize('\n')
-            println("Result: ${code}/${response}");
-            return code==200
-          }
+                 .tokenize("\n");
+          println("Result: ${code}/${response}");
+          return code==200
         }
       }
       println("Continue");
