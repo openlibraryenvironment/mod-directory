@@ -112,7 +112,6 @@ podTemplate(
             println("Result: ${r}");
             return (r == 0);
           } catch (exception) {
-            println("Get problem ${exception}")l
             return false
           }
         }
