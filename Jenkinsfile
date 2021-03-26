@@ -103,7 +103,19 @@ podTemplate(
         configs: 'scripts/k8s_deployment_template.yaml'
       );
       println("Wait for module to start...")
-      sleep(30)
+      timeout(120) {
+        waitUntil(initialRecurrencePeriod:10000) {
+          try {
+            println("Attempting to contact deployed module....");
+            def r = sh script:"wget -q http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080", returnStdout: true
+            println("Result: ${r}");
+            return (r == 0);
+          } catch (exception) {
+            println("Exception",exception);
+            return false
+          }
+        }
+      }
       println("Continue");
     }
 
