@@ -108,11 +108,10 @@ podTemplate(
         waitUntil(initialRecurrencePeriod:10000) {
           try {
             println("Attempting to contact deployed module....");
-            def r = sh script:"wget -q --header='Accept:application/json' http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/actuator/health", returnStdout: true
+            def r = sh script:"wget --header='Accept:application/json' http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/actuator/health", returnStdout: true
             println("Result: ${r}");
             return (r == 0);
           } catch (exception) {
-            println("Get problem ${exception}")l
             return false
           }
         }
