@@ -125,7 +125,7 @@ podTemplate(
       tenants_to_update=['kint1']
 
       // now install for tenant
-      ENABLE_DOC="""[ { "id":"${env.SERVICE_ID}", "action:"enable" } ]"""
+      ENABLE_DOC="""[ { "id":"${env.SERVICE_ID}", "action":"enable" } ]"""
       println("install doc will be ${DEP_DESC}");
       tenants_to_update.each { tenant ->
         println("Attempting module activation of ${env.SERVICE_ID} on ${tenant} using ${DEP_DESC}");
