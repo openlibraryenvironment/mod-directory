@@ -111,6 +111,14 @@ podTemplate(
       // Now deployment descriptor
       // curl -XPOST 'http://localhost:9130/_/discovery/modules' -d "$DEP_DESC"
       // DEP_DESC == { "srvcId": "mod-directory-2.0.0-SNAPSHOT.201", "instId": "cluster-mod-directory-2.0.0-SNAPSHOT.201", "url": "http://10.0.2.2:8080/" }
+      DEP_DESC="""{
+"srvcId": "${env.MOD_DIRECTORY_DEPLOY_AS}", 
+"instId": "cluster-${env.MOD_DIRECTORY_DEPLOY_AS}", 
+"url": "http://cluster-${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/"
+}
+"""
+      println("Deployment descriptor will be ${DEP_DESC}");
+      // sh "curl -XPOST 'http://okapi.reshare:9130/_/discovery/modules' -d \"$DEP_DESC\""
 
 
       // now install for tenant
