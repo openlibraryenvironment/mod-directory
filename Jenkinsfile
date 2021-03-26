@@ -102,23 +102,7 @@ podTemplate(
         kubeconfigId: 'local_k8s',
         configs: 'scripts/k8s_deployment_template.yaml'
       );
-      println("Wait for module to start...")
-      // Timeout in minutes
-      timeout(5) {
-        waitUntil(initialRecurrencePeriod:10000) {
-          println("Attempting to contact deployed module health actuator endpoint....");
-          final def (String response, int code) =
-              sh(script:"curl -s -w '\\n%{response_code}' http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/actuator/health", returnStdout: true)
-                 .trim()
-                 .tokenize("\n");
-          println("Result: ${code}/${response}");
-          if ( code == 200 )
-            return true
-
-          return false;
-        }
-      }
-      println("Continue");
+      sh(script: "curl -s --retry-connrefused --retry 15 --retry-delay 10 http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/actuator/health", returnStdout: true).trim()
     }
 
     stage('Publish module descriptor') {
