@@ -115,7 +115,7 @@ podTemplate(
 
       // Now deployment descriptor
       // srvcid needs to be the dotted version, not the hyphen version
-      DEP_DESC="""{ "srvcId": "${env.SERVICE_ID}", "instId": "${env.MOD_DIRECTORY_DEPLOY_AS}-cluster", "url": "http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/" } """
+      DEP_DESC="""{ "srvcId": "${env.SERVICE_ID}", "instId": "${env.MOD_DIRECTORY_DEPLOY_AS}-cluster", "url": "http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080" } """
       deployment_command="curl -i -XPOST 'http://okapi.reshare:9130/_/discovery/modules' -d '${DEP_DESC}'"
       println("Deployment descriptor will be ${DEP_DESC}");
       println("Deployment command will be ${deployment_command}");
