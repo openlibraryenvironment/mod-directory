@@ -115,7 +115,7 @@ podTemplate(
       // curl -XPOST 'http://localhost:9130/_/discovery/modules' -d "$DEP_DESC"
       // DEP_DESC == { "srvcId": "mod-directory-2.0.0-SNAPSHOT.201", "instId": "cluster-mod-directory-2.0.0-SNAPSHOT.201", "url": "http://10.0.2.2:8080/" }
       DEP_DESC="""{ "srvcId": "${env.MOD_DIRECTORY_DEPLOY_AS}", "instId": "${env.MOD_DIRECTORY_DEPLOY_AS}-cluster", "url": "http://${env.MOD_DIRECTORY_DEPLOY_AS}.reshare:8080/" } """
-      deployment_command="curl -XPOST 'http://okapi.reshare:9130/_/discovery/modules' -d \"${DEP_DESC}\""
+      deployment_command="curl -XPOST 'http://okapi.reshare:9130/_/discovery/modules' -d '${DEP_DESC}'"
       println("Deployment descriptor will be ${DEP_DESC}");
       println("Deployment command will be ${deployment_command}");
       sh deployment_command
@@ -124,11 +124,11 @@ podTemplate(
       tenants_to_update=['kint1']
 
       // now install for tenant
-      ENABLE_DOC="""{ "id":"${env.MOD_DIRECTORY_DEPLOY_AS}", "action:"enable" }"""
+      ENABLE_DOC="""{ "id":"${env.MOD_DIRECTORY_DEPLOY_AS}", "action:"enable" }""".replaceAll('"','\\\\"');
       println("install doc will be ${DEP_DESC}");
       tenants_to_update.each { tenant ->
         println("Attempting module activation of ${env.MOD_DIRECTORY_DEPLOY_AS} on ${tenant} using ${DEP_DESC}");
-        activation_command = "curl -XPOST 'http://localhost:9130/_/proxy/tenants/$tenant/install?tenantParameters=loadSample%3Dtest,loadReference%3Dother' -d \"$ENABLE_DOC\""
+        activation_command = "curl -XPOST 'http://localhost:9130/_/proxy/tenants/$tenant/install?tenantParameters=loadSample%3Dtest,loadReference%3Dother' -d '$ENABLE_DOC'"
         println("Activation cmd: ${activation_command}");
         sh activation_command
       }
