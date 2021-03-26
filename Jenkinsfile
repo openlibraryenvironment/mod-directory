@@ -112,7 +112,10 @@ podTemplate(
                  .trim()
                  .tokenize("\n");
           println("Result: ${code}/${response}");
-          return code==200
+          if ( code == 200 )
+            return true
+
+          return false;
         }
       }
       println("Continue");
