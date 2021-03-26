@@ -128,7 +128,7 @@ podTemplate(
       println("install doc will be ${DEP_DESC}");
       tenants_to_update.each { tenant ->
         println("Attempting module activation of ${env.MOD_DIRECTORY_DEPLOY_AS} on ${tenant} using ${DEP_DESC}");
-        activation_command = "curl -XPOST 'http://localhost:9130/_/proxy/tenants/$tenant/install?tenantParameters=loadSample%3Dtest,loadReference%3Dother' -d '${ENABLE_DOC}'"
+        activation_command = "curl -XPOST 'http://okapi.reshare:9130/_/proxy/tenants/$tenant/install?tenantParameters=loadSample%3Dtest,loadReference%3Dother' -d '${ENABLE_DOC}'"
         println("Activation cmd: ${activation_command}");
         sh activation_command
       }
