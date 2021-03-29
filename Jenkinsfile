@@ -133,7 +133,6 @@ podTemplate(
       }
 
     }
-
   }
 
   stage ('Remove old builds') {
