@@ -81,7 +81,8 @@ Service ensureService(String name, String type, List<String>tags, String address
   return result;
 }
 
-log.info 'Importing sample data'
+log.info '\n\n** Importing sample data **\n\n'
+println '\n\n** Importing sample data **\n\n'
 
 AppSetting directory_announce_url = AppSetting.findByKey('directory_announce_url') ?: new AppSetting(
                                   section:'directory',

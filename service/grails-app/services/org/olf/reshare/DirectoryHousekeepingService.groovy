@@ -31,7 +31,27 @@ class DirectoryHousekeepingService {
    */
   @Subscriber('okapi:schema_update')
   public void onSchemaUpdate(tn, tid) {
-    log.debug("DirectoryHousekeepingService::onSchemaUpdate(${tn},${tid})")
+    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tn},${tid})")
+  }
+
+  @Subscriber('okapi:tenant_load_reference')
+  public void onTenantLoadReference(final String tenantId,
+                                    final String value,
+                                    final boolean existing_tenant,
+                                    final boolean upgrading,
+                                    final String toVersion,
+                                    final String fromVersion) {
+    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+  }
+
+  @Subscriber('okapi:tenant_load_sample')
+  public void onTenantLoadSample(final String tenantId, 
+                                 final String value, 
+                                 final boolean existing_tenant, 
+                                 final boolean upgrading, 
+                                 final String toVersion, 
+                                 final String fromVersion) {
+    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
   }
 
 }
