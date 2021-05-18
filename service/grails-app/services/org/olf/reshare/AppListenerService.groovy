@@ -96,7 +96,7 @@ public class AppListenerService implements ApplicationListener {
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
 
-    Map entry_data = makeDirentJSON(de, false, true);
+    Map entry_data = makeDirentJSON(de, false, true, false);
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
@@ -152,7 +152,10 @@ public class AppListenerService implements ApplicationListener {
     return result;
   }
 
-  public Map makeDirentJSON(DirectoryEntry de, boolean include_units=false, boolean include_private_custprops=false) {
+  public Map makeDirentJSON(DirectoryEntry de, 
+                            boolean include_units=false, 
+                            boolean include_private_custprops=false,
+                            boolean use_public_profile=false) {
 
     String last_modified_str = null;
     if ( ( de.pubLastUpdate != null ) && ( de.pubLastUpdate > 0 ) ) {
@@ -179,8 +182,14 @@ public class AppListenerService implements ApplicationListener {
       type: de.type?.value,
       customProperties: getCustprops(de.customProperties, include_private_custprops),
       members:[],
-      status: de.status?.value
     ]
+
+    if ( use_public_profile ) {
+      // We omit several properties for the public interface
+    }
+    else {
+      entry_data.status = de.status?.value;
+    }
 
     de.services.each { svc ->
       entry_data.services.add([
@@ -222,7 +231,7 @@ public class AppListenerService implements ApplicationListener {
     if ( include_units ) {
       entry_data.units = []
       de.units.each { unit ->
-        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops))
+        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile))
       }
     }
 

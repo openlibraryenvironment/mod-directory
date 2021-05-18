@@ -39,7 +39,7 @@ class ExternalApiController {
     // that other reshare instances will consume, not a JSON object for a local edit screen. appListenerService already
     // exposes a method for this - so reuse it.
     if ( de ) {
-      result = appListenerService.makeDirentJSON(de, true, false);
+      result = appListenerService.makeDirentJSON(de, true, false, true);
     }
     else {
       response.sendError(404)
