@@ -24,6 +24,11 @@
       "slug":"Allegheny_College_ISO18626",
       "service":{ "name":"Allegheny ISO18626 Service", "address":"https://localhost/reshare/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["PALCI","IDS"] } 
+    },
+    { 
+      "slug":"Allegheny_College_IR",
+      "service":{ "name":"Allegheny IR", "address":"https://dspace.allegheny.edu/", "type":"HTTP", "businessFunction":"IR" },
+      "customProperties":{ "software":["DSPACE"] } 
     }
   ],
   "friends":[
@@ -31,6 +36,11 @@
     { "foaf":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/olf.json" }
   ],
   "announcements":[
-    { "date":"2019-02-08", "expires":"2019-02-09", "code":"LAST_RESPORT", "description":"Due to staff sickness, please consider Allegheny College a lender of last resort today, Friday 8th Feb 2019" }
+    { 
+      "date":"2019-02-08", 
+      "expires":"2019-02-09", 
+      "code":"LAST_RESPORT", 
+      "description":"Due to staff sickness, please consider Allegheny College a lender of last resort today, Friday 8th Feb 2019" 
+    }
   ]
 }
