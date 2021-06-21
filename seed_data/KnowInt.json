@@ -25,8 +25,12 @@
   "services":[
     {
       "slug":"knowint_ISO18626",
-      "service":{ "name":"K-Int ISO18626 Service", "address": "https://iso18626-reshare.apps.k-int.com/rs/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "service":{ "name":"K-Int ISO18626 Service", "address": "https://okapi-reshare-dev.libsdev.k-int.com/_/invoke/tenant/kint1/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ "ILLPreferredNamespaces":["RESHARE"] }
+    },
+    {
+      "slug":"knowint_IR",
+      "service":{ "name":"K-Int IR", "address": "https://dspace.libsdev.k-int.com", "type":"HTTP", "businessFunction":"IR" }
     }
   ]
 
