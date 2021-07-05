@@ -19,7 +19,12 @@
         { "authority":{ "symbol":"UPS"},   "symbol":"UPS4475",  "priority":"shipping" }
       ]
     },
-    { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "type": "Branch" }
+    { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "type": "Branch",
+      "symbols": [
+        { "authority":{ "symbol":"FEDEX"}, "symbol":"1234-aaab","priority":"shipping" },
+        { "authority":{ "symbol":"UPS"},   "symbol":"UPS4475b", "priority":"shipping" }
+      ]
+    }
   ],
   "services":[
     { 
