@@ -18,6 +18,14 @@
         { "seq":3, "type":"Department", "value":"Sheffield"},
         { "seq":4, "type":"Country", "value":"UK"}
       ]
+    },
+    {
+      "addressLabel":"Admin", "tags":["Administrative"], "lines":[
+        { "seq":1, "type":"AdministrativeArea", "value":"Sheffield"},
+        { "seq":2, "type":"Thoroughfare", "value":"35 Paradise Street"},
+        { "seq":3, "type":"Department", "value":"Sheffield"},
+        { "seq":4, "type":"Country", "value":"UK"}
+      ]
     }
   ],
   "symbols": [
@@ -33,6 +41,13 @@
       "slug":"knowint_IR",
       "service":{ "name":"K-Int IR", "address": "https://dspace.libsdev.k-int.com", "type":"HTTP", "businessFunction":"IR" }
     }
+  ],
+  "contacts":[
+    {
+      "label":"Ian Ibbotson",
+      "role":"director",
+      "email":"ian dot ibbotso at k hypen int dot com",
+      "note":"General"
+    }
   ]
-
 }

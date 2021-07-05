@@ -11,10 +11,12 @@
   "units": [
     { "name":"Allegheny College Main Library", "slug":"ACMAIN", "type": "Branch",
       "symbols": [
-        { "authority":{ "symbol":"PALCI"}, "symbol":"ACMAIN", "priority":"a" },
-        { "authority":{ "symbol":"IDS"},   "symbol":"104",    "priority":"a" },
-        { "authority":{ "symbol":"OCLC"},  "symbol":"AVL",    "priority":"a" },
-        { "authority":{ "symbol":"ISIL"},  "symbol":"US-PMA", "priority":"a" }
+        { "authority":{ "symbol":"PALCI"}, "symbol":"ACMAIN",   "priority":"a" },
+        { "authority":{ "symbol":"IDS"},   "symbol":"104",      "priority":"a" },
+        { "authority":{ "symbol":"OCLC"},  "symbol":"AVL",      "priority":"a" },
+        { "authority":{ "symbol":"ISIL"},  "symbol":"US-PMA",   "priority":"a" },
+        { "authority":{ "symbol":"FEDEX"}, "symbol":"1234-aaa", "priority":"shipping" },
+        { "authority":{ "symbol":"UPS"},   "symbol":"UPS4475",  "priority":"shipping" }
       ]
     },
     { "name":"Allegheny College Annex Library", "slug":"ACANNEX", "type": "Branch" }
