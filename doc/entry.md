@@ -2,12 +2,12 @@
 
 <!-- md2toc -l 2 entry.md -->
 * [Creating a new DirectoryEntry](#creating-a-new-directoryentry)
-* [Retrive a DirectoryEntry](#retrive-a-directoryentry)
+* [Retrieve a DirectoryEntry](#retrieve-a-directoryentry)
 * [Updating an existing DirectoryEntry](#updating-an-existing-directoryentry)
 * [Searching and filtering DirectoryEntry records](#searching-and-filtering-directoryentry-records)
 
 
-This document is a guid to DirectoryEntry resources. Examples are provided, but the authoritative source
+This document is a guide to DirectoryEntry resources. Examples are provided, but the authoritative source
 should be the source code. DirectoryEntry domain instances are defined by the [Directory Entry domain class](../service/grails-app/domain/org/olf/okapi/modules/directory/DirectoryEntry.groovy) and the particular JSON format returned is under the control of [the gson template for directoryEntry](../service/grails-app/views/entry/_entry.gson)
 
 ## Creating a new DirectoryEntry
@@ -26,7 +26,7 @@ Posting JSON to /directory/entry will create a new directory entry. The followin
       }
     }'`
 
-## Retrive a DirectoryEntry
+## Retrieve a DirectoryEntry
 
 Issue a HTTP-GET to /directory/entry/{UUID} to retrieve a specific entry
 
@@ -44,7 +44,7 @@ In a GET request to `/directory/entry`, you can provide the following URL query 
 * `perPage` or `max` (synonymous) -- specifies the number of records to include in the response, enabling paging.
 * `offset` -- specifies how many records to skip from the result-set (starting at, and defaulting to, zero).
 * `page` -- an alternative to `offset` specifying which page of results to return (starting from 1). So `perpage=N&page=M` is equivalent to `perpage=N&offset=O` where O = (N-1)*M.
-* `stats` -- if omitted, the resulting JSON consists only of a record list. If it's included and set to `true`, the result is a structure in which `records` contains the record-list, and additional information is also included at the top level: `pageSize`, `page`, `totalPages`, `meta`, `totalRecords` and (perhaps redundantly?) `total`.
+* `stats` -- if omitted, the resulting JSON consists only of a record list. If it's included and set to `true`, the result is a structure in which `results` contains the record-list, and additional information is also included at the top level: `pageSize`, `page`, `totalPages`, `meta`, `totalRecords` and (perhaps redundantly?) `total`.
 
 The operators supported within a filter expression are:
 
