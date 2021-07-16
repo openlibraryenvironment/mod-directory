@@ -8,6 +8,7 @@ import org.grails.datastore.mapping.engine.event.PostDeleteEvent
 import org.grails.datastore.mapping.engine.event.PostInsertEvent
 import org.grails.datastore.mapping.engine.event.PreInsertEvent
 import org.grails.datastore.mapping.engine.event.PostUpdateEvent
+import org.grails.datastore.mapping.engine.event.PreUpdateEvent
 import org.grails.datastore.mapping.engine.event.SaveOrUpdateEvent
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent
 import javax.annotation.PostConstruct;
@@ -19,6 +20,9 @@ import grails.gorm.transactions.Transactional
 import static grails.async.Promises.*
 import grails.async.Promise
 import java.text.SimpleDateFormat
+
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.gorm.multitenancy.CurrentTenant
 
 
 
@@ -48,6 +52,12 @@ public class AppListenerService implements ApplicationListener {
       DirectoryEntry de = (DirectoryEntry)event.entityObject;
       log.debug("DirectoryEntry inserted ${de}");
       logDirectoryEvent(de, Tenants.currentId(event.source));
+    }
+  }
+
+  void preUpdate(PreUpdateEvent event) {
+    if ( event.entityObject instanceof DirectoryEntry ) {
+      log.debug("LOGDEBUG EVENT ENTITY OBJECT: ${event.entityObject}")
     }
   }
 

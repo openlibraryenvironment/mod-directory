@@ -29,14 +29,14 @@
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}/*",
-          "permissionsRequired" : [ ],
-          "permissionsDesired": [ "directory.entry.item.put", "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
+          "permissionsRequired" : [],
+          "permissionsDesired": [ "directory.entry.item-local.put", "directory.entry.item-shared.put" ]
         },
         {
           "methods": [ "PUT" ],
           "pathPattern": "/directory/entry/{id}",
           "permissionsRequired" : [],
-          "permissionsDesired": [ "directory.entry.item.put", "directory.entry.managed-item.put", "directory.entry.item-local.put" ]
+          "permissionsDesired": [ "directory.entry.item-local.put", "directory.entry.item-shared.put" ]
         },
         {
           "methods": [ "DELETE" ],
@@ -273,9 +273,6 @@
           "pathPattern": "/directory/tags*",
           "permissionsRequired" : [ "directory.tags" ]
         }
-
-
-        
       ]
     },
     {
@@ -362,8 +359,8 @@
     },
     {
       "permissionName": "directory.entry.read",
-      "displayName": "entry read",
-      "description": "read entry",
+      "displayName": "Directory entry read",
+      "description": "Directory: Allow the user to read directory entries",
       "visible": false,
       "subPermissions" : [
           "directory.entry.collection.get",
@@ -371,17 +368,44 @@
       ]
     },
     {
-      "permissionName": "directory.entry.write",
-      "displayName": "entry write",
-      "description": "write entry",
+      "permissionName": "directory.entry.edit.local",
+      "displayName": "Directory entry edit local",
+      "description": "Directory: Allow the user to read and edit local fields for directory entries",
       "visible": false,
       "subPermissions" : [
-          "directory.entry.read",
-          "directory.entry.item.post",
-          "directory.entry.item.put",
-          "directory.entry.managed-item.put",
-          "directory.entry.item-local.put",
-          "directory.entry.item.delete"
+        "directory.entry.read",
+        "directory.entry.item-local.put"
+      ]
+    },
+    {
+      "permissionName": "directory.entry.edit.shared",
+      "displayName": "Directory entry edit shared",
+      "description": "Directory: Allow the user to read and edit shared fields for managed directory entries",
+      "visible": false,
+      "subPermissions" : [
+        "directory.entry.read",
+        "directory.entry.item-shared.put"
+      ]
+    },
+    {
+      "permissionName": "directory.entry.create",
+      "displayName": "Directory entry create",
+      "description": "Directory: Allow the user to read, edit and create directory entries",
+      "visible": false,
+      "subPermissions" : [
+        "directory.entry.edit.local",
+        "directory.entry.edit.shared",
+        "directory.entry.item.post"
+      ]
+    },
+    {
+      "permissionName": "directory.entry.delete",
+      "displayName": "Directory entry delete",
+      "description": "Directory: Allow the user to read, edit, create and delete directory entries",
+      "visible": false,
+      "subPermissions" : [
+        "directory.entry.create",
+        "directory.entry.item.delete"
       ]
     },
     {
@@ -720,7 +744,7 @@
       "description": "all directory permissions",
       "subPermissions": [
           "directory.all.read",
-          "directory.entry.write",
+          "directory.entry.delete",
           "directory.symbol.write",
           "directory.service.write",
           "directory.serviceaccount.write",
