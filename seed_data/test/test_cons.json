@@ -4,6 +4,7 @@
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/test/test_cons.json",
   "url":"http://not.a.real.consortium/",
   "type":"Consortium",
+  "brandingUrl":"http://not.a.real.consortium/logo.svg",
   "members":[
     { "memberOrg":"DIKU" },
     { "memberOrg":"KINT"},
