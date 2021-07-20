@@ -170,6 +170,7 @@ public class AppListenerService implements ApplicationListener {
       name: de.name,
       slug: de.slug,
       foafUrl: de.foafUrl,
+      brandingUrl: de.brandingUrl,
       services:[],
       symbols:[],
       description: de.description,
