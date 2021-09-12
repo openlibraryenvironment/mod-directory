@@ -17,6 +17,7 @@ class BootStrap {
     log.info("            build time -> ${grailsApplication.metadata['build.time']}");
     log.info("            build host -> ${grailsApplication.metadata['build.host']}");
     log.info("         Base JDBC URL -> ${grailsApplication.config.dataSource.url}");
+    log.info("            Max Active -> ${grailsApplication.config.dataSource.properties?.maxActive}");
 
     // Check that the migrations file is present - it's absence indicates a build time failure
     def resFile = this.class.classLoader.getResource('module-tenant-changelog.groovy')
