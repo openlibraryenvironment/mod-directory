@@ -132,7 +132,7 @@ dataSource:
   password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
   dialect: com.k_int.hibernate.dialects.postgres.KIPostgres94Dialect
-  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}?ApplicationName=mod-directory"
   schemaHandler: com.k_int.okapi.OkapiSchemaHandler
   properties:
     initialSize: 5
@@ -184,7 +184,7 @@ events:
 environments:
   test:
     dataSource:
-      url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}"
+      url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}?ApplicationName=mod-directory-test"
       properties:
         initialSize: 7
         minIdle: 2
