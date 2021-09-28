@@ -24,7 +24,13 @@ class ExternalApiController {
   def index() {
     def result =  [
       status:'OK',
+      hostedEntries:[]
     ]
+
+    DirectoryEntry.executeQuery('select de from DirectoryEntry as de where de.status.value=:managed and de.parent is null', [managed:'managed']).each { de ->
+      result.hostedEntries.add([slug:de.slug, name:de.name, description: de.description]);
+    }
+
     render result as JSON;
   }
 
