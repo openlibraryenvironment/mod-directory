@@ -132,13 +132,13 @@ dataSource:
   password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
   dialect: com.k_int.hibernate.dialects.postgres.KIPostgres94Dialect
-  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}?ApplicationName=mod-directory"
   schemaHandler: com.k_int.okapi.OkapiSchemaHandler
   properties:
     initialSize: 5
-    maxActive: ${db.maxpoolsize:50}
+    maxActive: ${db.maxpoolsize:15}
     minIdle: 5
-    maxIdle: 25
+    maxIdle: 10
     maxWait: 10000
     maxAge: 600000
     timeBetweenEvictionRunsMillis: 5000
@@ -153,6 +153,8 @@ dataSource:
     abandonWhenPercentageFull: 50
     jdbcInterceptors: ConnectionState
     defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+    dbProperties:
+      ApplicationName: mod-directory
 
 
 events:
@@ -182,7 +184,7 @@ events:
 environments:
   test:
     dataSource:
-      url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}"
+      url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules}?ApplicationName=mod-directory-test"
       properties:
         initialSize: 7
         minIdle: 2
@@ -207,28 +209,6 @@ environments:
     gorm:
       tenantId: public # Used by SystemPropertyTenantResolver
 
-  production:
-    dataSource:
-      properties:
-        initialSize: 5
-        maxActive: 50
-        minIdle: 5
-        maxIdle: 25
-        maxWait: 10000
-        maxAge: 600000
-        timeBetweenEvictionRunsMillis: 5000
-        minEvictableIdleTimeMillis: 60000
-        validationQuery: SELECT 1
-        validationInterval: 30000
-        testOnBorrow: true
-        testWhileIdle: true
-        testOnReturn: false
-        removeAbandoned: true
-        removeAbandonedTimeout: 60
-        abandonWhenPercentageFull: 50
-        jdbcInterceptors: ConnectionState
-        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
- 
 okapi:
   schema:
     appName: 'mod-directory'
