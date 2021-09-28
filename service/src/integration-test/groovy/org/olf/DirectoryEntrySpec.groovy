@@ -90,9 +90,9 @@ class DirectoryEntrySpec extends HttpSpec {
           id: java.util.UUID.randomUUID().toString(),
           name:name,
           slug:name,
-          description:'Test new entry'
+          description:'Test new entry',
+          status:'managed'
     ]
-
 
     when: "We create a new directory entry"
       log.debug("Attempt to post ${new_entry}");
@@ -246,5 +246,25 @@ class DirectoryEntrySpec extends HttpSpec {
   }
 
 
+  void "test external api"(String tenant_id, friend_url) {
+
+    when: "We ask the externl API for the index of entries"
+      setHeaders(['X-Okapi-Tenant': tenant_id])
+      def resp = httpClient.get {
+        request.uri = "$baseUrl/directory/externalApi/entry".toString()
+        request.contentType = JSON[0]
+        request.headers = (specDefaultHeaders + headersOverride + ['X-Okapi-Tenant': tenant_id])
+      }
+
+    then: "We get back the expected list"
+      // dirent.name == name
+      log.debug("externalApi list: ${resp}");
+      resp != null
+
+    where:
+      tenant_id | friend_url
+      'TestTenantG' | 'https://raw.githubusercontent.com/openlibraryenv'
+
+  }
 }
 
