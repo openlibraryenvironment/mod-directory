@@ -269,13 +269,14 @@ class DirectoryEntrySpec extends HttpSpec {
 
   void "test freshen worker thread"() {
     when: "We call the freshen endpoint"
-      String tenant_id = 'TestTenantG'
+      String tenant_id = 'TestTenantG'.toLowerCase()
       setHeaders(['X-Okapi-Tenant': tenant_id])
       def resp = httpClient.get {
         request.uri = "$baseUrl/directory/settings/foaf".toString()
         request.contentType = JSON[0]
         request.headers = (specDefaultHeaders + headersOverride + ['X-Okapi-Tenant': tenant_id])
       }
+      Thread.sleep(4000);
 
     then: "All is well"
       // dirent.name == name
