@@ -16,6 +16,10 @@ import grails.async.Promise
 import static grails.async.Promises.*
 import java.text.SimpleDateFormat
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+ 
+
 /**
  *
  */
@@ -35,6 +39,21 @@ where gm.groupOrg.slug=:group
 and gm.memberOrg.slug=:member
 '''
 
+  private ThreadPoolExecutor executor = null;
+
+  @javax.annotation.PostConstruct
+  public void init() {
+    log.info("FoafService::init");
+    executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+  }
+
+  @javax.annotation.PreDestroy
+  void shutdown() {
+    if ( executor ) {
+      log.info("Cleaning up foaf harvester thread pool");
+      executor.shutdownNow()
+    }
+  }
   
 
 
@@ -293,7 +312,8 @@ and gm.memberOrg.slug=:member
 
   public freshen(String tenant) {
     log.debug("FoafService::freshen(${tenant})");
-    Promise p = task {
+    // Promise p = task {
+    executor.submit {
       Tenants.withId(tenant+'_mod_directory') {
         DirectoryEntry.withNewSession {
           DirectoryEntry.executeQuery('select de.foafUrl, de.foafTimestamp from DirectoryEntry as de where de.foafUrl is not null').each { row ->
@@ -305,17 +325,7 @@ and gm.memberOrg.slug=:member
           }
         }
       }
-    }
-
-    p.onError { Throwable err ->
-      log.error("Problem",err);
-    }
-
-    p.onComplete { result ->
-      log.debug("this.freshen promise complete");
-    }
-
-
+    } as Runnable
   }
 
   public void announce(String tenant) {
