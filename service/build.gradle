@@ -110,7 +110,7 @@ dependencies {
   runtime "javax.xml.bind:jaxb-api:2.3.1"
 
   // non-graphql dependency
-  compile 'org.olf.reshare.dm.directory:dm-directory:2.0.1'
+  compile 'org.olf.reshare.dm.directory:dm-directory:2.1.0'
 
   profile "org.grails.profiles:rest-api"
   
