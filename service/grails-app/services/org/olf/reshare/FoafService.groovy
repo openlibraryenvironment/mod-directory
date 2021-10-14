@@ -16,6 +16,10 @@ import grails.async.Promise
 import static grails.async.Promises.*
 import java.text.SimpleDateFormat
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+ 
+
 /**
  *
  */
@@ -35,6 +39,21 @@ where gm.groupOrg.slug=:group
 and gm.memberOrg.slug=:member
 '''
 
+  private ThreadPoolExecutor executor = null;
+
+  @javax.annotation.PostConstruct
+  public void init() {
+    log.info("FoafService::init");
+    executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+  }
+
+  @javax.annotation.PreDestroy
+  void shutdown() {
+    if ( executor ) {
+      log.info("Cleaning up foaf harvester thread pool");
+      executor.shutdownNow()
+    }
+  }
   
 
 
@@ -59,6 +78,9 @@ and gm.memberOrg.slug=:member
          ( depth < 4 ) ) {
       if ( shouldVisit(url) ) {
         processFriend(url, depth);
+      }
+      else {
+        log.debug("Skip: ${url}");
       }
     }
   }
@@ -290,32 +312,36 @@ and gm.memberOrg.slug=:member
     }
   }
 
-
+ 
+  // Enqueue a freshen request
   public freshen(String tenant) {
     log.debug("FoafService::freshen(${tenant})");
-    Promise p = task {
+    // Promise p = task {
+    executor.submit {
+      this.doFreshenWork(tenant);
+    } as Runnable
+
+    log.debug("freshen task enqueued");
+  }
+
+  private void doFreshenWork(String tenant) {
+    log.debug("FoafService::doFreshenWork(${tenant})");
+    try {
       Tenants.withId(tenant+'_mod_directory') {
         DirectoryEntry.withNewSession {
           DirectoryEntry.executeQuery('select de.foafUrl, de.foafTimestamp from DirectoryEntry as de where de.foafUrl is not null').each { row ->
             def foaf_url = row[0]
             def foaf_ts = row[1]
-
             log.debug("freshen() checking ${foaf_url} last:${foaf_ts} remaining:${(MIN_READ_INTERVAL - ( System.currentTimeMillis() - foaf_ts?:0 ))/(60000) }mins");
             checkFriend(foaf_url);
           }
+          log.debug("freshen work complete");
         }
       }
     }
-
-    p.onError { Throwable err ->
-      log.error("Problem",err);
+    catch ( Exception e ) {
+      log.error("Problem in doFreshenWork", e);
     }
-
-    p.onComplete { result ->
-      log.debug("this.freshen promise complete");
-    }
-
-
   }
 
   public void announce(String tenant) {

@@ -14,7 +14,7 @@ class DirectorySettingsController {
   def worker() {
     def result = [result:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
-    log.debug("Worker thread invoked....${tenant_header}");
+    log.info("Worker thread invoked....${tenant_header}");
     request.headerNames.each { hn ->
       log.debug("  ${hn} -> ${request.getHeader(hn)}");
     }
@@ -23,9 +23,9 @@ class DirectorySettingsController {
   }
 
   def foaf() {
-    log.debug("DirectorySettingsController::foaf");
-    def result = [result:'OK']
     String tenant_header = request.getHeader('X-OKAPI-TENANT')
+    log.info("DirectorySettingsController::foaf... ${tenant_header}");
+    def result = [result:'OK']
     log.debug("FOAF thread invoked....${tenant_header}");
     foafService.freshen(tenant_header);
     foafService.announce(tenant_header);
