@@ -15,6 +15,8 @@ import org.hibernate.Transaction;
 import grails.async.Promise
 import static grails.async.Promises.*
 import java.text.SimpleDateFormat
+import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
+import com.k_int.web.toolkit.custprops.types.CustomPropertyText
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -180,7 +182,14 @@ and gm.memberOrg.slug=:member
                 }
     
                 log.debug("bind json ${json}");
+
+                // Custom properties need special attention
+                def custprops = json.remove('customProperties');
+
                 bindData (de, json)
+
+                json.customProperties = custprops;
+                bindCustomProperties(de, json)
 
                 if ( ( de.foafUrl == null ) && ( url != null ) )
                   de.foafUrl = url;
@@ -247,6 +256,9 @@ and gm.memberOrg.slug=:member
             catch ( Exception e ) {
               log.error("Problem processing member list",e);
             }
+          }
+          else {
+            log.error("Failed to validate foaf JSON from ${url}");
           }
         }
         response.failure = { json ->
@@ -347,4 +359,92 @@ and gm.memberOrg.slug=:member
   public void announce(String tenant) {
     log.debug("FoafService::announce(${tenant})");
   }
+
+  private void bindCustomProperties(DirectoryEntry de, Map payload) {
+    log.debug("Iterate over custom properties sent in directory entry payload ${payload.customProperties}");
+
+    payload?.customProperties?.each { k, v ->
+      // de.custprops is an instance of com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
+      // we need to see if we can find
+      if ( ['local_institutionalPatronId',
+            'policy.ill.loan_policy',
+            'policy.ill.last_resort',
+            'policy.ill.returns',
+            'policy.ill.InstitutionalLoanToBorrowRatio'].contains(k) ) {
+        log.debug("processing binding for ${k} -> ${v}");
+        boolean first = true;
+
+        // Root level custom properties object is a custom properties container
+        // We iterate over each custom property to see if it's one we want to process
+
+        boolean existing_custprop_updated = false;
+
+        // replace any existing property
+        de.customProperties?.value.each { cp ->
+          if ( cp.definition.name == k ) {
+            log.debug("updating customProperties.${k}.value to ${v} - custprop type is ${cp.definition.type?.toString()}");
+            if ( v instanceof List ) {
+              // cp.value = v.get(0);
+              mergeCustpropWithList(cp, v)
+            }
+            else if ( v instanceof String ) {
+              // cp.value = v
+              mergeCustpropWithString(cp, v)
+            }
+            existing_custprop_updated = true
+          }
+        }
+
+        // IF we didn't update an existing property, we need to add a new one
+        if ( existing_custprop_updated == false ) {
+          log.debug("Need to add new custom property: ${k} -> ${v}");
+          CustomPropertyDefinition cpd = CustomPropertyDefinition.findByName(k);
+          if ( cpd != null ) {
+            if ( v instanceof String ) {
+              de.customProperties?.addToValue( new com.k_int.web.toolkit.custprops.types.CustomPropertyText(definition:cpd, value: v))
+            }
+            else if ( v instanceof List ) {
+              if ( v.size() == 1 ) {
+                de.customProperties?.addToValue( new com.k_int.web.toolkit.custprops.types.CustomPropertyText(definition:cpd, value: v[0]))
+              }
+              else {
+                log.warn("List props size > 1 are not supported at this time")
+              }
+            }
+          }
+          else {
+            log.warn("No definition for custprop ${k}. Skipping");
+          }
+        }
+      }
+      else {
+        log.debug("skip binding for ${k} -> ${v}");
+      }
+    }
+  }
+
+  private void mergeCustpropWithList(Object cp_value, List binding_value) {
+    log.debug("mergeCustpropWithList(${cp_value?.class?.name}, ${binding_value})");
+    // log.debug("  -> existing cp value is ${cp_value?.value} / ${cp_value?.class?.name}");
+    if ( cp_value instanceof com.k_int.web.toolkit.custprops.types.CustomPropertyText ) {
+      // We're only concerned with single values for now.
+      cp_value.value = binding_value.get(0)?.toString();
+    }
+    else {
+      log.warn("Re-binding lists is not currently supported (${cp_value?.class?.name})");
+    }
+
+  }
+
+  private void mergeCustpropWithString(Object cp_value, String binding_value) {
+    log.debug("mergeCustpropWithString(${cp_value?.class?.name}, ${binding_value})");
+    // log.debug("  -> existing cp value is ${cp_value?.value} / ${cp_value?.class?.name}");
+    if ( cp_value instanceof com.k_int.web.toolkit.custprops.types.CustomPropertyText ) {
+      cp_value.value = binding_value
+    }
+    else {
+      log.warn("Unhandled rebinding of custprop type ${cp_value?.class?.name}");
+    }
+  }
+
 }
