@@ -15,6 +15,8 @@ import org.hibernate.Transaction;
 import grails.async.Promise
 import static grails.async.Promises.*
 import java.text.SimpleDateFormat
+import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
+import com.k_int.web.toolkit.custprops.types.CustomPropertyText
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -429,8 +431,9 @@ and gm.memberOrg.slug=:member
       cp_value.value = binding_value.get(0)?.toString();
     }
     else {
-      log.warn("Re-binding lists is not currently supported");
+      log.warn("Re-binding lists is not currently supported (${cp_value?.class?.name})");
     }
+
   }
 
   private void mergeCustpropWithString(Object cp_value, String binding_value) {
@@ -438,6 +441,9 @@ and gm.memberOrg.slug=:member
     // log.debug("  -> existing cp value is ${cp_value?.value} / ${cp_value?.class?.name}");
     if ( cp_value instanceof com.k_int.web.toolkit.custprops.types.CustomPropertyText ) {
       cp_value.value = binding_value
+    }
+    else {
+      log.warn("Unhandled rebinding of custprop type ${cp_value?.class?.name}");
     }
   }
 
