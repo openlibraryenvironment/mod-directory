@@ -457,18 +457,29 @@ and gm.memberOrg.slug=:member
      'policy.ill.last_resort',
      'policy.ill.returns',
      'policy.ill.InstitutionalLoanToBorrowRatio'].each { k ->
-       boolean first = true;
-       de.customProperties?.value.each { cp ->
-         if ( cp.definition.name == k ) {
-           if ( first ) {
-             first=false;
-           }
-           else {
-             // Extra value - dispose of it.
-             de.customProperties?.removeFromValue(cp)
-           }
-         }
-       }
+
+      boolean first = true;
+      boolean updated = false;
+
+      List cps_to_remove = []
+
+      de.customProperties?.value.each { cp ->
+        if ( cp.definition.name == k ) {
+          if ( first ) {
+            first=false;
+          }
+          else {
+            // Extra value - dispose of it.
+            cps_to_remove.add(cp);
+            // de.customProperties?.removeFromValue(cp)
+          }
+        }
+      }
+
+      cps_to_remove.each { cp ->
+        de.customProperties?.removeFromValue(cp)
+        updated = true;
+      }
     }
   }
 }
