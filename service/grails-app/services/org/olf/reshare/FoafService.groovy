@@ -190,6 +190,7 @@ and gm.memberOrg.slug=:member
 
                 json.customProperties = custprops;
                 bindCustomProperties(de, json)
+                expireRemovedSymbols(de, json)
 
                 if ( ( de.foafUrl == null ) && ( url != null ) )
                   de.foafUrl = url;
@@ -480,6 +481,34 @@ and gm.memberOrg.slug=:member
         de.customProperties?.removeFromValue(cp)
         updated = true;
       }
+    }
+  }
+
+  /**
+   *  Sometimes a symbol can be removed in the record without the local cache copy of that relationship being removed. This function
+   *  iterates over all symbols attached to a directory entry and flags up any which are not in the parsed json record. If the parsed
+   *  JSON is authoritative, then we should remove the symbol or flag it in some way as being removed.
+   *  Current implementation only detects, no action taken presently.
+   */
+  private void expireRemovedSymbols(DirectoryEntry de, Map payload) {
+    log.debug("expireRemovedSymbols....");
+    // In the payload root.symbols is an array of maps where each map contains the keys  authority:'ISIL', symbol:'RST1', priority:'a'
+    // de.symbols is a List<Symbol>
+    try {
+      de.symbols.each { dbsymbol ->
+        log.debug("Verify symbol ${dbsymbol}");
+        // Look in payload.symbols for a map entry where dbsymbol.symbol == entry.symbol and dbsymbol.authority.symbol == entry.authority
+        def located_map_entry = payload.symbols.find { ( ( it.symbol == dbsymbol.symbol ) && ( it.authority == dbsymbol.authority.symbol ) ) }
+        if ( located_map_entry ) {
+          // DB symbol still present in data, no action needed
+        }
+        else {
+          log.warn("Residual symbol still in db : ${dbsymbol} - should be removed")
+        }
+      }
+    }
+    catch ( Exception e ) {
+      log.error("Problem detecting residual symbols",e);
     }
   }
 }
