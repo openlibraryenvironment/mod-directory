@@ -364,6 +364,10 @@ and gm.memberOrg.slug=:member
   private void bindCustomProperties(DirectoryEntry de, Map payload) {
     log.debug("Iterate over custom properties sent in directory entry payload ${payload.customProperties}");
 
+    if ( de.customProperties == null ) {
+      log.debug("New directory entry - need to initialise custprops container");
+    }
+
     cleanCustomProperties(de);
 
     payload?.customProperties?.each { k, v ->
@@ -403,12 +407,22 @@ and gm.memberOrg.slug=:member
           log.debug("Need to add new custom property: ${k} -> ${v}");
           CustomPropertyDefinition cpd = CustomPropertyDefinition.findByName(k);
           if ( cpd != null ) {
-            if ( v instanceof String ) {
-              de.customProperties?.addToValue( new com.k_int.web.toolkit.custprops.types.CustomPropertyText(definition:cpd, value: v))
+            if ( ( v instanceof String ) && ( v != null ) && ( v.length() > 0 ) ) {
+              // Something goes wrong here when we use the default map constructor to set definition and value
+              // explicitly assigning them works fine, but the map constructor seems to leave the value as null
+              CustomPropertyText new_text_value = new CustomPropertyText()
+              new_text_value.definition = cpd;
+              new_text_value.value = v;
+              de.customProperties?.addToValue( new_text_value );
             }
             else if ( v instanceof List ) {
               if ( v.size() == 1 ) {
-                de.customProperties?.addToValue( new com.k_int.web.toolkit.custprops.types.CustomPropertyText(definition:cpd, value: v[0]))
+                // Something goes wrong here when we use the default map constructor to set definition and value
+                // explicitly assigning them works fine, but the map constructor seems to leave the value as null
+                CustomPropertyText new_text_value = new CustomPropertyText()
+                new_text_value.definition = cpd;
+                new_text_value.value = v[0];
+                de.customProperties?.addToValue( new_text_value );
               }
               else {
                 log.warn("List props size > 1 are not supported at this time")
