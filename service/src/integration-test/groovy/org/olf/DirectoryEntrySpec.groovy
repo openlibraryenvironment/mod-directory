@@ -15,7 +15,8 @@ import grails.gorm.multitenancy.Tenants
 import org.olf.okapi.modules.directory.DirectoryEntry
 import com.k_int.web.toolkit.testing.HttpSpec
 import static groovyx.net.http.ContentTypes.JSON
-
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 
 @Slf4j
 @Integration
@@ -37,6 +38,19 @@ class DirectoryEntrySpec extends HttpSpec {
   }
 
   def cleanup() {
+  }
+
+  @Value('${local.server.port}')
+  Integer serverPort
+
+  def setupSpec() {
+    httpClientConfig = {
+      client.clientCustomizer { HttpURLConnection conn ->
+        conn.connectTimeout = 5000
+        conn.readTimeout = 20000
+      }
+    }
+
   }
 
   void "Attempt to delete any old tenant"(tenantid, name) {
