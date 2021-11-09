@@ -509,6 +509,8 @@ and gm.memberOrg.slug=:member
     // In the payload root.symbols is an array of maps where each map contains the keys  authority:'ISIL', symbol:'RST1', priority:'a'
     // de.symbols is a List<Symbol>
     try {
+      List symbols_to_remove = []
+
       de.symbols.each { dbsymbol ->
         log.debug("Verify symbol ${dbsymbol}");
         // Look in payload.symbols for a map entry where dbsymbol.symbol == entry.symbol and dbsymbol.authority.symbol == entry.authority
@@ -518,6 +520,17 @@ and gm.memberOrg.slug=:member
         }
         else {
           log.warn("Residual symbol still in db : ${dbsymbol} - should be removed")
+          symbols_to_remove.add(dbsymbol);
+        }
+      }
+
+      symbols_to_remove.each { symbol_to_remove ->
+        try {
+          log.debug("Remove ${symbol_to_remove}");
+          symbol_to_remove.delete()
+        }
+        catch ( Exception e ) {
+          log.error("problem deleting symbol",e);
         }
       }
     }
