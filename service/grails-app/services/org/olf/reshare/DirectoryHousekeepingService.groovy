@@ -13,6 +13,11 @@ import com.k_int.web.toolkit.refdata.RefdataCategory
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
 
+import com.k_int.okapi.OkapiTenantResolver
+import com.k_int.web.toolkit.settings.AppSetting
+import com.k_int.web.toolkit.refdata.RefdataValue;
+
+
 import org.olf.okapi.modules.directory.NamingAuthority;
 
 import grails.databinding.SimpleMapDataBindingSource 
@@ -53,6 +58,20 @@ class DirectoryHousekeepingService {
                                  final String fromVersion) {
     log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
   }
+
+  // @Subscriber('okapi:tenant_enabled')
+  @Subscriber('okapi:dataload:reference')
+  public void onLoadReference (final String tenantId, String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
+    log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+    final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
+    try {
+      Tenants.withId(tenant_schema_id) {
+      }
+    }
+    catch ( Exception e ) {
+      log.error("Problem in DirectoryHousekeepingService",e);
+    }
+
 
 }
 
