@@ -46,7 +46,8 @@ class DirectoryHousekeepingService {
                                     final boolean upgrading,
                                     final String toVersion,
                                     final String fromVersion) {
-    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+    // log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+    // Please use the okapi:dataload:reference event below instead o this event.
   }
 
   @Subscriber('okapi:tenant_load_sample')
