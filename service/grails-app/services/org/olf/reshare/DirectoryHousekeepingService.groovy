@@ -72,7 +72,7 @@ class DirectoryHousekeepingService {
     catch ( Exception e ) {
       log.error("Problem in DirectoryHousekeepingService",e);
     }
-
+  }
 
 }
 
