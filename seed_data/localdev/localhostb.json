@@ -9,9 +9,6 @@
   "emailAddress":"LocalhostB@TestInst01.com",
   "contactName":"LocalhostB Contact Name",
   "customProperties":{
-    "policy.ill.loan_policy":[{"value": "lending_all_types"}],
-    "policy.ill.returns": [{"value": "yes"}],
-    "policy.ill.last_resort": [{"value": "no"}],
     "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
   },
   "symbols": [
