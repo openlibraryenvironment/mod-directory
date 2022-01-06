@@ -447,8 +447,13 @@ and gm.memberOrg.slug=:member
       // We're only concerned with single values for now.
       cp_value.value = binding_value.get(0)?.toString();
     }
+    else if ( cp_value instanceof com.k_int.web.toolkit.custprops.types.CustomPropertyRefdata ) {
+      String new_refdata_value = binding_value.get(0)
+      log.debug("rebinding a custom property ${binding_value} with value ${new_refdata_value}");
+      cp_value.value = cp_value.lookupValue(new_refdata_value);
+    }
     else {
-      log.warn("Re-binding lists is not currently supported (${cp_value?.class?.name})");
+      log.warn("Re-binding values of type ${cp_value?.class?.name} is not currently supported - value is ${binding_value}");
     }
 
   }
