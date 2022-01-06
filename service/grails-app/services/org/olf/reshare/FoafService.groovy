@@ -41,6 +41,12 @@ where gm.groupOrg.slug=:group
 and gm.memberOrg.slug=:member
 '''
 
+  private static List MANAGED_CUSTPROPS = ['local_institutionalPatronId',
+     'policy.ill.loan_policy',
+     'policy.ill.last_resort',
+     'policy.ill.returns',
+     'policy.ill.InstitutionalLoanToBorrowRatio']
+
   private ThreadPoolExecutor executor = null;
 
   @javax.annotation.PostConstruct
@@ -373,11 +379,7 @@ and gm.memberOrg.slug=:member
     payload?.customProperties?.each { k, v ->
       // de.custprops is an instance of com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
       // we need to see if we can find
-      if ( ['local_institutionalPatronId',
-            'policy.ill.loan_policy',
-            'policy.ill.last_resort',
-            'policy.ill.returns',
-            'policy.ill.InstitutionalLoanToBorrowRatio'].contains(k) ) {
+      if ( MANAGED_CUSTPROPS.contains(k) ) {
         log.debug("processing binding for ${k} -> ${v}");
         boolean first = true;
 
@@ -466,27 +468,22 @@ and gm.memberOrg.slug=:member
 
   private void cleanCustomProperties(DirectoryEntry de) {
 
-    // Fror each of these custprops - we should have a scalar, not a set
-    ['local_institutionalPatronId',
-     'policy.ill.loan_policy',
-     'policy.ill.last_resort',
-     'policy.ill.returns',
-     'policy.ill.InstitutionalLoanToBorrowRatio'].each { k ->
-
+    MANAGED_CUSTPROPS.each { k ->
       boolean first = true;
       boolean updated = false;
 
       List cps_to_remove = []
 
       de.customProperties?.value.each { cp ->
+
         if ( cp.definition.name == k ) {
           if ( first ) {
             first=false;
           }
           else {
             // Extra value - dispose of it.
+            // In order to avoid concurrent modification exception, here we just collect together a list of all the custom property instances to be removed.
             cps_to_remove.add(cp);
-            // de.customProperties?.removeFromValue(cp)
           }
         }
       }
