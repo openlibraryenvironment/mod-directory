@@ -1,16 +1,18 @@
 #! /bin/sh
 USAGE="Usage: `basename $0` [-h] [-u username] [-p password] [-t tenant]"
 
+# setOkapiUrl sets the variable OKAPI_URL
+. ./setOkapiUrl
+
 if true; then
     TENANT="diku"
     UN="diku_admin"
     PW="admin"
-    OKAPI="http://localhost:9130"
 else
     TENANT="reshare"
     UN="admin"
     PW="rE0gNx7m2o"
-    OKAPI="https://okapi-reshare.apps.k-int.com"
+    OKAPI_URL="https://okapi-reshare.apps.k-int.com"
 fi
 
 # Parse command line options.
@@ -42,6 +44,6 @@ shift `expr $OPTIND - 1`
 
 AUTH_TOKEN=$(curl -sSL -X POST -H 'accept: application/json' -H 'Content-type: application/json' \
     -H "X-Okapi-Tenant: $TENANT" --connect-timeout 5 --max-time 30 -d "{ \"username\":\"${UN}\", \"password\": \"${PW}\" }" \
-    "${OKAPI}/authn/login" | jq -rc '.okapiToken' | sed 's/.*: *//' | xargs)
+    "${OKAPI_URL}/authn/login" | jq -rc '.okapiToken' | sed 's/.*: *//' | xargs)
 echo $AUTH_TOKEN
 exit 0
