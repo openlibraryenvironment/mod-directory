@@ -67,7 +67,8 @@ Organisations may be split into many organisational units, arranged hierarchical
 
 # Technical
 
-mod-directory is a grails 3 REST profile application which uses liquibase migrations for tenant schema construction.
+mod-directory is a grails 4 REST profile application which uses liquibase migrations for tenant schema construction.
+Migrations can be found [https://github.com/openlibraryenvironment/mod-directory/tree/master/service/grails-app/migrations](here)
 
 
 
