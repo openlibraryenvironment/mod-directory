@@ -747,8 +747,6 @@
       { "name": "DB_DATABASE", "value": "okapi_modules" },
       { "name": "DB_MAXPOOLSIZE", "value": "50" },
       { "name": "FOLIO_DIRECTORY_DEFUALTTTL", "value": "120000" }
-    ]
-
     ],
     "dockerPull" : false
   }
