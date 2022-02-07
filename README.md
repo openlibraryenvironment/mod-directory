@@ -67,7 +67,8 @@ Organisations may be split into many organisational units, arranged hierarchical
 
 # Technical
 
-mod-directory is a grails 3 REST profile application which uses liquibase migrations for tenant schema construction.
+mod-directory is a grails 4 REST profile application which uses liquibase migrations for tenant schema construction.
+Migrations can be found [https://github.com/openlibraryenvironment/mod-directory/tree/master/service/grails-app/migrations](here)
 
 
 
@@ -91,7 +92,7 @@ the migrations using one of the following commands:
 
 ## Kubernetes Deployment Notes
 
-You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-licenses container.
+You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-directory container.
 
 | Env var | Description | Default |
 | --- | --- | --- |
