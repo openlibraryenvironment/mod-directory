@@ -218,3 +218,6 @@ okapi:
     register: false
     deploy: false
 
+folio:
+  directory:
+    defualtttl: 120000  # min TTL in milliseconds for a directory entry to live before it can be tested for an updated - 2 mins

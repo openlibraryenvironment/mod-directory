@@ -28,8 +28,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 class FoafService implements DataBinder {
 
   def sessionFactory
+  def grailsApplication
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
+  private long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
@@ -47,6 +48,11 @@ and gm.memberOrg.slug=:member
   public void init() {
     log.info("FoafService::init");
     executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+
+    if ( grailsApplication.config?.folio?.directory?.defualtttl ) {
+      MIN_READ_INTERVAL = Long.parseLong("${grailsApplication.config?.folio?.directory?.defualtttl}")?.longValue();
+    }
+    log.info("Default ttl for directory entries will be ${MIN_READ_INTERVAL}");
   }
 
   @javax.annotation.PreDestroy
