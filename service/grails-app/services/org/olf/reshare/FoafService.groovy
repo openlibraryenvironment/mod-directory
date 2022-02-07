@@ -380,7 +380,8 @@ and gm.memberOrg.slug=:member
       log.debug("New directory entry - need to initialise custprops container");
     }
 
-    cleanCustomProperties(de);
+    // cleanManagedCustomProperties(de);
+    cleanAllCustomProperties(de);
 
     payload?.customProperties?.each { k, v ->
       // de.custprops is an instance of com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
@@ -477,7 +478,7 @@ and gm.memberOrg.slug=:member
     }
   }
 
-  private void cleanCustomProperties(DirectoryEntry de) {
+  private void cleanManagedCustomProperties(DirectoryEntry de) {
 
     MANAGED_CUSTPROPS.each { k ->
       boolean first = true;
@@ -504,6 +505,30 @@ and gm.memberOrg.slug=:member
         updated = true;
       }
     }
+  }
+
+  private void cleanAllCustomProperties(DirectoryEntry de) {
+
+    boolean updated = false;
+    List props_seen = []
+    List cps_to_remove = []
+
+    de.customProperties?.value.each { cp ->
+      if ( props_seen.contains(cp.definition.name) ) {
+        log.debug("Removing unwanted prop value for ${cp.definition.name}");
+        cps_to_remove.add(cp);
+      }
+      else {
+        log.debug("Add ${cp.definition.name} to list of props see - this is the first one so it survives");
+        props_seen.add(cp.definition.name);
+      }
+    }
+
+    cps_to_remove.each { cp ->
+      de.customProperties?.removeFromValue(cp)
+      updated = true;
+    }
+
   }
 
   /**
