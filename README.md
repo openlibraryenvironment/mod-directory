@@ -89,4 +89,21 @@ the migrations using one of the following commands:
     grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
 
 
+## Kubernetes Deployment Notes
+
+You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-licenses container.
+
+| Env var | Description | Default |
+| --- | --- | --- |
+|JAVA_OPTIONS|JDK Flags - N.B. MaxRAMPercentage|-server -XX:+UseContainerSupport -XX:MaxRAMPercentage=55.0 -XX:+PrintFlagsFinal|
+|DB_HOST|Postgres DB host name|postgres|
+|DB_PORT|Postgres DB port|5432|
+|DB_USERNAME|Postgres DB username||
+|DB_PASSWORD|Postgres DB password||
+|DB_DATABASE|Postgres DB|okapi_modules|
+|DB_MAXPOOLSIZE|Max DB connection Pool size|50|
+|FOLIO_DIRECTORY_DEFUALTTTL|Default time to live for directory entry before a refresh can be attempted - default 2 mins|120000
+
+
+
 
