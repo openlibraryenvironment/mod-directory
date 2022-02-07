@@ -13,6 +13,11 @@ Additionally, this document sets out the primary business use case for mod direc
 
 * [/directory/api](doc/api.md) - A utility endpoint for tools and helpers - In particular, looking up symbols in a namespace
 
+Public endpoints
+
+* [_/invoke/tenant/reshare_south/directory/externalApi/entry](List public directory entries hosted by this tenant)
+* [_/invoke/tenant/reshare_south/directory/externalApi/entry/SLUG](Detailed record for SLUG)
+
 Some specific and common stories 
 
 * [Find a service account for a given entry/service pair](doc/discovery.md)
