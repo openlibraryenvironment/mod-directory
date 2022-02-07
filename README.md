@@ -91,7 +91,7 @@ the migrations using one of the following commands:
 
 ## Kubernetes Deployment Notes
 
-You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-licenses container.
+You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-directory container.
 
 | Env var | Description | Default |
 | --- | --- | --- |
