@@ -28,8 +28,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 class FoafService implements DataBinder {
 
   def sessionFactory
+  def grailsApplication
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
+  private long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
@@ -41,12 +42,23 @@ where gm.groupOrg.slug=:group
 and gm.memberOrg.slug=:member
 '''
 
+  private static List MANAGED_CUSTPROPS = ['local_institutionalPatronId',
+     'policy.ill.loan_policy',
+     'policy.ill.last_resort',
+     'policy.ill.returns',
+     'policy.ill.InstitutionalLoanToBorrowRatio']
+
   private ThreadPoolExecutor executor = null;
 
   @javax.annotation.PostConstruct
   public void init() {
     log.info("FoafService::init");
     executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+
+    if ( grailsApplication.config?.folio?.directory?.defualtttl ) {
+      MIN_READ_INTERVAL = Long.parseLong("${grailsApplication.config?.folio?.directory?.defualtttl}")?.longValue();
+    }
+    log.info("Default ttl for directory entries will be ${MIN_READ_INTERVAL}");
   }
 
   @javax.annotation.PreDestroy
@@ -368,16 +380,13 @@ and gm.memberOrg.slug=:member
       log.debug("New directory entry - need to initialise custprops container");
     }
 
-    cleanCustomProperties(de);
+    // cleanManagedCustomProperties(de);
+    cleanAllCustomProperties(de);
 
     payload?.customProperties?.each { k, v ->
       // de.custprops is an instance of com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
       // we need to see if we can find
-      if ( ['local_institutionalPatronId',
-            'policy.ill.loan_policy',
-            'policy.ill.last_resort',
-            'policy.ill.returns',
-            'policy.ill.InstitutionalLoanToBorrowRatio'].contains(k) ) {
+      if ( MANAGED_CUSTPROPS.contains(k) ) {
         log.debug("processing binding for ${k} -> ${v}");
         boolean first = true;
 
@@ -469,29 +478,24 @@ and gm.memberOrg.slug=:member
     }
   }
 
-  private void cleanCustomProperties(DirectoryEntry de) {
+  private void cleanManagedCustomProperties(DirectoryEntry de) {
 
-    // Fror each of these custprops - we should have a scalar, not a set
-    ['local_institutionalPatronId',
-     'policy.ill.loan_policy',
-     'policy.ill.last_resort',
-     'policy.ill.returns',
-     'policy.ill.InstitutionalLoanToBorrowRatio'].each { k ->
-
+    MANAGED_CUSTPROPS.each { k ->
       boolean first = true;
       boolean updated = false;
 
       List cps_to_remove = []
 
       de.customProperties?.value.each { cp ->
+
         if ( cp.definition.name == k ) {
           if ( first ) {
             first=false;
           }
           else {
             // Extra value - dispose of it.
+            // In order to avoid concurrent modification exception, here we just collect together a list of all the custom property instances to be removed.
             cps_to_remove.add(cp);
-            // de.customProperties?.removeFromValue(cp)
           }
         }
       }
@@ -501,6 +505,30 @@ and gm.memberOrg.slug=:member
         updated = true;
       }
     }
+  }
+
+  private void cleanAllCustomProperties(DirectoryEntry de) {
+
+    boolean updated = false;
+    List props_seen = []
+    List cps_to_remove = []
+
+    de.customProperties?.value.each { cp ->
+      if ( props_seen.contains(cp.definition.name) ) {
+        log.debug("Removing unwanted prop value for ${cp.definition.name}");
+        cps_to_remove.add(cp);
+      }
+      else {
+        log.debug("Add ${cp.definition.name} to list of props see - this is the first one so it survives");
+        props_seen.add(cp.definition.name);
+      }
+    }
+
+    cps_to_remove.each { cp ->
+      de.customProperties?.removeFromValue(cp)
+      updated = true;
+    }
+
   }
 
   /**
