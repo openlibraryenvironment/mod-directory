@@ -48,5 +48,13 @@ databaseChangeLog = {
 		// Now we have no duplicates, we can add the unique index
 		addUniqueConstraint(columnNames: "sym_authority_fk, sym_symbol", tableName: "symbol")
 	}
+
+
+  changeSet(author: "ianibbo (manual)", id: "202201261047-001") {
+    addColumn (tableName: "custom_property_definition" ) {
+      column(name: "pd_ctx", type: "VARCHAR(255)")
+    }
+  }
+
 }
 
