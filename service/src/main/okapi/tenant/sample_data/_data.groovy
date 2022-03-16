@@ -81,6 +81,19 @@ Service ensureService(String name, String type, List<String>tags, String address
   return result;
 }
 
+void renameRefdata(String category, String oldValue, String newValue) {
+	RefdataCategory categoryRefdata = RefdataCategory.findByDesc(category);
+	if (categoryRefdata != null) {
+		String normValue = RefdataValue.normValue(oldValue);
+		RefdataValue valueRefData = RefdataValue.findByOwnerAndValue(categoryRefdata, normValue);
+		if (valueRefData != null) {
+			valueRefData.label = newValue;
+			valueRefData.value = RefdataValue.normValue(newValue);
+			valueRefData.save(flush:true, failOnError:true);
+		}
+	}
+}
+
 log.info '\n\n** Importing sample data **\n\n'
 println '\n\n** Importing sample data **\n\n'
 
@@ -130,9 +143,12 @@ RefdataValue.lookupOrCreate('YNO', 'Yes')
 RefdataValue.lookupOrCreate('YNO', 'No')
 RefdataValue.lookupOrCreate('YNO', 'Other')
 
+// We need to rename "Lendin Physical Only" to Lending Physical Only"
+renameRefdata('LoanPolicy', 'Lendin Physical Only', 'Lending Physical Only');
+
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lending all types')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
-RefdataValue.lookupOrCreate('LoanPolicy', 'Lendin Physical only')
+RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Physical only')
 RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 
 // Code, Internal(True=Local/private, False=Global/shared), [optional refdata category]  label
