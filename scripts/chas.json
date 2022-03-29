@@ -2,8 +2,6 @@
     "name": "institution-1",
     "slug": "institution_1",
     "lastModified": "2020-04-03T07:09:42Z",
-    "phoneNumber": "phone",
-    "emailAddress": "email",
     "contactName": "contact",
     "url": "https://news.bbc.co.uk/",
     "type": "Institution",
@@ -15,7 +13,7 @@
         }
     ],
     "addresses": [{
-            "addressLabel": "Index Data Denmark office",
+            "addressLabel": "The label",
             "tags": ["DefaultAddress", "ShippingAddress"],
             "lines": [
 				{
