@@ -4,10 +4,12 @@ import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
 import com.k_int.okapi.OkapiTenantAwareController
 import grails.converters.JSON
-import org.olf.okapi.modules.directory.DirectoryEntry
+import org.olf.okapi.modules.directory.DirectoryEntry;
+import org.olf.okapi.modules.directory.NamingAuthority;
+import org.olf.okapi.modules.directory.Symbol;
 import com.k_int.okapi.OkapiHeaders
 import org.grails.web.json.JSONObject
-import org.grails.web.json.JSONArray
+import org.grails.web.json.JSONArray;
 import groovy.json.JsonOutput;
 
 
@@ -51,7 +53,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
   def update() {
     DirectoryEntry.withTransaction {
       log.debug("Overridden DirectoryEntryController::update() - called when there is a put on a directory entry resource");
-      
+	  
       String okapi_permissions_str = request.getHeader(OkapiHeaders.PERMISSIONS) ?: '[]';
       JSONArray permsArray
       try {
@@ -63,6 +65,13 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
       log.debug("Permissions for this request are: ${okapi_permissions_str}");
      
       if ( request.JSON != null ) {
+		// Check the symbols before we do anything else
+		String symbolError = checkSymbols(request.JSON.symbols);
+		if (symbolError != null) {
+			render(status : 400, contentType: "application/json", text : JsonOutput.toJson([error : 400, message :symbolError]));
+			return; 
+		}
+		
         // If we are manually updating a directory entry, then it must be locally managed.
         // Setting this manually will force an update event at the directory entry 
         // level even if a child property such as a custprop has been set This will
@@ -131,7 +140,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
       super.update();
     }
   }
-  
+
   def boolean isNotLocalProperty(propName, entry) {
     for(cpValue in entry.customProperties.value) {
       if(!propName.equals(cpValue.definition.name)) {
@@ -145,6 +154,49 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
     }
     return false;
   }
-  
+
+  private String checkSymbols(def symbols) {
+
+	  // A null result means no errors	  
+	  String result = null;
+	  
+	  // Loop through all the symbols
+	  if (symbols != null) {
+		  // The symbols should be an array
+		  if (symbols instanceof JSONArray) {
+			  symbols.each { symbol ->
+				  Symbol exists = null;
+				  
+				  // Need to lookup the naming authority first in order to use it in findBy
+				  NamingAuthority authority = NamingAuthority.get(symbol.authority.id);
+
+				  // if we are already have an Id we need to exclude records with the current id
+				  if (symbol.id) {
+					  // We have an id, so exclude
+					  exists = Symbol.findBySymbolAndAuthorityAndIdNotEqual(symbol.symbol, authority, symbol.id);
+				  } else {
+					  // No id
+					  exists = Symbol.findBySymbolAndAuthority(symbol.symbol.toUpperCase(), authority);
+				  }
+				  
+				  // if we are already have an Id we need to exclude records with the current id
+				  if (exists != null) {
+					  // Symbol already exists, so return an appropriate error message
+					  if (result == null) {
+						  result = "";
+					  }
+					  
+					  // Now give a sensible error
+					  result += "The symbol " + exists.symbol + " for authority " + exists.authority.symbol + " already exists for " + exists.owner.name + ". ";
+				  } 
+			  }
+		  } else {
+			  result = "Symbols not supplied as an array";
+		  }
+	  }
+
+	  // Return the result to the caller
+	  return(result);	  
+  }  
 }
 

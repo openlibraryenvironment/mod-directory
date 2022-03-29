@@ -737,8 +737,16 @@
     "dockerArgs": {
       "HostConfig": { "PortBindings": { "8080/tcp":  [{ "HostPort": "%p" }] } }
     },
+    "dockerPull" : false,
     "env": [
-      { "name": "JAVA_OPTIONS", "value": "-server -XX:+UseContainerSupport -XX:MaxRAMPercentage=55.0 -XX:+PrintFlagsFinal" }
+      { "name": "JAVA_OPTIONS", "value": "-server -XX:+UseContainerSupport -XX:MaxRAMPercentage=55.0 -XX:+PrintFlagsFinal" },
+      { "name": "DB_HOST", "value": "postgres" },
+      { "name": "DB_PORT", "value": "5432" },
+      { "name": "DB_USERNAME", "value": "folio_admin" },
+      { "name": "DB_PASSWORD", "value": "folio_admin" },
+      { "name": "DB_DATABASE", "value": "okapi_modules" },
+      { "name": "DB_MAXPOOLSIZE", "value": "50" },
+      { "name": "FOLIO_DIRECTORY_DEFUALTTTL", "value": "120000" }
     ],
     "dockerPull" : false
   }

@@ -28,8 +28,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 class FoafService implements DataBinder {
 
   def sessionFactory
+  def grailsApplication
 
-  private static long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
+  private long MIN_READ_INTERVAL = 60 * 60 * 24 * 2 * 1000; // 2 days between directory reads
 
   // This is important! without it, all updates will be batched inside a single transaction and
   // we don't want that.
@@ -53,6 +54,11 @@ and gm.memberOrg.slug=:member
   public void init() {
     log.info("FoafService::init");
     executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+
+    if ( grailsApplication.config?.folio?.directory?.defualtttl ) {
+      MIN_READ_INTERVAL = Long.parseLong("${grailsApplication.config?.folio?.directory?.defualtttl}")?.longValue();
+    }
+    log.info("Default ttl for directory entries will be ${MIN_READ_INTERVAL}");
   }
 
   @javax.annotation.PreDestroy
@@ -374,7 +380,8 @@ and gm.memberOrg.slug=:member
       log.debug("New directory entry - need to initialise custprops container");
     }
 
-    cleanCustomProperties(de);
+    // cleanManagedCustomProperties(de);
+    cleanAllCustomProperties(de);
 
     payload?.customProperties?.each { k, v ->
       // de.custprops is an instance of com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
@@ -449,8 +456,13 @@ and gm.memberOrg.slug=:member
       // We're only concerned with single values for now.
       cp_value.value = binding_value.get(0)?.toString();
     }
+    else if ( cp_value instanceof com.k_int.web.toolkit.custprops.types.CustomPropertyRefdata ) {
+      String new_refdata_value = binding_value.get(0)
+      log.debug("rebinding a custom property ${binding_value} with value ${new_refdata_value}");
+      cp_value.value = cp_value.lookupValue(new_refdata_value);
+    }
     else {
-      log.warn("Re-binding lists is not currently supported (${cp_value?.class?.name})");
+      log.warn("Re-binding values of type ${cp_value?.class?.name} is not currently supported - value is ${binding_value}");
     }
 
   }
@@ -466,7 +478,7 @@ and gm.memberOrg.slug=:member
     }
   }
 
-  private void cleanCustomProperties(DirectoryEntry de) {
+  private void cleanManagedCustomProperties(DirectoryEntry de) {
 
     MANAGED_CUSTPROPS.each { k ->
       boolean first = true;
@@ -493,6 +505,30 @@ and gm.memberOrg.slug=:member
         updated = true;
       }
     }
+  }
+
+  private void cleanAllCustomProperties(DirectoryEntry de) {
+
+    boolean updated = false;
+    List props_seen = []
+    List cps_to_remove = []
+
+    de.customProperties?.value.each { cp ->
+      if ( props_seen.contains(cp.definition.name) ) {
+        log.debug("Removing unwanted prop value for ${cp.definition.name}");
+        cps_to_remove.add(cp);
+      }
+      else {
+        log.debug("Add ${cp.definition.name} to list of props see - this is the first one so it survives");
+        props_seen.add(cp.definition.name);
+      }
+    }
+
+    cps_to_remove.each { cp ->
+      de.customProperties?.removeFromValue(cp)
+      updated = true;
+    }
+
   }
 
   /**
@@ -524,7 +560,8 @@ and gm.memberOrg.slug=:member
       symbols_to_remove.each { symbol_to_remove ->
         try {
           log.debug("Remove ${symbol_to_remove}");
-          symbol_to_remove.delete()
+          // symbol_to_remove.delete()
+          de.removeFromSymbols(symbol_to_remove);
         }
         catch ( Exception e ) {
           log.error("problem deleting symbol",e);

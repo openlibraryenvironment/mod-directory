@@ -1,0 +1,96 @@
+{
+    "name": "institution-1",
+    "slug": "institution_1",
+    "lastModified": "2022-03-29T16:21:42Z",
+    "contactName": "contact",
+    "url": "https://news.bbc.co.uk/",
+    "type": "Institution",
+    "symbols": [
+		{
+            "authority": "RESHARE",
+            "symbol": "institution-1",
+            "priority": "z"
+        }
+    ],
+    "addresses": [{
+            "addressLabel": "The label",
+            "tags": ["DefaultAddress", "ShippingAddress"],
+            "lines": [
+				{
+                    "seq": 1,
+                    "type": "AdministrativeArea",
+                    "value": "admin area"
+                }, {
+                    "seq": 2,
+                    "type": "Thoroughfare",
+                    "value": "thorough fare"
+                }, {
+                    "seq": 3,
+                    "type": "Department",
+                    "value": "department"
+                }, {
+                    "seq": 4,
+                    "type": "Country",
+                    "value": "country"
+                }, {
+                    "seq": 5,
+                    "type": "Locality",
+                    "value": "locality"
+                }, {
+                    "seq": 6,
+                    "type": "PostalCode",
+                    "value": "postal code"
+                }, {
+                    "seq": 7,
+                    "type": "PostBox",
+                    "value": "post box"
+                }, {
+                    "seq": 8,
+                    "type": "PostOffice",
+                    "value": "post office"
+                }, {
+                    "seq": 9,
+                    "type": "PostalCodeOrTown",
+                    "value": "postal code or town"
+                }, {
+                    "seq": 10,
+                    "type": "Premise",
+                    "value": "premise"
+                }
+            ]
+        }
+    ],
+    "units": [
+		{
+            "slug": "Institution_1_Branch_1",
+            "name": "Branch 1",
+            "type": "Branch",
+            "symbols": [
+				{
+					"authority": "RESHARE",
+					"symbol": "Institution_1_branch-1",
+					"priority": "a"
+				}
+			]
+        }
+    ],
+    "services": [
+		{
+			"slug": "institution_1_service_1",
+			"service": {
+				"name": "institution-1-service-1",
+				"address": "https://some_url",
+				"type": "ISO18626",
+				"businessFunction": "ILL"
+			},
+			"customProperties": {
+				"ILLPreferredNamespaces": ["RESHARE"],
+				"local.localcp": ["Some value"]
+			}
+        }
+    ],
+    "friends": [
+    ],
+    "announcements": [
+    ]
+}

@@ -84,6 +84,5 @@ class DirectoryHousekeepingService {
     return result;
   }
 
-
 }
 
