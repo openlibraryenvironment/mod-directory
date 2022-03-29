@@ -11,7 +11,16 @@
     { "authority":"RESHARE", "symbol":"institution-1", "priority":"z" }
   ],
   "units": [
-    { "slug":"Institution_1_Branch_1", "name":"Branch 1", "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"branch-1", "priority":"a"} }
+    {
+		"slug":"Institution_1_Branch_1",
+		"name":"Branch 1",
+		"type": "Branch",
+		"symbols": {
+			"authority":"RESHARE",
+			"symbol":"branch-1",
+			"priority":"a"
+		}
+	}
   ],
   "services":[
     { 
