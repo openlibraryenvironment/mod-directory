@@ -24,7 +24,11 @@ class ExternalApiController {
   def index() {
     def result =  [
       status:'OK',
-      hostedEntries:[]
+      hostedEntries:[],
+      directoryAppMetadata:[
+        version: grailsApplication.config?.info?.app?.version,
+        buildNumber: grailsApplication.metadata['build.number']
+      ]
     ]
 
     DirectoryEntry.executeQuery('select de from DirectoryEntry as de where de.status.value=:managed and de.parent is null', [managed:'managed']).each { de ->
@@ -50,6 +54,14 @@ class ExternalApiController {
     else {
       response.sendError(404)
     }
+ 
+    if ( result ) {
+      result.directoryAppMetadata = [
+        version: grailsApplication.config?.info?.app?.version,
+        buildNumber: grailsApplication.metadata['build.number']
+      ]
+    }
+    
 
     render result as JSON
   }
