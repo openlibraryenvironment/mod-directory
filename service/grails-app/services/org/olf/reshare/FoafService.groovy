@@ -152,6 +152,12 @@ and gm.memberOrg.slug=:member
             // Remove the friends list - we will process it later on
             Object announcements = json.remove('announcements')
 
+			// Uppercase all the symbols
+			upperCaseSymbols(json.symbols);
+
+			// Check the unit symbols
+			checkUnitsSymbols(json.units);
+						
             // StatelessSession session = sessionFactory.openStatelessSession();
             // Transaction tx = session.beginTransaction();
 
@@ -191,6 +197,9 @@ and gm.memberOrg.slug=:member
                   log.debug("DE already exists - lock and refresh (${de.id},${de.version})");
                   de.lock()
                   de.pubLastUpdate = parsed_last_modified;
+				  
+				  // Clear out the current values, they should get repopulated
+				  clearDirectoryEntryRecord(de);
                 }
     
                 log.debug("bind json ${json}");
@@ -285,6 +294,76 @@ and gm.memberOrg.slug=:member
     finally {
       log.debug("leaving processFriend(${url},${depth}");
     }
+  }
+
+  private void upperCaseSymbols(List symbols) {
+	  // Uppercase all the symbols
+	  if (symbols != null) {
+		  symbols.each { symbol ->
+			   symbol.authority = symbol.authority.toUpperCase();
+			   symbol.symbol = symbol.symbol.toUpperCase();
+		  }
+	  }
+  }
+
+  private void checkUnitsSymbols(List units) {
+	  // If we have any symbols uppercase them
+	  if (units != null) {
+		  units.each { unit ->
+			  // Uppercase them
+			  upperCaseSymbols(unit.symbols);
+			  
+			  // Now resurse through the units if we got down through several lwvwla
+			  checkUnitsSymbols(unit.units);
+		  }
+	  }  
+  }
+    
+  private void clearDirectoryEntryRecord(DirectoryEntry directoryEntry) {
+      // Could use
+      // List<PersistentProperty> properties = Holders.grailsApplication.mappingContext.getPersistentEntity(DirectoryEntry.class.name).persistentProperties;
+      // and then process the properties, if we wanted to make this truly dynamic and clear everything, but I do not think this case warrants it
+
+      // Set all the fields to null, apart from id, slug name, type and pubLastUpdate
+      directoryEntry.description = null;
+      directoryEntry.foafUrl = null;
+      directoryEntry.entryUrl = null;
+      directoryEntry.phoneNumber = null;
+      directoryEntry.emailAddress = null;
+      directoryEntry.contactName = null;
+      directoryEntry.brandingUrl = null;
+      directoryEntry.lmsLocationCode = null;
+      directoryEntry.foafTimestamp = null;
+      directoryEntry.parent = null;
+      directoryEntry.status = null;
+
+      // Now for all the lists
+	  // We do not remove units, friends, members or symbol
+	  // Have left them commented out, for how are they used from an importing purpose
+//	  if (directoryEntry.tags != null) { 
+//		  directoryEntry.tags.collect().each { tag ->
+//			  directoryEntry.removeFromTags(tag)
+//		  }
+//	  }
+  
+//	  if (directoryEntry.services != null) { 
+//		  directoryEntry.services.collect().each { service ->
+//			  directoryEntry.removeFromServices(service)
+//		  }
+//	  }
+	  
+//	  if (directoryEntry.announcements != null) { 
+//		  directoryEntry.announcements.collect().each { announcement ->
+//			  directoryEntry.removeFromAnnouncements(announcement)
+//		  }
+//	  }
+
+	  // Do not remove the addresses, until we are bringing them in	  
+//	  if (directoryEntry.addresses != null) { 
+//		  directoryEntry.addresses.collect().each { address ->
+//			  directoryEntry.removeFromAddresses(address)
+//		  }
+//	  }
   }
 
   private boolean validateJson(json) {
@@ -547,7 +626,7 @@ and gm.memberOrg.slug=:member
       de.symbols.each { dbsymbol ->
         log.debug("Verify symbol ${dbsymbol}");
         // Look in payload.symbols for a map entry where dbsymbol.symbol == entry.symbol and dbsymbol.authority.symbol == entry.authority
-        def located_map_entry = payload.symbols.find { ( ( it.symbol == dbsymbol.symbol ) && ( it.authority == dbsymbol.authority.symbol ) ) }
+        def located_map_entry = payload.symbols.find { ( it.symbol.equals(dbsymbol.symbol) && it.authority.equals(dbsymbol.authority.symbol) ) }
         if ( located_map_entry ) {
           // DB symbol still present in data, no action needed
         }
