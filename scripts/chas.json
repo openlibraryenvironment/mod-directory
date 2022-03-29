@@ -34,27 +34,27 @@
                     "seq": 4,
                     "type": "Country",
                     "value": "country"
-                }{
+                }, {
                     "seq": 5,
                     "type": "Locality",
                     "value": "locality"
-                }{
+                }, {
                     "seq": 6,
                     "type": "PostalCode",
                     "value": "postal code"
-                }{
+                }, {
                     "seq": 7,
                     "type": "PostBox",
                     "value": "post box"
-                }{
+                }, {
                     "seq": 8,
                     "type": "PostOffice",
                     "value": "post office"
-                }{
+                }, {
                     "seq": 9,
                     "type": "PostalCodeOrTown",
                     "value": "postal code or town"
-                }{
+                }, {
                     "seq": 10,
                     "type": "Premise",
                     "value": "premise"
