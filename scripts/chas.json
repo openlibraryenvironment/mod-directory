@@ -1,6 +1,6 @@
 {
   "name":"institution-1",
-  "slug":"institution-1",
+  "slug":"institution_1",
   "lastModified":"2020-04-03T07:09:42Z",
   "phoneNumber":"phone",
   "emailAddress":"email",
@@ -11,11 +11,11 @@
     { "authority":"RESHARE", "symbol":"institution-1", "priority":"z" }
   ],
   "units": [
-    { "name":"Branch 1", "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"branch-1", "priority":"a", "slug":"branch-1@institution-1" } }
+    { "name":"Branch 1", "type": "Branch", "symbols": { "authority":"RESHARE", "symbol":"branch-1", "priority":"a" } }
   ],
   "services":[
     { 
-      "slug": "institution-1-service-1",
+      "slug": "institution_1_service_1",
       "service":{ "name":"institution-1-service-1", "address":"https://some_url", "type":"ISO18626", "businessFunction":"ILL" },
       "customProperties":{ 
         "ILLPreferredNamespaces":["RESHARE" ],
