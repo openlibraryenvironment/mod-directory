@@ -67,14 +67,16 @@
             "slug": "Institution_1_Branch_1",
             "name": "Branch 1",
             "type": "Branch",
-            "symbols": {
-                "authority": "RESHARE",
-                "symbol": "branch-1",
-                "priority": "a"
-            }
+            "symbols": [
+				{
+					"authority": "RESHARE",
+					"symbol": "branch-1",
+					"priority": "a"
+				}
+			]
         }
     ],
-    services": [
+    "services": [
 		{
 			"slug": "institution_1_service_1",
 			"service": {
