@@ -1,26 +1,22 @@
 package org.olf.reshare
 
-
-
 import grails.gorm.multitenancy.Tenants
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.WithoutTenant
 import grails.gorm.transactions.Transactional
-
 import org.olf.okapi.modules.directory.Service
 import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.refdata.RefdataCategory
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
-
 import com.k_int.okapi.OkapiTenantResolver
 import com.k_int.web.toolkit.settings.AppSetting
 import com.k_int.web.toolkit.refdata.RefdataValue;
-
-
 import org.olf.okapi.modules.directory.NamingAuthority;
-
 import grails.databinding.SimpleMapDataBindingSource 
+import com.k_int.web.toolkit.custprops.types.CustomPropertyText;
+import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
+
 
 /**
  * This service works at the module level, it's often called without a tenant context.
@@ -67,11 +63,25 @@ class DirectoryHousekeepingService {
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
+        ensureTextProperty('pickup_location_code', true, 'Pickup location code')
+        ensureTextProperty('delivery_stop', true, 'Delivery Stop')
+        ensureTextProperty('print_name', true, 'Print Name')
+        ensureTextProperty('key', true, 'Key')
       }
     }
     catch ( Exception e ) {
       log.error("Problem in DirectoryHousekeepingService",e);
     }
+  }
+
+  private CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, String label = null) {
+    CustomPropertyDefinition result = CustomPropertyDefinition.findByName(name) ?: new CustomPropertyDefinition(
+                                        name:name,
+                                        type:com.k_int.web.toolkit.custprops.types.CustomPropertyText.class,
+                                        defaultInternal: local,
+                                        label:label
+                                      ).save(flush:true, failOnError:true);
+    return result;
   }
 
 }
