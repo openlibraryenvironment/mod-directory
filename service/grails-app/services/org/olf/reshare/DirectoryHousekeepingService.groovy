@@ -63,10 +63,10 @@ class DirectoryHousekeepingService {
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
-        ensureTextProperty('pickup_location_code', false, 'Pickup location code')
-        ensureTextProperty('delivery_stop', false, 'Delivery Stop')
-        ensureTextProperty('print_name', false, 'Print Name')
-        ensureTextProperty('key', false, 'Key')
+        // ensureTextProperty('pickup_location_code', false, 'Pickup location code')
+        // ensureTextProperty('delivery_stop', false, 'Delivery Stop')
+        // ensureTextProperty('print_name', false, 'Print Name')
+        // ensureTextProperty('key', false, 'Key')
       }
     }
     catch ( Exception e ) {
