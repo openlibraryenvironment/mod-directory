@@ -72,7 +72,7 @@ if (params.fullEntry) {
     if ( directoryEntry.parent ) {
       parent {
         id directoryEntry.parent?.id
-        slug directoryEntry.slug
+        slug directoryEntry.parent?.slug
         name directoryEntry.parent?.name
         fullyQualifiedName directoryEntry.parent?.fullyQualifiedName
       }
