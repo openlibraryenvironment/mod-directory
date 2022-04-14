@@ -12,6 +12,7 @@ import org.grails.web.json.JSONObject
 import org.grails.web.json.JSONArray;
 import groovy.json.JsonOutput;
 
+import com.k_int.web.toolkit.refdata.RefdataValue
 
 /**
  * Access to InternalContact resources
@@ -197,6 +198,66 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
 
 	  // Return the result to the caller
 	  return(result);	  
-  }  
+  }
+
+  /* This action will be used to provide real time validation information
+   * which the client can then act on as it wishes.
+   * For example, if the user is attempting to create a root consortium entry
+   * when one already exists in the system, this method will return a warning.
+   *
+   * This could be extended in future to warn when a user is attempting to
+   * set up a consortium as a unit, or include logic to detect possible duplications and warn
+   * about those, etc.
+   */
+  public def validate() {
+    // Store list of errors/warnings for this directoryEntry
+    def returnMap = [
+      errors: [],
+      warnings: []
+    ]
+
+    def directoryEntry = getObjectToBind();
+    // Translate 'type' from id to human readable value
+    def typeString
+    if (directoryEntry.type) {
+      typeString = RefdataValue.read(directoryEntry.type)?.value
+    }
+
+    switch (typeString) {
+      case 'consortium':
+        def typeCount = DirectoryEntry.executeQuery(
+          """
+            SELECT COUNT(dirEnt) from DirectoryEntry dirEnt
+            WHERE
+              dirEnt.type.value = 'consortium'
+          """.toString()
+        );
+        // If a consortium already exists, warn the user
+        if (!directoryEntry.parent && typeCount[0] > 0) {
+          returnMap.warnings << "consortiumAlreadyExists"
+        }
+        break;
+      case 'institution':
+        def typeCount = DirectoryEntry.executeQuery(
+          """
+            SELECT COUNT(dirEnt) from DirectoryEntry dirEnt
+            WHERE
+              dirEnt.status.value = 'managed' AND
+              dirEnt.type.value = 'institution'
+          """.toString()
+        );
+        // If a managed institution already exists, warn the user
+        if (!directoryEntry.parent && typeCount[0] > 0) {
+          returnMap.warnings << "managedInstitutionAlreadyExists"
+        }
+        break;
+      case 'branch':
+        break;
+      default:
+        break;
+    }
+
+    respond returnMap;
+  }
 }
 
