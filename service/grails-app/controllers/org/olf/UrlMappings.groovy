@@ -10,7 +10,12 @@ class UrlMappings {
     "/directory/api/addFriend"(controller: 'application', action:'addFriend')
     "/directory/api/freshen"(controller: 'application', action:'freshen')
 
-    "/directory/entry"(resources:'directoryEntry')
+    "/directory/entry"(resources:'directoryEntry') {
+      collection {
+        "/validate" (controller: 'directoryEntry', action: 'validate')
+      }
+    }
+
     "/directory/symbol"(resources:'Symbol')
     "/directory/service"(resources:'Service')
     "/directory/serviceAccount"(resources:'ServiceAccount')

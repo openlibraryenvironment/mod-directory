@@ -49,6 +49,11 @@
           "permissionsRequired" : [ "directory.entry.item.delete" ]
         },
         {
+          "methods": [ "POST" ],
+          "pathPattern": "/directory/entry/validate",
+          "permissionsRequired" : [ "directory.entry.item.post" ]
+        },
+        {
           "methods": [ "GET" ],
           "pathPattern": "/directory/symbol",
           "permissionsRequired" : [ "directory.symbol.collection.get" ]
