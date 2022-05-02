@@ -61,6 +61,10 @@ jobs:
           docker push $dockerRepo/knowledgeintegration/${{ env.module_name }}:latest
         env:
           dockerRepo: docker.libsdev.k-int.com
+      - name: Publish Descriptor
+        run: |
+          echo Post to public registry
+          curl -i -XPOST https://registry.reshare-dev.indexdata.com/_/proxy/modules -d @service/build/resources/main/okapi/ModuleDescriptor.json
    
           
 

@@ -16,7 +16,7 @@ else
 fi
 
 # Parse command line options.
-while getopts hupt: OPT; do
+while getopts hupto: OPT; do
   case "$OPT" in
     h)
       echo $USAGE
@@ -30,6 +30,9 @@ while getopts hupt: OPT; do
       ;;
     t)
       TENANT=$OPTARG
+      ;;
+    o)
+      OKAPI_URL=$OPTARG
       ;;
     \?)
       # getopts issues an error message
