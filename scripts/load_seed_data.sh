@@ -3,7 +3,7 @@
 # setOkapiUrl sets the variable OKAPI_URL
 . ./setOkapiUrl
 
-FILE_TO_LOAD="olf.json"
+FILE_TO_LOAD="../seed_data/olf.json"
 AUTH_TOKEN=`./okapi-login`
 
 echo Got auth token $AUTH_TOKEN
