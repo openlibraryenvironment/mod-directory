@@ -1,6 +1,8 @@
 package org.olf.reshare
 
-import org.olf.okapi.modules.directory.DirectoryEntry
+import org.olf.okapi.modules.directory.Address;
+import org.olf.okapi.modules.directory.AddressLine;
+import org.olf.okapi.modules.directory.DirectoryEntry;
 import org.olf.okapi.modules.directory.GroupMember
 
 import grails.events.annotation.Subscriber
@@ -17,6 +19,7 @@ import static grails.async.Promises.*
 import java.text.SimpleDateFormat
 import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.custprops.types.CustomPropertyText
+import com.k_int.web.toolkit.refdata.RefdataValue;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -143,6 +146,7 @@ and gm.memberOrg.slug=:member
  
             println("Entry has last_modified : ${parsed_last_modified}");
 
+			// We handle the addresses separately
             Object addresses_list = json.remove('addresses')
 
             // Remove friends before processing
@@ -212,7 +216,8 @@ and gm.memberOrg.slug=:member
                 json.customProperties = custprops;
                 bindCustomProperties(de, json)
                 expireRemovedSymbols(de, json)
-
+				bindAddresses(de, addresses_list);
+				
                 if ( ( de.foafUrl == null ) && ( url != null ) )
                   de.foafUrl = url;
     
@@ -338,32 +343,24 @@ and gm.memberOrg.slug=:member
       directoryEntry.status = null;
 
       // Now for all the lists
-	  // We do not remove units, friends, members or symbol
-	  // Have left them commented out, for how are they used from an importing purpose
-//	  if (directoryEntry.tags != null) { 
-//		  directoryEntry.tags.collect().each { tag ->
-//			  directoryEntry.removeFromTags(tag)
-//		  }
-//	  }
+	  // We do not remove units, friends, members, addresses or symbols
+	  if (directoryEntry.tags != null) { 
+		  directoryEntry.tags.collect().each { tag ->
+			  directoryEntry.removeFromTags(tag)
+		  }
+	  }
   
-//	  if (directoryEntry.services != null) { 
-//		  directoryEntry.services.collect().each { service ->
-//			  directoryEntry.removeFromServices(service)
-//		  }
-//	  }
+	  if (directoryEntry.services != null) { 
+		  directoryEntry.services.collect().each { service ->
+			  directoryEntry.removeFromServices(service)
+		  }
+	  }
 	  
-//	  if (directoryEntry.announcements != null) { 
-//		  directoryEntry.announcements.collect().each { announcement ->
-//			  directoryEntry.removeFromAnnouncements(announcement)
-//		  }
-//	  }
-
-	  // Do not remove the addresses, until we are bringing them in	  
-//	  if (directoryEntry.addresses != null) { 
-//		  directoryEntry.addresses.collect().each { address ->
-//			  directoryEntry.removeFromAddresses(address)
-//		  }
-//	  }
+	  if (directoryEntry.announcements != null) { 
+		  directoryEntry.announcements.collect().each { announcement ->
+			  directoryEntry.removeFromAnnouncements(announcement)
+		  }
+	  }
   }
 
   private boolean validateJson(json) {
@@ -610,6 +607,86 @@ and gm.memberOrg.slug=:member
 
   }
 
+  private void bindAddresses(DirectoryEntry directoryEntry, ArrayList addresses) {
+	  // Create a copy of the existing addresses
+	  def addressesCopy = ((directoryEntry.addresses == null) ? [] : directoryEntry.addresses.collect());
+	  
+	  if ((addresses != null) && !addresses.isEmpty()) {
+		  // Loop through the supplied addresses
+		  addresses.each { addressJson -> 
+			  boolean saveAddress = false;
+			  
+			  // Does this address exist
+			  Address address = directoryEntry.addresses.find { addr -> addr.addressLabel.equals(addressJson.addressLabel) };
+			  if (address == null) {
+				  // We have a new address record
+				  address = new Address();
+				  address.addressLabel = addressJson.addressLabel;
+				  
+				  // Add the address to the directory entry
+				  directoryEntry.addToAddresses(address);
+			  } else {
+				  // Remove from the copy
+				  addressesCopy.removeAll{ addr -> addr.addressLabel.equals(addressJson.addressLabel) };
+				  saveAddress = true;
+			  }
+
+			  // Deal with the other fields as they may have changed
+			  address.countryCode = ((addressJson.countryCode == null) ? 'GB-ENG' : addressJson.countryCode);
+			  
+			  // Now for the lines
+			  def linesCopy = ((address.lines == null) ? [] : address.lines.collect());
+			  
+			  if ((addressJson.lines != null) && !addressJson.lines.isEmpty()) {
+				  addressJson.lines.each { lineJson ->
+					  boolean saveLine = false;
+					  
+					  // Does this line exist
+					  AddressLine addressLine = address.lines.find {line -> line.seq == lineJson.seq };
+					  
+					  // Did we find one with this sequence
+					  if (addressLine == null) {
+						  // Nope so create a new one
+						  addressLine = new AddressLine();
+						  addressLine.seq = lineJson.seq;
+				  
+						  // Add it to the address
+						  address.addToLines(addressLine);
+					  } else {
+						  // Yes we did, so remove it from the copy
+						  linesCopy.removeAll{ line -> line.seq == lineJson.seq };
+						  saveLine = true;
+					  }
+
+					  // Set the other fields					  
+					  addressLine.type = RefdataValue.lookupOrCreate('AddressLine.Type', lineJson.type);
+					  addressLine.value = lineJson.value;
+					  
+					  // Do we need to save the address line as it is an edit			  
+					  if (saveLine == true) {
+						  addressLine.save(flush:true, failOnError:true);
+					  } 
+				  }
+			  }
+			  
+			  // Remove any sequences that we havn't pulled in
+			  linesCopy.each() { line ->
+				  address.removeFromLines(line);
+			  }
+
+			  // Do we need to save the address as it is an edit			  
+			  if (saveAddress == true) {
+				  address.save(flush:true, failOnError:true);
+			  }
+		  } 
+	  }
+	  
+	  // Remove all the addresses that have not been imported
+	  addressesCopy.each() { addr ->
+		  directoryEntry.removeFromAddresses(addr);
+	  }
+  }
+  
   /**
    *  Sometimes a symbol can be removed in the record without the local cache copy of that relationship being removed. This function
    *  iterates over all symbols attached to a directory entry and flags up any which are not in the parsed json record. If the parsed
