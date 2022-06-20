@@ -9,7 +9,8 @@
   "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/KnowInt.json",
   "url":"https://www.k-int.com",
   "type":"Institution",
-  "description": "K-Int test institution",
+  "description": "K-Int test institution - chas",
+  "tags":["bogof],
   "addresses": [
     {
       "addressLabel":"K-Int office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
