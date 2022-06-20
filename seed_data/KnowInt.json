@@ -2,7 +2,7 @@
   "self":"https://okapi-reshare-dev.libsdev.k-int.com/_/invoke/tenant/kint1/directory/externalApi/entry/KINT",
   "name":"KINT",
   "slug":"KINT",
-  "lastModified":"2020-04-03T07:09:42Z",
+  "lastModified":"2020-04-04T07:09:42Z",
   "phoneNumber":"+44 114 273 8271",
   "emailAddress":"info@k-int.co.uk",
   "contactName":"Contact Name",
@@ -16,7 +16,9 @@
         { "seq":1, "type":"AdministrativeArea", "value":"Sheffield"},
         { "seq":2, "type":"Thoroughfare", "value":"35 Paradise Street"},
         { "seq":3, "type":"Department", "value":"Sheffield"},
-        { "seq":4, "type":"Country", "value":"UK"}
+        { "seq":4, "type":"Locality", "value":"Sheffield"},
+        { "seq":5, "type":"PostalCode", "value":"S3 8PZ"},
+        { "seq":6, "type":"Country", "value":"UK"}
       ]
     },
     {
@@ -24,7 +26,9 @@
         { "seq":1, "type":"AdministrativeArea", "value":"Sheffield"},
         { "seq":2, "type":"Thoroughfare", "value":"35 Paradise Street"},
         { "seq":3, "type":"Department", "value":"Sheffield"},
-        { "seq":4, "type":"Country", "value":"UK"}
+        { "seq":4, "type":"Locality", "value":"Sheffield"},
+        { "seq":5, "type":"PostalCode", "value":"S3 8PZ"},
+        { "seq":6, "type":"Country", "value":"UK"}
       ]
     }
   ],
