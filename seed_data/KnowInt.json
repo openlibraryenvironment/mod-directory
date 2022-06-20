@@ -10,7 +10,7 @@
   "url":"https://www.k-int.com",
   "type":"Institution",
   "description": "K-Int test institution - chas",
-  "tags":["bogof],
+  "tags":["bogof"],
   "addresses": [
     {
       "addressLabel":"K-Int office", "tags":["DefaultAddress","ShippingAddress"], "lines":[
