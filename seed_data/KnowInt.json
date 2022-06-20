@@ -31,14 +31,6 @@
         { "seq":5, "type":"PostalCode", "value":"S3 8PZ"},
         { "seq":6, "type":"Country", "value":"UK"}
       ]
-    },
-    {
-      "addressLabel":"Chas",
-	  "lines":[
-        { "seq":4, "type":"Locality", "value":"Sheffield"},
-        { "seq":5, "type":"PostalCode", "value":"S3 8PZ"},
-        { "seq":6, "type":"Country", "value":"UK"}
-      ]
     }
   ],
   "symbols": [
