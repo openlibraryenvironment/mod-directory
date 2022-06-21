@@ -47,7 +47,7 @@ class RefdataSpec extends HttpSpec {
       })
       
       // Nasty... Would like a waitFor on the events. But for now this will do.
-      Thread.sleep(4000)
+      Thread.sleep(10000)
     
     expect: 'Response'
       resp != null
