@@ -66,11 +66,11 @@ eclipse {
 }
 
 repositories {
-  maven { url "https://maven.k-int.com/repository/releases" }
-  jcenter()
-  mavenLocal()
+  mavenCentral()
   maven { url 'https://repo.grails.org/grails/core' }
-  maven { url 'http://maven.indexdata.com/' }
+  maven { url 'https://maven.indexdata.com/' }
+  maven { url "https://maven.k-int.com/repository/releases" }
+  maven { url "https://repo.gradle.org/gradle/libs-releases-local" }
 }
 
 sourceSets {
