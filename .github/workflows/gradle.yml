@@ -1,3 +1,5 @@
+# mod-directory build action
+# Updated II 30th June 2022 - extra info about location of published artefacts to build log
 name: Build mod-directory
 
 on:
@@ -47,7 +49,7 @@ jobs:
       - if: env.is_snapshot == '1'
         name: Publish to snapshot
         run: |
-          echo "push to snapshot repo ${{env.module_name}} ${{env.module_version}}"
+          echo "push to snapshot $dockerRepo/knowledgeintegration/${{env.module_name}}:${{env.module_version}}"
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }} $dockerRepo
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:${{ env.module_version }}
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:snapshot-latest
@@ -58,7 +60,7 @@ jobs:
       - if: env.is_snapshot == '0'
         name: Publish to release
         run: |
-          echo "push to snapshot repo ${{env.module_name}} ${{env.module_version}}"
+          echo "push to snapshot $dockerRepo/knowledgeintegration/${{env.module_name}}:${{env.module_version}}"
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }} $dockerRepo
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:${{ env.module_version }}
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:latest
