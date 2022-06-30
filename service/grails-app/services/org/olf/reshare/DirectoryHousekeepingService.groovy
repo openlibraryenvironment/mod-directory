@@ -61,7 +61,7 @@ class DirectoryHousekeepingService {
    */
   @Subscriber('okapi:schema_update')
   public void onSchemaUpdate(tenantName, tenantId) {
-    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tid})")
+    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tenantId})")
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
