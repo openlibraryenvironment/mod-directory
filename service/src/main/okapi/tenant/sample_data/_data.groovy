@@ -97,69 +97,71 @@ void renameRefdata(String category, String oldValue, String newValue) {
 log.info '\n\n** Importing sample data **\n\n'
 println '\n\n** Importing sample data **\n\n'
 
-AppSetting directory_announce_url = AppSetting.findByKey('directory_announce_url') ?: new AppSetting(
-                                  section:'directory',
-                                  settingType:'String',
-                                  key: 'directory_announce_url',
-                                  ).save(flush:true, failOnError: true);
+// AppSetting directory_announce_url = AppSetting.findByKey('directory_announce_url') ?: new AppSetting(
+//                                   section:'directory',
+//                                   settingType:'String',
+//                                   key: 'directory_announce_url',
+//                                   ).save(flush:true, failOnError: true);
 
 
 /* if (existing_tenant) {
   log.info 'Skipping exisiting tenant'
   return
 } */
+// Moving all these to grails-app/services/org/olf/reshare/DirectoryHousekeepingService.groovy
 
-def cp_ns = ensureTextProperty('ILLPreferredNamespaces', false);
-def cp_url = ensureTextProperty('url', false);
-def cp_demoprop = ensureTextProperty('demoCustprop', false);
-def cp_test_prop = ensureTextProperty('TestParam', false);
-def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
-def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, label='Institutional patron ID');
-def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
-def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
-def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
+// def cp_ns = ensureTextProperty('ILLPreferredNamespaces', false);
+// def cp_url = ensureTextProperty('url', false);
+// def cp_demoprop = ensureTextProperty('demoCustprop', false);
+// def cp_test_prop = ensureTextProperty('TestParam', false);
+// def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
+// def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, label='Institutional patron ID');
+// def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
+// def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
+// def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
 
-NamingAuthority reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
-NamingAuthority isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
-NamingAuthority oclc = NamingAuthority.findBySymbol('OCLC') ?: new NamingAuthority(symbol:'OCLC').save(flush:true, failOnError:true);
-NamingAuthority exl = NamingAuthority.findBySymbol('EXL') ?: new NamingAuthority(symbol:'EXL').save(flush:true, failOnError:true);
-NamingAuthority palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
-NamingAuthority cardinal = NamingAuthority.findBySymbol('CARDINAL') ?: new NamingAuthority(symbol:'CARDINAL').save(flush:true, failOnError:true);
+//
+// NamingAuthority reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
+// NamingAuthority isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
+// NamingAuthority oclc = NamingAuthority.findBySymbol('OCLC') ?: new NamingAuthority(symbol:'OCLC').save(flush:true, failOnError:true);
+// NamingAuthority exl = NamingAuthority.findBySymbol('EXL') ?: new NamingAuthority(symbol:'EXL').save(flush:true, failOnError:true);
+// NamingAuthority palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
+// NamingAuthority cardinal = NamingAuthority.findBySymbol('CARDINAL') ?: new NamingAuthority(symbol:'CARDINAL').save(flush:true, failOnError:true);
 
-RefdataValue.lookupOrCreate('Service.Type', 'ISO18626')
-RefdataValue.lookupOrCreate('Service.Type', 'RTAC')
-RefdataValue.lookupOrCreate('Service.Type', 'HTTP')
-RefdataValue.lookupOrCreate('Service.Type', 'NCIP')
-RefdataValue.lookupOrCreate('Service.Type', 'OAI-PMH')
-RefdataValue.lookupOrCreate('Service.Type', 'Z3950')
+// RefdataValue.lookupOrCreate('Service.Type', 'ISO18626')
+// RefdataValue.lookupOrCreate('Service.Type', 'RTAC')
+// RefdataValue.lookupOrCreate('Service.Type', 'HTTP')
+// RefdataValue.lookupOrCreate('Service.Type', 'NCIP')
+// RefdataValue.lookupOrCreate('Service.Type', 'OAI-PMH')
+// RefdataValue.lookupOrCreate('Service.Type', 'Z3950')
 
-RefdataValue.lookupOrCreate('Service.BusinessFunction', 'ILL')
-RefdataValue.lookupOrCreate('Service.BusinessFunction', 'CIRC')
-RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
-RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
-RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
+// RefdataValue.lookupOrCreate('Service.BusinessFunction', 'ILL')
+// RefdataValue.lookupOrCreate('Service.BusinessFunction', 'CIRC')
+// RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
+// RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
+// RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
 
-RefdataValue.lookupOrCreate('YNO', 'Yes')
-RefdataValue.lookupOrCreate('YNO', 'No')
-RefdataValue.lookupOrCreate('YNO', 'Other')
+// RefdataValue.lookupOrCreate('YNO', 'Yes')
+// RefdataValue.lookupOrCreate('YNO', 'No')
+// RefdataValue.lookupOrCreate('YNO', 'Other')
 
 // We need to rename "Lendin Physical Only" to Lending Physical Only"
-renameRefdata('LoanPolicy', 'Lendin Physical Only', 'Lending Physical Only');
+// renameRefdata('LoanPolicy', 'Lendin Physical Only', 'Lending Physical Only');
 
-RefdataValue.lookupOrCreate('LoanPolicy', 'Lending all types')
-RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
-RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Physical only')
-RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
+// RefdataValue.lookupOrCreate('LoanPolicy', 'Lending all types')
+// RefdataValue.lookupOrCreate('LoanPolicy', 'Not Lending')
+// RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Physical only')
+// RefdataValue.lookupOrCreate('LoanPolicy', 'Lending Electronic only')
 
 // Code, Internal(True=Local/private, False=Global/shared), [optional refdata category]  label
-def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
-def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
-def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
-def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, label='ILL Loan To Borrow Ratio');
+// def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
+// def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
+// def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
+// def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, label='ILL Loan To Borrow Ratio');
 
-def na_reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
-def na_isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
-def na_palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
+// def na_reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
+// def na_isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
+// def na_palci = NamingAuthority.findBySymbol('PALCI') ?: new NamingAuthority(symbol:'PALCI').save(flush:true, failOnError:true);
 
 // def iso_18626_loopback_service = ensureService('loopback-iso-18626',
 //                                                        'ISO18626',
