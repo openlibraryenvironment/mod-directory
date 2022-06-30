@@ -21,7 +21,7 @@ Map<String, String> env = System.getenv();
 String calculated_version = null;
 
 if ( ( appVersion.contains('SNAPSHOT') ) && ( env.BUILD_NUMBER != null ) ) {
-  println("Detected snapshot version and build number - appending");
+  println("Detected snapshot version and build number - appending. For note env.GITHUB_RUN_NUMBER is ${env.GITHUB_RUN_NUMBER}");
   calculated_version = "${appVersion}.${env.BUILD_NUMBER}".toString()
 }
 else {
