@@ -25,8 +25,8 @@ class RefdataSpec extends HttpSpec {
     
     setHttpClientConfig {
       client.clientCustomizer { HttpURLConnection conn ->
-        conn.connectTimeout = 10000
-        conn.readTimeout = 5000
+        conn.connectTimeout = 5000
+        conn.readTimeout = 20000
       }
     }
   }
