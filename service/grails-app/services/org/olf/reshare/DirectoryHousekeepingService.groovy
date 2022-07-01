@@ -180,7 +180,7 @@ class DirectoryHousekeepingService {
    */
   @Subscriber('okapi:schema_update')
   public void onSchemaUpdate(tenantName, tenantId) {
-    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tid})")
+    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tenantId})")
   }
 
 }
