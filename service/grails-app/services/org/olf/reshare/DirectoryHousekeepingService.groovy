@@ -53,15 +53,6 @@ class DirectoryHousekeepingService {
   @Subscriber('okapi:dataload:reference')
   public void onLoadReference (final String tenantId, String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
     log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
-  }
-
-  /**
-   * This is called by the eventing mechanism - There is no web request context
-   * this method is called after the schema for a tenant is updated.
-   */
-  @Subscriber('okapi:schema_update')
-  public void onSchemaUpdate(tenantName, tenantId) {
-    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tid})")
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
@@ -181,6 +172,15 @@ class DirectoryHousekeepingService {
       println("Unable to find category ${category}");
     }
     return result;
+  }
+
+  /**
+   * This is called by the eventing mechanism - There is no web request context
+   * this method is called after the schema for a tenant is updated.
+   */
+  @Subscriber('okapi:schema_update')
+  public void onSchemaUpdate(tenantName, tenantId) {
+    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tid})")
   }
 
 }
