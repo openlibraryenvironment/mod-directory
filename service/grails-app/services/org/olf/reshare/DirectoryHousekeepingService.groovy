@@ -73,10 +73,10 @@ class DirectoryHousekeepingService {
         // def cp_demoprop = ensureTextProperty('demoCustprop', false);
         // def cp_test_prop = ensureTextProperty('TestParam', false);
         def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
-        def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, label='Institutional patron ID');
+        def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, 'Institutional patron ID');
         // def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
         // def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
-        def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
+        def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, 'ALMA Agency ID');
 
         NamingAuthority reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
         NamingAuthority isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
@@ -118,7 +118,7 @@ class DirectoryHousekeepingService {
         def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
         def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
         def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
-        def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, label='ILL Loan To Borrow Ratio');
+        def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, 'ILL Loan To Borrow Ratio');
 
       }
     }
