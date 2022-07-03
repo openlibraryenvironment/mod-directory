@@ -1,5 +1,10 @@
 # mod-directory
 
+## Grails-okapi
+
+mod-directory is a [https://gitlab.com/knowledge-integration/folio/grails-okapi](grails-okapi) project - see that project for general troubleshooting 
+for grails / okapi ecosystem projects.
+
 ## For front end and service developers wanting to use the resources mod-directory exposes
 
 mod-directory currently exposes the following resource paths
