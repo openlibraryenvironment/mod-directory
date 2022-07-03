@@ -35,24 +35,8 @@ class DirectoryHousekeepingService {
                                     final boolean upgrading,
                                     final String toVersion,
                                     final String fromVersion) {
-    // log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
-    // Please use the okapi:dataload:reference event below instead o this event.
-  }
-
-  @Subscriber('okapi:tenant_load_sample')
-  public void onTenantLoadSample(final String tenantId, 
-                                 final String value, 
-                                 final boolean existing_tenant, 
-                                 final boolean upgrading, 
-                                 final String toVersion, 
-                                 final String fromVersion) {
     log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
-  }
-
-  // @Subscriber('okapi:tenant_enabled')
-  @Subscriber('okapi:dataload:reference')
-  public void onLoadReference (final String tenantId, String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
-    log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+    // Please use the okapi:dataload:reference event below instead o this event.
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
@@ -125,6 +109,27 @@ class DirectoryHousekeepingService {
     catch ( Exception e ) {
       log.error("Problem in DirectoryHousekeepingService",e);
     }
+  }
+
+  @Subscriber('okapi:tenant_load_sample')
+  public void onTenantLoadSample(final String tenantId, 
+                                 final String value, 
+                                 final boolean existing_tenant, 
+                                 final boolean upgrading, 
+                                 final String toVersion, 
+                                 final String fromVersion) {
+    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+  }
+
+  // @Subscriber('okapi:tenant_enabled')
+  @Subscriber('okapi:dataload:reference')
+  public void onLoadReference (final String tenantId, 
+                               final String value, 
+                               final boolean existing_tenant, 
+                               final boolean upgrading, 
+                               final String toVersion, 
+                               final String fromVersion) {
+    log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
   }
 
   /**
