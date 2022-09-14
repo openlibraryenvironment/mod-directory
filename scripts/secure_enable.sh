@@ -17,7 +17,7 @@ else
   exit 0
 fi
 
-echo Enable mod-directory for tenant $1
+echo Enable mod-directory for tenant $1 on URL $2
 
 echo $BASEDIR
 pushd "$BASEDIR/../service"
@@ -36,7 +36,8 @@ if [ ! -d "$DESCRIPTORDIR" ]; then
     ./gradlew generateDescriptors
 fi
 
-DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json`
+# cat ../service/build/resources/main/okapi/DeploymentDescriptor.json |  jq -c '.url="http://a.b.c"'
+DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json | jq -c ".url=\"$2\""`
 SVC_ID=`echo $DEP_DESC | jq -rc '.srvcId'`
 INS_ID=`echo $DEP_DESC | jq -rc '.instId'`
 
