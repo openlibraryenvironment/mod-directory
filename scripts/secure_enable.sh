@@ -46,6 +46,9 @@ AUTH_TOKEN=`../scripts/okapi-login -u $ST_UN -p $ST_PW -t supertenant -o $OKAPI_
 echo -e "\n\nENABLING MODULE:"
 echo Deployment Descriptor : $DEP_DESC
 
+echo -e "\n\nPOSTING DEPLOYMENT DESCRIPTOR:"
+curl -XPOST -H "X-Okapi-Token: $AUTH_TOKEN" "${OKAPI_URL}/_/discovery/modules" -d "$DEP_DESC"
+
 ENABLE_DOC=`echo $DEP_DESC | jq -c '[{id: .srvcId, action: "enable"}]'`
 echo "Enable service - enable doc is $ENABLE_DOC"
 
