@@ -37,17 +37,11 @@ if [ ! -d "$DESCRIPTORDIR" ]; then
 fi
 
 # cat ../service/build/resources/main/okapi/DeploymentDescriptor.json |  jq -c '.url="http://a.b.c"'
-DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json | jq -c ".url=\"$2\""`
+DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json`
 SVC_ID=`echo $DEP_DESC | jq -rc '.srvcId'`
 INS_ID=`echo $DEP_DESC | jq -rc '.instId'`
 
 AUTH_TOKEN=`../scripts/okapi-login -u $ST_UN -p $ST_PW -t supertenant -o $OKAPI_URL`
-
-echo -e "\n\nENABLING MODULE:"
-echo Deployment Descriptor : $DEP_DESC
-
-echo -e "\n\nPOSTING DEPLOYMENT DESCRIPTOR:"
-curl -XPOST -H "X-Okapi-Token: $AUTH_TOKEN" "${OKAPI_URL}/_/discovery/modules" -d "$DEP_DESC"
 
 ENABLE_DOC=`echo $DEP_DESC | jq -c '[{id: .srvcId, action: "enable"}]'`
 echo "Enable service - enable doc is $ENABLE_DOC"

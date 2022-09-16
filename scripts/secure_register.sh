@@ -10,10 +10,10 @@ elif [ -f $HOME/.okapirc ]; then
   . $HOME/.okapirc
 else
   echo You must configure \$HOME/.okapirc
-  echo export IS_SECURE_SUPERTENANT=
-  echo export ST_UN=
-  echo export ST_PW=
-  echo export OKAPI_URL=
+  echo export IS_SECURE_SUPERTENANT=Y
+  echo export ST_UN=sysadm
+  echo export ST_PW=PASSWORD_FROM_LOCAL_okapi_commander_cfg.json
+  echo export OKAPI_URL=http://localhost:30100
   exit 0
 fi
 
@@ -34,7 +34,8 @@ if [ ! -d "$DESCRIPTORDIR" ]; then
     ./gradlew generateDescriptors
 fi
 
-DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json`
+# DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json | jq -c ".url=\"$2\""`
+DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json | jq -c ".url=\"http://192.168.5.2:8080/\""`
 SVC_ID=`echo $DEP_DESC | jq -rc '.srvcId'`
 INS_ID=`echo $DEP_DESC | jq -rc '.instId'`
 
@@ -58,8 +59,7 @@ echo Install latest module ${SVC_ID}/${INS_ID}
 echo
 curl -XPOST -H "X-Okapi-Token: $AUTH_TOKEN" ${OKAPI_URL}/_/proxy/modules -d @"${DESCRIPTORDIR}/ModuleDescriptor.json"
 
-echo Install deployment descriptor
-echo
-curl -XPOST -H "X-Okapi-Token: $AUTH_TOKEN" ${OKAPI_URL}/_/discovery/modules -d "$DEP_DESC"
+echo -e "\n\nPOSTING DEPLOYMENT DESCRIPTOR:"
+curl -XPOST -H "X-Okapi-Token: $AUTH_TOKEN" "${OKAPI_URL}/_/discovery/modules" -d "$DEP_DESC"
 
 popd
