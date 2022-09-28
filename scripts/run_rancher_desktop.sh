@@ -16,5 +16,5 @@ echo Start mod-directory in external-register mode
 # curl --header "X-Okapi-Tenant: diku" http://localhost:9130/content -X GET
 
 # THis DOES work as expected however - 
-java -jar $the_jar_file -Xmx1G --grails.server.host=10.0.2.2 --dataSource.username=okapi_1 --dataSource.password=okapi_1 --dataSource.url=jdbc:postgresql://localhost:30101/okapi_modules
+java -Djava.net.preferIPv4Stack=true -jar $the_jar_file -Xmx1G --grails.server.host=10.0.2.2 --dataSource.username=okapi_1 --dataSource.password=okapi_1 --dataSource.url=jdbc:postgresql://localhost:30101/okapi_modules
 
