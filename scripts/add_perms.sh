@@ -3,7 +3,7 @@
 # setOkapiUrl sets the variable OKAPI_URL
 . ./setOkapiUrl
 
-AUTH_TOKEN=`./okapi-login`
+AUTH_TOKEN=`./okapi-login -u diku_admin -p admin -t diku`
 echo "Got auth token $AUTH_TOKEN"
 ADMIN_USER_ID=`./get_admin_id.sh`
 echo "Got admin id $ADMIN_USER_ID"

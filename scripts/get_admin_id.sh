@@ -3,7 +3,7 @@
 # setOkapiUrl sets the variable OKAPI_URL
 . ./setOkapiUrl
 
-AUTH_TOKEN=`./okapi-login`
+AUTH_TOKEN=`./okapi-login -u diku_admin -p admin -t diku`
 USER_QUERY_RESPONSE=$(curl -sSL -H "X-Okapi-Tenant:diku" -H "X-Okapi-Token:$AUTH_TOKEN" \
     -H "Content-Type: application/json" \
     -X GET "${OKAPI_URL}/users?query=username=diku_admin" )
