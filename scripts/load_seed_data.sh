@@ -4,7 +4,12 @@
 . ./setOkapiUrl
 
 FILE_TO_LOAD="../seed_data/olf.json"
-AUTH_TOKEN=`./okapi-login`
+#FILE_TO_LOAD="../seed_data/localdev/localnet.json"
+#FILE_TO_LOAD="../seed_data/localdev/localhosta.json"
+#FILE_TO_LOAD="../seed_data/localdev/localhostb.json"
+#FILE_TO_LOAD="../seed_data/KnowInt.json"
+
+AUTH_TOKEN=`./okapi-login -u diku_admin -p admin -t diku`
 
 echo Got auth token $AUTH_TOKEN
 echo Loading file ${FILE_TO_LOAD}
