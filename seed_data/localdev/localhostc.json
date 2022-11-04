@@ -1,0 +1,24 @@
+{
+  "name":"Localhost C",
+  "slug":"localhostc",
+  "foafUrl":"https://raw.githubusercontent.com/openlibraryenvironment/mod-directory/master/seed_data/localdev/localhostc.json",
+  "url":"https://www.k-int.com",
+  "type":"Institution",
+  "description": "developer localhost institution c",
+  "phoneNumber":"LocalhostC",
+  "emailAddress":"Localhostc@TestInst01.com",
+  "contactName":"LocalhostC Contact Name",
+  "customProperties":{
+    "policy.ill.InstitutionalLoanToBorrowRatio":["1:1"]
+  },
+  "symbols": [
+    { "authority":"RESHARE",   "symbol":"LOCALHOSTC",    "priority":"a" }
+  ],
+  "services":[
+    {
+      "slug": "LOCALHOSTC_ISO18626",
+      "service":{ "name":"LOCALHOSTA ISO18626 Service", "address":"http://localhost:9130/_/invoke/tenant/diku/rs/externalApi/iso18626", "type":"ISO18626", "businessFunction":"ILL" },
+      "customProperties": { "ILLPreferredNamespaces": [ "RESHARE" ]  }
+    }
+  ]
+}
