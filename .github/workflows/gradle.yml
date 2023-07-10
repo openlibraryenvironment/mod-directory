@@ -1,3 +1,5 @@
+# mod-directory build action
+# Updated II 30th June 2022 - extra info about location of published artefacts to build log
 name: Build mod-directory
 
 on:
@@ -24,7 +26,10 @@ jobs:
       - name: Inject github build number
         run: |
           # Make github run id available to gradle script via env var BUILD_NUMBER so it ends up in our module descriptor version
-          echo "BUILD_NUMBER=${{github.run_id}}" >> $GITHUB_ENV
+          # By doing this here we push BUILD_NUMBER into the env so that gradle can pick it up and use it in the build pipeline.
+          # Can't help but think that github.build_number may be a better choice now tho
+          # echo "BUILD_NUMBER=${{github.run_id}}" >> $GITHUB_ENV
+          echo "BUILD_NUMBER=${{github.run_number}}" >> $GITHUB_ENV
       - name: Build with Gradle
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
@@ -47,7 +52,7 @@ jobs:
       - if: env.is_snapshot == '1'
         name: Publish to snapshot
         run: |
-          echo "push to snapshot repo ${{env.module_name}} ${{env.module_version}}"
+          echo "push to snapshot $dockerRepo/knowledgeintegration/${{env.module_name}}:${{env.module_version}}"
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }} $dockerRepo
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:${{ env.module_version }}
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:snapshot-latest
@@ -58,7 +63,7 @@ jobs:
       - if: env.is_snapshot == '0'
         name: Publish to release
         run: |
-          echo "push to snapshot repo ${{env.module_name}} ${{env.module_version}}"
+          echo "push to snapshot $dockerRepo/knowledgeintegration/${{env.module_name}}:${{env.module_version}}"
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }} $dockerRepo
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:${{ env.module_version }}
           docker tag ${{ env.module_name }}:${{ env.module_version }} $dockerRepo/knowledgeintegration/${{ env.module_name }}:latest

@@ -27,6 +27,16 @@ class DirectoryHousekeepingService {
 
   def grailsWebDataBinder
 
+  @Subscriber('okapi:tenant_enabled')
+  public void onTenantEnabled(final String tenantId,
+                              final String value,
+                              final boolean existing_tenant,
+                              final boolean upgrading,
+                              final String toVersion,
+                              final String fromVersion) {
+    log.info("onTenantEnabled(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion}) - via okapi:tenant_enabled");
+  }
+
 
   @Subscriber('okapi:tenant_load_reference')
   public void onTenantLoadReference(final String tenantId,
@@ -35,24 +45,8 @@ class DirectoryHousekeepingService {
                                     final boolean upgrading,
                                     final String toVersion,
                                     final String fromVersion) {
-    // log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
+    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion}) - via okapi:tenant_load_reference");
     // Please use the okapi:dataload:reference event below instead o this event.
-  }
-
-  @Subscriber('okapi:tenant_load_sample')
-  public void onTenantLoadSample(final String tenantId, 
-                                 final String value, 
-                                 final boolean existing_tenant, 
-                                 final boolean upgrading, 
-                                 final String toVersion, 
-                                 final String fromVersion) {
-    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
-  }
-
-  // @Subscriber('okapi:tenant_enabled')
-  @Subscriber('okapi:dataload:reference')
-  public void onLoadReference (final String tenantId, String value, final boolean existing_tenant, final boolean upgrading, final String toVersion, final String fromVersion) {
-    log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion})");
     final String tenant_schema_id = OkapiTenantResolver.getTenantSchemaName(tenantId)
     try {
       Tenants.withId(tenant_schema_id) {
@@ -70,13 +64,13 @@ class DirectoryHousekeepingService {
 
         def cp_ns = ensureTextProperty('ILLPreferredNamespaces', false);
         def cp_url = ensureTextProperty('url', false);
-        def cp_demoprop = ensureTextProperty('demoCustprop', false);
-        def cp_test_prop = ensureTextProperty('TestParam', false);
+        // def cp_demoprop = ensureTextProperty('demoCustprop', false);
+        // def cp_test_prop = ensureTextProperty('TestParam', false);
         def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
-        def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, label='Institutional patron ID');
-        def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
-        def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
-        def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, label='ALMA Agency ID');
+        def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, 'Institutional patron ID');
+        // def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
+        // def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
+        def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, 'ALMA Agency ID');
 
         NamingAuthority reshare = NamingAuthority.findBySymbol('RESHARE') ?: new NamingAuthority(symbol:'RESHARE').save(flush:true, failOnError:true);
         NamingAuthority isil = NamingAuthority.findBySymbol('ISIL') ?: new NamingAuthority(symbol:'ISIL').save(flush:true, failOnError:true);
@@ -118,13 +112,42 @@ class DirectoryHousekeepingService {
         def cp_accept_returns_policy = ensureRefdataProperty('policy.ill.returns', false, 'YNO', 'Accept Returns' )
         def cp_physical_loan_policy = ensureRefdataProperty('policy.ill.loan_policy', false, 'LoanPolicy', 'ILL Loan Policy' )
         def cp_last_resort_policy = ensureRefdataProperty('policy.ill.last_resort', false, 'YNO', 'Consider Institution As Last Resort' )
-        def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, label='ILL Loan To Borrow Ratio');
+        def cp_lb_ratio = ensureTextProperty('policy.ill.InstitutionalLoanToBorrowRatio', false, 'ILL Loan To Borrow Ratio');
 
       }
     }
     catch ( Exception e ) {
       log.error("Problem in DirectoryHousekeepingService",e);
     }
+  }
+
+  @Subscriber('okapi:tenant_load_sample')
+  public void onTenantLoadSample(final String tenantId, 
+                                 final String value, 
+                                 final boolean existing_tenant, 
+                                 final boolean upgrading, 
+                                 final String toVersion, 
+                                 final String fromVersion) {
+    log.info("onTenantLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion}) via okapi:tenant_load_sample");
+  }
+
+  @Subscriber('okapi:dataload:reference')
+  public void onLoadReference (final String tenantId, 
+                               final String value, 
+                               final boolean existing_tenant, 
+                               final boolean upgrading, 
+                               final String toVersion, 
+                               final String fromVersion) {
+    log.debug("DirectoryHousekeepingService::onLoadReference(${tenantId},${value},${existing_tenant},${upgrading},${toVersion},${fromVersion}) via okapi:dataload:reference");
+  }
+
+  /**
+   * This is called by the eventing mechanism - There is no web request context
+   * this method is called after the schema for a tenant is updated.
+   */
+  @Subscriber('okapi:schema_update')
+  public void onSchemaUpdate(tenantName, tenantId) {
+    log.info("DirectoryHousekeepingService::onSchemaUpdate(${tenantName},${tenantId}) via okapi:schema_update")
   }
 
   private CustomPropertyDefinition ensureTextProperty(String name, boolean local = true, String label = null) {

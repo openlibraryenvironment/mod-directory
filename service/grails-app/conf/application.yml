@@ -220,4 +220,4 @@ okapi:
 
 folio:
   directory:
-    defualtttl: 120000  # min TTL in milliseconds for a directory entry to live before it can be tested for an updated - 2 mins
+    defualtttl: "${folio.directory.defaultttl:120000}"  # min TTL in milliseconds for a directory entry to live before it can be tested for an updated - 2 mins
