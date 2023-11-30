@@ -38,6 +38,13 @@ jobs:
           arguments: build
           build-root-directory: service
 
+      - name: Stop containers
+        if: always()
+        run: |
+          cd tools/testing
+          docker-compose down -v
+          sleep 10
+
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
