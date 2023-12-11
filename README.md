@@ -115,6 +115,10 @@ You may need to set OKAPI_SERVICE_PORT and/or OKAPI_SERVICE_HOST on the mod-dire
 |DB_MAXPOOLSIZE|Max DB connection Pool size|50|
 |FOLIO_DIRECTORY_DEFUALTTTL|Default time to live for directory entry before a refresh can be attempted - default 2 mins|120000
 
-
+## Release Procedures
+* To prepare for a release, create a branch called release-N.N.x where N.N is the major and minor versions, and x is the letter x.
+* Push a tag to the release branch when changes are finalized.
+* From the Github repository page, create a release from the tag created in the previous step.
+* CI will publish appropriate artifacts when the release is published.
 
 
