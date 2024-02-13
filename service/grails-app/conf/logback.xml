@@ -1,0 +1,27 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="folio" level="debug"/>
+  <logger name="mod.directory" level="debug"/>
+  <logger name="org.olf" level="debug"/>
+  <logger name="org.olf.okapi.modules.directory.CustomBinders" level="warn"/>
+
+  <logger name="com.k_int" level="debug"/>
+  <logger name="com.k_int.okapi" level="warn"/>
+  <logger name="com.k_int.okapi.DataloadingService" level="debug"/>
+  <logger name="com.k_int.okapi.TenantController" level="debug"/>
+  <logger name="com.k_int.web.toolkit.refdata.GrailsDomainRefdataHelpers" level="warn"/>
+
+  <logger name="javax.persistence.criteria.CriteriaQuery" level="error"/>
+  <logger name="org.grails.datastore" level="warn"/>
+  <logger name="org.hibernate.orm.deprecation" level="error"/>
+
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
