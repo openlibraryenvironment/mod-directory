@@ -58,6 +58,10 @@ sourceSets {
   }
 }
 
+bootJar {
+  duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
 dependencies {
   /* ---- Grails 5 ---- */
   compileOnly "io.micronaut:micronaut-inject-groovy"
