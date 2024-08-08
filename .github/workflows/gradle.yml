@@ -114,7 +114,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:rc
           labels: ${{ steps.meta.outputs.labels }}
 
-      - uses: actions/delete-package-versions@v5
+      - name: delete untagged containers
+        if: always()
+        uses: actions/delete-package-versions@v5
         with: 
           package-name: 'mod-directory'
           package-type: 'container'
