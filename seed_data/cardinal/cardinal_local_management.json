@@ -9,6 +9,8 @@
     { "memberOrg":"us-west-1"},
     { "memberOrg":"us-north-1"},
     { "memberOrg":"us-south-1"},
+    { "memberOrg":"us-back-1"},
+    { "memberOrg":"us-forth-1"},
     { "memberOrg":"tns_alma"}
   ],
   "friends":[
@@ -16,6 +18,8 @@
     { "foaf": "https://west-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_west/directory/externalApi/entry/us-west-1" },
     { "foaf": "https://north-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_north/directory/externalApi/entry/us-north-1" },
     { "foaf": "https://south-okapi.folio-dev.indexdata.com/_/invoke/tenant/reshare_south/directory/externalApi/entry/us-south-1" },
+    { "foaf": "https://back-okapi.reshare-dev.indexdata.com/_/invoke/tenant/back/directory/externalApi/entry/us-back-1" },
+    { "foaf": "https://forth-okapi.reshare-dev.indexdata.com/_/invoke/tenant/forth/directory/externalApi/entry/us-forth-1" },
     { "foaf": "https://reshare-bundles.s3.amazonaws.com/directory/alma-test.json" }
   ]
 }
