@@ -46,6 +46,7 @@ and gm.memberOrg.slug=:member
 '''
 
   private static List MANAGED_CUSTPROPS = ['local_institutionalPatronId',
+     'folio_location_filter',
      'policy.ill.loan_policy',
      'policy.ill.last_resort',
      'policy.ill.returns',
