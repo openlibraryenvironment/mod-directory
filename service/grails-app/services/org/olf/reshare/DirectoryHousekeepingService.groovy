@@ -68,6 +68,7 @@ class DirectoryHousekeepingService {
         // def cp_test_prop = ensureTextProperty('TestParam', false);
         def cp_z3950_base_name = ensureTextProperty('Z3950BaseName', false);
         def cp_local_institutionalPatronId = ensureTextProperty('local_institutionalPatronId', true, 'Institutional patron ID');
+        def cp_FolioLocationFilter = ensureTextProperty('folio_location_filter', true, 'FOLIO location filter')
         // def cp_local_widget2 = ensureTextProperty('local_widget_2', true, label='Widget 2');
         // def cp_local_widget3 = ensureTextProperty('local_widget_3', true, label='Widget 3');
         def cp_local_alma_agency = ensureTextProperty('ALMA_AGENCY_ID', true, 'ALMA Agency ID');
