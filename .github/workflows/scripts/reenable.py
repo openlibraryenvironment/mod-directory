@@ -11,7 +11,7 @@ import urllib.request
 MODULES = ['mod-directory']
 
 # names of tenants to operate on
-TENANTS = ['reshare_east', 'reshare_west']
+TENANTS = ['reshare_east', 'reshare_west', 'slnptest_one', 'slnptest_two']
 
 REGISTRY = "https://registry.reshare-dev.indexdata.com"
 
