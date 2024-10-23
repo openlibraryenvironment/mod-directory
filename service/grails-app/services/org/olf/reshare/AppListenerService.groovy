@@ -96,7 +96,7 @@ public class AppListenerService implements ApplicationListener {
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
 
 
-    Map entry_data = makeDirentJSON(de, false, true, false);
+    Map entry_data = makeDirentJSON(de, false, true, false, false);
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
@@ -155,7 +155,8 @@ public class AppListenerService implements ApplicationListener {
   public Map makeDirentJSON(DirectoryEntry de, 
                             boolean include_units=false, 
                             boolean include_private_custprops=false,
-                            boolean use_public_profile=false) {
+                            boolean use_public_profile=false,
+                            boolean add_addresses=false) {
 
     String last_modified_str = null;
     if ( ( de.pubLastUpdate != null ) && ( de.pubLastUpdate > 0 ) ) {
@@ -183,6 +184,7 @@ public class AppListenerService implements ApplicationListener {
       type: de.type?.value,
       customProperties: getCustprops(de.customProperties, include_private_custprops),
       members:[],
+      addresses: [],
     ]
 
     if ( use_public_profile ) {
@@ -232,7 +234,46 @@ public class AppListenerService implements ApplicationListener {
     if ( include_units ) {
       entry_data.units = []
       de.units.each { unit ->
-        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile))
+        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile, add_addresses))
+      }
+    }
+
+    if (add_addresses) {
+      de.addresses.each { address ->
+        def transformedAddress = [
+          id: address.id,
+          addressLabel: address.addressLabel,
+          countryCode: address.countryCode,
+          tags: address.tags.collect { tag ->
+            [
+              normValue: tag.normValue,
+              value: tag.value
+            ]
+          },
+          owner: address.owner?.id,
+          lines: []
+        ]
+
+        address.lines.each { line ->
+          transformedAddress.lines.add([
+            id: line.id,
+            seq: line.seq,
+            value: line.value,
+            type: [
+              id: line.type.id,
+              value: line.type.value,
+              label: line.type.label,
+              owner: [
+                      id: line.type.owner.id,
+                      desc: line.type.owner.desc,
+                      internal: line.type.owner.internal
+              ]
+            ],
+            owner: line.owner.id
+          ])
+        }
+
+        entry_data.addresses.add(transformedAddress)
       }
     }
 
