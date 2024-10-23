@@ -183,6 +183,7 @@ public class AppListenerService implements ApplicationListener {
       type: de.type?.value,
       customProperties: getCustprops(de.customProperties, include_private_custprops),
       members:[],
+      addresses: [],
     ]
 
     if ( use_public_profile ) {
@@ -234,6 +235,43 @@ public class AppListenerService implements ApplicationListener {
       de.units.each { unit ->
         entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile))
       }
+    }
+
+    de.addresses.each { address ->
+      def transformedAddress = [
+              id: address.id,
+              addressLabel: address.addressLabel,
+              countryCode: address.countryCode,
+              tags: address.tags.collect { tag ->
+                [
+                  normValue: tag.normValue,
+                  value: tag.value
+                ]
+              },
+              owner: address.owner?.id,
+              lines: []
+      ]
+
+      address.lines.each { line ->
+        transformedAddress.lines.add([
+                id: line.id,
+                seq: line.seq,
+                value: line.value,
+                type: [
+                  id: line.type.id,
+                  value: line.type.value,
+                  label: line.type.label,
+                  owner: [
+                          id: line.type.owner.id,
+                          desc: line.type.owner.desc,
+                          internal: line.type.owner.internal
+                  ]
+                ],
+                owner: line.owner.id
+        ])
+      }
+
+      entry_data.addresses.add(transformedAddress)
     }
 
     return entry_data
