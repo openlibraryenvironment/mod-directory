@@ -259,16 +259,7 @@ public class AppListenerService implements ApplicationListener {
             id: line.id,
             seq: line.seq,
             value: line.value,
-            type: [
-              id: line.type.id,
-              value: line.type.value,
-              label: line.type.label,
-              owner: [
-                      id: line.type.owner.id,
-                      desc: line.type.owner.desc,
-                      internal: line.type.owner.internal
-              ]
-            ],
+            type: line.type.value,
             owner: line.owner.id
           ])
         }
