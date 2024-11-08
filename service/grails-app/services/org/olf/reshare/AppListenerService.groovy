@@ -60,6 +60,14 @@ public class AppListenerService implements ApplicationListener {
     }
   }
 
+  void afterDelete(PostDeleteEvent event) {
+    if ( event.entityObject instanceof DirectoryEntry ) {
+      DirectoryEntry de = (DirectoryEntry)event.entityObject
+      log.debug("Directory entry deleted ${de}")
+      logDirectoryEvent(de, Tenants.currentId(event.source), true)
+    }
+  }
+
   public void onApplicationEvent(org.springframework.context.ApplicationEvent event){
     // log.debug("--> ${event?.class.name} ${event}");
     if ( event instanceof AbstractPersistenceEvent ) {
@@ -76,6 +84,9 @@ public class AppListenerService implements ApplicationListener {
         // On save the record will not have an ID, but it appears that a subsequent event gets triggered
         // once the id has been allocated
       }
+      else if ( event instanceof PostDeleteEvent ) {
+        afterDelete(event)
+      }
       else {
         // log.debug("No special handling for appliaction event of class ${event}");
       }
@@ -89,7 +100,7 @@ public class AppListenerService implements ApplicationListener {
   /**
    *  it's important that tenant is of the form X_mod_directory and not just X
    */
-  private logDirectoryEvent(DirectoryEntry de, String tenant) {
+  private logDirectoryEvent(DirectoryEntry de, String tenant, boolean deleted = false) {
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
 
@@ -97,6 +108,10 @@ public class AppListenerService implements ApplicationListener {
 
 
     Map entry_data = makeDirentJSON(de, false, true, false, false);
+
+    if (deleted) {
+      entry_data.deleted = true
+    }
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
