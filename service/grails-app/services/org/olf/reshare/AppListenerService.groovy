@@ -105,12 +105,15 @@ public class AppListenerService implements ApplicationListener {
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
 
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
-
-
-    Map entry_data = makeDirentJSON(de, false, true, false, false);
+    Map entry_data
 
     if (deleted) {
+      entry_data = [:]
+      entry_data.slug = de.slug
+      entry_data.id = de.id
       entry_data.deleted = true
+    } else {
+      entry_data = makeDirentJSON(de, false, true, false, false)
     }
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
