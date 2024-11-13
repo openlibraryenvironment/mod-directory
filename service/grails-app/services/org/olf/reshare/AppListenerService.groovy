@@ -60,6 +60,14 @@ public class AppListenerService implements ApplicationListener {
     }
   }
 
+  void afterDelete(PostDeleteEvent event) {
+    if ( event.entityObject instanceof DirectoryEntry ) {
+      DirectoryEntry de = (DirectoryEntry)event.entityObject
+      log.debug("Directory entry deleted ${de}")
+      logDirectoryEvent(de, Tenants.currentId(event.source), true)
+    }
+  }
+
   public void onApplicationEvent(org.springframework.context.ApplicationEvent event){
     // log.debug("--> ${event?.class.name} ${event}");
     if ( event instanceof AbstractPersistenceEvent ) {
@@ -76,6 +84,9 @@ public class AppListenerService implements ApplicationListener {
         // On save the record will not have an ID, but it appears that a subsequent event gets triggered
         // once the id has been allocated
       }
+      else if ( event instanceof PostDeleteEvent ) {
+        afterDelete(event)
+      }
       else {
         // log.debug("No special handling for appliaction event of class ${event}");
       }
@@ -89,14 +100,21 @@ public class AppListenerService implements ApplicationListener {
   /**
    *  it's important that tenant is of the form X_mod_directory and not just X
    */
-  private logDirectoryEvent(DirectoryEntry de, String tenant) {
+  private logDirectoryEvent(DirectoryEntry de, String tenant, boolean deleted = false) {
 
     log.debug("logDirectoryEvent(id:${de.id} version:${de.version} / ${tenant})");
 
     String topic = "${tenant}_DirectoryEntryUpdate".toString()
+    Map entry_data
 
-
-    Map entry_data = makeDirentJSON(de, false, true, false);
+    if (deleted) {
+      entry_data = [:]
+      entry_data.slug = de.slug
+      entry_data.id = de.id
+      entry_data.deleted = true
+    } else {
+      entry_data = makeDirentJSON(de, false, true, false, false)
+    }
 
     log.debug("Publish DirectoryEntryChange_ind event on topic ${topic} ${entry_data.slug}");
 
@@ -155,7 +173,8 @@ public class AppListenerService implements ApplicationListener {
   public Map makeDirentJSON(DirectoryEntry de, 
                             boolean include_units=false, 
                             boolean include_private_custprops=false,
-                            boolean use_public_profile=false) {
+                            boolean use_public_profile=false,
+                            boolean add_addresses=false) {
 
     String last_modified_str = null;
     if ( ( de.pubLastUpdate != null ) && ( de.pubLastUpdate > 0 ) ) {
@@ -183,6 +202,7 @@ public class AppListenerService implements ApplicationListener {
       type: de.type?.value,
       customProperties: getCustprops(de.customProperties, include_private_custprops),
       members:[],
+      addresses: [],
     ]
 
     if ( use_public_profile ) {
@@ -232,7 +252,37 @@ public class AppListenerService implements ApplicationListener {
     if ( include_units ) {
       entry_data.units = []
       de.units.each { unit ->
-        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile))
+        entry_data.units.add(makeDirentJSON(unit, true, include_private_custprops, use_public_profile, add_addresses))
+      }
+    }
+
+    if (add_addresses) {
+      de.addresses.each { address ->
+        def transformedAddress = [
+          id: address.id,
+          addressLabel: address.addressLabel,
+          countryCode: address.countryCode,
+          tags: address.tags.collect { tag ->
+            [
+              normValue: tag.normValue,
+              value: tag.value
+            ]
+          },
+          owner: address.owner?.id,
+          lines: []
+        ]
+
+        address.lines.each { line ->
+          transformedAddress.lines.add([
+            id: line.id,
+            seq: line.seq,
+            value: line.value,
+            type: line.type.value,
+            owner: line.owner.id
+          ])
+        }
+
+        entry_data.addresses.add(transformedAddress)
       }
     }
 
