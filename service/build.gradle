@@ -47,6 +47,11 @@ repositories {
   maven { url 'https://maven.indexdata.com/' }
   maven { url "https://maven.k-int.com/repository/releases" }
   maven { url "https://repo.gradle.org/gradle/libs-releases-local" }
+  maven {
+    name "reposiliteRepositoryReleases"
+    url "https://reposilite.reshare.indexdata.com/releases"
+  }
+
 }
 
 sourceSets {
@@ -89,7 +94,7 @@ dependencies {
 
   profile "org.grails.profiles:rest-api"
 
-  implementation ('org.olf.reshare.dm.directory:dm-directory:2.1.2') {
+  implementation ('org.olf.reshare.dm.directory:dm-directory:2.1.3') {
     exclude group: 'com.k_int.grails', module: 'web-toolkit-ce'
   }
 
