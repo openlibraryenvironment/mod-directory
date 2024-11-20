@@ -92,7 +92,6 @@ class DirectoryHousekeepingService {
         RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RTAC')
         RefdataValue.lookupOrCreate('Service.BusinessFunction', 'HARVEST')
         RefdataValue.lookupOrCreate('Service.BusinessFunction', 'RS_STATS')
-        RefdataValue.lookupOrCreate('Service.BusinessFunction', 'SLNP_gateway')
 
         RefdataValue.lookupOrCreate('YNO', 'Yes')
         RefdataValue.lookupOrCreate('YNO', 'No')
