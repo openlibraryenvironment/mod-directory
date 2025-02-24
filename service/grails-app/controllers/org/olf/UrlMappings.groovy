@@ -16,6 +16,8 @@ class UrlMappings {
       }
     }
 
+    "/directory/entriesBySymbols"(controller: 'entryLookup')
+
     "/directory/symbol"(resources:'Symbol')
     "/directory/service"(resources:'Service')
     "/directory/serviceAccount"(resources:'ServiceAccount')

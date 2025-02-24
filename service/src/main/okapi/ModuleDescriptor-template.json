@@ -8,6 +8,11 @@
       "handlers" : [
         {
           "methods": [ "GET" ],
+          "pathPattern": "/directory/entriesBySymbols",
+          "permissionsRequired" : [ "directory.entry.collection.get" ]
+        },
+        {
+          "methods": [ "GET" ],
           "pathPattern": "/directory/entry",
           "permissionsRequired" : [ "directory.entry.collection.get" ]
         },
