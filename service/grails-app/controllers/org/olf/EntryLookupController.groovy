@@ -45,9 +45,12 @@ class EntryLookupController {
             for (String sub : symbolStringList) {
                 List<String> parts = sub.split(":", 2);
                 if (parts?.size() == 2) {
-                    Symbol resolvedSymbol = Symbol.findBySymbolAndAuthority(parts[1]?.toUpperCase(), parts[0]?.toUpperCase());
-                    if (resolvedSymbol) {
-                        results.add(resolvedSymbol);
+                    String authorityString = parts[0];
+                    String symbolString = parts[1];
+                    List<Symbol> symbol_list = Symbol.executeQuery('select s from Symbol as s where s.authority.symbol = :authority and s.symbol = :symbol',
+                            [authorityString?.toUpperCase(), symbolString?.toUpperCase()]);
+                    if (symbol_list.size() == 1) {
+                        results.add(symbol_list.get(0));
                     }
                 }
             }
