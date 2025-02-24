@@ -13,12 +13,19 @@ class EntryLookupController {
         String tenant = request.getHeader(OKAPITENANTHEADER);
         String symbolsString = params.symbols;
         String type = params.type; //typically "institution" or "branch"
+        String units = params.units;
         List<DirectoryEntry> result = [];
 
         Tenants.withId(tenant.toLowerCase()+'_mod_directory', {
             List<Symbol> symbolList = symbolsFromString(symbolsString);
             for (Symbol sym : symbolList) {
                 result.add(sym.owner);
+                if (units == "yes") {
+                    DirectoryEntry parent = sym.owner;
+                    for (DirectoryEntry unit : parent.units) {
+                        result.add(unit);
+                    }
+                }
             }
 
             if (type) {
