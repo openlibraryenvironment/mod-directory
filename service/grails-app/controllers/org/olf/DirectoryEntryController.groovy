@@ -2,7 +2,6 @@ package org.olf
 
 import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
-import com.k_int.okapi.OkapiTenantAwareController
 import grails.converters.JSON
 import org.olf.okapi.modules.directory.DirectoryEntry;
 import org.olf.okapi.modules.directory.NamingAuthority;
@@ -19,8 +18,8 @@ import com.k_int.web.toolkit.refdata.RefdataValue
  */
 @Slf4j
 @CurrentTenant
-class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry>  {
-  
+class DirectoryEntryController extends OkapiTenantAwareExtendedController<DirectoryEntry>  {
+
   final UPDATE_LOCAL_PERMISSION = "directory.entry.item-local.put";
   final UPDATE_MANAGED_PERMISSION = "directory.entry.managed-item.put";
   final UPDATE_ANY_PERMISSION = "directory.entry.item.put";
@@ -29,7 +28,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
     super(DirectoryEntry)
   }
 
-  
+
   @Override
   def save() {
     DirectoryEntry.withTransaction {
@@ -40,7 +39,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
       log.debug("Permissions for this request are: ${okapi_permissions_str}");
 
       // But the superclass should be parsing that and surfacing the permissions so that
-      // request.isUserInRole("okapi.directory.entry.item.update") 
+      // request.isUserInRole("okapi.directory.entry.item.update")
       // N.B. 1 The okapi. prefix which distinguishes OKAPI permissions from other spring security perms
       // N.B. 2 You can also use the @Secured({"okapi.a.b.c"}) at the method level but the conditional nature of
       // the requirement might mean it's cleaner to do this in the body of the method.
@@ -54,7 +53,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
   def update() {
     DirectoryEntry.withTransaction {
       log.debug("Overridden DirectoryEntryController::update() - called when there is a put on a directory entry resource");
-	  
+
       String okapi_permissions_str = request.getHeader(OkapiHeaders.PERMISSIONS) ?: '[]';
       JSONArray permsArray
       try {
@@ -64,36 +63,36 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
         permsArray = new JSONArray();
       }
       log.debug("Permissions for this request are: ${okapi_permissions_str}");
-     
+
       if ( request.JSON != null ) {
 		// Check the symbols before we do anything else
 		String symbolError = checkSymbols(request.JSON.symbols);
 		if (symbolError != null) {
 			render(status : 400, contentType: "application/json", text : JsonOutput.toJson([error : 400, message :symbolError]));
-			return; 
+			return;
 		}
-		
+
         // If we are manually updating a directory entry, then it must be locally managed.
-        // Setting this manually will force an update event at the directory entry 
+        // Setting this manually will force an update event at the directory entry
         // level even if a child property such as a custprop has been set This will
         // subsequently trigger a directory entry updated event in kafka and cause
         // an updated record to be issued.
         request.JSON.pubLastUpdate = System.currentTimeMillis();
       }
-      
+
       if( !patron ) {
         //return unauthorized
         render status:401
         return;
       }
-      
+
       Boolean updateLocal = permsArray.contains(UPDATE_LOCAL_PERMISSION);
       Boolean updateManaged = permsArray.contains(UPDATE_MANAGED_PERMISSION);
       Boolean updateAny = permsArray.contains(UPDATE_ANY_PERMISSION);
       //Boolean updateAny = request.isUserInRole("okapi." + UPDATE_ANY_PERMISSION);
       DirectoryEntry originalEntry = queryForResource(params.id);
-      
-      if(!updateAny) {        
+
+      if(!updateAny) {
         if(originalEntry.status?.value == 'managed' && updateManaged) {
           log.debug("Managed update permitted for entry ${params.id}");
           super.update();
@@ -158,16 +157,16 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
 
   private String checkSymbols(def symbols) {
 
-	  // A null result means no errors	  
+	  // A null result means no errors
 	  String result = null;
-	  
+
 	  // Loop through all the symbols
 	  if (symbols != null) {
 		  // The symbols should be an array
 		  if (symbols instanceof JSONArray) {
 			  symbols.each { symbol ->
 				  Symbol exists = null;
-				  
+
 				  // Need to lookup the naming authority first in order to use it in findBy
 				  NamingAuthority authority = NamingAuthority.get(symbol.authority.id);
 
@@ -179,17 +178,17 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
 					  // No id
 					  exists = Symbol.findBySymbolAndAuthority(symbol.symbol.toUpperCase(), authority);
 				  }
-				  
+
 				  // if we are already have an Id we need to exclude records with the current id
 				  if (exists != null) {
 					  // Symbol already exists, so return an appropriate error message
 					  if (result == null) {
 						  result = "";
 					  }
-					  
+
 					  // Now give a sensible error
 					  result += "The symbol " + exists.symbol + " for authority " + exists.authority.symbol + " already exists for " + exists.owner.name + ". ";
-				  } 
+				  }
 			  }
 		  } else {
 			  result = "Symbols not supplied as an array";
@@ -197,7 +196,7 @@ class DirectoryEntryController extends OkapiTenantAwareController<DirectoryEntry
 	  }
 
 	  // Return the result to the caller
-	  return(result);	  
+	  return(result);
   }
 
   /* This action will be used to provide real time validation information
