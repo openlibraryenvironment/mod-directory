@@ -6,7 +6,7 @@ on:
     workflows:
       - Build mod-rs
     branches:
-      - master
+      - main
     types:
       - completed
 
